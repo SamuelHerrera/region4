@@ -1,0 +1,42 @@
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 622 666">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #272559;
+      }
+
+      .cls-1 {
+        stroke-miterlimit: 10;
+        stroke-width: 26px;
+      }
+
+      .cls-2 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 21px;
+      }
+
+      .cls-3 {
+        fill: #272559;
+      }
+    </style>
+  </defs>
+  <title>calendary</title>
+  <g>
+    <rect class="cls-1" x="13" y="88" width="596" height="565" rx="52.169" ry="52.169"/>
+    <line class="cls-2" x1="499.621" y1="10.5" x2="499.621" y2="167.057"/>
+    <line class="cls-2" x1="110.833" y1="10.5" x2="110.833" y2="167.057"/>
+    <line class="cls-1" x1="10.864" y1="219.428" x2="607" y2="219.5"/>
+    <g>
+      <rect class="cls-3" x="57" y="281.5" width="136" height="136" rx="39.715" ry="39.715"/>
+      <rect class="cls-3" x="243" y="281.5" width="136" height="136" rx="39.715" ry="39.715"/>
+      <rect class="cls-3" x="429" y="281.5" width="136" height="136" rx="39.715" ry="39.715"/>
+    </g>
+    <g>
+      <rect class="cls-3" x="57" y="451.5" width="136" height="136" rx="39.715" ry="39.715"/>
+      <rect class="cls-3" x="243" y="451.5" width="136" height="136" rx="39.715" ry="39.715"/>
+      <rect class="cls-3" x="429" y="451.5" width="136" height="136" rx="39.715" ry="39.715"/>
+    </g>
+  </g>
+</svg>

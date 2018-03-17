@@ -1,0 +1,22 @@
+<svg id="Capa_1" data-name="Capa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 306.896 217.991">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #272559;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 14px;
+      }
+
+      .cls-2 {
+        fill: #272559;
+      }
+    </style>
+  </defs>
+  <title>flecha</title>
+  <g>
+    <polyline class="cls-1" points="7 210.991 96 88.991 184 144.991 291.466 11.808"/>
+    <polygon class="cls-2" points="306.896 83.865 292.919 84.858 288.102 15.998 219.768 25.833 217.785 11.962 301.011 0 306.896 83.865"/>
+  </g>
+</svg>

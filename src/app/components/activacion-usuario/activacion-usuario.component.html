@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div class="centered">
+    <div class="header">
+      Ingresa la clave de activacion que recibiste en tu correo para activar tu usuario.
+    </div>
+    <div class="formA">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <span class="ui-float-label">
+          <input id="Correo" type="text" size="50" pInputText name="Clave" ngModel required>
+          <label for="Correo">Clave</label>
+        </span>
+        <div class="ui-float-label button">
+          <p-button (onClick)="activar()" label="Activar Cuenta"></p-button>
+        </div>
+        <label class="subtext clickable">No me llego ninguna clave</label>
+      </form>
+    </div>
+  </div>
+</div>

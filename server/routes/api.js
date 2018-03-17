@@ -1,12 +1,22 @@
 const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
+var bluebird = require('bluebird')
 
-var neo4j = require('neo4j-driver').v1; //driver.close();
-var driver = neo4j.driver("bolt://localhost", neo4j.auth.basic("neo4j", "admin"), {
-  maxTransactionRetryTime: 30000
-});
-var session = driver.session();
+var mongoose = require('mongoose');
+mongoose.Promise = bluebird;
+mongoose.connect('mongodb://mongodb2.webrahost.com:27017/itexsolutions', {
+    user: 'u1580',
+    pass: 'PipU3MSXpPD2'
+  })
+  .then(() => {
+    console.log(`Succesfully Connected to the Mongodb Database`);
+  })
+  .catch((e) => {
+    console.log(`Error Connecting to the Mongodb Database ${e}`);
+  });
+
+var ToDoController = require('../controllers/todo.controller');
 
 // Error handling
 const sendError = (err, res) => {
@@ -22,23 +32,12 @@ let response = {
   message: null
 };
 
-// Get users
-router.get('/users', (req, res) => {
-  return session
-    .run('match (n:person) return n')
-    .subscribe({
-      onNext: (record) => {
-        response.data = record;
-        res.json(response);
-      },
-      onCompleted: (headers) => {
-        res.json("No Data Found");
-        session.close();
-      },
-      onError: () => {
-        sendError(error, res);
-      }
-    });
-});
+router.get('/users', ToDoController.getTodos);
+
+router.post('/users', ToDoController.createTodo);
+
+router.put('/users', ToDoController.updateTodo);
+
+router.delete('/users:id', ToDoController.removeTodo);
 
 module.exports = router;

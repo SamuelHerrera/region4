@@ -1,0 +1,26 @@
+<div class="container">
+
+  <div class="centered">
+    <div class="header">
+      REGISTRO
+    </div>
+    <div class="formA">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <span class="ui-float-label">
+          <input id="Correo" type="text" size="50" pInputText name="Correo" ngModel required>
+          <label for="Correo">Correo</label>
+        </span>
+        <span class="ui-float-label morem">
+
+          <input id="Cont" type="password" size="50" pInputText name="Contrasena" ngModel required>
+          <label for="Cont">Contraseña</label>
+        </span>
+        <div class="ui-float-label button">
+          <p-checkbox name="recuerdame" label="Recuerdame" ngModel binary="true"></p-checkbox>
+          <p-button (onClick)="login()" label="Iniciar Sesion"></p-button>
+        </div>
+        <label class="subtext clickable" [routerLink]="'/forgotpass'">Olvide mi contraseña</label>
+      </form>
+    </div>
+  </div>
+</div>

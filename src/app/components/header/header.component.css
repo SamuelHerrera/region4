@@ -1,0 +1,21 @@
+.container {
+  background: #28225C;
+  height: 88px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 200px;
+  height: 50px;
+  margin: 20px;
+}
+
+.actions {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
