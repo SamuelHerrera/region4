@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { Router } from '@angular/router';
+import { ClientService } from '../../services/client.service';
 
 @Component({
   selector: 'app-inicio-de-sesion',
@@ -14,7 +15,7 @@ export class InicioDeSesionComponent implements OnInit {
 
   @ViewChild('f') form: any;
 
-  constructor(private router: Router, private messageService: MessageService) { }
+  constructor(private clientService: ClientService, private router: Router, private messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -37,7 +38,18 @@ export class InicioDeSesionComponent implements OnInit {
   }
 
   public onSubmit(form) {
-    console.log(form);
-    this.router.navigate(['/generaravaluo']);
+    this.clientService.loginClient(form.Correo, form.Contrasena).subscribe((response: any) => {
+      if (response.status === 200) {
+        this.messageService.add({ severity: 'success', summary: 'Inicio de sesion', detail: "Usuario inicio sesion satisfactoriamente." });
+        this.router.navigate(['/generaravaluo']);
+      } else {
+        this.messageService.add({ severity: 'error', summary: 'Inicio de sesion', detail: response.message });
+      }
+    },
+      error => {
+        console.log(error)
+        this.messageService.add({ severity: 'error', summary: 'Server', detail: error.message });
+      });
+
   }
 }

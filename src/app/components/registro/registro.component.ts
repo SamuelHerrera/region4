@@ -3,6 +3,9 @@ import { FormControl } from '@angular/forms';
 import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { Router } from "@angular/router";
+import { Client } from '../../models/client.model';
+import { ClientService } from '../../services/client.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-registro',
@@ -20,7 +23,7 @@ export class RegistroComponent implements OnInit {
 
   @ViewChild('f') form: any;
 
-  constructor(private router: Router, private messageService: MessageService) { }
+  constructor(private router: Router, private messageService: MessageService, private clientService: ClientService) { }
 
   ngOnInit() {
   }
@@ -45,7 +48,22 @@ export class RegistroComponent implements OnInit {
 
   public onSubmit(form) {
     console.log(form);
-    this.router.navigate(['/activacion']);
+    const client: Client = new Client();
+    client.name = form.Nombre;
+    client.activationCode = uuid();
+    client.facturacion = {};
+    client.mail = form.Correo;
+    client.password = form.Contrasena;
+    client.phone = form.Telefono;
+    client.ramo = form.Ramo ? form.Ramo.name : "";
+    client.status = "created";
+    this.clientService.registerClient(client).subscribe(response => {
+      this.router.navigate(['/activacion']);
+      this.messageService.add({ severity: 'success', summary: 'Bienvenido', detail: "Usuario creado satisfactoriamente." });
+    },
+      error => {
+        console.log(error)
+        this.messageService.add({ severity: 'error', summary: 'Server', detail: error.error.message });
+      });
   }
-
 }

@@ -33,6 +33,7 @@ import { RestablecerContrasenaComponent } from './components/restablecer-contras
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ClientService } from './services/client.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,7 @@ import { FooterComponent } from './components/footer/footer.component';
     GrowlModule,
     CheckboxModule
   ],
-  providers: [UserService, MessageService],
+  providers: [UserService, ClientService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

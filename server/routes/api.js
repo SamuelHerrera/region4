@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const _ = require('lodash');
 var bluebird = require('bluebird')
 
 var mongoose = require('mongoose');
@@ -17,27 +16,18 @@ mongoose.connect('mongodb://mongodb2.webrahost.com:27017/itexsolutions', {
   });
 
 var ToDoController = require('../controllers/todo.controller');
-
-// Error handling
-const sendError = (err, res) => {
-  response.status = 501;
-  response.message = typeof err == 'object' ? err.message : err;
-  res.status(501).json(response);
-};
-
-// Response handling
-let response = {
-  status: 200,
-  data: [],
-  message: null
-};
+var ClientController = require('../controllers/client.controller');
 
 router.get('/users', ToDoController.getTodos);
-
 router.post('/users', ToDoController.createTodo);
-
 router.put('/users', ToDoController.updateTodo);
-
 router.delete('/users:id', ToDoController.removeTodo);
+
+router.get('/client', ClientController.getClients);
+router.post('/client', ClientController.createClient);
+router.put('/client', ClientController.updateClient);
+router.put('/client/activate', ClientController.activateClient);
+router.post('/client/login', ClientController.loginClient);
+router.delete('/client:id', ClientController.removeClient);
 
 module.exports = router;
