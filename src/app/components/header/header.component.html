@@ -2,8 +2,12 @@
   <a class="clickable" href="http://www.region4.mx/propiedades">
     <img class="logo" src="assets/images/logo.svg" />
   </a>
-  <div class="actions">
+  <div class="actions" *ngIf="!user.mail">
     <button pButton [routerLink]="'/registro'" label="Registro"></button>
     <button pButton [routerLink]="'/iniciosesion'" label="Inicio Sesion"></button>
+  </div>
+  <div class="actions" *ngIf="user.mail">
+    <div class="username">{{user.name}}</div>
+    <button pButton (click)="logout()" label="Finalizar Sesion"></button>
   </div>
 </div>

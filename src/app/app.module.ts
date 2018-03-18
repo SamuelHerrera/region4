@@ -34,6 +34,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ClientService } from './services/client.service';
+import { ObservablesService } from './services/observables.service';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,7 @@ import { ClientService } from './services/client.service';
     GrowlModule,
     CheckboxModule
   ],
-  providers: [UserService, ClientService, MessageService],
+  providers: [UserService, ClientService, MessageService, ObservablesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

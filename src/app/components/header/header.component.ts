@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Client } from '../../models/client.model';
+import { Router } from '@angular/router';
+import { ObservablesService } from '../../services/observables.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  public user: Client = new Client();
+
+  constructor(private observableService: ObservablesService, private router: Router) { }
 
   ngOnInit() {
+    this.observableService.userObservable$.subscribe(user => {
+      this.user = user ? user : new Client();
+      console.log(user)
+    });
+  }
+
+  logout() {
+    this.router.navigate(['/iniciosesion']);
   }
 
 }

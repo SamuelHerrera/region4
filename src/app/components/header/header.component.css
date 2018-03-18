@@ -19,3 +19,12 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
+.username {
+  margin: 5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}

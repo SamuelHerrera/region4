@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   constructor(private messageService: MessageService) { }
 
   ngOnInit(): void {
-
+    console.log(JSON.parse(localStorage.getItem('usuario')));
   }
 
 }

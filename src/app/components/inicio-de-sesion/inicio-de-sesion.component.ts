@@ -4,6 +4,7 @@ import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { Router } from '@angular/router';
 import { ClientService } from '../../services/client.service';
+import { ObservablesService } from '../../services/observables.service';
 
 @Component({
   selector: 'app-inicio-de-sesion',
@@ -15,9 +16,11 @@ export class InicioDeSesionComponent implements OnInit {
 
   @ViewChild('f') form: any;
 
-  constructor(private clientService: ClientService, private router: Router, private messageService: MessageService) { }
+  constructor(private observableService: ObservablesService,
+    private clientService: ClientService, private router: Router, private messageService: MessageService) { }
 
   ngOnInit() {
+    this.observableService.announceUserUpdate(null);
   }
 
   login() {
@@ -40,6 +43,7 @@ export class InicioDeSesionComponent implements OnInit {
   public onSubmit(form) {
     this.clientService.loginClient(form.Correo, form.Contrasena).subscribe((response: any) => {
       if (response.status === 200) {
+        this.observableService.announceUserUpdate(response.data);
         this.messageService.add({ severity: 'success', summary: 'Inicio de sesion', detail: "Usuario inicio sesion satisfactoriamente." });
         this.router.navigate(['/generaravaluo']);
       } else {
