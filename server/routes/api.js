@@ -28,8 +28,8 @@ router.post('/yals', YalsController.createReport);
 router.get('/yals', YalsController.getReport);
 
 var PagoFacilController = require('../controllers/pagofacil.controller');
-router.post('/pagofacil', PagoFacilController.createReport);
-router.get('/pagofacil', PagoFacilController.getReport);
+router.post('/pagofacil', PagoFacilController.getPago);
+router.get('/pagofacil', PagoFacilController.createPago);
 router.put('/pagofacil', PagoFacilController.recordReference);
 
 module.exports = router;
