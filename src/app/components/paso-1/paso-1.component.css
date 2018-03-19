@@ -1,0 +1,26 @@
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.addressDesc{
+    vertical-align: top;
+    display: flex;
+    height: 73%;
+    flex-direction: column;
+    justify-content: space-around;    
+}
+.nums{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.maps{
+    border:1px red solid;
+    width: 300px;
+}
+.maps agm-map {
+    width: 300px;
+    height: 200px;
+}

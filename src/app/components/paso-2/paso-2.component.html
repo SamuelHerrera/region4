@@ -1,3 +1,89 @@
-<p>
-  paso-2 works!
-</p>
+<div class="characteristics">
+
+    <div class="address">
+      
+
+      <div class="kind">
+        <h4>Tipo de propiedad.</h4>
+
+        <p-selectButton [options]="types" [(ngModel)]="selectedType" [ngModelOptions]="{standalone: true}"></p-selectButton>
+
+        <h4>Casa</h4>
+
+        <p-selectButton [options]="homeTypes" [(ngModel)]="selectedHomeType" [ngModelOptions]="{standalone: true}"></p-selectButton>
+      </div>
+    </div>
+
+    <div class="articles">
+
+      <div class="icons">
+        <div>
+          <img class="images" src="../assets/images/cuarto.svg" alt="Smiley face" height="42" width="42" />
+        </div>
+
+        <div>
+          <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
+        </div>
+
+        <div>
+          <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42">
+        </div>
+
+        <div>
+          <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42">
+        </div>
+      </div>
+
+      <div class="buttons">
+        <div class="buttonsContent"></div>
+        <div>
+          <h4>Recámaras</h4>
+          <p-selectButton [options]="numbers1" [(ngModel)]="selectedNumRec" [ngModelOptions]="{standalone: true}"></p-selectButton>
+        </div>
+
+        <div>
+          <h4>Baños</h4>
+          <p-selectButton [options]="numbers1" [(ngModel)]="selectedNumBath" [ngModelOptions]="{standalone: true}"></p-selectButton>
+        </div>
+
+        <div>
+          <h4>Medios Baños</h4>
+          <p-selectButton [options]="numbers0" [(ngModel)]="selectedNumMBath" [ngModelOptions]="{standalone: true}"></p-selectButton>
+        </div>
+
+        <div>
+          <h4>Cajones</h4>
+          <p-selectButton [options]="numbers0" [(ngModel)]="selectedNumBox" [ngModelOptions]="{standalone: true}"></p-selectButton>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="description">
+
+      <div class="subDescription">
+
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" pInputText name="AreaConstruida">
+          <label for="float-input">Área Construída </label>
+        </span>
+
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="30" pInputText name="SuperficieTerreno">
+          <label for="float-input">Superficie del terreno </label>
+        </span>
+
+        <div class="years">
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText name="AniosAntiguedad">
+            <label for="float-input">Años de antigüedad</label>
+          </span>
+
+          <div class="ui-g-12">
+            <p-checkbox name="group1" value="Nuevo" label="Nuevo" [(ngModel)]="selectedAge" inputId="Nvo" [ngModelOptions]="{standalone: true}"></p-checkbox>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>

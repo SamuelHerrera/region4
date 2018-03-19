@@ -6,12 +6,6 @@
     width:100%;
     height: 100%;
 }
-.tittle{
-    width: 100%;
-    text-align: center;
-    font-size: 25px;
-    padding: 10px;
-}
 .scrollable{
     height: 100%;
     width: 100%;
@@ -20,87 +14,4 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-.characteristics{
-    width: 100%;
-    min-height: 360px;
-    max-height: 900px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.address{
-    min-width: 150px;
-    width: 200px;
-    height: 350px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    
-}
-.addressDesc{
-    vertical-align: top;
-    display: flex;
-    height: 73%;
-    flex-direction: column;
-    justify-content: space-around;    
-}
-.kind{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-.nums{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
 
-.articles {
-    min-width: 230px;
-    min-height: 180px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    
-}
-.description{
-    min-width: 320px;
-    min-height: 130px;
-    max-height: 130px;
-    display: flex;
-    flex-direction: column;
-    
-}
-.subDescription{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;   
-    /*border: 1px green solid;*/
-}
-.years{
-    /*border: 1px black solid;*/
-    display: flex;
-    flex-direction: row;
-}
-.amenidades{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 10px;
-    min-height: 300px;
-    height: 600px;
-    border: 1px yellow solid;
-}
-.miniContainers{
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    width: 120px;
-    height: 150px;
-    border: 1px green solid;
-}
-.miniContainers img{
-    border: 1px black solid;
-}

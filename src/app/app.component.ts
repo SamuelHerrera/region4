@@ -29,9 +29,9 @@ export class AppComponent implements OnInit {
       param1: "", param2: "", param3: "", param4: "", param5: ""
     }
 
-    this.pf.generatePago(pagofacilreq).subscribe(response => {
-      console.log(response);
-    });
+    // this.pf.generatePago(pagofacilreq).subscribe(response => {
+    //   console.log(response);
+    // });
   }
 
 }
