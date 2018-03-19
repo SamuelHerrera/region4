@@ -1,15 +1,10 @@
 <div class="container">
   <div class="addressDesc">
-    <div class="nums">
-      <span class="ui-float-label">
-        <input id="float-input" type="text" size="8" pInputText name="Calle">
-        <label for="float-input">Calle</label>
-      </span>
-      <span class="ui-float-label">
-        <input id="float-input" type="text" size="8" pInputText name="Cruzamientos">
-        <label for="float-input">Cruzamientos</label>
-      </span>
-    </div>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText name="Calle">
+      <label for="float-input">Calle</label>
+    </span>
+
     <div class="nums">
 
       <span class="ui-float-label">
@@ -45,8 +40,8 @@
 
   </div>
   <div class="maps">
-    <agm-map [latitude]="lat" [longitude]="lng" >
-        <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
+    <agm-map [latitude]="lat" [longitude]="lng">
+      <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
     </agm-map>
   </div>
 </div>

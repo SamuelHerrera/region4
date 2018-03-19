@@ -4,38 +4,50 @@
     <div class="header">
       REGISTRO
     </div>
-    <div class="formA">
-      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-        <span class="ui-float-label">
-          <input id="Nombre" type="text" size="50" pInputText name="Nombre" ngModel required>
-          <label for="Nombre">Nombre Completo</label>
-        </span>
-        <span class="ui-float-label">
-          <input id="Correo" type="text" size="50" pInputText name="Correo" ngModel required>
-          <label for="Correo">Correo</label>
-        </span>
-        <span class="ui-float-label morem">
-          <label class="subtext">La contraseña debe ser alfanumérica de mínimo 6 a máximo 10 carácteres.</label>
-          <input id="Contraseña" type="password" size="50" pInputText name="Contrasena" ngModel required>
-          <label for="Contraseña">Contraseña</label>
+    <div class="scrollable">
+      <div class="formA">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+          <span class="ui-float-label">
+            <input id="Nombre" type="text" size="50" pInputText name="Nombre" ngModel required>
+            <label for="Nombre">Nombre Completo</label>
+          </span>
+          <span class="ui-float-label">
+            <input id="Correo" type="text" size="50" pInputText name="Correo" ngModel required>
+            <label for="Correo">Correo</label>
+          </span>
+          <span class="ui-float-label morem">
+            <label class="subtext">La contraseña debe ser alfanumérica de mínimo 6 a máximo 10 carácteres.</label>
+            <input id="Contraseña" type="password" size="50" pInputText name="Contrasena" ngModel required>
+            <label for="Contraseña">Contraseña</label>
 
-        </span>
-        <span class="ui-float-label">
-          <input id="Repetir" type="password" size="50" pInputText name="Repetir" ngModel required>
-          <label for="Repetir">Repetir Contraseña</label>
-        </span>
-        <span class="ui-float-label">
-          <input id="Telefono" type="text" size="50" pInputText name="Telefono" ngModel required>
-          <label for="Telefono">Telefono</label>
-        </span>
-        <div class="ui-float-label">
-          <p-dropdown #ramo id="Ramo" [options]="ramos" name="Ramo" placeholder="Ramo" optionLabel="name" ngModel required></p-dropdown>
-          <label for="Ramo" *ngIf="ramo.value">Ramo</label>
-        </div>
-        <div class="ui-float-label button">
-          <p-button (onClick)="register()" label="Continuar"></p-button>
-        </div>
-      </form>
+          </span>
+          <span class="ui-float-label">
+            <input id="Repetir" type="password" size="50" pInputText name="Repetir" ngModel required>
+            <label for="Repetir">Repetir Contraseña</label>
+          </span>
+          <span class="ui-float-label">
+            <input id="Telefono" type="text" size="50" pInputText name="Telefono" ngModel required>
+            <label for="Telefono">Telefono</label>
+          </span>
+          <div class="ui-float-label">
+            <p-dropdown #ramo id="Ramo" [options]="ramos" name="Ramo" placeholder="Ramo" optionLabel="name" ngModel required></p-dropdown>
+            <label for="Ramo" *ngIf="ramo.value">Ramo</label>
+          </div>
+
+          <div class="checkBoxContainer">
+            <div class="ui-g-12">
+              <p-checkbox name="Facturacion" value="DatosFacturacion" label="Datos de facturación" [(ngModel)]="selectedFacturacion" inputId="DatosFacturacion"
+                [ngModelOptions]="{standalone: true}"></p-checkbox>
+            </div>
+          </div>
+          <!-- Hace falta mejorar esta parte para que funcione con el checkbox-->
+          <app-datosfacturacion></app-datosfacturacion>
+
+          <div class="ui-float-label button">
+            <p-button (onClick)="register()" label="Continuar"></p-button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

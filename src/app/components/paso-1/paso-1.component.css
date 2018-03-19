@@ -2,25 +2,27 @@
 .container{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
 }
 .addressDesc{
-    vertical-align: top;
+    padding: 10px;
     display: flex;
-    height: 73%;
     flex-direction: column;
     justify-content: space-around;    
 }
 .nums{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 .maps{
-    border:1px red solid;
-    width: 300px;
+   
+    width: 400px;
 }
 .maps agm-map {
-    width: 300px;
-    height: 200px;
+    padding-top: 20px;
+    width: 400px;
+    height: 290px;
 }

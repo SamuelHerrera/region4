@@ -8,7 +8,7 @@
         <form>
           <ng-template matStepLabel>Ubicar Propiedad</ng-template>
           <app-paso-1></app-paso-1>
-          
+
         </form>
       </mat-step>
       <mat-step>
@@ -18,23 +18,42 @@
           <!--<div class="tittle">
             <h1>AMENIDADES</h1>
           </div>-->
-          
+
         </form>
       </mat-step>
       <mat-step>
         <form>
-        <ng-template matStepLabel>Amenidades</ng-template>
-        <app-paso-3></app-paso-3>
-        
-      </form>
+          <ng-template matStepLabel>Amenidades</ng-template>
+          <app-paso-3></app-paso-3>
+
+        </form>
       </mat-step>
       <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          You are now done.
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
+        <form>
+          <ng-template matStepLabel>Pagar Avalúo</ng-template>
+          <app-pago-con-tarjeta></app-pago-con-tarjeta>
+
+        </form>
+      </mat-step>
+      <mat-step>
+        <form>
+          <ng-template matStepLabel>Ingresar Correo</ng-template>
+          <div class="correo">
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="30" pInputText>
+              <label for="float-input">Correo</label>
+            </span>
+
+            <p-button (onClick)="enviarCorreo()" label="Enviar"></p-button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <div class="nvoAvaluo">
+            
+            <p-button (onClick)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
+          </div>
       </mat-step>
     </mat-horizontal-stepper>
 

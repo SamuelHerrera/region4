@@ -42,6 +42,8 @@ import { YalsService } from './services/yals.service';
 import { Paso1Component } from './components/paso-1/paso-1.component';
 import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common/src/common_module';
+import { DatosfacturacionComponent } from './components/datosfacturacion/datosfacturacion.component';
+import { ReporteComponent } from './components/reporte/reporte.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { CommonModule } from '@angular/common/src/common_module';
     LandingPageComponent,
     HeaderComponent,
     FooterComponent,
-    Paso1Component
+    Paso1Component,
+    DatosfacturacionComponent,
+    ReporteComponent
   ],
   imports: [
     HttpClientModule,

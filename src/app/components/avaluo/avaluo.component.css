@@ -14,4 +14,19 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-
+.correo{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 20px;
+}
+.correo p-button{
+    padding-left: 10px;
+}
+.nvoAvaluo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-top: 20px;
+}

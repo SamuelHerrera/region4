@@ -8,11 +8,13 @@
 .address{
     min-width: 150px;
     width: 200px;
-    height: 350px;
+    height: 200px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     
+}
+.subAddress{
+    height:100px;
 }
 
 .kind{

@@ -1,3 +1,111 @@
-<p>
-  pago-con-tarjeta works!
-</p>
+<div class="container">
+  <div class="cost">
+    <div class="costContainer">
+      <span>Costo Avalúo</span>
+      <input id="disabled-input" type="text" size="20" pInputText [disabled]="disabled" />
+    </div>
+
+    <div class="costContainer">
+      <span>Individual</span>
+      <input id="disabled-input" type="text" size="20" pInputText [disabled]="disabled" />
+    </div>
+
+    <div class="costContainer">
+      <span>Código de Cupón</span>
+      <input id="disabled-input" type="text" size="20" pInputText [disabled]="codigo" />
+    </div>
+
+    <div class="cupon">
+      <p-button (onClick)="aplicarCodigo()" label="Aplicar"></p-button>
+    </div>
+
+    <div class="costContainer">
+      <span>Subtotal</span>
+      <input id="disabled-input" type="text" size="20" pInputText [disabled]="disabled" />
+    </div>
+    <div class="divisor">
+      <hr>
+    </div>
+
+    <div class="costContainer">
+      <span>TOTAL</span>
+      <input id="disabled-input" type="text" size="20" pInputText [disabled]="disabled" />
+    </div>
+
+
+  </div>
+
+  <div class="paymentInfo">
+    <div class="tittle">Ingresa los datos de tu tarjeta de crédito o débito</div>
+    <div class="subContainer">
+      <div class="containerPayment">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Nombre</label>
+        </span>
+        <div class="expiredDate">
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="5" pInputText>
+            <label for="float-input">MM</label>
+          </span>
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="5" pInputText>
+            <label for="float-input">AA</label>
+          </span>
+        </div>
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Calle</label>
+        </span>
+        <div class="numInfo">
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="8" pInputText>
+            <label for="float-input">No. Exterior</label>
+          </span>
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="8" pInputText>
+            <label for="float-input">No. Interior</label>
+          </span>
+        </div>
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Colonia</label>
+        </span>
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Ciudad</label>
+        </span>
+      </div>
+
+      <div class="containerPayment">
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Número de Tarjeta</label>
+        </span>
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Código de Seguridad</label>
+        </span>
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Estado</label>
+        </span>
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Código Postal</label>
+        </span>
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">País</label>
+        </span>
+        <span class="ui-float-label">
+          <input id="float-input" type="text" size="25" pInputText>
+          <label for="float-input">Teléfono</label>
+        </span>
+      </div>
+    </div>
+    <div class="payButton">
+        <p-button (onClick)="pagarAvaluo()" label="Pagar Ahora"></p-button>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PagoConTarjetaComponent implements OnInit {
 
+  disabled = true;
+  codigo = false;
   constructor() { }
 
   ngOnInit() {
