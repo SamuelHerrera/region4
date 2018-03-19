@@ -6,6 +6,7 @@ import { InicioDeSesionComponent } from '../components/inicio-de-sesion/inicio-d
 import { OlvideContrasenaComponent } from '../components/olvide-contrasena/olvide-contrasena.component';
 import { ActivacionUsuarioComponent } from '../components/activacion-usuario/activacion-usuario.component';
 import { AvaluoComponent } from '../components/avaluo/avaluo.component';
+import { ReporteComponent } from '../components/reporte/reporte.component';
 
 const routes: Routes = [
     {
@@ -36,6 +37,10 @@ const routes: Routes = [
     {
         path: "generaravaluo",
         component: AvaluoComponent
+    },
+    {
+        path: "reporte",
+        component: ReporteComponent
     },
     {
         path: '**',

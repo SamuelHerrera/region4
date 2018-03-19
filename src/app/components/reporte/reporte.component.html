@@ -1,3 +1,87 @@
-<p>
-  reporte works!
-</p>
+<div class="container">
+  <div class="scrollable">
+
+    <div class="title">
+      <span class="principalTitle">REPORTE DEL INMUEBLE</span>
+      <div class="idReport">
+        <span>ID {{idReport}}</span>
+        <span class="generatedDate">Reporte generado el {{generatedReport}}</span>
+      </div>
+    </div>
+
+    <div class="characteristics">
+      <div class="middleTitle">
+        <span>CARACTERÍSTICAS DE LA PROPIEDAD</span>
+      </div>
+      <div class="address">
+        <div class="dir">
+          <div class="littleTitle">
+            <span>DIRECCIÓN</span>
+          </div>
+
+          <div class="direcContent">
+            {{direccion}}
+          </div>
+
+        </div>
+        <div class="carac">
+          <div class="litleTitle">
+            <span>CARACTERÍSTICAS</span>
+          </div>
+
+          <div class="caracContainer">
+            <div class="subCarac">
+              <div class="imgContainer">
+                  <img class="images" src="../assets/images/cuarto.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              {{numCuartos}} Cuartos
+              
+            </div>
+
+            <div class="subCarac">
+                <div class="imgContainer">
+                    <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
+                </div>
+                {{numBanos}} Baños
+                
+            </div>
+
+            <div class="subCarac">
+                <div class="imgContainer">
+                    <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42" />
+                </div>
+                {{numMBanos}} Medios Baños
+                
+            </div>
+
+            <div class="subCarac">
+                <div class="imgContainer">
+                    <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42" />
+                </div>
+                {{numParking}} Parking
+                
+            </div>
+
+          </div>
+        </div>
+      <div class="amenidades">
+
+      </div>
+    </div>
+
+    <div class="estimatedValue">
+      <div class="middleTitle">
+        <span>ESTIMADO DE VALOR EN {{estimatedDate}}</span>
+      </div>
+      <div class="prices">
+        <div class="totalEstimated">
+
+        </div>
+        <div class="mEstimated">
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

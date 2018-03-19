@@ -14,7 +14,9 @@ import { v4 as uuid } from 'uuid';
 })
 export class RegistroComponent implements OnInit {
 
-  selectedFacturacion: string[] = [];
+  selectedValue: string[] = [];
+
+  isHidden:boolean = false;
   
   public ramos: any[] = [
     { name: 'Agente Inmobiliario Independiente', code: 'AII' },

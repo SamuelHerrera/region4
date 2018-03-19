@@ -36,11 +36,11 @@
     margin: 20px;
 }
 
-/*.button {
+.button {
     justify-content: flex-end;
     display: flex;
     
-}*/
+}
 
 .morem {
     margin-bottom: 30px;
@@ -54,10 +54,11 @@
 .formA {
     
     min-height: 450px;
-    
     display: flex;
     flex-direction: column;    
 }
 .checkBoxContainer{
   padding-left:15px;
+  
+  height: 30px;
 }
