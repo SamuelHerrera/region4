@@ -61,7 +61,7 @@ exports.createPago = async (function (clientid, pagofacil_request) {
     });
   }));
 
-  pagofacil_model.response = response;
+  pagofacil_model.response = response.result;
   pagofacil_model.autorized = response.autorizado;
   console.log(pagofacil_model);
   try {
