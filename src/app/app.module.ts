@@ -6,12 +6,14 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
+//Prime ng components
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { GrowlModule } from 'primeng/growl';
 import { CheckboxModule } from 'primeng/checkbox';
+import { SelectButtonModule } from 'primeng/selectbutton';
 
 import { UserService } from './services/user.service';
 import { RoutingModule } from './router/routing.module';
@@ -68,7 +70,8 @@ import { ObservablesService } from './services/observables.service';
     InputTextModule,
     DropdownModule,
     GrowlModule,
-    CheckboxModule
+    CheckboxModule,
+    SelectButtonModule
   ],
   providers: [UserService, ClientService, MessageService, ObservablesService],
   bootstrap: [AppComponent]

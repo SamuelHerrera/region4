@@ -1,3 +1,231 @@
-<p>
-  avaluo works!
-</p>
+<div class="container">
+  <div class="tittle">
+    <h1>GENERAR AVALÚO</h1>
+  </div>
+  <div class="scrollable">
+
+    <h3>PASO 2: Colocar Características</h3>
+
+    <div class="characteristics">
+
+      <div class="address">
+        <div class="addressDesc">
+
+          <div class="nums">
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="8" pInputText>
+              <label for="float-input">Num. Ext</label>
+            </span>
+
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="10" pInputText>
+              <label for="float-input">C.P.</label>
+            </span>
+          </div>
+
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+            <label for="float-input">Colonia</label>
+          </span>
+
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+            <label for="float-input">Municipio</label>
+          </span>
+
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+            <label for="float-input">Estado</label>
+          </span>
+
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+            <label for="float-input">Ciudad</label>
+          </span>
+
+        </div>
+
+        <div class="kind">
+          <h4>Tipo de propiedad.</h4>
+
+          <p-selectButton [options]="types" [(ngModel)]="selectedType"></p-selectButton>
+
+          <h4>Casa</h4>
+
+          <p-selectButton [options]="homeTypes" [(ngModel)]="selectedHomeType"></p-selectButton>
+        </div>
+      </div>
+
+      <div class="articles">
+
+        <div class="icons">
+          <div>
+            <img class="images" src="../assets/images/cuarto.svg" alt="Smiley face" height="42" width="42" />
+          </div>
+
+          <div>
+            <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
+          </div>
+
+          <div>
+            <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42">
+          </div>
+
+          <div>
+            <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42">
+          </div>
+        </div>
+
+        <div class="buttons">
+          <div class="buttonsContent"></div>
+          <div>
+            <h4>Recámaras</h4>
+            <p-selectButton [options]="numbers1" [(ngModel)]="selectedNumRec"></p-selectButton>
+          </div>
+
+          <div>
+            <h4>Baños</h4>
+            <p-selectButton [options]="numbers1" [(ngModel)]="selectedNumBath"></p-selectButton>
+          </div>
+
+          <div>
+            <h4>Medios Baños</h4>
+            <p-selectButton [options]="numbers0" [(ngModel)]="selectedNumMBath"></p-selectButton>
+          </div>
+
+          <div>
+            <h4>Cajones</h4>
+            <p-selectButton [options]="numbers0" [(ngModel)]="selectedNumBox"></p-selectButton>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="description">
+
+        <div class="subDescription">
+
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+            <label for="float-input">Area Construída (m
+              <sup>2</sup>)</label>
+          </span>
+
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText>
+            <label for="float-input">Superficie del terreno (m
+              <sup>2</sup>)</label>
+          </span>
+
+          <div class="years">
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="30" pInputText>
+              <label for="float-input">Años de antigüedad</label>
+            </span>
+
+            <div class="ui-g-12">
+              <p-checkbox name="group1" value="Nuevo" label="Nuevo" [(ngModel)]="selectedAge" inputId="Nvo"></p-checkbox>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="tittle">
+      <h1>AMENIDADES</h1>
+    </div>
+    <div class="amenidades">
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/ac.svg" alt="Smiley face" height="50" width="50">
+        <span>Aire Acondicionado</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Aire Acondicionado" [(ngModel)]="selectedAA" inputId="AA"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/cocina.svg" alt="Smiley face" height="50" width="50">
+        <span>Cocina Integral</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Cocina Integral" [(ngModel)]="selectedCI" inputId="CI"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/gimnasio.svg" alt="Smiley face" height="50" width="50">
+        <span>Gimnasio</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Gimnasio" [(ngModel)]="selectedGym" inputId="GYM"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/terraza.svg" alt="Smiley face" height="50" width="50">
+        <span>Roof garden/ terrazas</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Terraza" [(ngModel)]="selectedTerraza" inputId="Terraza"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/alberca.svg" alt="Smiley face" height="50" width="50">
+        <span>Alberca</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Alberca" [(ngModel)]="selectedAlberca" inputId="Alberca"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/lavado.svg" alt="Smiley face" height="50" width="50">
+        <span>Cuarto de servicio</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Lavado" [(ngModel)]="selectedLavado" inputId="Lavado"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/jardin.svg" alt="Smiley face" height="50" width="50">
+        <span>Jardín</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Jardin" [(ngModel)]="selectedJardin" inputId="Jardin"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/amueblado.svg" alt="Smiley face" height="50" width="50">
+        <span>Amueblado</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Amueblado" [(ngModel)]="selectedAmueblado" inputId="Amueblado"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/estudio.svg" alt="Smiley face" height="50" width="50">
+        <span>Estudio</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Estudio" [(ngModel)]="selectedEstudio" inputId="Estudio"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/jacuzzi.svg" alt="Smiley face" height="50" width="50">
+        <span>Jacuzzi</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Jacuzzi" [(ngModel)]="selectedJacuzzi" inputId="Jacuzzi"></p-checkbox>
+        </div>
+      </div>
+
+      <div class="miniContainers">
+        <img class="images" src="../assets/images/seguridad.svg" alt="Smiley face" height="50" width="50">
+        <span>Seguridad Privada</span>
+        <div class="ui-g-12">
+          <p-checkbox name="amenidades" value="Seguridad" [(ngModel)]="selectedSeguridad" inputId="Seguridad"></p-checkbox>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
