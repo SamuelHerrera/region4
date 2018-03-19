@@ -40,9 +40,9 @@ export class AppComponent implements OnInit {
       "longitud": -99.178435 // Opcional 
     };
 
-    this.yals.generateRequest(yals, null).subscribe(response => {
+    /*this.yals.generateRequest(yals, null).subscribe(response => {
       console.log(response);
-    });
+    });*/
   }
 
 }

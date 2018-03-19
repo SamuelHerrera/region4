@@ -6,6 +6,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
+import {MatStepperModule} from '@angular/material/stepper';
+
 //Prime ng components
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ButtonModule } from 'primeng/button';
@@ -37,6 +39,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ClientService } from './services/client.service';
 import { ObservablesService } from './services/observables.service';
 import { YalsService } from './services/yals.service';
+import { Paso1Component } from './components/paso-1/paso-1.component';
+import { AgmCoreModule } from '@agm/core';
+import { CommonModule } from '@angular/common/src/common_module';
 
 @NgModule({
   declarations: [
@@ -58,20 +63,26 @@ import { YalsService } from './services/yals.service';
     RestablecerContrasenaComponent,
     LandingPageComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    Paso1Component
   ],
   imports: [
     HttpClientModule,
     RoutingModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ButtonModule,
     InputTextModule,
     DropdownModule,
     GrowlModule,
     CheckboxModule,
-    SelectButtonModule
+    SelectButtonModule,
+    MatStepperModule, 
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
+    })
   ],
   providers: [ClientService, MessageService, ObservablesService, YalsService],
   bootstrap: [AppComponent]

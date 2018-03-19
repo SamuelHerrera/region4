@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="addressDesc">
+    <div class="nums">
+      <span class="ui-float-label">
+        <input id="float-input" type="text" size="8" pInputText name="Calle">
+        <label for="float-input">Calle</label>
+      </span>
+      <span class="ui-float-label">
+        <input id="float-input" type="text" size="8" pInputText name="Cruzamientos">
+        <label for="float-input">Cruzamientos</label>
+      </span>
+    </div>
+    <div class="nums">
+
+      <span class="ui-float-label">
+        <input id="float-input" type="text" size="8" pInputText name="NumExt">
+        <label for="float-input">Num. Ext</label>
+      </span>
+
+      <span class="ui-float-label">
+        <input id="float-input" type="text" size="10" pInputText name="CodigoPostal">
+        <label for="float-input">C.P.</label>
+      </span>
+    </div>
+
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText name="Colonia">
+      <label for="float-input">Colonia</label>
+    </span>
+
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText name="Municipio">
+      <label for="float-input">Municipio</label>
+    </span>
+
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText name="Estado">
+      <label for="float-input">Estado</label>
+    </span>
+
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText name="Ciudad">
+      <label for="float-input">Ciudad</label>
+    </span>
+
+  </div>
+  <div class="maps">
+    <agm-map [latitude]="lat" [longitude]="lng" >
+        <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
+    </agm-map>
+  </div>
+</div>
