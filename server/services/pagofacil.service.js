@@ -6,7 +6,7 @@ var model = require('../models/pagofacil.model');
 _this = this;
 
 var config = {
-  url: 'https://www.pagofacil.net/st/public/Wsjtransaccion/',
+  url: 'https://www.pagofacil.net/ws/public/Wsjtransaccion/',
   encoding: null,
   headers: {
     'Content-Type': 'application/json'
@@ -47,20 +47,23 @@ exports.createPago = async (function (clientid, pagofacil_request) {
   pagofacil_request.idServicio = "3";
 
   config.json.params.data = pagofacil_request;
+
+  console.log(config);
   var response = await (new Promise(function (resolve, reject) {
     request.post(config, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log(body);
+        console.log("error", body);
         resolve(body);
       } else {
+        console.log("error1", error, response.statusCode, body);
         reject(error);
       }
     });
   }));
 
-  pagofacil_model.response = response;
+  pagofacil_model.response = response.result;
   pagofacil_model.autorized = response.autorizado;
-
+  console.log(pagofacil_model);
   try {
     var savedPagofacil = await (pagofacil_model.save());
     return savedPagofacil;

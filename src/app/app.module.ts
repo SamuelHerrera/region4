@@ -39,6 +39,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ClientService } from './services/client.service';
 import { ObservablesService } from './services/observables.service';
 import { YalsService } from './services/yals.service';
+import { PagofacilService } from './services/pagofacil.service';
 import { Paso1Component } from './components/paso-1/paso-1.component';
 import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common/src/common_module';
@@ -88,7 +89,7 @@ import { ReporteComponent } from './components/reporte/reporte.component';
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
   ],
-  providers: [ClientService, MessageService, ObservablesService, YalsService],
+  providers: [PagofacilService, ClientService, MessageService, ObservablesService, YalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
