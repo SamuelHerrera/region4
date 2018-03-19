@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-var mongoosePaginate = require('mongoose-paginate')
+var mongoosePaginate = require('mongoose-paginate');
 
 
 var ToDoSchema = new mongoose.Schema({
@@ -9,7 +9,7 @@ var ToDoSchema = new mongoose.Schema({
   status: String
 })
 
-ToDoSchema.plugin(mongoosePaginate)
+ToDoSchema.plugin(mongoosePaginate);
 const ToDo = mongoose.model('Todo', ToDoSchema)
 
 module.exports = ToDo;

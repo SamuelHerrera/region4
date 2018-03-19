@@ -1,7 +1,7 @@
 var async = require('asyncawait/async');
 var await = require('asyncawait/await');
 
-var TodoService = require('../services/todo.service');
+var TodoService = require('./todo.service');
 
 _this = this;
 

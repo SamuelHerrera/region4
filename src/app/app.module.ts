@@ -13,7 +13,6 @@ import { DropdownModule } from 'primeng/dropdown';
 import { GrowlModule } from 'primeng/growl';
 import { CheckboxModule } from 'primeng/checkbox';
 
-import { UserService } from './services/user.service';
 import { RoutingModule } from './router/routing.module';
 import { ActivacionUsuarioComponent } from './components/activacion-usuario/activacion-usuario.component';
 import { AvaluoEnviadoComponent } from './components/avaluo-enviado/avaluo-enviado.component';
@@ -35,6 +34,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ClientService } from './services/client.service';
 import { ObservablesService } from './services/observables.service';
+import { YalsService } from './services/yals.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +70,7 @@ import { ObservablesService } from './services/observables.service';
     GrowlModule,
     CheckboxModule
   ],
-  providers: [UserService, ClientService, MessageService, ObservablesService],
+  providers: [ClientService, MessageService, ObservablesService, YalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

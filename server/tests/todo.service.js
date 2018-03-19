@@ -1,6 +1,6 @@
 var async = require('asyncawait/async');
 var await = require('asyncawait/await');
-var ToDo = require('../models/todo.model')
+var ToDo = require('./todo.model')
 
 _this = this;
 
