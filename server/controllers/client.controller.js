@@ -80,7 +80,6 @@ exports.activateClient = async (function (req, res, next) {
   console.log(req.body);
   try {
     var updatedClient = await (ClientService.activateClient(req.body.clave));
-
     if (updatedClient) {
       return res.status(200).json({
         status: 200,
@@ -93,8 +92,6 @@ exports.activateClient = async (function (req, res, next) {
         message: "Clave de activacion incorrecta"
       });
     }
-
-
   } catch (e) {
     return res.status(400).json({
       status: 400,

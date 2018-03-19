@@ -4,10 +4,10 @@ var mongoosePaginate = require('mongoose-paginate');
 
 var Schema = new mongoose.Schema({
   clientid: mongoose.Schema.Types.ObjectId,
-  cuponid: mongoose.Schema.Types.ObjectId,
+  reportid: mongoose.Schema.Types.ObjectId,
   request: mongoose.Schema.Types.Mixed,
   response: mongoose.Schema.Types.Mixed,
-  estado: String,
+  autorized: Boolean,
   dateCreated: {
     type: Date,
     default: Date.now
@@ -15,6 +15,6 @@ var Schema = new mongoose.Schema({
 });
 
 Schema.plugin(mongoosePaginate);
-const Model = mongoose.model('Report', Schema);
+const Model = mongoose.model('Pagofacil', Schema);
 
 module.exports = Model;
