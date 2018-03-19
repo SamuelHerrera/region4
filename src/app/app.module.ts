@@ -37,6 +37,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ClientService } from './services/client.service';
 import { ObservablesService } from './services/observables.service';
 import { YalsService } from './services/yals.service';
+import { PagofacilService } from './services/pagofacil.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,7 @@ import { YalsService } from './services/yals.service';
     CheckboxModule,
     SelectButtonModule
   ],
-  providers: [ClientService, MessageService, ObservablesService, YalsService],
+  providers: [PagofacilService, ClientService, MessageService, ObservablesService, YalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
