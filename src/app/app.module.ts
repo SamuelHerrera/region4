@@ -6,9 +6,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
-import {MatStepperModule} from '@angular/material/stepper';
- /** */
-import {MatTableModule} from '@angular/material/table';
+import { MatStepperModule } from '@angular/material/stepper';
+/** */
+import { MatTableModule } from '@angular/material/table';
 
 //Prime ng components
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -47,6 +47,7 @@ import { AgmCoreModule } from '@agm/core';
 import { CommonModule } from '@angular/common/src/common_module';
 import { DatosfacturacionComponent } from './components/datosfacturacion/datosfacturacion.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -86,13 +87,13 @@ import { ReporteComponent } from './components/reporte/reporte.component';
     GrowlModule,
     CheckboxModule,
     SelectButtonModule,
-    MatStepperModule, 
+    MatStepperModule,
     MatTableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
   ],
-  providers: [PagofacilService, ClientService, MessageService, ObservablesService, YalsService],
+  providers: [AuthGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
