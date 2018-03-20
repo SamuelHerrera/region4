@@ -31,5 +31,15 @@ export class AvaluoComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
+  enviarCorreo() {
+
+  }
+  nvoAvaluo() {
+
+  }
+
+  imprimir() {
+    
+  }
 
 }
