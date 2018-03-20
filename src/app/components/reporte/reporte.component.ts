@@ -25,7 +25,7 @@ export class ReporteComponent implements OnInit {
 
   /** */
   /**Llenar tabla de promedios */
-  promedioTotal = "$6,895,041";
+  promedioTotal: number;
   promediom2 = "$43,462"
   cierrePromedioTotal = "$5,402,008";
   cierrePromediom2 = "$39,581";
