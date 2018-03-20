@@ -14,4 +14,7 @@ export class PagoConTarjetaComponent implements OnInit {
   ngOnInit() {
   }
 
+  aplicarCodigo() {}
+  pagarAvaluo() { }
+
 }

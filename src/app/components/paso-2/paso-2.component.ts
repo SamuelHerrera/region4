@@ -19,6 +19,9 @@ export class Paso2Component implements OnInit {
   selectedNumBath: String;
   selectedNumMBath: String;
   selectedNumBox: String;
+
+  selectedAge: String;
+  
   constructor() {this.types = [
     {label: 'Casa', value: 'Casa'},
     {label: 'Departamento', value: 'Departamento'}
