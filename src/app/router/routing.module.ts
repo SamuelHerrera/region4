@@ -7,15 +7,17 @@ import { OlvideContrasenaComponent } from '../components/olvide-contrasena/olvid
 import { ActivacionUsuarioComponent } from '../components/activacion-usuario/activacion-usuario.component';
 import { AvaluoComponent } from '../components/avaluo/avaluo.component';
 import { ReporteComponent } from '../components/reporte/reporte.component';
+import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
     {
         path: '',
-        redirectTo: '/landing',
+        redirectTo: '/iniciosesion',
         pathMatch: 'full'
     },
     {
         path: 'landing',
+        canActivate: [AuthGuard],
         component: LandingPageComponent
     },
     {
@@ -27,7 +29,7 @@ const routes: Routes = [
         component: InicioDeSesionComponent
     },
     {
-        path: "forgotpass",
+        path: "reestablecer",
         component: OlvideContrasenaComponent
     },
     {
@@ -36,10 +38,12 @@ const routes: Routes = [
     },
     {
         path: "generaravaluo",
+        canActivate: [AuthGuard],
         component: AvaluoComponent
     },
     {
         path: "reporte",
+        canActivate: [AuthGuard],
         component: ReporteComponent
     },
     {

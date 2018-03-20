@@ -29,6 +29,7 @@ export class Paso2Component implements OnInit {
   estado = "Yucatán";
   ciudad = "Mérida";
   /** */
+  selectedAge: String;
   constructor() {this.types = [
     {label: 'Casa', value: 'Casa'},
     {label: 'Departamento', value: 'Departamento'}

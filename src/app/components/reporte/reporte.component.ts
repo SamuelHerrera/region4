@@ -34,6 +34,7 @@ export class ReporteComponent implements OnInit {
   estimatedDate = "ENERO 2016";
   idReport = 123;
   /*Datos Direccion*/
+  calle = 100;
   colonia = "Bojorquez";
   codigoPostal = 9700;
   ciudad = "Mérida";
