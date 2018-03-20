@@ -73,9 +73,9 @@ export class ReporteComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.imprimir();
-    }, 5000);
+    // setTimeout(() => {
+    //   this.imprimir();
+    // }, 5000);
   }
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {

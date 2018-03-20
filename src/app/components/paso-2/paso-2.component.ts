@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
 
 @Component({
@@ -7,6 +7,11 @@ import { SelectItem } from 'primeng/components/common/selectitem';
   styleUrls: ['./paso-2.component.css']
 })
 export class Paso2Component implements OnInit {
+
+  @Input() avaluoForm: any;
+
+  isNew = false;
+
   types: SelectItem[];
   selectedType: String;
 
@@ -30,33 +35,39 @@ export class Paso2Component implements OnInit {
   ciudad = "Mérida";
   /** */
   selectedAge: String;
-  
-  constructor() {this.types = [
-    {label: 'Casa', value: 'Casa'},
-    {label: 'Departamento', value: 'Departamento'}
-  ];
 
-  this.homeTypes = [
-    {label: 'Sola', value: 'Sola'},
-    {label: 'En Condominio', value: 'Condominio'}
-  ];
+  constructor() {
+    this.types = [
+      { label: 'Casa', value: 2 },
+      { label: 'Departamento', value: 4 }
+    ];
 
-  this.numbers1 = [
-    {label: '1', value: '1'},
-    {label: '2', value: '2'},
-    {label: '3', value: '3'},
-    {label: '4+', value: '4+'}
-  ];
+    this.homeTypes = [
+      { label: 'Sola', value: 'Sola' },
+      { label: 'En Condominio', value: 'Condominio' }
+    ];
 
-  this.numbers0 = [
-    {label: '0', value: '0'},
-    {label: '1', value: '1'},
-    {label: '2', value: '2'},
-    {label: '3+', value: '3+'}
-  ]; 
-}
+    this.numbers1 = [
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3', value: '3' },
+      { label: '4+', value: '4' }
+    ];
+
+    this.numbers0 = [
+      { label: '0', value: '0' },
+      { label: '1', value: '1' },
+      { label: '2', value: '2' },
+      { label: '3+', value: '3' }
+    ];
+  }
 
   ngOnInit() {
+  }
+
+  nuevo() {
+    this.isNew = !this.isNew;
+    this.avaluoForm['edad'] = 0;
   }
 
 }

@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { YalsService } from '../../services/yals.service';
+import { YalsRequest } from '../../models/yals.model';
+import { Router } from '@angular/router';
+import * as jsPDF from 'jspdf';
+import * as html2pdf from 'html2pdf.js';
 
 @Component({
   selector: 'app-avaluo',
@@ -19,7 +24,11 @@ export class AvaluoComponent implements OnInit {
 
   selectedAge: string[] = [];
 
-  constructor(private _formBuilder: FormBuilder) {
+  avaluoForm: any = {};
+
+  avaluoResponse: any = {};
+
+  constructor(private router: Router, private yals: YalsService, private _formBuilder: FormBuilder) {
   }
 
 
@@ -32,14 +41,34 @@ export class AvaluoComponent implements OnInit {
     });
   }
   enviarCorreo() {
-
+    console.log(this.avaluoForm);
+    const yals_req: YalsRequest = this.avaluoForm;
+    yals_req.id_tipo_propiedad = (+yals_req.id_tipo_propiedad);
+    yals_req.recamaras = (+yals_req.recamaras);
+    yals_req.banos = (+yals_req.banos);
+    yals_req.medios_banos = (+yals_req.medios_banos);
+    yals_req.estacionamientos = (+yals_req.estacionamientos);
+    yals_req.area_construida = (+yals_req.area_construida);
+    yals_req.superficie_terreno = (+yals_req.superficie_terreno);
+    yals_req.edad = (+yals_req.edad);
+    this.yals.generateRequest(yals_req, null).subscribe(response => {
+      console.log(response);
+      this.avaluoResponse = response;
+    });
   }
   nvoAvaluo() {
 
   }
 
   imprimir() {
-    
+    const element = document.getElementById('element-to-print');
+    html2pdf(element, {
+      margin: 1,
+      filename: 'myfile.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { dpi: 192, letterRendering: true },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    });
   }
 
 }

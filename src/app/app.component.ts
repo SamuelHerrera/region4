@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   title = 'app';
 
-  constructor(private messageService: MessageService, private pf: PagofacilService) { }
+  constructor(private messageService: MessageService, private pf: PagofacilService, private yal: YalsService) { }
 
   ngOnInit(): void {
     // const pagofacilreq: Pagofacilrequest = {
@@ -32,6 +32,35 @@ export class AppComponent implements OnInit {
     // this.pf.generatePago(pagofacilreq).subscribe(response => {
     //   console.log(response);
     // });
+
+
+    // const yalsr: YalsRequest = {
+    //   "street": "Mariano Escobedo",
+    //   "num_ext": "748",
+    //   "zip": "11590",
+    //   "colonia": "Anzures",
+    //   "municipio": "Miguel Hidalgo",
+    //   "estado": "Ciudad de México",
+    //   "ciudad": "Ciudad de México",
+    //   "id_tipo_propiedad": 4,
+    //   "recamaras": 2,
+    //   "banos": 1,
+    //   "medios_banos": 1,
+    //   "estacionamientos": 1,
+    //   "area_construida": 100,
+    //   "superficie_terreno": 0,
+    //   "edad": 0,
+    //   "amenities": ["terraza", "cocina_integral"],
+    //   "email": "YOUR_EMAIL",
+    //   "api_key": "YOUR_API_KEY",
+    //   "latitud": 19.425436, // Opcional 
+    //   "longitud": -99.178435 // Opcional 
+    // };
+
+    // this.yal.generateRequest(yalsr, null).subscribe(response => {
+    //   console.log(response)
+    // });
+
   }
 
 }

@@ -7,14 +7,14 @@
       <mat-step>
         <form>
           <ng-template matStepLabel>Ubicar Propiedad</ng-template>
-          <app-paso-1></app-paso-1>
+          <app-paso-1 [avaluoForm]="avaluoForm"></app-paso-1>
 
         </form>
       </mat-step>
       <mat-step>
         <form>
-          <ng-template matStepLabel>Generar Avalúo</ng-template>
-          <app-paso-2></app-paso-2>
+          <ng-template matStepLabel>Propiedad</ng-template>
+          <app-paso-2 [avaluoForm]="avaluoForm"></app-paso-2>
           <!--<div class="tittle">
             <h1>AMENIDADES</h1>
           </div>-->
@@ -24,7 +24,7 @@
       <mat-step>
         <form>
           <ng-template matStepLabel>Amenidades</ng-template>
-          <app-paso-3></app-paso-3>
+          <app-paso-3 [avaluoForm]="avaluoForm"></app-paso-3>
 
         </form>
       </mat-step>
@@ -43,18 +43,17 @@
               <input id="float-input" type="text" size="30" pInputText name="correo">
               <label for="float-input">Correo</label>
             </span>
-
-            <p-button (onClick)="enviarCorreo()" label="Enviar"></p-button>
+            <p-button matStepperNext (onClick)="enviarCorreo()" label="Generar y Enviar avaluo"></p-button>
           </div>
         </form>
       </mat-step>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <div class="nvoAvaluo">
-
           <p-button (onClick)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
           <p-button (onClick)="imprimir()" label="Imprimir"></p-button>
         </div>
+        <app-reporte></app-reporte>
       </mat-step>
     </mat-horizontal-stepper>
 

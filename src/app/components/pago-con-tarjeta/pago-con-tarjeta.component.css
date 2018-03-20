@@ -51,7 +51,7 @@
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
-    min-height: 250px;
+    min-height: 316px;
 }
 .containerPayment{
     display: flex;

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PagofacilService } from '../../services/pagofacil.service';
+import { Pagofacilrequest } from '../../models/pagofacil.model';
 
 @Component({
   selector: 'app-pago-con-tarjeta',
@@ -9,12 +11,21 @@ export class PagoConTarjetaComponent implements OnInit {
 
   disabled = true;
   codigo = false;
-  constructor() { }
+
+  pf: Pagofacilrequest = new Pagofacilrequest();
+
+  constructor(private pagofacil: PagofacilService) { }
 
   ngOnInit() {
   }
 
-  aplicarCodigo() {}
-  pagarAvaluo() { }
+  aplicarCodigo() { }
+  pagarAvaluo() {
+    this.pf.monto = "1";
+    this.pf.email = "samuelherrerafuente@gmail.com"
+    this.pagofacil.generatePago(this.pf).subscribe(response => {
+      console.log(response);
+    });
+  }
 
 }

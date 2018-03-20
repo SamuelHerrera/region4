@@ -1,47 +1,47 @@
 <div class="container">
   <div class="addressDesc">
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="calle">
+      <input id="float-input" type="text" size="30" pInputText name="calle" [(ngModel)]="avaluoForm['street']" required>
       <label for="float-input">Calle</label>
     </span>
 
     <div class="nums">
 
       <span class="ui-float-label">
-        <input id="float-input" type="text" size="8" pInputText name="numExt">
+        <input id="float-input" type="text" size="8" pInputText name="numExt" [(ngModel)]="avaluoForm['num_ext']" required>
         <label for="float-input">Num. Ext</label>
       </span>
 
       <span class="ui-float-label">
-        <input id="float-input" type="text" size="10" pInputText name="codigoPostal">
+        <input id="float-input" type="text" size="10" pInputText name="codigoPostal" [(ngModel)]="avaluoForm['zip']" required>
         <label for="float-input">C.P.</label>
       </span>
     </div>
 
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="colonia">
+      <input id="float-input" type="text" size="30" pInputText name="colonia" [(ngModel)]="avaluoForm['colonia']" required>
       <label for="float-input">Colonia</label>
     </span>
 
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="municipio">
+      <input id="float-input" type="text" size="30" pInputText name="municipio" [(ngModel)]="avaluoForm['municipio']" required>
       <label for="float-input">Municipio</label>
     </span>
 
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="estado">
+      <input id="float-input" type="text" size="30" pInputText name="estado" [(ngModel)]="avaluoForm['estado']" required>
       <label for="float-input">Estado</label>
     </span>
 
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="ciudad">
+      <input id="float-input" type="text" size="30" pInputText name="ciudad" [(ngModel)]="avaluoForm['ciudad']" required>
       <label for="float-input">Ciudad</label>
     </span>
 
   </div>
   <div class="maps">
-    <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"></agm-marker>
+    <agm-map [latitude]="avaluoForm['latitud']" [longitude]="avaluoForm['longitud']">
+      <agm-marker [latitude]="avaluoForm['latitud']" [longitude]="avaluoForm['longitud']" [markerDraggable]="true"></agm-marker>
     </agm-map>
   </div>
 </div>
