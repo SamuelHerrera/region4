@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
-import {ViewChild} from '@angular/core';
-import {MatTableDataSource, MatSort} from '@angular/material';
+import { ViewChild } from '@angular/core';
+import { MatTableDataSource, MatSort, Sort } from '@angular/material';
+import * as jsPDF from 'jspdf';
+import * as html2pdf from 'html2pdf.js';
 
-import {Sort} from '@angular/material';
+
+
 
 @Component({
   selector: 'app-reporte',
@@ -15,18 +18,18 @@ export class ReporteComponent implements OnInit {
   /**
    * Para llenar la tabla con datos
    */
-  displayedColumns = ['position', 'oferta', 'total', 'm2', 'cuartos', 'banos', 
-  'parking', 'construccion', 'edad', 'distancia', 'similitud'];
+  displayedColumns = ['position', 'oferta', 'total', 'm2', 'cuartos', 'banos',
+    'parking', 'construccion', 'edad', 'distancia', 'similitud'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatSort) sort: MatSort;
- 
-   /** */
-   /**Llenar tabla de promedios */
-   promedioTotal = "$6,895,041";
-   promediom2 = "$43,462"
-   cierrePromedioTotal = "$5,402,008";
-   cierrePromediom2 = "$39,581";
-   /** */
+
+  /** */
+  /**Llenar tabla de promedios */
+  promedioTotal = "$6,895,041";
+  promediom2 = "$43,462"
+  cierrePromedioTotal = "$5,402,008";
+  cierrePromediom2 = "$39,581";
+  /** */
   generatedReport = "Dic 1993";
   estimatedDate = "ENERO 2016";
   idReport = 123;
@@ -34,8 +37,8 @@ export class ReporteComponent implements OnInit {
   colonia = "Bojorquez";
   codigoPostal = 9700;
   ciudad = "Mérida";
-  estado = "Yucatán"; 
-  numExt = "491B"; 
+  estado = "Yucatán";
+  numExt = "491B";
   numInt = "s/n";
   /* */
 
@@ -69,18 +72,31 @@ export class ReporteComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.imprimir();
+    }, 5000);
   }
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
   }
-  
+
+  imprimir() {
+    const element = document.getElementById('element-to-print');
+    html2pdf(element, {
+      margin: 1,
+      filename: 'myfile.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { dpi: 192, letterRendering: true },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    });
+  }
 
 }
 export interface Element {
   position: number;
   oferta: string;
-  total: string;  
+  total: string;
   m2: string;
   cuartos: number;
   banos: number;
@@ -92,28 +108,52 @@ export interface Element {
 }
 
 const ELEMENT_DATA: Element[] = [
-  {position: 1, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 2, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 3, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 4, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 5, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 6, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 7, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 8, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 9, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 10, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 11, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
-  {position: 12, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
-  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {
+    position: 1, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 2, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 3, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 4, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 5, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 6, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 7, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 8, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 9, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 10, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 11, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
+  {
+    position: 12, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+  },
 ];

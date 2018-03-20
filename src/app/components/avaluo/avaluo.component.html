@@ -51,9 +51,10 @@
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <div class="nvoAvaluo">
-            
-            <p-button (onClick)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
-          </div>
+
+          <p-button (onClick)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
+          <p-button (onClick)="imprimir()" label="Imprimir"></p-button>
+        </div>
       </mat-step>
     </mat-horizontal-stepper>
 
