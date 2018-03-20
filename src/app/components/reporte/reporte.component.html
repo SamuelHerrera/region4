@@ -4,7 +4,7 @@
     <div class="title">
       <span class="principalTitle">REPORTE DEL INMUEBLE</span>
       <div class="idReport">
-        <span>ID {{idReport}}</span>
+        <span class="reportID">ID {{idReport}}</span>
         <span class="generatedDate">Reporte generado el {{generatedReport}}</span>
       </div>
     </div>
@@ -14,74 +14,384 @@
         <span>CARACTERÍSTICAS DE LA PROPIEDAD</span>
       </div>
       <div class="address">
-        <div class="dir">
-          <div class="littleTitle">
-            <span>DIRECCIÓN</span>
-          </div>
-
-          <div class="direcContent">
-            {{direccion}}
-          </div>
-
-        </div>
-        <div class="carac">
-          <div class="litleTitle">
-            <span>CARACTERÍSTICAS</span>
-          </div>
-
-          <div class="caracContainer">
-            <div class="subCarac">
-              <div class="imgContainer">
-                  <img class="images" src="../assets/images/cuarto.svg" alt="Smiley face" height="42" width="42" />
-              </div>
-              {{numCuartos}} Cuartos
-              
+        <div class="subAddress">
+          <div class="dir">
+            <div class="littleTitle">
+              <span>DIRECCIÓN</span>
             </div>
 
-            <div class="subCarac">
+            <div class="direcContent">
+              <p>{{colonia}}, {{calle}} No. Ext. {{numExt}}, No. Int {{numInt}}</p>
+              <p>C.P. {{codigoPostal}}</p>
+              <p>{{ciudad}}, {{estado}}</p>
+            </div>
+
+          </div>
+          <div class="carac">
+            <div class="littleTitle">
+              <span>CARACTERÍSTICAS</span>
+            </div>
+
+            <div class="caracContainer">
+              <div class="subCarac">
                 <div class="imgContainer">
-                    <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
+                  <img class="images" src="../assets/images/cuarto.svg" alt="Smiley face" height="42" width="42" />
+                </div>
+                {{numCuartos}} Cuartos
+
+              </div>
+
+              <div class="subCarac">
+                <div class="imgContainer">
+                  <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
                 </div>
                 {{numBanos}} Baños
-                
-            </div>
 
-            <div class="subCarac">
+              </div>
+
+              <div class="subCarac">
                 <div class="imgContainer">
-                    <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42" />
+                  <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42" />
                 </div>
                 {{numMBanos}} Medios Baños
-                
-            </div>
 
-            <div class="subCarac">
+              </div>
+
+              <div class="subCarac">
                 <div class="imgContainer">
-                    <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42" />
+                  <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42" />
                 </div>
                 {{numParking}} Parking
-                
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <div class="amenidades">
+          <div class="littleTitle">AMENIDADES</div>
+          <div class="containerAmenidades">
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/ac.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Aire Acondicionado
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/cocina.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Cocina Integral
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/gimnasio.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Gimnasio
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/terraza.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Roof garden/ terraza
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/alberca.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Alberca
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/lavado.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Cuarto de Servicio
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/jardin.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Jardín
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/amueblado.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Amueblado
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/estudio.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Estudio
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/jacuzzi.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Jacuzzi
+            </div>
+
+            <div class="subamenidades">
+              <div class="imgContainer">
+                <img class="images" src="../assets/images/seguridad.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              Seguridad Privada
             </div>
 
           </div>
         </div>
-      <div class="amenidades">
-
       </div>
     </div>
 
+    <div class="divisor">
+      <hr>
+    </div>
+
     <div class="estimatedValue">
+
       <div class="middleTitle">
         <span>ESTIMADO DE VALOR EN {{estimatedDate}}</span>
       </div>
+
       <div class="prices">
         <div class="totalEstimated">
+          <div class="estimated1">
+            <h3>Estimado del valor total</h3>
+
+            <h4>${{precioEstimado}}</h4>
+            <p>Estimado de valor total*</p>
+          </div>
+
+          <div class="estimated2">
+            <div class="inferior">
+              <h4>${{precioInferior}}</h4>
+              <p>Limite inferior</p>
+            </div>
+            <div class="superior">
+              <h4>${{precioSuperior}}</h4>
+              <p>Limite Superior</p>
+            </div>
+          </div>
+
+          <div class="subText">
+            <p>
+              *Estimación calibrada con información de precios de oferta
+            </p>
+          </div>
 
         </div>
         <div class="mEstimated">
 
+          <div class="mEstimated1">
+            <h3>Estimado del valor por m2</h3>
+
+            <h4>${{precioEstimadoM2}}</h4>
+            <p>Estimado de valor por m2*</p>
+          </div>
+
+          <div class="mEstimated2">
+            <div class="mInferior">
+              <h4>${{precioMInferior}}</h4>
+              <p>Limite inferior</p>
+            </div>
+            <div class="mSuperior">
+              <h4>${{precioMSuperior}}</h4>
+              <p>Limite Superior</p>
+            </div>
+          </div>
+
         </div>
+      </div>
+
+      <div class="mapView">
+        <div class="houseView">
+          <img src="../assets/images/region4-crop-u9162.jpg">
+        </div>
+        <div class="map">
+          <agm-map [latitude]="lat" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+          </agm-map>
+        </div>
+      </div>
+
+      <div class="textContent">
+        <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
+        <p>
+          El reporte de tu inmueble de Región4 se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
+          dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Región4
+          se alimentan de los precios de millones de ofertas y cierres de transacciones. Región4 provee un estimado de valor
+          y no sustituye aun avalúo certificado.
+        </p>
+      </div>
+
+
+
+    </div>
+
+    <div class="divisor">
+      <hr>
+    </div>
+
+
+    <div class="propiedades">
+
+      <div class="middleTitle">
+        <span>PROPIEDADES COMPARABLES</span>
+      </div>
+
+      <div class="intro">
+        <h2>Esta sección muestra propiedades similares a la tuya que fueron anunciadas en los últimos 6 meses.</h2>
+        <p> Acontinuación proveemos información sobre ofertas de propiedades comparables con la tuya.
+          <br> Están ordenadas utilizando una medida de similitud que toma en cuenta las características de cada propiedad. </p>
+
+      </div>
+
+      <div class="map2">
+        <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+      </div>
+
+      <div class="table">
+        <div class="example-container mat-elevation-z8">
+          <mat-table #table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="position">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="oferta">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Oferta </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.oferta}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="total">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> $ Total </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="m2">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> $ m2 </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.m2}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="cuartos">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> No. Cuartos </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.cuartos}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="banos">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> No. Baños </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.banos}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="parking">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> No. Parking </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.parking}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="construccion">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Construccion </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.construccion}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="edad">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Edad </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.edad}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="distancia">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> Distancia </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.distancia}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="similitud">
+              <mat-header-cell *matHeaderCellDef mat-sort-header> % Similitud </mat-header-cell>
+              <mat-cell *matCellDef="let element"> {{element.similitud}} </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          </mat-table>
+        </div>
+
       </div>
     </div>
 
+    <div class="divisor">
+      <hr>
+    </div>
+
+    <div class="preciosColonia">
+      <div class="middleTitle">
+        <span>{{nomColonia}}</span>
+      </div>
+
+      <div class="intro">
+        <h2>Esta sección te ayudará a conocer los precios en la colonia, el tipo de vivienda que existe y el número de listados
+          mensuales.
+        </h2>
+        <h3>Oferta en los últimos meses</h3>
+        <p>A continuación se muestra un número aproximado de cuántas casas y departamentos han sido listados en portales de
+          Internet.
+        </p>
+      </div>
+
+      <div class="ofertasMes">
+
+        <div class="ultimoMes">
+
+          <div class="umesContainer">
+
+            <div class="calendarContainer">
+              <img src="../assets/images/calendary.svg" alt="Smiley face" height="42" width="42">
+            </div>
+            <div class="numCasas">
+              <h1>{{uMesCasas}}</h1>
+              <p>Casas y departamentos listados en el último mes</p>
+            </div>
+          </div>
+          <div class="tablaMes">
+
+          </div>
+
+        </div>
+
+        <div class="seisMeses">
+
+          <div class="smesContainer">
+
+            <div class="calendarContainer">
+              <img src="../assets/images/calendary.svg" alt="Smiley face" height="42" width="42">
+            </div>
+            <div class="numCasas">
+                <h1>{{sMesCasas}}</h1>
+                <p>Casas y departamentos listados en los últimos 6 meses</p>
+              </div>
+          </div>
+
+          <div class="tablaMes">
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
   </div>
+
 </div>

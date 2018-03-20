@@ -7,7 +7,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import {MatStepperModule} from '@angular/material/stepper';
-
+ /** */
+import {MatTableModule} from '@angular/material/table';
 //Prime ng components
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ButtonModule } from 'primeng/button';
@@ -85,6 +86,7 @@ import { ReporteComponent } from './components/reporte/reporte.component';
     CheckboxModule,
     SelectButtonModule,
     MatStepperModule, 
+    MatTableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })

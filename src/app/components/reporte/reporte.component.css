@@ -1,12 +1,10 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.container {
     /*border: 1px red solid;*/
-    width:100%;
+    width: 100%;
     height: 100%;
 }
-.scrollable{
+
+.scrollable {
     height: 100%;
     width: 100%;
     display: flex;
@@ -14,62 +12,423 @@
     overflow-y: auto;
     overflow-x: hidden;
 }
-.title{
-    border: 1px blue solid;
+
+.title {
+    height: 150px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
     padding-top: 10px;
+    vertical-align: top;
 }
-.principalTitle{
-    font-size: 25px;
-    color: blue;
-    font-family: 'segoe UI';
-    padding-bottom: 10px;
-    padding-left:5px;
 
+.principalTitle {
+    background-color: transparent;
+    line-height: 38px;
+    width: 557px;
+    text-align: left;
+    font-family: '__Merriweather_5';
+    font-weight: 700;
+    color: #28265A;
+    font-size: 32px;
+    padding-bottom: 10px;
+    padding-left: 5px;
 }
-.idReport{
+
+.idReport {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
-.characteristics{
-    border:1px red solid;
+
+.reportID {
+    font-weight: 300;
+    line-height: 14px;
+    font-family: '__Merriweather Sans_5';
+    text-align: right;
+    background-color: transparent;
+    font-size: 10px;
+}
+
+.characteristics {
+    /*display: flex;
+    flex-direction: column;*/
+    display: table-column
+}
+
+.carac {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.caracContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.address {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.subAddress {
+    width: 310px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start
+}
+
+.subCarac {
+    width: 150px;
+}
+
+.imgContainer {
+    width: 100%;
+    text-align: center;
+}
+
+.dir {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
-.carac{
-    border: 1px green solid;
-}
-.addres{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.dir{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
-.dirContent{
+
+.dirContent {
     height: 100px;
 }
-.middleTitle{
+
+.middleTitle {
+    height: 25px;
+    line-height: 24px;
+    font-family: '__Merriweather Sans_5';
+    font-weight: 300;
+    color: #9EA3A3;
     font-size: 20px;
-    font-family: 'segoe UI';
-    color: gray;
     padding-bottom: 10px;
-    padding-left:5px;
+    padding-left: 5px;
     padding-top: 10px;
+    display: flex;
+    flex-direction: row;justify-content: center;
 }
-.littleTitle{
-    font-size: 15px;
-    font-family: 'segoe UI';
-    color: #28225C;
+.middleTitle span{
+    width: 80%;
 }
-.estimatedValue{
-    border:1px yellow solid;
+
+.littleTitle {
+    /*font-weight: 300;*/
+    width: 310px;
+    font-family: '__Merriweather Sans_5';
+    background-color: transparent;
+    /*min-height: 143px;*/
+    color: #28245B;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.direcContent {
+    width: 310px;
+    font-family: '__Merriweather Sans_5';
+    background-color: transparent;
+    /*min-height: 143px;*/
+    color: #28245B;
+}
+
+.amenidades {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /*min-width:300px;*/
+    width: 500px;
+}
+
+.containerAmenidades {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.subamenidades {
+    text-align: center;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.estimatedValue {
+    display: table-column;
+    /*display: flex;
+    flex-direction: column;
+    justify-content: space-between;*/
+}
+
+.prices {
+    display: flex;
+    flex-direction: row;
+    /*flex-wrap: wrap;*/
+    justify-content: center;
+}
+
+.totalEstimated {
+    text-align: center;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around
+}
+
+.estimated1 h4 {
+    line-height: 25px;
+    color: #31A6E0;
+    font-family: '__Merriweather_5';
+    font-weight: 700;
+    font-size: 21px;
+}
+
+.estimated1 h3 {
+    font-family: '__Merriweather_5';
+    text-align: center;
+    min-height: 37px;
+    font-weight: 700;
+}
+
+.estimated1 p {
+    font-family: '__Merriweather_5';
+    text-align: center;
+    min-height: 37px;
+}
+
+.estimated2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.estimated2 div {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.estimated2 h4 {
+    font-family: '__Merriweather Sans_5';
+    text-align: center;
+    min-height: 40px;
+    font-weight: 300;
+}
+
+.estimated2 p {
+    font-family: '__Merriweather_5';
+    text-align: center;
+    min-height: 37px;
+}
+
+.subText p {
+    line-height: 12px;
+    font-family: '__Merriweather Sans_5';
+    font-weight: 300;
+    min-height: 33px;
+    background-color: transparent;
+    color: #999999;
+    position: relative;
+    margin-top: 7px;
+    font-size: 10px;
+}
+
+.mEstimated {
+    width: 320px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.mEstimated div p {
+    font-family: '__Merriweather_5';
+    text-align: center;
+    min-height: 37px;
+}
+
+.mEstimated1 {
+    height: 100px;
+}
+
+.mEstimated1 h3 {
+    font-family: '__Merriweather_5';
+    text-align: center;
+    min-height: 37px;
+    font-weight: 700;
+}
+
+.mEstimated1 h4 {
+    font-family: '__Merriweather Sans_5';
+    text-align: center;
+    min-height: 40px;
+    font-weight: 300;
+}
+
+.mEstimated1 p {
+    font-family: '__Merriweather_5';
+    text-align: center;
+    min-height: 37px;
+}
+
+.mEstimated2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.mEstimated2 div {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.mEstimated2 div h4 {
+    font-family: '__Merriweather Sans_5';
+    text-align: center;
+    min-height: 40px;
+    font-weight: 300;
+}
+
+.mEstimated2 div p {
+    font-family: '__Merriweather_5';
+    text-align: center;
+    min-height: 37px;
+}
+
+.divisor {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.divisor hr{
+    width: 80%;
+}
+
+.mapView {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.houseView {
+    width: 310px;
+    height: 200px;
+}
+
+.houseView img {
+    width: 310px;
+    height: 200px;
+}
+
+.map {
+    width: 310px;
+    height: 200px;
+}
+
+.map agm-map {
+    width: 310px;
+    height: 200px;
+}
+
+.textContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0px;
+}
+
+.textContent h2 {
+    width: 620px;
+    font-family: '__Merriweather Sans_5';
+    margin-top: 14px;
+    padding-bottom: 5px;
+    background-color: transparent;
+    font-weight: 300;
+    color: #999999;
+}
+
+.textContent p {
+    width: 620px;
+    font-family: '__Merriweather Sans_5';
+    margin-top: 14px;
+    background-color: transparent;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.propiedades {
+    display: table-column;
+}
+.intro{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    border:1px violet solid;
+}
+.intro h2{
+    width: 620px;
+    font-family: '__Merriweather Sans_5';
+    font-weight: 300;
+    min-height: 26px;
+    color: #BFBFBF;
+    letter-spacing: -1px;
+}
+.intro p{
+    width:620px;
+    font-family: '__Merriweather Sans_5';
+    min-height: 58px;
+    font-weight: 300;
+    z-index: 155;
+    line-height: 22px;
+}
+.map2{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.map2 agm-map{
+    width: 620px;
+    height: 300px;
+}
+.table{
+    padding-top: 20px;
+    border:1px black solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    width: 620px;
+}
+
+.mat-table  {
+    overflow: auto;
+    max-height: 400px;
+}
+
+.mat-header-cell.mat-sort-header-sorted {
+    color: black;
+}
+.preciosColonia{
+    border:1px red solid;
+    display: table-column;
+    
+}
+.intro h3{
+    width:620px;
+    font-weight: 700;
+    font-family: '__Merriweather_5';
 }
