@@ -40,6 +40,11 @@ export class InicioDeSesionComponent implements OnInit {
     return false;
   }
 
+  public change(val) {
+    console.log(val)
+    this.observableService.announceStoreUpdate(val);
+  }
+
   public onSubmit(form) {
     this.clientService.loginClient(form.Correo, form.Contrasena).subscribe((response: any) => {
       if (response.status === 200) {
