@@ -227,8 +227,9 @@
         </div>
       </div>
 
-      <div class="textContent">
+      <div class="intro">
         <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
+        <h3></h3>
         <p>
           El reporte de tu inmueble de Región4 se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
           dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Región4
@@ -254,6 +255,7 @@
 
       <div class="intro">
         <h2>Esta sección muestra propiedades similares a la tuya que fueron anunciadas en los últimos 6 meses.</h2>
+        <h3></h3>
         <p> Acontinuación proveemos información sobre ofertas de propiedades comparables con la tuya.
           <br> Están ordenadas utilizando una medida de similitud que toma en cuenta las características de cada propiedad. </p>
 
@@ -357,7 +359,7 @@
           <div class="umesContainer">
 
             <div class="calendarContainer">
-              <img src="../assets/images/calendary.svg" alt="Smiley face" height="42" width="42">
+              <img src="../assets/images/calendary.svg" alt="Smiley face">
             </div>
             <div class="numCasas">
               <h1>{{uMesCasas}}</h1>
@@ -366,6 +368,23 @@
           </div>
           <div class="tablaMes">
 
+            <table>
+              <tr>
+                <th colspan="2" class="titleTable">
+                  Precios promedios de oferta en la colonia Anzures
+                </th>
+              </tr>
+
+              <tr>
+                <td class="promedioTotal">{{promedioTotal}}</td>
+                <td class="promediom2">{{promediom2}} </td>
+              </tr>
+              <tr>
+                <td class="txtPromedio">Total Promedio</td>
+                <td class="txtPromedio">Promedio m2</td>
+              </tr>
+
+            </table>
           </div>
 
         </div>
@@ -375,16 +394,32 @@
           <div class="smesContainer">
 
             <div class="calendarContainer">
-              <img src="../assets/images/calendary.svg" alt="Smiley face" height="42" width="42">
+              <img src="../assets/images/calendary.svg" alt="Smiley face">
             </div>
             <div class="numCasas">
-                <h1>{{sMesCasas}}</h1>
-                <p>Casas y departamentos listados en los últimos 6 meses</p>
-              </div>
+              <h1>{{sMesCasas}}</h1>
+              <p>Casas y departamentos listados en los últimos 6 meses</p>
+            </div>
           </div>
 
           <div class="tablaMes">
-
+              <table>
+                  <tr>
+                    <th colspan="2" class="titleTable">
+                        Información de cierres
+                    </th>
+                  </tr>
+    
+                  <tr>
+                    <td class="promediom2">{{cierrePromedioTotal}}</td>
+                    <td class="promediom2">{{cierrePromediom2}} </td>
+                  </tr>
+                  <tr>
+                    <td class="txtPromedio">Total Promedio</td>
+                    <td class="txtPromedio">Promedio m2</td>
+                  </tr>
+    
+                </table>
           </div>
 
         </div>
@@ -392,6 +427,52 @@
       </div>
 
     </div>
+
+    <div class="divisor">
+        <hr>
+    </div>
+
+    <div class="evolucionColonia">
+      <div class="middleTitle">
+        <span>EVOLUCIÓN DE LOS PRECIOS EN LA COLONIA</span>
+      </div>
+      
+      <div class="intro">
+        <h2>
+            A continuación te ofrecemos datos que muestran la variación de precios en la colonia.
+        </h2>
+
+        <h3>
+            Precio histórico por m2
+        </h3>
+        <p>
+            Esta sección muestra el comportamiento histórico del valor estimado de la propiedad 
+            en cuestión comparado con el cambio en los precios en la colonia a través del tiempo.<br>
+            La siguiente gráfica muestra el valor estimado de la propiedad a través de los años 
+            (antes de la fecha de generación del reporte). Esta información está basada en una 
+            valuación automática que utiliza los datos históricos disponibles de propiedades 
+            similares en la misma colonia.<br>            
+            Una vez obtenida la información, ésta se compara con el desempeño del mercado 
+            local usando la base de datos de Región4.
+        </p>
+
+      </div>
+      <div class="plusValia">
+        <div class="flechaContainer">
+          <img src="../assets/images/flecha.svg" alt="Smiley face">
+        </div>
+        <div class="plusValiaContainer">
+          <h2>
+            +{{plusvalia}}%
+          </h2>
+          <p>
+            Plusvalía anualizada
+          </p>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
 </div>

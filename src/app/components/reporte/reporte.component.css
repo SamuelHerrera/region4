@@ -373,10 +373,9 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    border:1px violet solid;
 }
 .intro h2{
-    width: 620px;
+    width: 650px;
     font-family: '__Merriweather Sans_5';
     font-weight: 300;
     min-height: 26px;
@@ -384,12 +383,13 @@
     letter-spacing: -1px;
 }
 .intro p{
-    width:620px;
+    width:650px;
     font-family: '__Merriweather Sans_5';
     min-height: 58px;
     font-weight: 300;
     z-index: 155;
     line-height: 22px;
+    text-align: justify;
 }
 .map2{
     display: flex;
@@ -402,7 +402,6 @@
 }
 .table{
     padding-top: 20px;
-    border:1px black solid;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -423,12 +422,137 @@
     color: black;
 }
 .preciosColonia{
-    border:1px red solid;
     display: table-column;
     
 }
 .intro h3{
-    width:620px;
+    width:700px;
+    border:1px red solid;
     font-weight: 700;
     font-family: '__Merriweather_5';
+}
+.ofertasMes{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.ultimoMes{
+    width:308px;
+    padding-right: 2px;
+}
+.umesContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /*border:1px purple solid;*/
+}
+/*.calendarContainer{
+    
+}*/
+.calendarContainer img{
+    width:60px;
+}
+.numCasas{
+    width: 180px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.numCasas h1{
+    padding-top: 15px;
+    padding-left: 3px;
+    color: #31A6E0;
+    z-index: 202;
+    background-color: transparent;
+    line-height: 36px;
+    font-family: '__Merriweather_5';
+    min-height: 35px;
+    font-weight: 700;
+    text-align: center;
+    font-size: 30px;
+}
+.numCasas p{
+    width: 80px;
+    padding-left: 3px;
+    font-weight: 300;
+    z-index: 194;
+    background-color: transparent;
+    line-height: 13px;
+    font-family: '__Merriweather Sans_5';
+    min-height: 37px;
+    color: #494949;
+    font-size: 11px;
+}
+.seisMeses{
+    width:308px;
+    padding-left: 2px;
+}
+.smesContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    /*border:1px gray solid;*/
+}
+.tablaMes{
+    padding-top: 15px;
+    /*border:1px red solid;*/
+}
+.tablaMes table{
+    width: 100%;
+}
+.titleTable{
+    height: 35px;
+    background-color: #9c9a9a;
+    text-align: center;
+    font-family: '__Merriweather Sans_5';
+    min-height: 40px;
+    font-weight: 300;
+    color: #FFFFFF;
+    padding: 3px;
+}
+table td{
+    background-color: #ccc4c4;
+    height: 20px;
+}
+.promedioTotal{
+    line-height: 24px;
+    color: #31A6E0;
+    font-family: '__Merriweather_5';
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+}
+.promediom2{
+    font-family: '__Merriweather Sans_5';
+    text-align: center;
+    min-height: 40px;
+    font-weight: 300;
+}
+.txtPromedio{
+    font-family: '__Merriweather Sans_5';
+    text-align: center;
+    min-height: 40px;
+    font-weight: 300;
+}
+
+.plusValia{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.plusValiaContainer{
+    display: flex;
+    flex-direction: column;
+}
+.plusValiaContainer h2{
+    line-height: 25px;
+    color: #31A6E0;
+    font-family: '__Merriweather_5';
+    font-weight: 700;
+    font-size: 21px;
 }

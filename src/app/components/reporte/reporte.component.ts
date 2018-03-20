@@ -3,6 +3,8 @@ import { AgmCoreModule } from '@agm/core';
 import {ViewChild} from '@angular/core';
 import {MatTableDataSource, MatSort} from '@angular/material';
 
+import {Sort} from '@angular/material';
+
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
@@ -18,7 +20,12 @@ export class ReporteComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatSort) sort: MatSort;
  
- 
+   /** */
+   /**Llenar tabla de promedios */
+   promedioTotal = "$6,895,041";
+   promediom2 = "$43,462"
+   cierrePromedioTotal = "$5,402,008";
+   cierrePromediom2 = "$39,581";
    /** */
   generatedReport = "Dic 1993";
   estimatedDate = "ENERO 2016";
@@ -37,6 +44,7 @@ export class ReporteComponent implements OnInit {
   numBanos = 1;
   numMBanos = 0;
   numParking = 1;
+  plusvalia = 14.2;
   /* */
 
   /*Ubicacion de casa maps */
@@ -55,6 +63,8 @@ export class ReporteComponent implements OnInit {
   /** */
   /**Nombre de la colonia a comparar */
   nomColonia = "COLONIA ANZURES";
+  uMesCasas = 31;
+  sMesCasas = 293;
   /** */
   constructor() { }
 
