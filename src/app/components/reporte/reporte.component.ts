@@ -108,52 +108,25 @@ export interface Element {
 }
 
 const ELEMENT_DATA: Element[] = [
-  {
-    position: 1, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 2, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 3, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 4, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 5, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 6, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 7, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 8, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 9, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 10, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 11, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 12, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
+  {position: 1, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 2, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 3, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 4, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 5, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 6, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 7, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 8, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 9, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'},
+  {position: 10, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2, 
+  banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'}
+  
 ];
