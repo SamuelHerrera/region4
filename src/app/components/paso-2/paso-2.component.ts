@@ -19,6 +19,16 @@ export class Paso2Component implements OnInit {
   selectedNumBath: String;
   selectedNumMBath: String;
   selectedNumBox: String;
+
+  /**Direccion */
+  calle = 100;
+  numExt = "491B";
+  colonia = "Bojórquez";
+  codigoPostal = 97300;
+  municipio = "Mérida";
+  estado = "Yucatán";
+  ciudad = "Mérida";
+  /** */
   constructor() {this.types = [
     {label: 'Casa', value: 'Casa'},
     {label: 'Departamento', value: 'Departamento'}

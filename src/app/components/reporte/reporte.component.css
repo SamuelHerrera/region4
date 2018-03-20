@@ -15,19 +15,31 @@
 
 .title {
     height: 150px;
-    border:1px red solid;
+    display: table-column;
+    /*display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;*/
+    padding-top: 10px;
+    vertical-align: top;
+}
+.titleContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.subTitleContainer{
+    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding-top: 10px;
-    vertical-align: top;
 }
-
 .principalTitle {
     background-color: transparent;
     line-height: 38px;
-    width: 557px;
+    width: 60%;
     text-align: left;
     font-family: '__Merriweather_5';
     font-weight: 700;
@@ -38,6 +50,7 @@
 }
 
 .idReport {
+    width:20%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -51,26 +64,18 @@
     background-color: transparent;
     font-size: 10px;
 }
-
+.generatedDate{
+    font-weight: 300;
+    line-height: 14px;
+    font-family: '__Merriweather Sans_5';
+    text-align: right;
+    font-size: 10px;
+}
 .characteristics {
     /*display: flex;
     flex-direction: column;*/
-    display: table-column
+    display: table-column;
 }
-
-.carac {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.caracContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
 .address {
     display: flex;
     flex-direction: row;
@@ -83,16 +88,6 @@
     flex-direction: column;
     justify-content: flex-start
 }
-
-.subCarac {
-    width: 150px;
-}
-
-.imgContainer {
-    width: 100%;
-    text-align: center;
-}
-
 .dir {
     display: flex;
     flex-direction: column;
@@ -102,6 +97,30 @@
 .dirContent {
     height: 100px;
 }
+
+.direcContent {
+    width: 310px;
+    font-family: '__Merriweather Sans_5';
+    background-color: transparent;
+    /*min-height: 143px;*/
+    color: #28245B;
+}
+.carac {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.caracContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.subCarac {
+    width: 150px;
+}
+
 
 .middleTitle {
     height: 25px;
@@ -131,13 +150,6 @@
     padding-bottom: 5px;
 }
 
-.direcContent {
-    width: 310px;
-    font-family: '__Merriweather Sans_5';
-    background-color: transparent;
-    /*min-height: 143px;*/
-    color: #28245B;
-}
 
 .amenidades {
     display: flex;
@@ -159,7 +171,17 @@
     display: flex;
     flex-direction: column;
 }
-
+.subamenidades span{
+    font-weight: 300;
+    line-height: 14px;
+    font-family: '__Merriweather Sans_5';
+    text-align: center;
+    font-size: 12px;
+}
+.imgContainer {
+    width: 100%;
+    text-align: center;
+}
 .estimatedValue {
     display: table-column;
     /*display: flex;
@@ -565,4 +587,51 @@ table td{
 .flechaContainer img{
     width:100px;
     height: 40px;
+}
+.glosario{
+    display: table-column;
+}   
+.glosarioContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}   
+.leftText{
+    width: 150px;
+}
+.leftText p{
+    height: 65px;
+    font-family: '__Raleway_5';
+    font-weight: 700;
+    line-height: 15px;
+    font-size: 11px;
+}
+.rightText{
+    width: 570px;
+}
+.rightText p {
+    height: 65px;
+    color: #999999;
+    line-height: 15px;
+    font-family: Geneva, Verdana, Lucida Sans, Lucida Sans Unicode, sans-serif;
+    text-align: justify;
+    font-size: 11px;
+}
+.terminos{
+    display: table-column;
+}
+.contenido{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.contenido p{
+    width: 720px;
+    font-family: '__Merriweather Sans_5';
+    font-weight: 300;
+    line-height: 17px;
+    font-size: 12px;
+    padding-bottom: 10px;
 }

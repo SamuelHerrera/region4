@@ -5,6 +5,8 @@
     /*border: 1px red solid;*/
     width:100%;
     height: 100%;
+    
+    
 }
 .scrollable{
     height: 100%;
@@ -20,6 +22,10 @@
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 20px;
+    font-size: 15px;
+    line-height: 14px;
+    font-family: '__Merriweather Sans_5';
+    font-weight: 300;
 }
 .correo p-button{
     padding-left: 10px;
