@@ -16,7 +16,7 @@
           <label for="Cont">Contraseña</label>
         </span>
         <div class="ui-float-label button">
-          <p-checkbox name="recuerdame" label="Recuerdame" ngModel binary="true"></p-checkbox>
+          <p-checkbox name="recuerdame" label="Recuerdame" ngModel binary="true" (onChange)="change($event)"></p-checkbox>
           <p-button (onClick)="login()" label="Iniciar Sesion"></p-button>
         </div>
         <label class="subtext clickable" [routerLink]="'/forgotpass'">Olvide mi contraseña</label>
