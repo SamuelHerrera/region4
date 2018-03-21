@@ -25,8 +25,11 @@ export class ReporteComponent implements OnInit {
   dataSource = new MatTableDataSource(ELEMENT_DATA);
   @ViewChild(MatSort) sort: MatSort;
 
-  @Input() datos = {};
-  
+  @Input() datos = null;
+  dat: any;
+
+
+
   /** */
   /**Llenar tabla de promedios */
   /*promedioTotal: number;
@@ -86,7 +89,7 @@ export class ReporteComponent implements OnInit {
     if (this.datos === "") {
       console.log("Datos is empty");
     } else { console.log(this.datos); }
-    
+
 
   }
   // tslint:disable-next-line:use-life-cycle-interface

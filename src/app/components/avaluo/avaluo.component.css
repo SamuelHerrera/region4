@@ -11,6 +11,10 @@
   color: darkred;
 }
 
+.opcional {
+  color: darkgreen;
+}
+
 .scrollable {
   height: 100%;
   width: 100%;

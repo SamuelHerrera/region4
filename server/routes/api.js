@@ -31,5 +31,6 @@ var PagoFacilController = require('../controllers/pagofacil.controller');
 router.post('/pagofacil', PagoFacilController.createPago);
 router.get('/pagofacil', PagoFacilController.getPago);
 router.put('/pagofacil', PagoFacilController.recordReference);
+router.post('/processpaypal', PagoFacilController.recordReference);
 
 module.exports = router;
