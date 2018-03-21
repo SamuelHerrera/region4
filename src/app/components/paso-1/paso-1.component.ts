@@ -8,7 +8,7 @@ import { MatVerticalStepper } from '@angular/material';
   templateUrl: './paso-1.component.html',
   styleUrls: ['./paso-1.component.css']
 })
-export class Paso1Component implements OnInit {
+export class Paso1Component implements OnInit, DoCheck {
 
   lat = 20.975262;
   lng = -89.640562;
@@ -22,9 +22,26 @@ export class Paso1Component implements OnInit {
     setTimeout(() => {
       this.avaluoForm['latitud'] = this.lat;
       this.avaluoForm['longitud'] = this.lng;
-      this.completed.emit(true);
-    }, 3000);
 
+    }, 2000);
+  }
+
+  ngDoCheck() {
+    this.verify();
+  }
+
+  verify() {
+    if (this.avaluoForm['street']
+      && this.avaluoForm['num_ext']
+      && this.avaluoForm['zip']
+      && this.avaluoForm['colonia']
+      && this.avaluoForm['municipio']
+      && this.avaluoForm['estado']
+      && this.avaluoForm['ciudad']) {
+      this.completed.emit(true);
+    } else {
+      this.completed.emit(false);
+    }
 
   }
 

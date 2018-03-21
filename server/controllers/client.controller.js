@@ -5,16 +5,18 @@ var nodemailer = require('nodemailer');
 var ClientService = require('../services/client.service');
 
 var transporter = nodemailer.createTransport({
-  host: 'mail.webrahost.com',
-  port: 465,
-  secure: true, // true for 465, false for other ports
+  service: 'gmail',
   auth: {
-    user: 'u1580',
-    pass: 'PipU3MSXpPD2'
-  },
-  tls: {
-    // do not fail on invalid certs
-    rejectUnauthorized: false
+    user: 'region4mid@gmail.com',
+    pass: 'D3v3l0p.'
+  }
+});
+
+transporter.verify(function (error, success) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Server is ready to take our messages');
   }
 });
 
@@ -42,9 +44,10 @@ exports.getClients = async (function (req, res, next) {
 
 exports.createClient = async (function (req, res, next) {
   try {
+
     var createdClient = await (ClientService.createClient(req.body));
     var mailOptions = {
-      from: 'activation@itexsolutions.com.m',
+      from: 'activation@itexsolutions.com.mx',
       to: createdClient.mail,
       subject: 'Activar mi cuenta de Region4',
       text: 'Use el codigo ' + createdClient.activationCode + ' para activar su cuenta en http://itexsolutions.com.mx/activacion'
