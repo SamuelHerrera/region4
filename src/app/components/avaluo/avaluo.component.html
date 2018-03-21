@@ -52,7 +52,7 @@
           <p-button (onClick)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
           <p-button (onClick)="imprimir()" label="Imprimir"></p-button>
         </div>
-        <app-reporte></app-reporte>
+        <app-reporte [datos]="avaluoResponse"></app-reporte>
       </mat-step>
     </mat-vertical-stepper>
 

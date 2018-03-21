@@ -60,6 +60,7 @@ export class AvaluoComponent implements OnInit {
     this.yals.generateRequest(yals_req, null).subscribe(response => {
       console.log(response);
       this.avaluoResponse = response;
+      //console.log(this.avaluoResponse.data.request.edad)
     });
   }
   nvoAvaluo() {
