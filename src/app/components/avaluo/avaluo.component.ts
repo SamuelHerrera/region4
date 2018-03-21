@@ -32,7 +32,7 @@ export class AvaluoComponent implements OnInit {
 
   avaluoForm: any = {};
 
-  avaluoResponse: any = {};
+  avaluoResponse: any = null;
 
   constructor(private router: Router, private yals: YalsService, private _formBuilder: FormBuilder) {
   }
