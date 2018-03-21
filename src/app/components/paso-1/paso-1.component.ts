@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
+import { MatVerticalStepper } from '@angular/material';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class Paso1Component implements OnInit {
   lng = -89.640562;
 
   @Input() avaluoForm: any;
+  @Output() completed = new EventEmitter<boolean>();
 
   constructor() { }
 
@@ -20,7 +22,10 @@ export class Paso1Component implements OnInit {
     setTimeout(() => {
       this.avaluoForm['latitud'] = this.lat;
       this.avaluoForm['longitud'] = this.lng;
+      this.completed.emit(true);
     }, 3000);
+
+
   }
 
 }

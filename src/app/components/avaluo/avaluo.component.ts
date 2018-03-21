@@ -17,6 +17,12 @@ import * as html2pdf from 'html2pdf.js';
 })
 export class AvaluoComponent implements OnInit {
 
+  index = 0;
+  step1 = false;
+  step2 = false;
+  step3 = false;
+  step4 = false;
+
   /*Todo lo que incluye el stepper*/
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -69,6 +75,16 @@ export class AvaluoComponent implements OnInit {
       html2canvas: { dpi: 192, letterRendering: true },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     });
+  }
+
+  stepchanged(event: any) {
+    console.log(event)
+    if (!event.previouslySelectedStep.completed) {
+      setTimeout(() => {
+        console.log(event.previouslySelectedIndex)
+        this.index = event.previouslySelectedIndex;
+      }, 5000);
+    }
   }
 
 }

@@ -2,16 +2,15 @@
   <!--<div class="tittle">
     <h1>GENERAR AVALÚO</h1>
   </div>-->
+  {{step1}}
   <div class="scrollable">
-    <mat-vertical-stepper #stepper="matVerticalStepper">
-      <mat-step>
-        <form>
-          <ng-template matStepLabel>Ubicar Propiedad</ng-template>
-          <app-paso-1 [avaluoForm]="avaluoForm"></app-paso-1>
-
-        </form>
+    <mat-vertical-stepper #stepper="matVerticalStepper" (selectionChange)="stepchanged($event)" [linear]="true" [selectedIndex]="index">
+      <mat-step [completed]="step1">
+        <ng-template matStepLabel>Ubicar Propiedad</ng-template>
+        <app-paso-1 [avaluoForm]="avaluoForm" (completed)="step1=$event"></app-paso-1>
+        <button mat-button matStepperNext>Next</button>
       </mat-step>
-      <mat-step>
+      <mat-step [completed]="step2">
         <form>
           <ng-template matStepLabel>Propiedad</ng-template>
           <app-paso-2 [avaluoForm]="avaluoForm"></app-paso-2>
@@ -21,14 +20,14 @@
 
         </form>
       </mat-step>
-      <mat-step>
+      <mat-step [completed]="step3">
         <form>
           <ng-template matStepLabel>Amenidades</ng-template>
           <app-paso-3 [avaluoForm]="avaluoForm"></app-paso-3>
 
         </form>
       </mat-step>
-      <mat-step>
+      <mat-step [completed]="step4">
         <form>
           <ng-template matStepLabel>Pagar Avalúo</ng-template>
           <app-pago-con-tarjeta></app-pago-con-tarjeta>
