@@ -39,6 +39,22 @@ exports.createPago = async (function (req, res, next) {
   }
 });
 
+exports.createPagoPayPal = async (function (req, res, next) {
+  try {
+    var data = await (Service.createPagoPayPal(req.body.clientid));
+    return res.status(200).json({
+      status: 200,
+      data: data,
+      message: "Succesfully generated pagofacil"
+    });
+  } catch (e) {
+    return res.status(400).json({
+      status: 400,
+      message: "Error generando transaccion pagofacil: " + e
+    });
+  }
+});
+
 exports.recordReference = async (function (req, res, next) {
   if (!req.body) {
     return res.status(400).json({

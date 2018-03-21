@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, Sort } from '@angular/material';
 import * as jsPDF from 'jspdf';
 import * as html2pdf from 'html2pdf.js';
+import { Element } from '@angular/compiler';
 
 
 
@@ -13,85 +14,58 @@ import * as html2pdf from 'html2pdf.js';
   templateUrl: './reporte.component.html',
   styleUrls: ['./reporte.component.css']
 })
-export class ReporteComponent implements OnInit {
-
-  /*response: any;*/
-  /**
-   * Para llenar la tabla con datos
-   */
+export class ReporteComponent implements OnInit, OnChanges {
 
   displayedColumns = ['position', 'oferta', 'total', 'm2', 'cuartos', 'banos',
     'parking', 'construccion', 'edad', 'distancia', 'similitud'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  ELEMENT_DATA: any[] = [
+    {
+      position: 1, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
+      banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
+    }
+
+  ];
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   @ViewChild(MatSort) sort: MatSort;
 
   @Input() datos = null;
   dat: any;
-
-
-
-  /** */
-  /**Llenar tabla de promedios */
-  /*promedioTotal: number;
-  promediom2 = "$43,462"
-  cierrePromedioTotal = "$5,402,008";
-  cierrePromediom2 = "$39,581";*/
-  /** */
-  /*generatedReport = "Dic 1993";*/
   estimatedDate = "ENERO 2016";
   idReport = 123;
-  /*Datos Direccion*/
-  /*calle = 100;
-  colonia = "Bojorquez";
 
-  codigoPostal = "9700";
-  ciudad = "Mérida";
-  estado = "Yucatán";
-  numExt = "491B";
-  numInt = "s/n";*/
-  /* */
+  plusvalia = "pending to implement"//14.2;
 
-  /*Datos Contenido */
-  /*numCuartos = 3;
-  numBanos = 1;
-  numMBanos = 0;
-  numParking = 1;*/
-  plusvalia = 14.2;
-  /* */
-
-  /*Ubicacion de casa maps */
   lat = 30.200;
   lng = 20.100;
 
-  /* */
-
-  /*Precios estimados */
-  /*precioEstimado = "6,170,000";
-  precioInferior = "5,153,00"
-  precioSuperior = "7,670,000";
-
-  precioEstimadoM2 = "61,700";
-  precioMInferior = "51,500";
-  precioMSuperior = "76,700";*/
-  /** */
-  /**Nombre de la colonia a comparar */
-  /*nomColonia = "COLONIA ANZURES";
-  uMesCasas = 31;
-  sMesCasas = 293;*/
-  /** */
   constructor() { }
 
   ngOnInit() {
-    // setTimeout(() => {
-    //   this.imprimir();
-    // }, 5000);
-    //console.log(this.datos);
-    if (this.datos === "") {
-      console.log("Datos is empty");
-    } else { console.log(this.datos); }
-
-
   }
+
+  ngOnChanges(): void {
+    if (this.datos) {
+      this.ELEMENT_DATA = [];
+      let ind = 1;
+      this.datos.data.response.similares.forEach(element => {
+        this.ELEMENT_DATA.push({
+          position: ind,
+          oferta: element.fecha_oferta,
+          total: '$' + element.precio_oferta,
+          m2: element.superficie_terreno + "m2",
+          cuartos: element.recamaras,
+          banos: element.banos,
+          parking: element.estacionamientos,
+          construccion: element.area_construida + 'm2',
+          edad: (element.edad || 0),
+          distancia: element.distancia + ' km',
+          similitud: (element.similitud * 100) + '%'
+        });
+        ind++;
+      });
+    }
+  }
+
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
@@ -123,46 +97,3 @@ export interface Element {
   similitud: string;
 }
 
-const ELEMENT_DATA: Element[] = [
-  {
-    position: 1, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 2, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 3, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 4, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 5, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 6, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 7, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 8, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 9, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  },
-  {
-    position: 10, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-    banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-  }
-
-];

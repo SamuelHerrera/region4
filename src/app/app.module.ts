@@ -18,6 +18,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { GrowlModule } from 'primeng/growl';
 import { CheckboxModule } from 'primeng/checkbox';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { TabViewModule } from 'primeng/tabview';
 
 import { RoutingModule } from './router/routing.module';
 import { ActivacionUsuarioComponent } from './components/activacion-usuario/activacion-usuario.component';
@@ -89,6 +90,7 @@ import { AuthGuard } from './guards/auth.guard';
     SelectButtonModule,
     MatStepperModule,
     MatTableModule,
+    TabViewModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })

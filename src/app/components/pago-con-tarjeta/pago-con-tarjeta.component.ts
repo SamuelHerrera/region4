@@ -38,4 +38,16 @@ export class PagoConTarjetaComponent implements OnInit {
     });
   }
 
+  pagarAvaluoPayPal() {
+    this.pagofacil.generatePagoPayPal().subscribe(response => {
+      console.log(response);
+      if (response) {
+        this.messageService.add({
+          severity: 'success', summary: 'Procesamiento de pago',
+          detail: "Su pago se ha procesado satisfactoriamente."
+        });
+        this.completed.emit(true);
+      }
+    });
+  }
 }

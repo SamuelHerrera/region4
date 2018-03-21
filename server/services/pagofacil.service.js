@@ -2,6 +2,9 @@ var async = require('asyncawait/async');
 var await = require('asyncawait/await');
 var request = require('request');
 var model = require('../models/pagofacil.model');
+var Paypal = require('paypal-express-checkout');
+var paypal = Paypal.init('ventas_api1.region4.mx', 'ZDEVUL82HZYAGSVE', 'ASv4fEpVJSdI6SLeoOrHgCir72YoAV8WH8t0Jq5IWSNZom3WTu6tg-E.',
+  'http://www.example.com/return', 'http://www.example.com/cancel', false);
 
 _this = this;
 
@@ -58,6 +61,48 @@ exports.createPago = async (function (clientid, pagofacil_request) {
       } else {
         console.log("error1", error, response.statusCode, body);
         reject(error);
+      }
+    });
+  }));
+
+  pagofacil_model.response = response.result;
+  pagofacil_model.autorized = response.autorizado;
+  console.log(pagofacil_model);
+  try {
+    var savedPagofacil = await (pagofacil_model.save());
+    return savedPagofacil;
+  } catch (e) {
+    throw Error("Error: " + e);
+  }
+});
+
+exports.createPagoPayPal = async (function (clientid) {
+  var pagofacil_model = new model();
+  pagofacil_model.dateCreated = new Date();
+  pagofacil_model.clientid = clientid;
+  pagofacil_model.reportid = null;
+  pagofacil_model.request = {};
+
+  var response = await (new Promise(function (resolve, reject) {
+    // request.post(config, function (error, response, body) {
+    //   if (!error && response.statusCode == 200) {
+    //     console.log("error", body);
+    //     resolve(body);
+    //   } else {
+    //     console.log("error1", error, response.statusCode, body);
+    //     reject(error);
+    //   }
+    // });
+
+    paypal.pay('20130001', 123.23, 'iPad', 'EUR', true, ['custom', 'data'], function (err, url) {
+      if (err) {
+        console.log(err);
+        reject(err);
+        return;
+      } else {
+        console.log(url);
+        response.redirect(url);
+        resolve(url);
       }
     });
   }));
