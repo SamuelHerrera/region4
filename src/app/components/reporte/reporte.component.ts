@@ -26,36 +26,33 @@ export class ReporteComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   @Input() datos = {};
-  dat: any;
-
-  
   
   /** */
   /**Llenar tabla de promedios */
-  promedioTotal: number;
+  /*promedioTotal: number;
   promediom2 = "$43,462"
   cierrePromedioTotal = "$5,402,008";
-  cierrePromediom2 = "$39,581";
+  cierrePromediom2 = "$39,581";*/
   /** */
-  generatedReport = "Dic 1993";
+  /*generatedReport = "Dic 1993";*/
   estimatedDate = "ENERO 2016";
   idReport = 123;
   /*Datos Direccion*/
-  calle = 100;
+  /*calle = 100;
   colonia = "Bojorquez";
 
   codigoPostal = "9700";
   ciudad = "Mérida";
   estado = "Yucatán";
   numExt = "491B";
-  numInt = "s/n";
+  numInt = "s/n";*/
   /* */
 
   /*Datos Contenido */
-  numCuartos = 3;
+  /*numCuartos = 3;
   numBanos = 1;
   numMBanos = 0;
-  numParking = 1;
+  numParking = 1;*/
   plusvalia = 14.2;
   /* */
 
@@ -66,18 +63,18 @@ export class ReporteComponent implements OnInit {
   /* */
 
   /*Precios estimados */
-  precioEstimado = "6,170,000";
+  /*precioEstimado = "6,170,000";
   precioInferior = "5,153,00"
   precioSuperior = "7,670,000";
 
   precioEstimadoM2 = "61,700";
   precioMInferior = "51,500";
-  precioMSuperior = "76,700";
+  precioMSuperior = "76,700";*/
   /** */
   /**Nombre de la colonia a comparar */
-  nomColonia = "COLONIA ANZURES";
+  /*nomColonia = "COLONIA ANZURES";
   uMesCasas = 31;
-  sMesCasas = 293;
+  sMesCasas = 293;*/
   /** */
   constructor() { }
 

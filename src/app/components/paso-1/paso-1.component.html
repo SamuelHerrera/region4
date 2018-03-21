@@ -40,7 +40,7 @@
 
   </div>
   <div class="maps">
-    <agm-map [latitude]="avaluoForm['latitud']" [longitude]="avaluoForm['longitud']">
+    <agm-map [latitude]="avaluoForm['latitud']" [longitude]="avaluoForm['longitud']" [zoom]="12" [scrollwheel]="false">
       <agm-marker [latitude]="avaluoForm['latitud']" [longitude]="avaluoForm['longitud']" [markerDraggable]="true"></agm-marker>
     </agm-map>
   </div>

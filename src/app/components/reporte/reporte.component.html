@@ -227,7 +227,7 @@
           <img src="../assets/images/region4-crop-u9162.jpg">
         </div>
         <div class="map">
-          <agm-map [latitude]="lat" [longitude]="lng">
+          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
             <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
             <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
           </agm-map>
@@ -269,7 +269,7 @@
       </div>
 
       <div class="map2">
-        <agm-map [latitude]="lat" [longitude]="lng">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
           <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
       </div>
