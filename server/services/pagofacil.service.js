@@ -84,16 +84,6 @@ exports.createPagoPayPal = async (function (clientid) {
   pagofacil_model.request = {};
 
   var response = await (new Promise(function (resolve, reject) {
-    // request.post(config, function (error, response, body) {
-    //   if (!error && response.statusCode == 200) {
-    //     console.log("error", body);
-    //     resolve(body);
-    //   } else {
-    //     console.log("error1", error, response.statusCode, body);
-    //     reject(error);
-    //   }
-    // });
-
     paypal.pay('20130001', 123.23, 'iPad', 'EUR', true, ['custom', 'data'], function (err, url) {
       if (err) {
         console.log(err);
