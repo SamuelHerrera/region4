@@ -31,11 +31,11 @@
           <ng-template matStepLabel>Pagar Avalúo
             <span *ngIf="!step4" class="alerta">Sin completar</span>
           </ng-template>
-          <app-pago-con-tarjeta (completed)="step4=$event"></app-pago-con-tarjeta>
-          <button pButton matStepperNext type="button" label="Siguiente"></button>
+          <app-pago-con-tarjeta *ngIf="!step4" (completed)="step4=$event"></app-pago-con-tarjeta>
+          <button *ngIf="step4" pButton matStepperNext type="button" label="Siguiente"></button>
         </form>
       </mat-step>
-      <mat-step>
+      <!-- <mat-step>
         <form>
           <ng-template matStepLabel>Ingresar Correo</ng-template>
           <div class="correo">
@@ -43,15 +43,16 @@
               <input id="float-input" type="text" size="30" pInputText name="correo">
               <label for="float-input">Correo</label>
             </span>
-            <p-button matStepperNext (onClick)="enviarCorreo()" label="Generar y Enviar avaluo"></p-button>
+
           </div>
         </form>
-      </mat-step>
+      </mat-step> -->
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <div class="nvoAvaluo">
-          <p-button (onClick)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
-          <p-button (onClick)="imprimir()" label="Imprimir"></p-button>
+          <p-button matStepperNext (onClick)="enviarCorreo()" label="Generar"></p-button>
+          <p-button *ngIf="avaluoResponse" (onClick)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
+          <p-button *ngIf="avaluoResponse" (onClick)="imprimir()" label="Imprimir"></p-button>
         </div>
         <app-reporte *ngIf="avaluoResponse" [datos]="avaluoResponse"></app-reporte>
       </mat-step>

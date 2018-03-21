@@ -14,11 +14,14 @@ export class PagofacilService {
   }
 
   generatePago(pagofacilreq: Pagofacilrequest) {
-
     const client = this.observ.currentUser;
     return this._http.post("/api/pagofacil", { clientid: client._id, pagofacil_request: pagofacilreq });
   }
 
+  generatePagoPayPal() {
+    const client = this.observ.currentUser;
+    return this._http.post("/api/processpaypal", { clientid: client._id });
+  }
   addReportReference(pagofacilid: String, yalsid: String) {
     return this._http.put("/api/pagofacil", { id: pagofacilid, yalsid: yalsid });
   }

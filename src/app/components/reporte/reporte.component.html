@@ -1,15 +1,17 @@
 <div class="container" id="element-to-print">
   <div class="scrollable">
-    
+
     <!--{{datos.data.request.colonia|json}}-->
-  
+
     <div class="title">
       <div class="titleContainer">
         <div class="subTitleContainer">
           <span class="principalTitle">REPORTE DEL INMUEBLE</span>
           <div class="idReport">
-            <span class="reportID">ID {{idReport}}</span>
-            <span class="generatedDate">Reporte generado el {{datos.data.dateCreated}}<!--{{generatedReport}}--></span>
+            <span class="reportID">ID {{datos.data._id}}</span>
+            <span class="generatedDate">Reporte generado el {{datos.data.dateCreated}}
+              <!--{{generatedReport}}-->
+            </span>
           </div>
         </div>
       </div>
@@ -27,9 +29,17 @@
             </div>
 
             <div class="direcContent">
-              <p> {{datos.data.response.address.colonia}}, {{datos.data.response.address.street}}<!--{{colonia}}, {{calle}}--> No. Ext. {{datos.data.response.address.num_ext}}<!--{{numExt}}-->, No. Int s/n<!--{{numInt}}--></p>
-              <p>C.P. {{datos.data.response.address.zip}}<!--{{codigoPostal}}--></p>
-              <p> {{datos.data.response.address.ciudad}}, {{datos.data.response.address.estado}} <!--{{ciudad}}, {{estado}}--></p>
+              <p> {{datos.data.response.address.colonia}}, {{datos.data.response.address.street}}
+                <!--{{colonia}}, {{calle}}-->No. Ext. {{datos.data.response.address.num_ext}}
+                <!--{{numExt}}-->, No. Int s/n
+                <!--{{numInt}}-->
+              </p>
+              <p>C.P. {{datos.data.response.address.zip}}
+                <!--{{codigoPostal}}-->
+              </p>
+              <p> {{datos.data.response.address.ciudad}}, {{datos.data.response.address.estado}}
+                <!--{{ciudad}}, {{estado}}-->
+              </p>
             </div>
 
           </div>
@@ -51,7 +61,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
                 </div>
-                <!--{{numBanos}}--> {{datos.data.response.characteristics.banos}}Baños
+                <!--{{numBanos}}-->{{datos.data.response.characteristics.banos}} Baños
 
               </div>
 
@@ -59,7 +69,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42" />
                 </div>
-                <!--{{numMBanos}}--> {{datos.data.response.characteristics.medios_banos}} Medios Baños
+                <!--{{numMBanos}}-->{{datos.data.response.characteristics.medios_banos}} Medios Baños
 
               </div>
 
@@ -67,7 +77,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42" />
                 </div>
-                <!--{{numParking}}--> {{datos.data.response.characteristics.estacionamientos}} Parking
+                <!--{{numParking}}-->{{datos.data.response.characteristics.estacionamientos}} Parking
 
               </div>
 
@@ -80,83 +90,48 @@
           <div class="littleTitle">AMENIDADES</div>
           <div class="containerAmenidades">
 
-            <div class="subamenidades">
-              <div class="imgContainer">
-                <img class="images" src="../assets/images/ac.svg" alt="Smiley face" height="42" width="42" />
-              </div>
-              <span>Aire Acondicionado</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+            <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
+              <div class="imgContainer" *ngIf="item=='cocina_integral'">
                 <img class="images" src="../assets/images/cocina.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Cocina Integral</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+              <div class="imgContainer" *ngIf="item=='aire_acondicionado'">
+                <img class="images" src="../assets/images/ac.svg" alt="Smiley face" height="42" width="42" />
+              </div>
+              <div class="imgContainer" *ngIf="item=='gimnasio'">
                 <img class="images" src="../assets/images/gimnasio.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Gimnasio</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+              <div class="imgContainer" *ngIf="item=='terraza'">
                 <img class="images" src="../assets/images/terraza.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Roof garden/ terraza</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+              <div class="imgContainer" *ngIf="item=='alberca'">
                 <img class="images" src="../assets/images/alberca.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Alberca</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+              <div class="imgContainer" *ngIf="item=='cuarto_servicio'">
                 <img class="images" src="../assets/images/lavado.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Cuarto de Servicio</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+              <div class="imgContainer" *ngIf="item=='jardin'">
                 <img class="images" src="../assets/images/jardin.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Jardín</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+              <div class="imgContainer" *ngIf="item=='amueblado'">
                 <img class="images" src="../assets/images/amueblado.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Amueblado</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+              <div class="imgContainer" *ngIf="item=='estudio'">
                 <img class="images" src="../assets/images/estudio.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Estudio</span>
-            </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
+              <div class="imgContainer" *ngIf="item=='jacuzzi'">
                 <img class="images" src="../assets/images/jacuzzi.svg" alt="Smiley face" height="42" width="42" />
               </div>
-              <span>Jacuzzi</span>
+              <span *ngIf="item=='jacuzzi'">Jacuzzi</span>
+              <span *ngIf="item=='estudio'">Estudio</span>
+              <span *ngIf="item=='amueblado'">Amueblado</span>
+              <span *ngIf="item=='jardin'">Jardín</span>
+              <span *ngIf="item=='cuarto_servicio'">Cuarto de Servicio</span>
+              <span *ngIf="item=='alberca'">Alberca</span>
+              <span *ngIf="item=='terraza'">Roof garden/ terraza</span>
+              <span *ngIf="item=='gimnasio'">Gimnasio</span>
+              <span *ngIf="item=='aire_acondicionado'">Aire Acondicionado</span>
+              <span *ngIf="item=='cocina_integral'">Cocina Integral</span>
             </div>
-
-            <div class="subamenidades">
-              <div class="imgContainer">
-                <img class="images" src="../assets/images/seguridad.svg" alt="Smiley face" height="42" width="42" />
-              </div>
-              <span>Seguridad Privada</span>
-            </div>
-
           </div>
         </div>
       </div>
@@ -169,7 +144,7 @@
     <div class="estimatedValue">
 
       <div class="middleTitle">
-        <span>ESTIMADO DE VALOR EN {{estimatedDate}}</span>
+        <span>ESTIMADO DE VALOR EN {{datos.data.dateCreated}}</span>
       </div>
 
       <div class="prices">
@@ -177,17 +152,20 @@
           <div class="estimated1">
             <h3>Estimado del valor total</h3>
 
-            <h4>$<!--{{precioEstimado}}-->{{datos.data.response.valuacion.valuacion}}</h4>
+            <h4>$
+              <!--{{precioEstimado}}-->{{datos.data.response.valuacion.valuacion}}</h4>
             <p>Estimado de valor total*</p>
           </div>
 
           <div class="estimated2">
             <div class="inferior">
-              <h4>$<!--{{precioInferior}}-->{{datos.data.response.valuacion.intervalo_bajo}}</h4>
+              <h4>$
+                <!--{{precioInferior}}-->{{datos.data.response.valuacion.intervalo_bajo}}</h4>
               <p>Limite inferior</p>
             </div>
             <div class="superior">
-              <h4>$<!--{{precioSuperior}}-->{{datos.data.response.valuacion.intervalo_alto}}</h4>
+              <h4>$
+                <!--{{precioSuperior}}-->{{datos.data.response.valuacion.intervalo_alto}}</h4>
               <p>Limite Superior</p>
             </div>
           </div>
@@ -199,22 +177,26 @@
           </div>
 
         </div>
+        <div class="html2pdf__page-break"></div>
         <div class="mEstimated">
 
           <div class="mEstimated1">
             <h3>Estimado del valor por m2</h3>
 
-            <h4>$<!--{{precioEstimadoM2}}-->{{datos.data.response.valuacion.valuacion_m2}}</h4>
+            <h4>$
+              <!--{{precioEstimadoM2}}-->{{datos.data.response.valuacion.valuacion_m2}}</h4>
             <p>Estimado de valor por m2*</p>
           </div>
 
           <div class="mEstimated2">
             <div class="mInferior">
-              <h4>$<!--{{precioMInferior}}-->{{datos.data.response.valuacion.intervalo_bajo_m2}}</h4>
+              <h4>$
+                <!--{{precioMInferior}}-->{{datos.data.response.valuacion.intervalo_bajo_m2}}</h4>
               <p>Limite inferior</p>
             </div>
             <div class="mSuperior">
-              <h4>$<!--{{precioMSuperior}}--> {{datos.data.response.valuacion.intervalo_alto_m2}} </h4>
+              <h4>$
+                <!--{{precioMSuperior}}-->{{datos.data.response.valuacion.intervalo_alto_m2}} </h4>
               <p>Limite Superior</p>
             </div>
           </div>
@@ -268,11 +250,11 @@
 
       </div>
 
-      <div class="map2">
+      <!-- <div class="map2">
         <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
           <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
         </agm-map>
-      </div>
+      </div> -->
 
       <div class="table">
         <div class="example-container mat-elevation-z8">
@@ -343,7 +325,7 @@
     <div class="divisor">
       <hr>
     </div>
-
+    <div class="html2pdf__page-break"></div>
     <div class="preciosColonia">
       <div class="middleTitle">
         <span>COLONIA {{datos.data.response.address.colonia}}</span>
@@ -369,7 +351,9 @@
               <img src="../assets/images/calendary.svg" alt="Smiley face">
             </div>
             <div class="numCasas">
-              <h1>{{datos.data.response.historico.listado_promedio_1_mes}}<!--{{uMesCasas}}--></h1>
+              <h1>{{datos.data.response.historico.listado_promedio_1_mes}}
+                <!--{{uMesCasas}}-->
+              </h1>
               <p>Casas y departamentos listados en el último mes</p>
             </div>
           </div>
@@ -383,8 +367,10 @@
               </tr>
 
               <tr>
-                <td class="promedioTotal">$<!--{{promedioTotal}}-->{{datos.data.response.historico.oferta_promedio_6_meses}}</td>
-                <td class="promediom2"><!--{{promediom2}}--> {{datos.data.response.historico.precio_promedio_m2_6_meses}}</td>
+                <td class="promedioTotal">$
+                  <!--{{promedioTotal}}-->{{datos.data.response.historico.oferta_promedio_6_meses}}</td>
+                <td class="promediom2">
+                  <!--{{promediom2}}-->{{datos.data.response.historico.precio_promedio_m2_6_meses}}</td>
               </tr>
               <tr>
                 <td class="txtPromedio">Total Promedio</td>
@@ -404,7 +390,8 @@
               <img src="../assets/images/calendary.svg" alt="Smiley face">
             </div>
             <div class="numCasas">
-              <h1><!--{{sMesCasas}}-->{{datos.data.response.historico.listado_promedio_6_meses}}</h1>
+              <h1>
+                <!--{{sMesCasas}}-->{{datos.data.response.historico.listado_promedio_6_meses}}</h1>
               <p>Casas y departamentos listados en los últimos 6 meses</p>
             </div>
           </div>
@@ -418,8 +405,10 @@
               </tr>
 
               <tr>
-                <td class="promediom2"><!--{{cierrePromedioTotal}}--> ${{datos.data.response.historico.cierres_promedio_6_meses}}</td>
-                <td class="promediom2"><!--{{cierrePromediom2}}--> ${{datos.data.response.historico.cierres_promedio_m2_6_meses}}</td>
+                <td class="promediom2">
+                  <!--{{cierrePromedioTotal}}-->${{datos.data.response.historico.cierres_promedio_6_meses}}</td>
+                <td class="promediom2">
+                  <!--{{cierrePromediom2}}-->${{datos.data.response.historico.cierres_promedio_m2_6_meses}}</td>
               </tr>
               <tr>
                 <td class="txtPromedio">Total Promedio</td>
@@ -438,7 +427,7 @@
     <div class="divisor">
       <hr>
     </div>
-
+    <div class="html2pdf__page-break"></div>
     <div class="evolucionColonia">
       <div class="middleTitle">
         <span>EVOLUCIÓN DE LOS PRECIOS EN LA COLONIA</span>
@@ -488,45 +477,42 @@
         <span>GLOSARIO</span>
       </div>
       <div class="glosarioContainer">
-        <div class="leftText">
-          <p>
-            Apreciación
-          </p>
-          <p>Avalúo</p>
-          <p>Condición</p>
-          <p>Fecha de oferta</p>
-          <p>Información de cierres</p>
-          <p>Límite inferior y superior</p>
-          <p>Modelo de Valuación Automática</p>
-          <p>Precio oferta</p>
-          <p>Propiedades</p>
-          <p>Propiedades listadas</p>
-          <p>Similitud</p>
-          <p>Superficie de construcción</p>
-          <p>Superficie de terreno</p>
-        </div>
+
         <div class="rightText">
+          <h3>Apreciación</h3>
           <p>Cambio positivo en el precio del inmueble comparado con un periodo base (enero 2014). El cálculo se hace con el
             modelo de valuación automática de Región4. El cálculo no toma en cuenta inflación.</p>
+          <h3>Avalúo</h3>
           <p>Un avalúo corresponde a la valoración comercial de un bien raíz. Generalmente es un documento elaborado por un
             valuador profesional, agente de la propiedad inmobiliaria o corredor de propiedades. Además de la valoración
             comercial, contiene información sobre el avalúo fiscal, los títulos de dominio, así como la contribución, ubicación,
             tamaño, calidad de construcción y vida útil de la edificación.</p>
+          <h3>Condición</h3>
           <p>
             Nueva o usada. La vivienda nueva es la que tiene menos de un año de construida o remodelada. La usada tiene más Fde un año.</p>
+          <h3>Fecha de oferta</h3>
           <p>Fecha de publicación de la oferta de venta de un inmueble en un portal de Internet.</p>
+          <h3>Información de cierres</h3>
           <p>Precios de propiedad es que cuentan con un avalúo certificado y un crédito hipotecario asociado. Se toma el precio
             de cierre como el valor del inmueble.</p>
+          <h3>Límite inferior y superior</h3>
           <p>Rangos de valor mínimo y máximo construidos a partir de un intervalo de confianza estadística.</p>
+          <h3>Modelo de Valuación Automática</h3>
           <p>Modelo estadístico propietario de Región4 el cual toma en cuenta las características de la vivienda (ubicación,
             superficie, tipología, edad, etc.), los precios de cierre y precios de oferta de propiedades similares, para
             construir una estimación del precio de mercado del inmueble.</p>
+          <h3>Precio oferta</h3>
           <p>Precio al que se ofrece una propiedad en un sitio de listados en Internet.</p>
+          <h3>Propiedades</h3>
           <p>Casas o departamentos para uso residencial.</p>
+          <h3>Propiedades listadas</h3>
           <p>Propiedades que aparecen en sitios de ofertas en Internet.</p>
+          <h3>Similitud</h3>
           <p>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Región4. La similitud
             va del 0 al 100%, donde 100% equivale a dos propiedades exactamente iguales.</p>
+          <h3>Superficie de construcción</h3>
           <p>Superficie habitable de la residencia, no considera terrazas, estacionamientos o jardines.</p>
+          <h3>Superficie de terreno</h3>
           <p>Superficie total de la propiedad, toma en cuenta terrazas, estacionamientos y jardines.</p>
 
         </div>
@@ -536,7 +522,7 @@
     <div class="divisor">
       <hr>
     </div>
-
+    <div class="html2pdf__page-break"></div>
     <div class="terminos">
       <div class="middleTitle">
         <span>TÉRMINOS Y CONDICIONES</span>

@@ -6,7 +6,7 @@ var model = require('../models/yals.model');
 _this = this;
 
 var config = {
-  url: 'https://yals.mx/api/v1/reporte/json/test',
+  url: 'https://yals.mx/api/v1/reporte/json/test', //'https://yals.mx/api/v1/reporte/json',
   encoding: null,
   headers: {
     'Content-Type': 'application/json'
