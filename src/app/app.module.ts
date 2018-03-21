@@ -48,6 +48,8 @@ import { CommonModule } from '@angular/common/src/common_module';
 import { DatosfacturacionComponent } from './components/datosfacturacion/datosfacturacion.component';
 import { ReporteComponent } from './components/reporte/reporte.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AdministracionComponent } from './components/administracion/administracion.component';
+import { CuponesComponent } from './components/cupones/cupones.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +74,9 @@ import { AuthGuard } from './guards/auth.guard';
     FooterComponent,
     Paso1Component,
     DatosfacturacionComponent,
-    ReporteComponent
+    ReporteComponent,
+    AdministracionComponent,
+    CuponesComponent
   ],
   imports: [
     HttpClientModule,

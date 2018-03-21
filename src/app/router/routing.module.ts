@@ -8,6 +8,8 @@ import { ActivacionUsuarioComponent } from '../components/activacion-usuario/act
 import { AvaluoComponent } from '../components/avaluo/avaluo.component';
 import { ReporteComponent } from '../components/reporte/reporte.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { AdministracionComponent } from '../components/administracion/administracion.component';
+import { CuponesComponent } from '../components/cupones/cupones.component';
 
 const routes: Routes = [
     {
@@ -46,6 +48,16 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         component: ReporteComponent
     },
+    //Routings de muestra
+    {
+        path: "administracion",
+        component: AdministracionComponent
+    },
+    {
+        path: "cupones",
+        component: CuponesComponent
+    },
+    //Fin de muestras
     {
         path: '**',
         redirectTo: '/landing'
