@@ -26,6 +26,9 @@ export class ReporteComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   @Input() datos = {};
+  dat: any;
+
+  
   
   /** */
   /**Llenar tabla de promedios */
@@ -59,6 +62,7 @@ export class ReporteComponent implements OnInit {
   /*Ubicacion de casa maps */
   lat = 30.200;
   lng = 20.100;
+
   /* */
 
   /*Precios estimados */
@@ -82,6 +86,10 @@ export class ReporteComponent implements OnInit {
     //   this.imprimir();
     // }, 5000);
     //console.log(this.datos);
+    if (this.datos === "") {
+      console.log("Datos is empty");
+    } else { console.log(this.datos); }
+    
 
   }
   // tslint:disable-next-line:use-life-cycle-interface

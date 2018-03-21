@@ -1,13 +1,15 @@
 <div class="container" id="element-to-print">
   <div class="scrollable">
-    {{datos}}
+    
+    <!--{{datos.data.request.colonia|json}}-->
+  
     <div class="title">
       <div class="titleContainer">
         <div class="subTitleContainer">
           <span class="principalTitle">REPORTE DEL INMUEBLE</span>
           <div class="idReport">
             <span class="reportID">ID {{idReport}}</span>
-            <span class="generatedDate">Reporte generado el {{generatedReport}}</span>
+            <span class="generatedDate">Reporte generado el {{datos.data.dateCreated}}<!--{{generatedReport}}--></span>
           </div>
         </div>
       </div>
@@ -25,9 +27,9 @@
             </div>
 
             <div class="direcContent">
-              <p>{{colonia}}, {{calle}} No. Ext. {{numExt}}, No. Int {{numInt}}</p>
-              <p>C.P. {{codigoPostal}}</p>
-              <p>{{ciudad}}, {{estado}}</p>
+              <p> {{datos.data.response.address.colonia}}, {{datos.data.response.address.street}}<!--{{colonia}}, {{calle}}--> No. Ext. {{datos.data.response.address.num_ext}}<!--{{numExt}}-->, No. Int s/n<!--{{numInt}}--></p>
+              <p>C.P. {{datos.data.response.address.zip}}<!--{{codigoPostal}}--></p>
+              <p> {{datos.data.response.address.ciudad}}, {{datos.data.response.address.estado}} <!--{{ciudad}}, {{estado}}--></p>
             </div>
 
           </div>
@@ -41,7 +43,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/cuarto.svg" alt="Smiley face" height="42" width="42" />
                 </div>
-                {{numCuartos}} Cuartos
+                <!--{{numCuartos}}-->{{datos.data.response.characteristics.recamaras}} Cuartos
 
               </div>
 
@@ -49,7 +51,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
                 </div>
-                {{numBanos}} Baños
+                <!--{{numBanos}}--> {{datos.data.response.characteristics.banos}}Baños
 
               </div>
 
@@ -57,7 +59,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42" />
                 </div>
-                {{numMBanos}} Medios Baños
+                <!--{{numMBanos}}--> {{datos.data.response.characteristics.medios_banos}} Medios Baños
 
               </div>
 
@@ -65,7 +67,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42" />
                 </div>
-                {{numParking}} Parking
+                <!--{{numParking}}--> {{datos.data.response.characteristics.estacionamientos}} Parking
 
               </div>
 
@@ -175,17 +177,17 @@
           <div class="estimated1">
             <h3>Estimado del valor total</h3>
 
-            <h4>${{precioEstimado}}</h4>
+            <h4>$<!--{{precioEstimado}}-->{{datos.data.response.valuacion.valuacion}}</h4>
             <p>Estimado de valor total*</p>
           </div>
 
           <div class="estimated2">
             <div class="inferior">
-              <h4>${{precioInferior}}</h4>
+              <h4>$<!--{{precioInferior}}-->{{datos.data.response.valuacion.intervalo_bajo}}</h4>
               <p>Limite inferior</p>
             </div>
             <div class="superior">
-              <h4>${{precioSuperior}}</h4>
+              <h4>$<!--{{precioSuperior}}-->{{datos.data.response.valuacion.intervalo_alto}}</h4>
               <p>Limite Superior</p>
             </div>
           </div>
@@ -202,17 +204,17 @@
           <div class="mEstimated1">
             <h3>Estimado del valor por m2</h3>
 
-            <h4>${{precioEstimadoM2}}</h4>
+            <h4>$<!--{{precioEstimadoM2}}-->{{datos.data.response.valuacion.valuacion_m2}}</h4>
             <p>Estimado de valor por m2*</p>
           </div>
 
           <div class="mEstimated2">
             <div class="mInferior">
-              <h4>${{precioMInferior}}</h4>
+              <h4>$<!--{{precioMInferior}}-->{{datos.data.response.valuacion.intervalo_bajo_m2}}</h4>
               <p>Limite inferior</p>
             </div>
             <div class="mSuperior">
-              <h4>${{precioMSuperior}}</h4>
+              <h4>$<!--{{precioMSuperior}}--> {{datos.data.response.valuacion.intervalo_alto_m2}} </h4>
               <p>Limite Superior</p>
             </div>
           </div>
@@ -226,6 +228,7 @@
         </div>
         <div class="map">
           <agm-map [latitude]="lat" [longitude]="lng">
+            <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
             <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
           </agm-map>
         </div>
@@ -343,7 +346,7 @@
 
     <div class="preciosColonia">
       <div class="middleTitle">
-        <span>{{nomColonia}}</span>
+        <span>COLONIA {{datos.data.response.address.colonia}}</span>
       </div>
 
       <div class="intro">
@@ -366,7 +369,7 @@
               <img src="../assets/images/calendary.svg" alt="Smiley face">
             </div>
             <div class="numCasas">
-              <h1>{{uMesCasas}}</h1>
+              <h1>{{datos.data.response.historico.listado_promedio_1_mes}}<!--{{uMesCasas}}--></h1>
               <p>Casas y departamentos listados en el último mes</p>
             </div>
           </div>
@@ -375,13 +378,13 @@
             <table>
               <tr>
                 <th colspan="2" class="titleTable">
-                  Precios promedios de oferta en la colonia Anzures
+                  Precios promedios de oferta en la colonia {{datos.data.response.address.colonia}}
                 </th>
               </tr>
 
               <tr>
-                <td class="promedioTotal">${{promedioTotal}}</td>
-                <td class="promediom2">{{promediom2}} </td>
+                <td class="promedioTotal">$<!--{{promedioTotal}}-->{{datos.data.response.historico.oferta_promedio_6_meses}}</td>
+                <td class="promediom2"><!--{{promediom2}}--> {{datos.data.response.historico.precio_promedio_m2_6_meses}}</td>
               </tr>
               <tr>
                 <td class="txtPromedio">Total Promedio</td>
@@ -401,7 +404,7 @@
               <img src="../assets/images/calendary.svg" alt="Smiley face">
             </div>
             <div class="numCasas">
-              <h1>{{sMesCasas}}</h1>
+              <h1><!--{{sMesCasas}}-->{{datos.data.response.historico.listado_promedio_6_meses}}</h1>
               <p>Casas y departamentos listados en los últimos 6 meses</p>
             </div>
           </div>
@@ -415,8 +418,8 @@
               </tr>
 
               <tr>
-                <td class="promediom2">{{cierrePromedioTotal}}</td>
-                <td class="promediom2">{{cierrePromediom2}} </td>
+                <td class="promediom2"><!--{{cierrePromedioTotal}}--> ${{datos.data.response.historico.cierres_promedio_6_meses}}</td>
+                <td class="promediom2"><!--{{cierrePromediom2}}--> ${{datos.data.response.historico.cierres_promedio_m2_6_meses}}</td>
               </tr>
               <tr>
                 <td class="txtPromedio">Total Promedio</td>
