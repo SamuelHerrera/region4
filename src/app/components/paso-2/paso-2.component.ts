@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck, EventEmitter, Output } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
 
 @Component({
@@ -6,9 +6,10 @@ import { SelectItem } from 'primeng/components/common/selectitem';
   templateUrl: './paso-2.component.html',
   styleUrls: ['./paso-2.component.css']
 })
-export class Paso2Component implements OnInit {
+export class Paso2Component implements OnInit, DoCheck {
 
   @Input() avaluoForm: any;
+  @Output() completed = new EventEmitter<boolean>();
 
   isNew = false;
 
@@ -68,6 +69,25 @@ export class Paso2Component implements OnInit {
   nuevo() {
     this.isNew = !this.isNew;
     this.avaluoForm['edad'] = 0;
+  }
+
+  ngDoCheck() {
+    this.verify();
+  }
+
+  verify() {
+    if (this.avaluoForm['id_tipo_propiedad']
+      && this.avaluoForm['recamaras']
+      && this.avaluoForm['banos']
+      && this.avaluoForm['medios_banos']
+      && this.avaluoForm['estacionamientos']
+      && this.avaluoForm['area_construida']
+      && this.avaluoForm['superficie_terreno']
+      && this.avaluoForm['edad']) {
+      this.completed.emit(true);
+    } else {
+      this.completed.emit(false);
+    }
   }
 
 }

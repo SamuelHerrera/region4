@@ -6,26 +6,33 @@
           <span *ngIf="!step1" class="alerta">Sin completar</span>
         </ng-template>
         <app-paso-1 [avaluoForm]="avaluoForm" (completed)="step1=$event"></app-paso-1>
-        <button mat-button matStepperNext>Next</button>
+        <button pButton matStepperNext type="button" label="Siguiente"></button>
       </mat-step>
       <mat-step [completed]="step2">
         <form>
-          <ng-template matStepLabel>Propiedad</ng-template>
-          <app-paso-2 [avaluoForm]="avaluoForm"></app-paso-2>
+          <ng-template matStepLabel>Propiedad
+            <span *ngIf="!step2" class="alerta">Sin completar</span>
+          </ng-template>
+          <app-paso-2 [avaluoForm]="avaluoForm" (completed)="step2=$event"></app-paso-2>
+          <button pButton matStepperNext type="button" label="Siguiente"></button>
         </form>
       </mat-step>
       <mat-step [completed]="step3">
         <form>
-          <ng-template matStepLabel>Amenidades</ng-template>
+          <ng-template matStepLabel>Amenidades
+            <span *ngIf="!step4" class="opcional">Sin completar</span>
+          </ng-template>
           <app-paso-3 [avaluoForm]="avaluoForm"></app-paso-3>
-
+          <button pButton matStepperNext type="button" label="Siguiente"></button>
         </form>
       </mat-step>
       <mat-step [completed]="step4">
         <form>
-          <ng-template matStepLabel>Pagar Avalúo</ng-template>
-          <app-pago-con-tarjeta></app-pago-con-tarjeta>
-
+          <ng-template matStepLabel>Pagar Avalúo
+            <span *ngIf="!step4" class="alerta">Sin completar</span>
+          </ng-template>
+          <app-pago-con-tarjeta (completed)="step4=$event"></app-pago-con-tarjeta>
+          <button pButton matStepperNext type="button" label="Siguiente"></button>
         </form>
       </mat-step>
       <mat-step>

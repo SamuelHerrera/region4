@@ -20,7 +20,7 @@ export class AvaluoComponent implements OnInit {
   index = 0;
   step1 = false;
   step2 = false;
-  step3 = false;
+  step3 = true;
   step4 = false;
 
   /*Todo lo que incluye el stepper*/

@@ -15,7 +15,7 @@ export class PagofacilService {
 
   generatePago(pagofacilreq: Pagofacilrequest) {
 
-    const client = JSON.parse(this.observ.currentUser)
+    const client = this.observ.currentUser;
     return this._http.post("/api/pagofacil", { clientid: client._id, pagofacil_request: pagofacilreq });
   }
 

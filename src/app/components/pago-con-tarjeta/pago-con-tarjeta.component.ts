@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { PagofacilService } from '../../services/pagofacil.service';
 import { Pagofacilrequest } from '../../models/pagofacil.model';
 
@@ -8,6 +8,8 @@ import { Pagofacilrequest } from '../../models/pagofacil.model';
   styleUrls: ['./pago-con-tarjeta.component.css']
 })
 export class PagoConTarjetaComponent implements OnInit {
+
+  @Output() completed = new EventEmitter<boolean>();
 
   disabled = true;
   codigo = false;
@@ -25,6 +27,9 @@ export class PagoConTarjetaComponent implements OnInit {
     this.pf.email = "samuelherrerafuente@gmail.com"
     this.pagofacil.generatePago(this.pf).subscribe(response => {
       console.log(response);
+      if (response) {
+        this.completed.emit(true);
+      }
     });
   }
 

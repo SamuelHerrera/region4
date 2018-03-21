@@ -42,9 +42,10 @@ exports.createPago = async (function (clientid, pagofacil_request) {
   pagofacil_model.reportid = null;
   pagofacil_model.request = pagofacil_request;
 
-  pagofacil_request.idSucursal = "60f961360ca187d533d5adba7d969d6334771370";
-  pagofacil_request.idUsuario = "62ad6f592ecf2faa87ef2437ed85a4d175e73c58";
+  pagofacil_request.idSucursal = "340db135703c61aee380b35041bd3335993c69c8";
+  pagofacil_request.idUsuario = "57f3ecbbecdb05f4d1c1ca2af9a2f12dc061da4e";
   pagofacil_request.idServicio = "3";
+  pagofacil_request.celular = pagofacil_request.telefono;
 
   config.json.params.data = pagofacil_request;
 
