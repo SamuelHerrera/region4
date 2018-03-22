@@ -427,16 +427,24 @@
     <div class="divisor">
       <hr>
     </div>
-    <div class="html2pdf__page-break"></div>
+    <!--<div class="html2pdf__page-break"></div>-->
 
     <!-- Inicio para aplicar las graficas-->
     <!-- Grafica Precio promedio en la colonia-->
     <div class="graficaPrecioColonia">
+      <div class="containerGraficaColonia">
+
       <div class="intro">
-        <h2>Precios promdedio de oferta en la colonia {{datos.data.response.address.colonia}}</h2>
+        <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
       </div>
-      <p-chart type="bar" [data]="datosPrecioColonia"></p-chart>
+      <div class="graficaContainer">
+        <p-chart type="bar" [data]="datosPrecioColonia"></p-chart>
+      </div>
+
     </div>
+    </div>
+
+    <div class="html2pdf__page-break"></div>
 
     <div class="graficaDescripciones">
 
@@ -448,10 +456,10 @@
               <h3> Propiedades según precio por m
                 <sup>2</sup>
               </h3>
-              <p>La gráca muestra el porcentaje de las ofertas en la colonia ordenadas por rango de precios (casas y departamentos
+              <p>La gráfica muestra el porcentaje de las ofertas en la colonia ordenadas por rango de precios (casas y departamentos
                 listados en los últimos 6 meses).</p>
             </div>
-            <div class="graficaPropiedades">
+            <div class="graficaContainer1">
               <p-chart type="bar" [data]="datosPropiedadesM2"></p-chart>
             </div>
           </div>
@@ -463,33 +471,54 @@
               <h3> Edad y tipo de vivienda
               </h3>
               <p>
-                La gráca muestra el porcentaje de ofertas en la colonia según su edad.</p>
+                La gráfica muestra el porcentaje de ofertas en la colonia según su edad.</p>
             </div>
-            <div class="graficaEdadVivienda">
+            <div class="graficaContainer2">
               <p-chart type="bar" [data]="datosEdadVivienda"></p-chart>
             </div>
           </div>
         </div>
 
       </div>
+
       <div class="recamarasSuperficie">
 
         <div class="numRecamaras">
-            <div class="grafica3Container">
-                <div class="intro">
-                  <h3> Número de recámaras
-                  </h3>
-                  <p>
-                    La gráca muestra el porcentaje de ofertas en la colonia según su edad.</p>
-                </div>
-                <div class="graficaEdadVivienda">
-                  <p-chart type="bar" [data]="datosEdadVivienda"></p-chart>
-                </div>
-              </div>
+          <div class="grafica1Container">
+            <div class="intro">
+              <h3> Número de recámaras
+              </h3>
+              <p>
+                La gráfica muestra el número de departamentos según su edad y número de recámaras (dormitorios).</p>
+            </div>
+            <div class="graficaContainer1">
+              <p-chart type="bar" [data]="datosRecamaras"></p-chart>
+            </div>
+          </div>
         </div>
 
-        <div class=superficieConstruida></div>
+        <div class="html2pdf__page-break"></div>
+        
+        <div class=superficieConstruida>
+          <div class="grafica2Container">
+            <div class="intro">
+              <h3>
+                Supercie construida
+              </h3>
+              <p>
+                La gráfica muestra el número de departamentos según su edad y supercie construida.
+              </p>
+            </div>
+            <div class="graficaContainer2">
+              <p-chart type="bar" [data]="datosSuperficieConstruida"></p-chart>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+
+    <div class="divisor">
+      <hr>
     </div>
     <!-- Fin graficas-->
 
@@ -544,41 +573,79 @@
       <div class="glosarioContainer">
 
         <div class="rightText">
-          <h3>Apreciación</h3>
-          <p>Cambio positivo en el precio del inmueble comparado con un periodo base (enero 2014). El cálculo se hace con el
-            modelo de valuación automática de Región4. El cálculo no toma en cuenta inflación.</p>
-          <h3>Avalúo</h3>
-          <p>Un avalúo corresponde a la valoración comercial de un bien raíz. Generalmente es un documento elaborado por un
-            valuador profesional, agente de la propiedad inmobiliaria o corredor de propiedades. Además de la valoración
-            comercial, contiene información sobre el avalúo fiscal, los títulos de dominio, así como la contribución, ubicación,
-            tamaño, calidad de construcción y vida útil de la edificación.</p>
-          <h3>Condición</h3>
-          <p>
-            Nueva o usada. La vivienda nueva es la que tiene menos de un año de construida o remodelada. La usada tiene más Fde un año.</p>
-          <h3>Fecha de oferta</h3>
-          <p>Fecha de publicación de la oferta de venta de un inmueble en un portal de Internet.</p>
-          <h3>Información de cierres</h3>
-          <p>Precios de propiedad es que cuentan con un avalúo certificado y un crédito hipotecario asociado. Se toma el precio
-            de cierre como el valor del inmueble.</p>
-          <h3>Límite inferior y superior</h3>
-          <p>Rangos de valor mínimo y máximo construidos a partir de un intervalo de confianza estadística.</p>
-          <h3>Modelo de Valuación Automática</h3>
-          <p>Modelo estadístico propietario de Región4 el cual toma en cuenta las características de la vivienda (ubicación,
-            superficie, tipología, edad, etc.), los precios de cierre y precios de oferta de propiedades similares, para
-            construir una estimación del precio de mercado del inmueble.</p>
-          <h3>Precio oferta</h3>
-          <p>Precio al que se ofrece una propiedad en un sitio de listados en Internet.</p>
-          <h3>Propiedades</h3>
-          <p>Casas o departamentos para uso residencial.</p>
-          <h3>Propiedades listadas</h3>
-          <p>Propiedades que aparecen en sitios de ofertas en Internet.</p>
-          <h3>Similitud</h3>
-          <p>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Región4. La similitud
-            va del 0 al 100%, donde 100% equivale a dos propiedades exactamente iguales.</p>
-          <h3>Superficie de construcción</h3>
-          <p>Superficie habitable de la residencia, no considera terrazas, estacionamientos o jardines.</p>
-          <h3>Superficie de terreno</h3>
-          <p>Superficie total de la propiedad, toma en cuenta terrazas, estacionamientos y jardines.</p>
+          <div class="intro2">
+            <h3>Apreciación</h3>
+            <p>Cambio positivo en el precio del inmueble comparado con un periodo base (enero 2014). El cálculo se hace con
+              el modelo de valuación automática de Región4. El cálculo no toma en cuenta inflación.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Avalúo</h3>
+            <p>Un avalúo corresponde a la valoración comercial de un bien raíz. Generalmente es un documento elaborado por un
+              valuador profesional, agente de la propiedad inmobiliaria o corredor de propiedades. Además de la valoración
+              comercial, contiene información sobre el avalúo fiscal, los títulos de dominio, así como la contribución, ubicación,
+              tamaño, calidad de construcción y vida útil de la edificación.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Condición</h3>
+            <p>
+              Nueva o usada. La vivienda nueva es la que tiene menos de un año de construida o remodelada. La usada tiene más Fde un año.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Fecha de oferta</h3>
+            <p>Fecha de publicación de la oferta de venta de un inmueble en un portal de Internet.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Información de cierres</h3>
+            <p>Precios de propiedad es que cuentan con un avalúo certificado y un crédito hipotecario asociado. Se toma el precio
+              de cierre como el valor del inmueble.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Límite inferior y superior</h3>
+            <p>Rangos de valor mínimo y máximo construidos a partir de un intervalo de confianza estadística.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Modelo de Valuación Automática</h3>
+            <p>Modelo estadístico propietario de Región4 el cual toma en cuenta las características de la vivienda (ubicación,
+              superficie, tipología, edad, etc.), los precios de cierre y precios de oferta de propiedades similares, para
+              construir una estimación del precio de mercado del inmueble.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Precio oferta</h3>
+            <p>Precio al que se ofrece una propiedad en un sitio de listados en Internet.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Propiedades</h3>
+            <p>Casas o departamentos para uso residencial.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Propiedades listadas</h3>
+            <p>Propiedades que aparecen en sitios de ofertas en Internet.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Similitud</h3>
+            <p>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Región4. La
+              similitud va del 0 al 100%, donde 100% equivale a dos propiedades exactamente iguales.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Superficie de construcción</h3>
+            <p>Superficie habitable de la residencia, no considera terrazas, estacionamientos o jardines.</p>
+          </div>
+
+          <div class="intro2">
+            <h3>Superficie de terreno</h3>
+            <p>Superficie total de la propiedad, toma en cuenta terrazas, estacionamientos y jardines.</p>
+          </div>
 
         </div>
       </div>

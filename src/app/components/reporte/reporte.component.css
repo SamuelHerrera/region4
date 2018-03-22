@@ -640,7 +640,6 @@ table td {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    flex-wrap: wrap;
 }
 
 .leftText {
@@ -656,17 +655,37 @@ table td {
 }
 
 .rightText {
-    width: 570px;
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.rightText p {
+.intro2 h3{
+    
+    font-weight: 700;
+    font-family: '__Merriweather_5';
+    padding-bottom: 7px;
+}
+
+.intro2 p{
+    font-family: '__Merriweather Sans_5';
+    min-height: 58px;
+    font-weight: 300;
+    z-index: 155;
+    line-height: 22px;
+    text-align: justify;
+    padding-bottom: 7px;
+}
+
+/*.rightText p {
     height: 65px;
     color: #999999;
     line-height: 15px;
     font-family: Geneva, Verdana, Lucida Sans, Lucida Sans Unicode, sans-serif;
     text-align: justify;
     font-size: 11px;
-}
+}*/
 
 .terminos {
     display: table-column;
@@ -689,13 +708,71 @@ table td {
 }
 
 .graficaPrecioColonia {
-    border: 1px red solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.containerGraficaColonia {
+    width: 650px;
+    display: flex;
+    flex-direction: column;
+
+};
+
+.graficaContainer {
+    width: 100%;
+}
+
+.graficaContainer p-chart {
+    width: 100%;
+}
+
+.graficaDescripciones {
+    display: table-column;
+}
+
+.propiedadesEdad {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.propiedadesPrecioM2 {
+    display: table-column;
+    width: 320px;
+}
+
+.grafica1Container {
+    width: 320px;
+    padding-left: 10px;;
+    padding-top: 10px;
+}
+
+.grafica2Container {
+    width: 320px;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+
+.edadVivienda {
+    display: table-column;
+    width: 320px;
+}
+
+.recamarasSuperficie {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
-.graficaPrecioColonia p-chart{
-    width: 620px;;
-    border:1px black solid;
+
+.graficaContainer1 p-chart {
+    width: 100%;
+}
+
+.graficaContainer2 p-chart {
+    width: 310px;
 }

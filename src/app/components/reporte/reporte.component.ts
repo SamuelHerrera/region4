@@ -42,12 +42,18 @@ export class ReporteComponent implements OnInit, OnChanges {
   /**datos.data.request.colonia_preciosm2_general */
   datosPrecioColonia: any;
   datosPropiedadesM2: any;
+  datosEdadVivienda: any;
+  datosRecamaras: any;
+  datosSuperficieConstruida: any;
 
   constructor() {
 
+    
+
+    
     if (this.datos) {
-      
-      this.datosPrecioColonia = {
+
+     /* this.datosPrecioColonia = {
         //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         labels: this.datos.data.response.colonia_preciosm2_general.labels,
         datasets: [
@@ -56,10 +62,13 @@ export class ReporteComponent implements OnInit, OnChanges {
             backgroundColor: '#42A5F5',
             borderColor: '#1E88E5',
             //data: [65, 59, 80, 81, 56, 55, 40]
-            data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+            data: this.datos.data.response.colonia_preciosm2_general.data.usado
           }
         ]
-      }
+      }*/
+
+      
+
     }
 
   }
@@ -90,6 +99,118 @@ export class ReporteComponent implements OnInit, OnChanges {
         });
         ind++;
       });
+
+      /**Graficas con datos obtenidos del json */
+      this.datosPrecioColonia = {
+        //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: this.datos.data.response.colonia_preciosm2_general.labels,
+        datasets: [
+          {
+            label: 'Precio Promedio Nuevo',
+            backgroundColor: '#0000FF',
+            borderColor: '#0080FF',
+            //data: [65, 59, 80, 81, 56, 55, 40]
+            data: this.datos.data.response.colonia_preciosm2_general.data.nuevo
+          },
+          {
+            label: 'Precio Promedio Usado',
+            backgroundColor: '#2E64FE',
+            borderColor: '#0080FF',
+            //data: [65, 59, 80, 81, 56, 55, 40]
+            data: this.datos.data.response.colonia_preciosm2_general.data.usado
+          }
+        ]
+      }
+      /**grafica de precio propiedad por m2 */
+      /** this.datos.data.response.colonia_preciosm2_especifica */
+      this.datosPropiedadesM2 = {
+        labels: this.datos.data.response.colonia_preciosm2_especifica.labels,
+        //labels: ['35000', '40000', '50000', '50000+'],
+        datasets: [
+          {
+            label: 'Nuevo',
+            backgroundColor: '#82FA58',
+            borderColor: '#74DF00',
+            data: this.datos.data.response.colonia_preciosm2_especifica.data.nuevo
+            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          }, {
+            label: 'Usado',
+            backgroundColor: '#C8FE2E',
+            borderColor: '#74DF00',
+            data: this.datos.data.response.colonia_preciosm2_especifica.data.usado
+            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          }
+        ]
+      }
+
+      /**Grafica edad y tipo de vivienda */
+      /** */
+      this.datosEdadVivienda = {
+        labels: ['Casa', 'Departamento'],
+        datasets: [
+          {
+            label: 'Nuevo',
+            backgroundColor: '#82FA58',
+            borderColor: '#74DF00',
+            data: this.datos.data.response.colonia_tipos_propiedades.data.nuevo
+            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          }, {
+            label: 'Usado',
+            backgroundColor: '#C8FE2E',
+            borderColor: '#74DF00',
+            data: this.datos.data.response.colonia_tipos_propiedades.data.usado 
+            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          }
+        ]
+      }
+
+      /**Grafica numero de recamaras */
+      /** this.datos.data.response.colonia_recamaras.labels --> .data.nuevo .data.usado */
+      this.datosRecamaras = {
+        //labels: this.datos.data.response.colonia_recamaras.labels,
+        labels: ['1', '2', '3', '4+'],
+        datasets: [
+          {
+            label: 'Nuevo',
+            backgroundColor: '#82FA58',
+            borderColor: '#74DF00',
+            data: this.datos.data.response.colonia_recamaras.data.nuevo
+            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          }, {
+            label: 'Usado',
+            backgroundColor: '#C8FE2E',
+            borderColor: '#74DF00',
+            data: this.datos.data.response.colonia_recamaras.data.usado
+            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          }
+        ]
+      }
+
+      /**Grafica superficie construida */
+      /** this.datos.data.response.colonia_superficies.labels --> .data.nuevo .data.usado*/
+      this.datosSuperficieConstruida = {
+        //labels: this.datos.data.response.colonia_superficies.labels,
+        labels: ['<60 m2', '60-120 m2', '120-200 m2', '>200 m2'],
+        datasets: [
+          {
+            label: 'Nuevo',
+            backgroundColor: '#82FA58',
+            borderColor: '#74DF00',
+            data: this.datos.data.response.colonia_superficies.data.nuevo
+            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          },
+          {
+            label: 'Usado',
+            backgroundColor: '#C8FE2E',
+            borderColor: '#74DF00',
+            data: this.datos.data.response.colonia_superficies.data.usado
+            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          }
+        ]
+      }
+
+      /**Fin graficas */
+
     }
   }
 
