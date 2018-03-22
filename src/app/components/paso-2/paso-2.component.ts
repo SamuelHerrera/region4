@@ -38,7 +38,7 @@ export class Paso2Component implements OnInit {
   selectedAge: String;
 
   constructor() {
-    
+
 
     this.types = [
       { label: 'Casa', value: 2 },
@@ -89,10 +89,10 @@ export class Paso2Component implements OnInit {
     }
   }
 
-  onChange() {
+  onChange(event) {
     this.verify();
 
-    
+
 
   }
 
