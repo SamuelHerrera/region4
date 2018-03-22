@@ -32,7 +32,7 @@ export class Paso1Component implements OnInit {
     }
   }
 
-  onChange() {
+  onChange(event) {
     this.verify();
   }
 
