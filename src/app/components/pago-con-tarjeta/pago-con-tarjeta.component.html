@@ -1,13 +1,13 @@
 <div class="container">
-  <div class="cost">
+  <div class="cost mat-elevation-z8">
     <div class="costContainer">
       <span>Costo Avalúo</span>
-      <input id="disabled-input" type="text" size="20" pInputText [disabled]="disabled" />
+      <input id="disabled-input" type="text" size="20" value="1" pInputText [disabled]="disabled" />
     </div>
 
     <div class="costContainer">
       <span>Individual</span>
-      <input id="disabled-input" type="text" size="20" pInputText [disabled]="disabled" />
+      <input id="disabled-input" type="text" size="20" value="1" pInputText [disabled]="disabled" />
     </div>
 
     <div class="costContainer">
@@ -19,14 +19,14 @@
     </div>
     <div class="costContainer">
       <span>Subtotal</span>
-      <input id="disabled-input" type="text" size="20" pInputText [disabled]="disabled" />
+      <input id="disabled-input" type="text" value="1" size="20" pInputText [disabled]="disabled" />
     </div>
     <div class="divisor">
       <hr>
     </div>
     <div class="costContainer">
       <span>TOTAL</span>
-      <input id="disabled-input" type="text" size="20" pInputText [disabled]="disabled" />
+      <input id="disabled-input" type="text" value="1" size="20" pInputText [disabled]="disabled" />
     </div>
   </div>
 
@@ -102,12 +102,14 @@
           </div>
         </div>
         <div class="payButton">
-          <p-button (onClick)="pagarAvaluo()" label="Pagar Ahora"></p-button>
+          <p-button (onClick)="pagarAvaluo()" label="Pagar Ahora" [disabled]="loading"></p-button>
+          <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
         </div>
       </div>
     </p-tabPanel>
     <p-tabPanel header="PayPal">
-      <p-button (onClick)="pagarAvaluoPayPal()" label="Pagar Ahora con PayPal"></p-button>
+      <p-button (onClick)="pagarAvaluoPayPal()" label="Pagar Ahora con PayPal" [disabled]="loading"></p-button>
+      <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
     </p-tabPanel>
   </p-tabView>
 

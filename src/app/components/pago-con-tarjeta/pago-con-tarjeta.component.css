@@ -1,79 +1,87 @@
-.container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    
-    font-size: 15px;
-    line-height: 14px;
-    font-family: '__Merriweather Sans_5';
-    font-weight: 300;
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-size: 15px;
+  line-height: 14px;
+  font-family: '__Merriweather Sans_5';
+  font-weight: 300;
 }
 
-.cost{
-    padding: 5px;
-    width: 290px;
-    height: 270px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.cost {
+  padding: 5px;
+  width: 290px;
+  height: 270px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
-.costContainer{
-   
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.cupon{
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-.divisor hr{
-    vertical-align: top;
-}
-.paymentInfo{ 
-    width: 510px;
-    display: flex;
-    flex-direction: column;
 
+.costContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
-.tittle{
-    text-align: center;
-    font-size: 18px;
-    height: 30px;
-    vertical-align: middle;
-}
-.subContainer{
-    width: 508px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-    min-height: 316px;
-}
-.containerPayment{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: column;
-    padding-top: 5px;
-}
-.expiredDate{
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly ;
 
+.cupon {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
 }
-.numInfo{
-    
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+
+.divisor hr {
+  vertical-align: top;
 }
-.payButton{
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 23px;
+
+.paymentInfo {
+  width: 510px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tittle {
+  text-align: center;
+  font-size: 18px;
+  height: 30px;
+  vertical-align: middle;
+}
+
+.progress {
+  width: 300px;
+  margin: 10px;
+}
+
+.subContainer {
+  width: 508px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  min-height: 316px;
+}
+
+.containerPayment {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  padding-top: 5px;
+}
+
+.expiredDate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.numInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.payButton {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 23px;
 }
