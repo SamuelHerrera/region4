@@ -4,7 +4,9 @@ var request = require('request');
 var model = require('../models/pagofacil.model');
 var Paypal = require('paypal-express-checkout');
 var paypal = Paypal.init('ventas_api1.region4.mx', 'ZDEVUL82HZYAGSVE', 'ASv4fEpVJSdI6SLeoOrHgCir72YoAV8WH8t0Jq5IWSNZom3WTu6tg-E.',
-  'http://www.example.com/return', 'http://www.example.com/cancel', false);
+  'http://www.example.com/execute', 'http://www.example.com/cancel', false);
+
+exports._paypal = paypal;
 
 _this = this;
 
@@ -80,24 +82,42 @@ exports.createPagoPayPal = async (function (clientid) {
   pagofacil_model.request = {};
 
   var response = await (new Promise(function (resolve, reject) {
-    paypal.pay('20130001', 123.23, 'iPad', 'EUR', true, ['custom', 'data'], function (err, url) {
+    paypal.pay('20180001', 1, 'Reporte region4', 'MXN', false, [clientid], function (err, url) {
       if (err) {
-        console.log(err);
         reject(err);
         return;
       } else {
-        console.log(url);
-        response.redirect(url);
         resolve(url);
       }
     });
   }));
-
-  pagofacil_model.response = response.result;
-  pagofacil_model.autorized = response.autorizado;
+  pagofacil_model.response = response;
+  pagofacil_model.autorized = false;
   try {
     var savedPagofacil = await (pagofacil_model.save());
     return savedPagofacil;
+  } catch (e) {
+    throw Error("Error: " + e);
+  }
+});
+
+exports.executePagoPayPal = async (function (body) {
+  console.log(body);
+  try {
+
+    res.redirect("/");
+    res.end();
+  } catch (e) {
+    throw Error("Error: " + e);
+  }
+});
+
+exports.cancelPagoPayPal = async (function (body) {
+  console.log(body);
+  try {
+
+    res.redirect("/");
+    res.end();
   } catch (e) {
     throw Error("Error: " + e);
   }

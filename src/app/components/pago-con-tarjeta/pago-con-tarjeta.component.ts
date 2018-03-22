@@ -3,6 +3,8 @@ import { PagofacilService } from '../../services/pagofacil.service';
 import { Pagofacilrequest } from '../../models/pagofacil.model';
 import { MessageService } from 'primeng/components/common/messageservice';
 
+declare var window: Window;
+
 @Component({
   selector: 'app-pago-con-tarjeta',
   templateUrl: './pago-con-tarjeta.component.html',
@@ -11,6 +13,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 export class PagoConTarjetaComponent implements OnInit {
 
   @Output() completed = new EventEmitter<boolean>();
+
+
 
   disabled = true;
   codigo = false;
@@ -44,14 +48,28 @@ export class PagoConTarjetaComponent implements OnInit {
   }
 
   pagarAvaluoPayPal() {
-    this.pagofacil.generatePagoPayPal().subscribe(response => {
-      console.log(response);
-      if (response) {
+    this.pagofacil.generatePagoPayPal().subscribe((response: any) => {
+      const win = window.open(response.data.response, "Secure Payment");
+      if (win) {
+        const timer = setInterval(() => {
+          if (win.closed) {
+            clearInterval(timer);
+
+
+            if (response) {
+              this.messageService.add({
+                severity: 'success', summary: 'Procesamiento de pago',
+                detail: "Su pago se ha procesado satisfactoriamente."
+              });
+              this.completed.emit(true);
+            }
+          }
+        }, 500);
+      } else {
         this.messageService.add({
-          severity: 'success', summary: 'Procesamiento de pago',
-          detail: "Su pago se ha procesado satisfactoriamente."
+          severity: 'error', summary: 'Error procesando pago',
+          detail: "Porfavor permite los popups para poder procesar el pago!"
         });
-        this.completed.emit(true);
       }
     }, error => {
       this.messageService.add({
