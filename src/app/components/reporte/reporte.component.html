@@ -153,19 +153,19 @@
             <h3>Estimado del valor total</h3>
 
             <h4>$
-              <!--{{precioEstimado}}-->{{datos.data.response.valuacion.valuacion}}</h4>
+              <!--{{precioEstimado}}-->{{datos.data.response.valuacion.valuacion | number:'0.1-2'}}</h4>
             <p>Estimado de valor total*</p>
           </div>
 
           <div class="estimated2">
             <div class="inferior">
               <h4>$
-                <!--{{precioInferior}}-->{{datos.data.response.valuacion.intervalo_bajo}}</h4>
+                <!--{{precioInferior}}-->{{datos.data.response.valuacion.intervalo_bajo | number:'0.1-2'}}</h4>
               <p>Limite inferior</p>
             </div>
             <div class="superior">
               <h4>$
-                <!--{{precioSuperior}}-->{{datos.data.response.valuacion.intervalo_alto}}</h4>
+                <!--{{precioSuperior}}-->{{datos.data.response.valuacion.intervalo_alto | number:'0.1-2'}}</h4>
               <p>Limite Superior</p>
             </div>
           </div>
@@ -184,19 +184,19 @@
             <h3>Estimado del valor por m2</h3>
 
             <h4>$
-              <!--{{precioEstimadoM2}}-->{{datos.data.response.valuacion.valuacion_m2}}</h4>
+              <!--{{precioEstimadoM2}}-->{{datos.data.response.valuacion.valuacion_m2 | number:'0.1-2'}}</h4>
             <p>Estimado de valor por m2*</p>
           </div>
 
           <div class="mEstimated2">
             <div class="mInferior">
               <h4>$
-                <!--{{precioMInferior}}-->{{datos.data.response.valuacion.intervalo_bajo_m2}}</h4>
+                <!--{{precioMInferior}}-->{{datos.data.response.valuacion.intervalo_bajo_m2 | number:'0.1-2'}}</h4>
               <p>Limite inferior</p>
             </div>
             <div class="mSuperior">
               <h4>$
-                <!--{{precioMSuperior}}-->{{datos.data.response.valuacion.intervalo_alto_m2}} </h4>
+                <!--{{precioMSuperior}}-->{{datos.data.response.valuacion.intervalo_alto_m2 | number:'0.1-2'}} </h4>
               <p>Limite Superior</p>
             </div>
           </div>
@@ -235,6 +235,7 @@
       <hr>
     </div>
 
+    <div class="html2pdf__page-break"></div>
 
     <div class="propiedades">
 
@@ -257,7 +258,8 @@
       </div> -->
 
       <div class="table">
-        <div class="example-container mat-elevation-z8">
+        <div class="example-container ">
+          <!--mat-elevation-z8-->
           <mat-table #table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="position">
@@ -271,12 +273,12 @@
 
             <ng-container matColumnDef="total">
               <mat-header-cell *matHeaderCellDef mat-sort-header> $ Total </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.total}} </mat-cell>
+              <mat-cell *matCellDef="let element">$ {{element.total | number: '0.1-2'}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="m2">
               <mat-header-cell *matHeaderCellDef mat-sort-header> $ m2 </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.m2}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.m2 | number: '0.1-2'}} m<sup>2</sup></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="cuartos">
@@ -296,7 +298,7 @@
 
             <ng-container matColumnDef="construccion">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Construccion </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.construccion}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.construccion | number: '0.1-2'}} m<sup>2</sup></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="edad">
@@ -306,12 +308,12 @@
 
             <ng-container matColumnDef="distancia">
               <mat-header-cell *matHeaderCellDef mat-sort-header> Distancia </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.distancia}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.distancia | number: '0.1-2'}} Km</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="similitud">
               <mat-header-cell *matHeaderCellDef mat-sort-header> % Similitud </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.similitud}} </mat-cell>
+              <mat-cell *matCellDef="let element"> {{element.similitud | number: '0.1-2'}} %</mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -368,9 +370,9 @@
 
               <tr>
                 <td class="promedioTotal">$
-                  <!--{{promedioTotal}}-->{{datos.data.response.historico.oferta_promedio_6_meses}}</td>
+                  <!--{{promedioTotal}}-->{{datos.data.response.historico.oferta_promedio_6_meses | number:'0.1-2'}}</td>
                 <td class="promediom2">
-                  <!--{{promediom2}}-->{{datos.data.response.historico.precio_promedio_m2_6_meses}}</td>
+                  <!--{{promediom2}}-->{{datos.data.response.historico.precio_promedio_m2_6_meses | number:'0.1-2'}}</td>
               </tr>
               <tr>
                 <td class="txtPromedio">Total Promedio</td>
@@ -406,9 +408,9 @@
 
               <tr>
                 <td class="promediom2">
-                  <!--{{cierrePromedioTotal}}-->${{datos.data.response.historico.cierres_promedio_6_meses}}</td>
+                  <!--{{cierrePromedioTotal}}-->${{datos.data.response.historico.cierres_promedio_6_meses | number:'0.1-2'}}</td>
                 <td class="promediom2">
-                  <!--{{cierrePromediom2}}-->${{datos.data.response.historico.cierres_promedio_m2_6_meses}}</td>
+                  <!--{{cierrePromediom2}}-->${{datos.data.response.historico.cierres_promedio_m2_6_meses | number:'0.1-2'}}</td>
               </tr>
               <tr>
                 <td class="txtPromedio">Total Promedio</td>
@@ -434,14 +436,14 @@
     <div class="graficaPrecioColonia">
       <div class="containerGraficaColonia">
 
-      <div class="intro">
-        <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
-      </div>
-      <div class="graficaContainer">
-        <p-chart type="bar" [data]="datosPrecioColonia"></p-chart>
-      </div>
+        <div class="intro">
+          <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
+        </div>
+        <div class="graficaContainer">
+          <p-chart type="bar" [data]="datosPrecioColonia"></p-chart>
+        </div>
 
-    </div>
+      </div>
     </div>
 
     <div class="html2pdf__page-break"></div>
