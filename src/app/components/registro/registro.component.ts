@@ -51,7 +51,6 @@ export class RegistroComponent implements OnInit {
   }
 
   public onSubmit(form) {
-    console.log(form);
     const client: Client = new Client();
     client.name = form.Nombre;
     client.activationCode = uuid();

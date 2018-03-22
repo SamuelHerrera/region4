@@ -1,29 +1,33 @@
 <div class="container">
   <div class="scrollable">
-    <mat-vertical-stepper #stepper="matVerticalStepper" (selectionChange)="stepchanged($event)" [linear]="true" [selectedIndex]="index">
+    <!-- (selectionChange)="stepchanged($event)" -->
+    <mat-vertical-stepper #stepper="matVerticalStepper" [linear]="true" [selectedIndex]="index">
       <mat-step [completed]="step1">
         <ng-template matStepLabel>Ubicar Propiedad
           <span *ngIf="!step1" class="alerta">Sin completar</span>
         </ng-template>
+        <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
         <app-paso-1 [avaluoForm]="avaluoForm" (completed)="step1=$event"></app-paso-1>
-        <button pButton matStepperNext type="button" label="Siguiente"></button>
+        <button class="derecha animated" [ngClass]="{'shake':step1,'bounceOut':!step1}" pButton matStepperNext type="button" label="Siguiente"></button>
       </mat-step>
       <mat-step [completed]="step2">
         <form>
           <ng-template matStepLabel>Propiedad
             <span *ngIf="!step2" class="alerta">Sin completar</span>
           </ng-template>
+          <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
           <app-paso-2 [avaluoForm]="avaluoForm" (completed)="step2=$event"></app-paso-2>
-          <button pButton matStepperNext type="button" label="Siguiente"></button>
+          <button pButton matStepperNext type="button" label="Siguiente" class="derecha animated" [ngClass]="{'shake':step2,'bounceOut':!step2}"></button>
         </form>
       </mat-step>
       <mat-step [completed]="step3">
         <form>
           <ng-template matStepLabel>Amenidades
-            <span *ngIf="!step4" class="opcional">Sin completar</span>
+            <span *ngIf="!step4" class="opcional">Opcional</span>
           </ng-template>
+          <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
           <app-paso-3 [avaluoForm]="avaluoForm"></app-paso-3>
-          <button pButton matStepperNext type="button" label="Siguiente"></button>
+          <button pButton matStepperNext type="button" label="Siguiente" class="derecha"></button>
         </form>
       </mat-step>
       <mat-step [completed]="step4">
@@ -32,33 +36,26 @@
             <span *ngIf="!step4" class="alerta">Sin completar</span>
           </ng-template>
           <app-pago-con-tarjeta *ngIf="!step4" (completed)="step4=$event"></app-pago-con-tarjeta>
-          <button *ngIf="step4" pButton matStepperNext type="button" label="Siguiente"></button>
-        </form>
-      </mat-step>
-      <!-- <mat-step>
-        <form>
-          <ng-template matStepLabel>Ingresar Correo</ng-template>
-          <div class="correo">
-            <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText name="correo">
-              <label for="float-input">Correo</label>
-            </span>
-
+          <div *ngIf="step4" class="centered">
+            <img class="images" src="../assets/images/pagoefectuado.png" alt="Smiley face" height="100" width="300">
+            <button pButton type="button" *ngIf="!avaluoResponse" (click)="enviarCorreo()" label="Generar Reporte" [disabled]="loading"
+              class="animated" [ngClass]="{'shake':step4,'bounceOut':!step4}"></button>
+            <span class="margintop" *ngIf="loading">Generando reporte...</span>
+            <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
+            <!--  -->
+            <!-- matStepperNext -->
           </div>
         </form>
-      </mat-step> -->
+      </mat-step>
       <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <div class="nvoAvaluo">
-          <p-button matStepperNext (onClick)="enviarCorreo()" label="Generar"></p-button>
-          <p-button *ngIf="avaluoResponse" (onClick)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
-          <p-button *ngIf="avaluoResponse" (onClick)="imprimir()" label="Imprimir"></p-button>
+          <p-button *ngIf="avaluoResponse" (click)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
+          <p-button *ngIf="avaluoResponse" (click)="imprimir()" label="Imprimir"></p-button>
         </div>
+        <div class="loader" *ngIf="!avaluoResponse"></div>
         <app-reporte *ngIf="avaluoResponse" [datos]="avaluoResponse"></app-reporte>
       </mat-step>
     </mat-vertical-stepper>
-
-
   </div>
 </div>
-<!-- Ejemplo de material Design-->

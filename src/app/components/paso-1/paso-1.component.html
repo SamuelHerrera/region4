@@ -1,40 +1,47 @@
 <div class="container">
   <div class="addressDesc">
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="calle" [(ngModel)]="avaluoForm['street']" required>
+      <input id="float-input" type="text" size="30" pInputText name="calle" [(ngModel)]="avaluoForm['street']" (ngModelChange)="onChange($event)"
+        required>
       <label for="float-input">Calle</label>
     </span>
 
     <div class="nums">
 
       <span class="ui-float-label">
-        <input id="float-input" type="text" size="8" pInputText name="numExt" [(ngModel)]="avaluoForm['num_ext']" required>
+        <input id="float-input" type="text" size="8" pInputText name="numExt" [(ngModel)]="avaluoForm['num_ext']" (ngModelChange)="onChange($event)"
+          required>
         <label for="float-input">Num. Ext</label>
       </span>
 
       <span class="ui-float-label">
-        <input id="float-input" type="text" size="10" pInputText name="codigoPostal" [(ngModel)]="avaluoForm['zip']" required>
+        <input id="float-input" type="text" size="10" pInputText name="codigoPostal" [(ngModel)]="avaluoForm['zip']" (ngModelChange)="onChange($event)"
+          required>
         <label for="float-input">C.P.</label>
       </span>
     </div>
 
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="colonia" [(ngModel)]="avaluoForm['colonia']" required>
+      <input id="float-input" type="text" size="30" pInputText name="colonia" [(ngModel)]="avaluoForm['colonia']" (ngModelChange)="onChange($event)"
+        required>
       <label for="float-input">Colonia</label>
     </span>
 
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="municipio" [(ngModel)]="avaluoForm['municipio']" required>
+      <input id="float-input" type="text" size="30" pInputText name="municipio" [(ngModel)]="avaluoForm['municipio']" (ngModelChange)="onChange($event)"
+        required>
       <label for="float-input">Municipio</label>
     </span>
 
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="estado" [(ngModel)]="avaluoForm['estado']" required>
+      <input id="float-input" type="text" size="30" pInputText name="estado" [(ngModel)]="avaluoForm['estado']" (ngModelChange)="onChange($event)"
+        required>
       <label for="float-input">Estado</label>
     </span>
 
     <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText name="ciudad" [(ngModel)]="avaluoForm['ciudad']" required>
+      <input id="float-input" type="text" size="30" pInputText name="ciudad" [(ngModel)]="avaluoForm['ciudad']" (ngModelChange)="onChange($event)"
+        required>
       <label for="float-input">Ciudad</label>
     </span>
 

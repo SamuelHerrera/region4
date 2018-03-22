@@ -46,7 +46,7 @@ export class ReporteComponent implements OnInit, OnChanges {
   constructor() {
 
     if (this.datos) {
-      
+
       this.datosPrecioColonia = {
         //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         labels: this.datos.data.response.colonia_preciosm2_general.labels,
@@ -69,9 +69,6 @@ export class ReporteComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.datos) {
-
-      console.log(this.datos.data.response.colonia_preciosm2_general.data.usado);
-
       this.ELEMENT_DATA = [];
       let ind = 1;
       this.datos.data.response.similares.forEach(element => {
@@ -90,6 +87,7 @@ export class ReporteComponent implements OnInit, OnChanges {
         });
         ind++;
       });
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     }
   }
 

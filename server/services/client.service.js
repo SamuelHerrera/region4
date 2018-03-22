@@ -48,10 +48,7 @@ exports.activateClient = async (function (activationCode) {
   if (!oldClient) {
     return false;
   }
-  console.log(oldClient)
   oldClient.status = "active";
-  console.log(oldClient)
-
   try {
     var savedClient = await (oldClient.save());
     return savedClient;
@@ -88,7 +85,6 @@ exports.updateClient = async (function (client) {
   if (!oldClient) {
     return false;
   }
-  console.log(oldClient)
   oldClient.name = client.name;
   oldClient.mail = client.mail;
   oldClient.phone = client.phone;
@@ -96,9 +92,6 @@ exports.updateClient = async (function (client) {
   oldClient.facturacion = client.facturacion;
   oldClient.activationCode = client.activationCode;
   oldClient.status = client.status;
-
-  console.log(oldClient)
-
   try {
     var savedClient = await (oldClient.save());
     return savedClient;

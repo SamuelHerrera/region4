@@ -80,7 +80,6 @@ exports.activateClient = async (function (req, res, next) {
       message: "Clave must be present"
     });
   }
-  console.log(req.body);
   try {
     var updatedClient = await (ClientService.activateClient(req.body.clave));
     if (updatedClient) {
@@ -110,7 +109,6 @@ exports.loginClient = async (function (req, res, next) {
       message: "mail and password must be present"
     });
   }
-  console.log(req.body);
   try {
     var loginClient = await (ClientService.loginClient(req.body.user, req.body.pass));
 
@@ -152,7 +150,6 @@ exports.updateClient = async (function (req, res, next) {
       message: "Id must be present"
     });
   }
-  console.log(req.body);
   try {
     var updatedClient = await (ClientService.updateClient(req.body));
     return res.status(200).json({

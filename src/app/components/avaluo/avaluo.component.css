@@ -15,6 +15,26 @@
   color: darkgreen;
 }
 
+.margintop {
+  margin-top: 10px;
+}
+
+.derecha {
+  float: right;
+}
+
+.progress {
+  width: 300px;
+  margin: 10px;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .scrollable {
   height: 100%;
   width: 100%;
@@ -45,4 +65,13 @@
   flex-direction: row;
   justify-content: center;
   padding-top: 20px;
+}
+
+.disable-whole-div__cover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: #ddd;
+  opacity: 0.3;
 }
