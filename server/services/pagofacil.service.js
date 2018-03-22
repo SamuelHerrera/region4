@@ -81,8 +81,6 @@ exports.createPagoPayPal = async (function (clientid) {
   pagofacil_model.reportid = null;
   pagofacil_model.request = {};
 
-  console.log(paypal);
-
   var response = await (new Promise(function (resolve, reject) {
     paypal.pay('20180001', 1, 'Reporte region4', 'MXN', false, [clientid], function (err, url) {
       if (err) {
