@@ -16,7 +16,7 @@
             <span *ngIf="!step2" class="alerta">Sin completar</span>
           </ng-template>
           <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
-          <app-paso-2 [avaluoForm]="avaluoForm" (completed)="step2=$event"></app-paso-2>
+          <app-paso-2  *ngIf ="avaluoForm" [avaluoForm]="avaluoForm" (completed)="step2=$event" ></app-paso-2>
           <button pButton matStepperNext type="button" label="Siguiente" class="derecha animated" [ngClass]="{'shake':step2,'bounceOut':!step2}"></button>
         </form>
       </mat-step>

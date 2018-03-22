@@ -27,17 +27,19 @@ export class Paso2Component implements OnInit {
   selectedNumBox: String;
 
   /**Direccion */
-  calle = 100;
-  numExt = "491B";
-  colonia = "Bojórquez";
-  codigoPostal = 97300;
-  municipio = "Mérida";
-  estado = "Yucatán";
-  ciudad = "Mérida";
+  calle: number;
+  numExt: String;
+  codigoPostal: number;
+  municipio: String;
+  estado: String;
+  ciudad: String;
+  colonia: String;
   /** */
   selectedAge: String;
 
   constructor() {
+
+
     this.types = [
       { label: 'Casa', value: 2 },
       { label: 'Departamento', value: 4 }
@@ -72,8 +74,26 @@ export class Paso2Component implements OnInit {
     this.verify();
   }
 
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterContentInit() {
+    //Called after ngOnInit when the component's or directive's content has been initialized.
+    //Add 'implements AfterContentInit' to the class.
+    if (this.avaluoForm) {
+      this.calle = this.avaluoForm.street;
+      this.numExt = this.avaluoForm.num_ext;
+      this.colonia = this.avaluoForm.colonia;
+      this.codigoPostal = this.avaluoForm.zip;
+      this.municipio = this.avaluoForm.municipio;
+      this.estado = this.avaluoForm.estado;
+      this.ciudad = this.avaluoForm.ciudad;
+    }
+  }
+
   onChange(event) {
     this.verify();
+
+
+
   }
 
   verify() {
