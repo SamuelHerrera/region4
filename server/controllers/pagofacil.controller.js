@@ -40,8 +40,8 @@ exports.createPago = async (function (req, res, next) {
 });
 
 exports.createPagoPayPal = async (function (req, res, next) {
-  Service._paypal.returnUrl = req.headers.host + "/execute";
-  Service._paypal.returnUrl = req.headers.host + "/cancel";
+  Service._paypal.returnUrl = "https://" + req.headers.host + "/execute";
+  Service._paypal.cancelUrl = "https://" + req.headers.host + "/cancel";
   try {
     var data = await (Service.createPagoPayPal(req.body.clientid));
     return res.status(200).json({
