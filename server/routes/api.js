@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
-var bluebird = require('bluebird')
+var bluebird = require('bluebird');
+var multer = require('multer');
+var upload = multer();
+
 
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
@@ -36,5 +39,10 @@ router.put('/pagofacil', PagoFacilController.recordReference);
 router.post('/processpaypal', PagoFacilController.createPagoPayPal);
 router.get('/execute', PagoFacilController.executePagoPayPal);
 router.get('/cancel', PagoFacilController.cancelPagoPayPal);
+
+var MailController = require('../controllers/mail.controller');
+router.post('/sendmail', upload.any(), MailController.sendMail);
+
+
 
 module.exports = router;
