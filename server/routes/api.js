@@ -32,5 +32,7 @@ router.post('/pagofacil', PagoFacilController.createPago);
 router.get('/pagofacil', PagoFacilController.getPago);
 router.put('/pagofacil', PagoFacilController.recordReference);
 router.post('/processpaypal', PagoFacilController.createPagoPayPal);
+router.post('/execute', PagoFacilController.executePagoPayPal);
+router.post('/cancel', PagoFacilController.cancelPagoPayPal);
 
 module.exports = router;
