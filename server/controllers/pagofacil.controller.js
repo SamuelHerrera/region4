@@ -8,8 +8,9 @@ _this = this;
 exports.getPago = async (function (req, res, next) {
   var page = req.query.page ? req.query.page : 1;
   var limit = req.query.limit ? req.query.limit : 10;
+  var query = req.query ? req.query : {};
   try {
-    var data = await (Service.getPago({}, page, limit));
+    var data = await (Service.getPago(query, page, limit));
     return res.status(200).json({
       status: 200,
       data: data,
@@ -40,31 +41,49 @@ exports.createPago = async (function (req, res, next) {
 });
 
 exports.createPagoPayPal = async (function (req, res, next) {
-  Service._paypal.returnUrl = "https://" + req.headers.host + "/api/execute";
-  Service._paypal.cancelUrl = "https://" + req.headers.host + "/api/cancel";
-  try {
-    var data = await (Service.createPagoPayPal(req.body.clientid));
-    return res.status(200).json({
-      status: 200,
-      data: data,
-      message: "Succesfully generated pagofacil"
-    });
-  } catch (e) {
-    return res.status(400).json({
-      status: 400,
-      message: "Error generando transaccion pagofacil: " + e
-    });
+  Service._paypal.returnUrl = "http://" + req.headers.host + "/api/execute";
+  Service._paypal.cancelUrl = "http://" + req.headers.host + "/api/cancel";
+
+  req.body.token ? req.body.token : null;
+  req.body.payerid ? req.body.payerid : null;
+
+  if (req.body.token && req.body.payerid) {
+    try {
+      var data = await (Service.executePagoPayPal(null, req.body.token, req.body.payerid));
+      return res.status(200).json({
+        status: 200,
+        data: data,
+        message: "Succesfully executed pagofacil"
+      });
+    } catch (e) {
+      return res.status(400).json({
+        status: 400,
+        message: "Error generando transaccion pagofacil: " + e
+      });
+    }
+  } else {
+    try {
+      var data = await (Service.createPagoPayPal(req.body.clientid));
+      return res.status(200).json({
+        status: 200,
+        data: data,
+        message: "Succesfully generated pagofacil"
+      });
+    } catch (e) {
+      return res.status(400).json({
+        status: 400,
+        message: "Error generando transaccion pagofacil: " + e
+      });
+    }
   }
+
 });
 
 exports.executePagoPayPal = async (function (req, res, next) {
   try {
-    var data = await (Service.executePagoPayPal(req.body));
-    return res.status(200).json({
-      status: 200,
-      data: data,
-      message: "Succesfully generated pagofacil"
-    });
+    var data = await (Service.executePagoPayPal(req.query, null, null));
+    var html = "<!DOCTYPE html><html><head></head><body><script>window.close();</script></body></html>";
+    res.send(html);
   } catch (e) {
     return res.status(400).json({
       status: 400,
@@ -75,12 +94,9 @@ exports.executePagoPayPal = async (function (req, res, next) {
 
 exports.cancelPagoPayPal = async (function (req, res, next) {
   try {
-    var data = await (Service.cancelPagoPayPal(req.body));
-    return res.status(200).json({
-      status: 200,
-      data: data,
-      message: "Succesfully generated pagofacil"
-    });
+    var data = await (Service.cancelPagoPayPal(req));
+    var html = "<!DOCTYPE html><html><head></head><body><script>window.close();</script></body></html>";
+    res.send(html);
   } catch (e) {
     return res.status(400).json({
       status: 400,

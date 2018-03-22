@@ -3,13 +3,14 @@ var await = require('asyncawait/await');
 
 var Service = require('../services/yals.service');
 
-_this = this;//clientid, yals_request, cuponid
+_this = this; //clientid, yals_request, cuponid
 
 exports.getReport = async (function (req, res, next) {
   var page = req.query.page ? req.query.page : 1;
   var limit = req.query.limit ? req.query.limit : 10;
+  var query = req.query ? req.query : {};
   try {
-    var data = await (Service.getReport({}, page, limit));
+    var data = await (Service.getReport(query, page, limit));
     return res.status(200).json({
       status: 200,
       data: data,

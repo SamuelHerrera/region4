@@ -79,8 +79,6 @@ exports.createPagoPayPal = async (function (clientid) {
   pagofacil_model.dateCreated = new Date();
   pagofacil_model.clientid = clientid;
   pagofacil_model.reportid = null;
-  pagofacil_model.request = {};
-
   var response = await (new Promise(function (resolve, reject) {
     paypal.pay('20180001', 1, 'Reporte region4', 'MXN', false, [clientid], function (err, url) {
       if (err) {
@@ -91,6 +89,7 @@ exports.createPagoPayPal = async (function (clientid) {
       }
     });
   }));
+  pagofacil_model.request = response.split("token=")[1];
   pagofacil_model.response = response;
   pagofacil_model.autorized = false;
   try {
@@ -101,31 +100,87 @@ exports.createPagoPayPal = async (function (clientid) {
   }
 });
 
-exports.executePagoPayPal = async (function (body) {
-  console.log(body);
-  try {
-
-    res.redirect("/");
-    res.end();
-  } catch (e) {
-    throw Error("Error: " + e);
+exports.executePagoPayPal = async (function (query, token, payerid) {
+  var oldPagofacil = null;
+  if (token && payerid) {
+    var response = await (new Promise(function (resolve, reject) {
+      paypal.detail(token, payerid, function (err, data, invoiceNumber, price, custom_data_array) {
+        if (err) {
+          reject(err);
+        }
+        if (data.success) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
+      });
+    }));
+    try {
+      oldPagofacil = await (model.findOne({
+        request: token
+      }));
+    } catch (e) {
+      throw Error("Error occured while Finding the Todo" + e)
+    }
+    if (!oldPagofacil) {
+      return false;
+    }
+    oldPagofacil.autorized = response;
+    try {
+      var savedPagofacil = await (oldPagofacil.save());
+      return savedPagofacil;
+    } catch (e) {
+      throw Error("And Error occured while updating the Todo");
+    }
+  } else {
+    try {
+      oldPagofacil = await (model.findOne({
+        request: query.token
+      }));
+    } catch (e) {
+      throw Error("Error occured while Finding the Todo" + e)
+    }
+    if (!oldPagofacil) {
+      return false;
+    }
+    oldPagofacil.response = query.PayerID;
+    try {
+      var savedPagofacil = await (oldPagofacil.save());
+      return true;
+    } catch (e) {
+      throw Error("And Error occured while updating the Todo");
+    }
   }
+
+
 });
 
-exports.cancelPagoPayPal = async (function (body) {
-  console.log(body);
+exports.cancelPagoPayPal = async (function (query) {
+  console.log(query);
+  var oldPagofacil = null;
   try {
-
-    res.redirect("/");
-    res.end();
+    oldPagofacil = await (model.findOne({
+      request: query.token
+    }));
   } catch (e) {
-    throw Error("Error: " + e);
+    throw Error("Error occured while Finding the Todo" + e)
+  }
+  if (!oldPagofacil) {
+    return false;
+  }
+  oldPagofacil.response = "cancelled";
+  try {
+    var savedPagofacil = await (oldPagofacil.save());
+    return true;
+  } catch (e) {
+    throw Error("And Error occured while updating the Todo");
   }
 });
 
 exports.recordReference = async (function (id, yalsid) {
+  var oldPagofacil = null;
   try {
-    var oldPagofacil = await (Client.findOne({
+    oldPagofacil = await (model.findOne({
       _id: id
     }));
   } catch (e) {
