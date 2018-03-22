@@ -4,10 +4,12 @@ var bluebird = require('bluebird')
 
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
-mongoose.connect('mongodb://mongodb2.webrahost.com:27017/itexsolutions', {
-    user: 'u1580',
-    pass: 'PipU3MSXpPD2'
-  })
+
+mongoose.connect('mongodb://heroku_2hq2rk0g:q0pnrr8p7tfu202pu9ge8n1a1e@ds221609.mlab.com:21609/heroku_2hq2rk0g')
+  // mongoose.connect('mongodb://mongodb2.webrahost.com:27017/itexsolutions', {
+  //     user: 'u1580',
+  //     pass: 'PipU3MSXpPD2'
+  //   })
   .then(() => {
     console.log(`Succesfully Connected to the Mongodb Database`);
   })

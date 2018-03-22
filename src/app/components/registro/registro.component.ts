@@ -16,8 +16,8 @@ export class RegistroComponent implements OnInit {
 
   selectedValue: string[] = [];
 
-  isHidden:boolean = false;
-  
+  isHidden = false;
+
   public ramos: any[] = [
     { name: 'Agente Inmobiliario Independiente', code: 'AII' },
     { name: 'Estudiante', code: 'E' },
