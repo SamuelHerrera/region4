@@ -18,6 +18,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 })
 export class AvaluoComponent implements OnInit {
 
+  isHidden = false;
+
   index = 0;
   step1 = false;
   step2 = false;

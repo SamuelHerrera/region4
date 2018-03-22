@@ -8,7 +8,7 @@
     "start": "node app.js",
     "startdev": "ng serve --host 0.0.0.0 --proxy-config proxy.config.json",
     "build": "ng build --prod",
-    "dev": "start npm startdev && start nodemon app.js",
+    "dev": "start npm run startdev && start nodemon app.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
