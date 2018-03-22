@@ -52,6 +52,7 @@ import { ReporteComponent } from './components/reporte/reporte.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { CuponesComponent } from './components/cupones/cupones.component';
+import { MailService } from './services/mail.service';
 
 @NgModule({
   declarations: [
@@ -101,7 +102,7 @@ import { CuponesComponent } from './components/cupones/cupones.component';
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
   ],
-  providers: [AuthGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService],
+  providers: [AuthGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
