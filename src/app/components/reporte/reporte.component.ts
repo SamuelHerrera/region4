@@ -78,9 +78,6 @@ export class ReporteComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.datos) {
-
-      console.log(this.datos.data.response.colonia_preciosm2_general.data.usado);
-
       this.ELEMENT_DATA = [];
       let ind = 1;
       this.datos.data.response.similares.forEach(element => {
@@ -211,6 +208,7 @@ export class ReporteComponent implements OnInit, OnChanges {
 
       /**Fin graficas */
 
+      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
     }
   }
 

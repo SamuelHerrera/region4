@@ -42,20 +42,14 @@ exports.createReport = async (function (clientid, yals_request, cuponid) {
   config.json = yals_request;
   var response = await (new Promise(function (resolve, reject) {
     request.post(config, function (error, response, body) {
-      console.log(error);
       if (!error && response.statusCode == 200) {
-        console.log(body);
         resolve(body);
       } else {
         reject(error);
       }
     });
   }));
-
-  console.log("resposne");
-
   report_model.response = response;
-
   try {
     var savedYals = await (report_model.save());
     return savedYals;

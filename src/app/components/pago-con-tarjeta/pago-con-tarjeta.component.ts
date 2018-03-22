@@ -23,11 +23,11 @@ export class PagoConTarjetaComponent implements OnInit {
   }
 
   aplicarCodigo() { }
+
   pagarAvaluo() {
     this.pf.monto = "1";
     this.pf.email = "samuelherrerafuente@gmail.com"
     this.pagofacil.generatePago(this.pf).subscribe(response => {
-      console.log(response);
       if (response) {
         this.messageService.add({
           severity: 'success', summary: 'Procesamiento de pago',
@@ -35,6 +35,11 @@ export class PagoConTarjetaComponent implements OnInit {
         });
         this.completed.emit(true);
       }
+    }, error => {
+      this.messageService.add({
+        severity: 'error', summary: 'Error procesando pago',
+        detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+      });
     });
   }
 
@@ -48,6 +53,11 @@ export class PagoConTarjetaComponent implements OnInit {
         });
         this.completed.emit(true);
       }
+    }, error => {
+      this.messageService.add({
+        severity: 'error', summary: 'Error procesando pago',
+        detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+      });
     });
   }
 }

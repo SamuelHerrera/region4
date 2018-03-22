@@ -20,6 +20,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { ChartModule } from 'primeng/chart';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 import { RoutingModule } from './router/routing.module';
 import { ActivacionUsuarioComponent } from './components/activacion-usuario/activacion-usuario.component';
@@ -34,7 +35,6 @@ import { OlvideContrasenaComponent } from './components/olvide-contrasena/olvide
 import { PagoConTarjetaComponent } from './components/pago-con-tarjeta/pago-con-tarjeta.component';
 import { Paso2Component } from './components/paso-2/paso-2.component';
 import { Paso3Component } from './components/paso-3/paso-3.component';
-import { PaypalComponent } from './components/paypal/paypal.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { RestablecerContrasenaComponent } from './components/restablecer-contrasena/restablecer-contrasena.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
@@ -68,7 +68,6 @@ import { CuponesComponent } from './components/cupones/cupones.component';
     PagoConTarjetaComponent,
     Paso2Component,
     Paso3Component,
-    PaypalComponent,
     RegistroComponent,
     RestablecerContrasenaComponent,
     LandingPageComponent,
@@ -97,6 +96,7 @@ import { CuponesComponent } from './components/cupones/cupones.component';
     MatTableModule,
     TabViewModule,
     ChartModule,
+    ProgressBarModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })

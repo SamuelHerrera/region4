@@ -52,14 +52,11 @@ exports.createPago = async (function (clientid, pagofacil_request) {
 
   config.json.params.data = pagofacil_request;
 
-  console.log(config);
   var response = await (new Promise(function (resolve, reject) {
     request.post(config, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        console.log("error", body);
         resolve(body);
       } else {
-        console.log("error1", error, response.statusCode, body);
         reject(error);
       }
     });
@@ -67,7 +64,6 @@ exports.createPago = async (function (clientid, pagofacil_request) {
 
   pagofacil_model.response = response.result;
   pagofacil_model.autorized = response.autorizado;
-  console.log(pagofacil_model);
   try {
     var savedPagofacil = await (pagofacil_model.save());
     return savedPagofacil;
@@ -99,7 +95,6 @@ exports.createPagoPayPal = async (function (clientid) {
 
   pagofacil_model.response = response.result;
   pagofacil_model.autorized = response.autorizado;
-  console.log(pagofacil_model);
   try {
     var savedPagofacil = await (pagofacil_model.save());
     return savedPagofacil;
@@ -120,10 +115,7 @@ exports.recordReference = async (function (id, yalsid) {
   if (!oldPagofacil) {
     return false;
   }
-  console.log(oldPagofacil)
   oldPagofacil.reportid = yalsid;
-  console.log(oldPagofacil)
-
   try {
     var savedPagofacil = await (oldPagofacil.save());
     return savedPagofacil;

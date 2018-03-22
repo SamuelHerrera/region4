@@ -41,7 +41,6 @@ export class InicioDeSesionComponent implements OnInit {
   }
 
   public change(val) {
-    console.log(val)
     this.observableService.announceStoreUpdate(val);
   }
 

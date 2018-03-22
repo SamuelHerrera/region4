@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, DoCheck } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { MatVerticalStepper } from '@angular/material';
 
@@ -8,7 +8,7 @@ import { MatVerticalStepper } from '@angular/material';
   templateUrl: './paso-1.component.html',
   styleUrls: ['./paso-1.component.css']
 })
-export class Paso1Component implements OnInit, DoCheck {
+export class Paso1Component implements OnInit {
 
   lat = 20.975262;
   lng = -89.640562;
@@ -19,14 +19,20 @@ export class Paso1Component implements OnInit, DoCheck {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.lng = position.coords.longitude;
+        this.avaluoForm['latitud'] = this.lat;
+        this.avaluoForm['longitud'] = this.lng;
+      });
+    } else {
       this.avaluoForm['latitud'] = this.lat;
       this.avaluoForm['longitud'] = this.lng;
-
-    }, 2000);
+    }
   }
 
-  ngDoCheck() {
+  onChange() {
     this.verify();
   }
 
@@ -38,9 +44,14 @@ export class Paso1Component implements OnInit, DoCheck {
       && this.avaluoForm['municipio']
       && this.avaluoForm['estado']
       && this.avaluoForm['ciudad']) {
-      this.completed.emit(true);
+      setTimeout(() => {
+        this.completed.emit(true);
+      });
+
     } else {
-      this.completed.emit(false);
+      setTimeout(() => {
+        this.completed.emit(false);
+      });
     }
   }
 

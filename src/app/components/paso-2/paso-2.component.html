@@ -15,7 +15,8 @@
       <h4>Tipo de propiedad.</h4>
       <br>
 
-      <p-selectButton [options]="types" [(ngModel)]="avaluoForm['id_tipo_propiedad']" [ngModelOptions]="{standalone: true}" name="tipoCasa"></p-selectButton>
+      <p-selectButton [options]="types" [(ngModel)]="avaluoForm['id_tipo_propiedad']" [ngModelOptions]="{standalone: true}" name="tipoCasa"
+        (ngModelChange)="onChange($event)"></p-selectButton>
 
       <!-- <h4>Casa</h4><br>
 
@@ -51,25 +52,25 @@
       <div class="buttonsContent"></div>
       <div>
         <h4>Recámaras</h4>
-        <p-selectButton [options]="numbers1" [(ngModel)]="avaluoForm['recamaras']" [ngModelOptions]="{standalone: true}"></p-selectButton>
+        <p-selectButton [options]="numbers1" [(ngModel)]="avaluoForm['recamaras']" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange($event)"></p-selectButton>
       </div>
       <br>
 
       <div>
         <h4>Baños</h4>
-        <p-selectButton [options]="numbers1" [(ngModel)]="avaluoForm['banos']" [ngModelOptions]="{standalone: true}"></p-selectButton>
+        <p-selectButton [options]="numbers1" [(ngModel)]="avaluoForm['banos']" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange($event)"></p-selectButton>
       </div>
       <br>
 
       <div>
         <h4>Medios Baños</h4>
-        <p-selectButton [options]="numbers0" [(ngModel)]="avaluoForm['medios_banos']" [ngModelOptions]="{standalone: true}"></p-selectButton>
+        <p-selectButton [options]="numbers0" [(ngModel)]="avaluoForm['medios_banos']" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange($event)"></p-selectButton>
       </div>
       <br>
 
       <div>
         <h4>Cajones</h4>
-        <p-selectButton [options]="numbers0" [(ngModel)]="avaluoForm['estacionamientos']" [ngModelOptions]="{standalone: true}"></p-selectButton>
+        <p-selectButton [options]="numbers0" [(ngModel)]="avaluoForm['estacionamientos']" [ngModelOptions]="{standalone: true}" (ngModelChange)="onChange($event)"></p-selectButton>
       </div>
       <br>
     </div>
@@ -81,18 +82,21 @@
     <div class="subDescription">
 
       <span class="ui-float-label">
-        <input id="float-input" type="text" size="30" pInputText name="areaConstruida" [(ngModel)]="avaluoForm['area_construida']">
+        <input id="float-input" type="text" size="30" pInputText name="areaConstruida" [(ngModel)]="avaluoForm['area_construida']"
+          (ngModelChange)="onChange($event)">
         <label for="float-input">Área Construída(m2) </label>
       </span>
 
       <span class="ui-float-label">
-        <input id="float-input" type="text" size="30" pInputText name="superficieTerreno" [(ngModel)]="avaluoForm['superficie_terreno']">
+        <input id="float-input" type="text" size="30" pInputText name="superficieTerreno" [(ngModel)]="avaluoForm['superficie_terreno']"
+          (ngModelChange)="onChange($event)">
         <label for="float-input">Superficie del terreno(m2) </label>
       </span>
 
       <div class="years">
         <span class="ui-float-label">
-          <input id="float-input" type="text" size="30" pInputText name="antiguedad" [(ngModel)]="avaluoForm['edad']" [disabled]='isNew'>
+          <input id="float-input" type="text" size="30" pInputText name="antiguedad" [(ngModel)]="avaluoForm['edad']" [disabled]='isNew'
+            (ngModelChange)="onChange($event)">
           <label for="float-input">Años de antigüedad</label>
         </span>
 

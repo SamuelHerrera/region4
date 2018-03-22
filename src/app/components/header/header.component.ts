@@ -17,7 +17,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.observableService.userObservable$.subscribe(user => {
       this.user = user ? user : new Client();
-      console.log(user)
     });
   }
 
