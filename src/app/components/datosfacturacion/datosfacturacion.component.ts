@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-datosfacturacion',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatosfacturacionComponent implements OnInit {
 
-  constructor() { }
+  @Input() facturacion: any = {};
+  constructor() {
+    console.log(this.facturacion.subTotal);
+   }
 
   ngOnInit() {
   }

@@ -18,6 +18,8 @@ import { MessageService } from 'primeng/components/common/messageservice';
 })
 export class AvaluoComponent implements OnInit {
 
+  isHidden = false;
+
   index = 0;
   step1 = false;
   step2 = false;
@@ -25,6 +27,7 @@ export class AvaluoComponent implements OnInit {
   step4 = false;
   selectedAge: string[] = [];
   avaluoForm: any = {};
+  facturacion: any = {};
   avaluoResponse: any = null;
   loading = false;
 

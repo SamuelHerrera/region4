@@ -33,18 +33,6 @@
             <p-dropdown #ramo id="Ramo" [options]="ramos" name="Ramo" placeholder="Ramo" optionLabel="name" ngModel required></p-dropdown>
             <label for="Ramo" *ngIf="ramo.value">Ramo</label>
           </div>
-
-          <div class="checkBoxContainer">
-            <div class="ui-g-12">
-              <p-checkbox name="Facturacion" label="Datos de facturación" inputId="DatosFacturacion" (onChange)="isHidden=!isHidden"
-              ></p-checkbox>
-            </div>
-          </div>
-          <!-- Hace falta mejorar esta parte para que funcione con el checkbox-->
-          <div class="facturacion" *ngIf="isHidden">
-            <app-datosfacturacion ></app-datosfacturacion>
-          </div>
-
           <div class="ui-float-label button">
             <p-button (onClick)="register()" label="Continuar"></p-button>
           </div>

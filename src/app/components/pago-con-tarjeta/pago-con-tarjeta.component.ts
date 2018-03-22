@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { PagofacilService } from '../../services/pagofacil.service';
 import { Pagofacilrequest } from '../../models/pagofacil.model';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -13,6 +13,7 @@ declare var window: Window;
 export class PagoConTarjetaComponent implements OnInit {
 
   @Output() completed = new EventEmitter<boolean>();
+  @Input() facturacion: any = {};
   loading = false;
   disabled = true;
   codigo = false;
