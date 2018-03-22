@@ -23,19 +23,22 @@
     padding-top: 10px;
     vertical-align: top;
 }
-.titleContainer{
+
+.titleContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
-.subTitleContainer{
+
+.subTitleContainer {
     width: 80%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
 }
+
 .principalTitle {
     background-color: transparent;
     line-height: 38px;
@@ -50,7 +53,7 @@
 }
 
 .idReport {
-    width:20%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -64,18 +67,21 @@
     background-color: transparent;
     font-size: 10px;
 }
-.generatedDate{
+
+.generatedDate {
     font-weight: 300;
     line-height: 14px;
     font-family: '__Merriweather Sans_5';
     text-align: right;
     font-size: 10px;
 }
+
 .characteristics {
     /*display: flex;
     flex-direction: column;*/
     display: table-column;
 }
+
 .address {
     display: flex;
     flex-direction: row;
@@ -88,6 +94,7 @@
     flex-direction: column;
     justify-content: flex-start
 }
+
 .dir {
     display: flex;
     flex-direction: column;
@@ -105,6 +112,7 @@
     /*min-height: 143px;*/
     color: #28245B;
 }
+
 .carac {
     display: flex;
     flex-direction: column;
@@ -117,10 +125,10 @@
     flex-wrap: wrap;
     text-align: center;
 }
+
 .subCarac {
     width: 150px;
 }
-
 
 .middleTitle {
     height: 25px;
@@ -133,9 +141,11 @@
     padding-left: 5px;
     padding-top: 10px;
     display: flex;
-    flex-direction: row;justify-content: center;
+    flex-direction: row;
+    justify-content: center;
 }
-.middleTitle span{
+
+.middleTitle span {
     width: 80%;
 }
 
@@ -149,7 +159,6 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
-
 
 .amenidades {
     display: flex;
@@ -171,17 +180,20 @@
     display: flex;
     flex-direction: column;
 }
-.subamenidades span{
+
+.subamenidades span {
     font-weight: 300;
     line-height: 14px;
     font-family: '__Merriweather Sans_5';
     text-align: center;
     font-size: 12px;
 }
+
 .imgContainer {
     width: 100%;
     text-align: center;
 }
+
 .estimatedValue {
     display: table-column;
     /*display: flex;
@@ -330,7 +342,8 @@
     flex-direction: row;
     justify-content: center;
 }
-.divisor hr{
+
+.divisor hr {
     width: 80%;
 }
 
@@ -391,13 +404,15 @@
 .propiedades {
     display: table-column;
 }
-.intro{
+
+.intro {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
-.intro h2{
+
+.intro h2 {
     width: 650px;
     font-family: '__Merriweather Sans_5';
     font-weight: 300;
@@ -405,8 +420,9 @@
     color: #BFBFBF;
     letter-spacing: -1px;
 }
-.intro p{
-    width:650px;
+
+.intro p {
+    width: 650px;
     font-family: '__Merriweather Sans_5';
     min-height: 58px;
     font-weight: 300;
@@ -414,29 +430,33 @@
     line-height: 22px;
     text-align: justify;
 }
-.map2{
+
+.map2 {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
-.map2 agm-map{
+
+.map2 agm-map {
     width: 620px;
     height: 300px;
 }
-.table{
+
+.table {
     padding-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     text-align: center;
 }
+
 .example-container {
     display: flex;
     flex-direction: column;
     width: 620px;
 }
 
-.mat-table  {
+.mat-table {
     /*overflow: auto;*/
     max-height: 550px;
 }
@@ -444,46 +464,55 @@
 .mat-header-cell.mat-sort-header-sorted {
     color: black;
 }
-.preciosColonia{
+
+.preciosColonia {
     display: table-column;
-    
 }
-.intro h3{
-    width:700px;
+
+.intro h3 {
+    width: 700px;
     font-weight: 700;
     font-family: '__Merriweather_5';
 }
-.ofertasMes{
+
+.ofertasMes {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
-.ultimoMes{
-    width:308px;
+
+.ultimoMes {
+    width: 308px;
     padding-right: 2px;
 }
-.umesContainer{
+
+.umesContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
     /*border:1px purple solid;*/
 }
+
+
 /*.calendarContainer{
     
 }*/
-.calendarContainer img{
-    width:60px;
+
+.calendarContainer img {
+    width: 60px;
 }
-.numCasas{
+
+.numCasas {
     width: 180px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
 }
-.numCasas h1{
+
+.numCasas h1 {
     padding-top: 15px;
     padding-left: 3px;
     color: #31A6E0;
@@ -496,7 +525,8 @@
     text-align: center;
     font-size: 30px;
 }
-.numCasas p{
+
+.numCasas p {
     width: 80px;
     padding-left: 3px;
     font-weight: 300;
@@ -508,25 +538,30 @@
     color: #494949;
     font-size: 11px;
 }
-.seisMeses{
-    width:308px;
+
+.seisMeses {
+    width: 308px;
     padding-left: 2px;
 }
-.smesContainer{
+
+.smesContainer {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
     /*border:1px gray solid;*/
 }
-.tablaMes{
+
+.tablaMes {
     padding-top: 15px;
     /*border:1px red solid;*/
 }
-.tablaMes table{
+
+.tablaMes table {
     width: 100%;
 }
-.titleTable{
+
+.titleTable {
     height: 35px;
     background-color: #9c9a9a;
     text-align: center;
@@ -536,11 +571,13 @@
     color: #FFFFFF;
     padding: 3px;
 }
-table td{
+
+table td {
     background-color: #ccc4c4;
     height: 20px;
 }
-.promedioTotal{
+
+.promedioTotal {
     line-height: 24px;
     color: #31A6E0;
     font-family: '__Merriweather_5';
@@ -548,68 +585,80 @@ table td{
     font-size: 20px;
     text-align: center;
 }
-.promediom2{
-    font-family: '__Merriweather Sans_5';
-    text-align: center;
-    min-height: 40px;
-    font-weight: 300;
-}
-.txtPromedio{
+
+.promediom2 {
     font-family: '__Merriweather Sans_5';
     text-align: center;
     min-height: 40px;
     font-weight: 300;
 }
 
-.plusValia{
+.txtPromedio {
+    font-family: '__Merriweather Sans_5';
+    text-align: center;
+    min-height: 40px;
+    font-weight: 300;
+}
+
+.plusValia {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
-.plusValiaContainer{
+
+.plusValiaContainer {
     display: flex;
     flex-direction: column;
 }
-.plusValiaContainer h2{
+
+.plusValiaContainer h2 {
     line-height: 25px;
     color: #31A6E0;
     font-family: '__Merriweather_5';
     font-weight: 700;
     font-size: 21px;
 }
-.plusValiaContainer p{
+
+.plusValiaContainer p {
     font-weight: 300;
     font-family: '__Merriweather Sans_5';
     color: #000000;
     font-size: 14px;
 }
-.flechaContainer img{
-    width:100px;
+
+.flechaContainer img {
+    width: 100px;
     height: 40px;
 }
-.glosario{
+
+.glosario {
     display: table-column;
-}   
-.glosarioContainer{
+}
+
+.glosarioContainer {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-}   
-.leftText{
+}
+
+.leftText {
     width: 150px;
 }
-.leftText p{
+
+.leftText p {
     height: 65px;
     font-family: '__Raleway_5';
     font-weight: 700;
     line-height: 15px;
     font-size: 11px;
 }
-.rightText{
+
+.rightText {
     width: 570px;
 }
+
 .rightText p {
     height: 65px;
     color: #999999;
@@ -618,20 +667,35 @@ table td{
     text-align: justify;
     font-size: 11px;
 }
-.terminos{
+
+.terminos {
     display: table-column;
 }
-.contenido{
+
+.contenido {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
 }
-.contenido p{
+
+.contenido p {
     width: 720px;
     font-family: '__Merriweather Sans_5';
     font-weight: 300;
     line-height: 17px;
     font-size: 12px;
     padding-bottom: 10px;
+}
+
+.graficaPrecioColonia {
+    border: 1px red solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.graficaPrecioColonia p-chart{
+    width: 620px;;
+    border:1px black solid;
 }

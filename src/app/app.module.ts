@@ -19,6 +19,7 @@ import { GrowlModule } from 'primeng/growl';
 import { CheckboxModule } from 'primeng/checkbox';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
+import { ChartModule } from 'primeng/chart';
 
 import { RoutingModule } from './router/routing.module';
 import { ActivacionUsuarioComponent } from './components/activacion-usuario/activacion-usuario.component';
@@ -95,6 +96,7 @@ import { CuponesComponent } from './components/cupones/cupones.component';
     MatStepperModule,
     MatTableModule,
     TabViewModule,
+    ChartModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })

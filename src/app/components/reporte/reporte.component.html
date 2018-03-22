@@ -428,6 +428,71 @@
       <hr>
     </div>
     <div class="html2pdf__page-break"></div>
+
+    <!-- Inicio para aplicar las graficas-->
+    <!-- Grafica Precio promedio en la colonia-->
+    <div class="graficaPrecioColonia">
+      <div class="intro">
+        <h2>Precios promdedio de oferta en la colonia {{datos.data.response.address.colonia}}</h2>
+      </div>
+      <p-chart type="bar" [data]="datosPrecioColonia"></p-chart>
+    </div>
+
+    <div class="graficaDescripciones">
+
+      <div class="propiedadesEdad">
+
+        <div class="propiedadPreciom2">
+          <div class="grafica1Container">
+            <div class="intro">
+              <h3> Propiedades según precio por m
+                <sup>2</sup>
+              </h3>
+              <p>La gráca muestra el porcentaje de las ofertas en la colonia ordenadas por rango de precios (casas y departamentos
+                listados en los últimos 6 meses).</p>
+            </div>
+            <div class="graficaPropiedades">
+              <p-chart type="bar" [data]="datosPropiedadesM2"></p-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="edadVivienda">
+          <div class="grafica2Container">
+            <div class="intro">
+              <h3> Edad y tipo de vivienda
+              </h3>
+              <p>
+                La gráca muestra el porcentaje de ofertas en la colonia según su edad.</p>
+            </div>
+            <div class="graficaEdadVivienda">
+              <p-chart type="bar" [data]="datosEdadVivienda"></p-chart>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="recamarasSuperficie">
+
+        <div class="numRecamaras">
+            <div class="grafica3Container">
+                <div class="intro">
+                  <h3> Número de recámaras
+                  </h3>
+                  <p>
+                    La gráca muestra el porcentaje de ofertas en la colonia según su edad.</p>
+                </div>
+                <div class="graficaEdadVivienda">
+                  <p-chart type="bar" [data]="datosEdadVivienda"></p-chart>
+                </div>
+              </div>
+        </div>
+
+        <div class=superficieConstruida></div>
+      </div>
+    </div>
+    <!-- Fin graficas-->
+
     <div class="evolucionColonia">
       <div class="middleTitle">
         <span>EVOLUCIÓN DE LOS PRECIOS EN LA COLONIA</span>

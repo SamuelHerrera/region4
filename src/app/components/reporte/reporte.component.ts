@@ -38,13 +38,40 @@ export class ReporteComponent implements OnInit, OnChanges {
   lat = 30.200;
   lng = 20.100;
 
-  constructor() { }
+  /**Variables para las graficas */
+  /**datos.data.request.colonia_preciosm2_general */
+  datosPrecioColonia: any;
+  datosPropiedadesM2: any;
+
+  constructor() {
+
+    if (this.datos) {
+      
+      this.datosPrecioColonia = {
+        //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: this.datos.data.response.colonia_preciosm2_general.labels,
+        datasets: [
+          {
+            label: 'Precio Promedio',
+            backgroundColor: '#42A5F5',
+            borderColor: '#1E88E5',
+            //data: [65, 59, 80, 81, 56, 55, 40]
+            data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+          }
+        ]
+      }
+    }
+
+  }
 
   ngOnInit() {
   }
 
   ngOnChanges(): void {
     if (this.datos) {
+
+      console.log(this.datos.data.response.colonia_preciosm2_general.data.usado);
+
       this.ELEMENT_DATA = [];
       let ind = 1;
       this.datos.data.response.similares.forEach(element => {
