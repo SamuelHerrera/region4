@@ -2,12 +2,12 @@
   <div class="cost mat-elevation-z8">
     <div class="costContainer">
       <span>Costo Avalúo</span>
-      <input id="disabled-input" type="text" size="20" value="1" pInputText [disabled]="disabled" />
+      <input id="disabled-input" type="text" size="20" value="1" pInputText [disabled]="disabled" name ="costoAvaluo" [(ngModel)] = "facturacion['costoAvaluo']"/>
     </div>
 
     <div class="costContainer">
       <span>Individual</span>
-      <input id="disabled-input" type="text" size="20" value="1" pInputText [disabled]="disabled" />
+      <input id="disabled-input" type="text" size="20" value="1" pInputText [disabled]="disabled" name = "costoIndividual"  [(ngModel)] = "facturacion['costoIndividual']" />
     </div>
 
     <div class="costContainer">
@@ -19,14 +19,14 @@
     </div>
     <div class="costContainer">
       <span>Subtotal</span>
-      <input id="disabled-input" type="text" value="1" size="20" pInputText [disabled]="disabled" />
+      <input id="disabled-input" type="text" value="1" size="20" pInputText [disabled]="disabled" name ="subtotal" [(ngModel)] = "facturacion['subTotal']"/>
     </div>
     <div class="divisor">
       <hr>
     </div>
     <div class="costContainer">
       <span>TOTAL</span>
-      <input id="disabled-input" type="text" value="1" size="20" pInputText [disabled]="disabled" />
+      <input id="disabled-input" type="text" value="1" size="20" pInputText [disabled]="disabled" name ="total" [(ngModel)] = "facturacion['total']" />
     </div>
   </div>
 

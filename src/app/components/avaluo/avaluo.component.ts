@@ -27,6 +27,7 @@ export class AvaluoComponent implements OnInit {
   step4 = false;
   selectedAge: string[] = [];
   avaluoForm: any = {};
+  facturacion: any = {};
   avaluoResponse: any = null;
   loading = false;
 
