@@ -5,6 +5,7 @@ import { MatTableDataSource, MatSort, Sort } from '@angular/material';
 import * as jsPDF from 'jspdf';
 import * as html2pdf from 'html2pdf.js';
 import { Element } from '@angular/compiler';
+import { DecimalPipe } from '@angular/common';
 
 
 
@@ -35,8 +36,10 @@ export class ReporteComponent implements OnInit, OnChanges {
 
   plusvalia = "pending to implement"//14.2;
 
-  lat = 30.200;
-  lng = 20.100;
+  /*lat = 30.200;
+  lng = 20.100;*/
+  lat: number;
+  lng: number;
 
   /**Variables para las graficas */
   /**datos.data.request.colonia_preciosm2_general */
@@ -78,21 +81,26 @@ export class ReporteComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.datos) {
+      
+      this.lat = this.datos.data.request.latitud;
+      this.lng = this.datos.data.request.longitud;
+
       this.ELEMENT_DATA = [];
       let ind = 1;
       this.datos.data.response.similares.forEach(element => {
         this.ELEMENT_DATA.push({
           position: ind,
           oferta: element.fecha_oferta,
-          total: '$' + element.precio_oferta,
-          m2: element.superficie_terreno + "m2",
+          total: element.precio_oferta,
+          m2: element.superficie_terreno,
           cuartos: element.recamaras,
           banos: element.banos,
           parking: element.estacionamientos,
-          construccion: element.area_construida + 'm2',
+          construccion: element.area_construida,
           edad: (element.edad || 0),
-          distancia: element.distancia + ' km',
-          similitud: (element.similitud * 100) + '%'
+          distancia: element.distancia,
+          //similitud: (element.similitud * 100) + '%'
+          similitud: (element.similitud * 100)
         });
         ind++;
       });
