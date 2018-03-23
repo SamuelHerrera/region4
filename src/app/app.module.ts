@@ -21,6 +21,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { ChartModule } from 'primeng/chart';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 import { RoutingModule } from './router/routing.module';
 import { ActivacionUsuarioComponent } from './components/activacion-usuario/activacion-usuario.component';
@@ -91,6 +93,7 @@ import { ForgotpassComponent } from './components/forgotpass/forgotpass.componen
     BrowserAnimationsModule,
     ButtonModule,
     InputTextModule,
+    MatFormFieldModule,
     DropdownModule,
     GrowlModule,
     CheckboxModule,
@@ -98,6 +101,7 @@ import { ForgotpassComponent } from './components/forgotpass/forgotpass.componen
     MatStepperModule,
     MatTableModule,
     TabViewModule,
+    MatInputModule,
     ChartModule,
     ProgressBarModule,
     AgmCoreModule.forRoot({

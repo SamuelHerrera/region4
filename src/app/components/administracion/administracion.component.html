@@ -1,0 +1,47 @@
+<p-tabView>
+  <p-tabPanel header="Usuarios" leftIcon="fa-user">
+    <div class="example-container mat-elevation-z8">
+      <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </div>
+      <mat-table #table [dataSource]="dataSource">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Contacto </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.mail}}
+            <br/> {{phone}} </mat-cell>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <mat-header-cell *matHeaderCellDef> Ramo </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ramo}} </mat-cell>
+        </ng-container>
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="symbol">
+          <mat-header-cell *matHeaderCellDef> Estatus </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.status}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+
+  </p-tabPanel>
+  <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key">
+
+  </p-tabPanel>
+  <p-tabPanel header="Reportes" leftIcon="fa-file">
+
+  </p-tabPanel>
+  <p-tabPanel header="Administrar Cupones" leftIcon="fa-bell-o">
+
+  </p-tabPanel>
+</p-tabView>
