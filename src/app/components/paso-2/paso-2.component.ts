@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { SelectItem } from 'primeng/components/common/selectitem';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-paso-2',
@@ -37,7 +38,7 @@ export class Paso2Component implements OnInit {
   /** */
   selectedAge: String;
 
-  constructor() {
+  constructor(private messageService: MessageService) {
 
 
     this.types = [
@@ -91,22 +92,45 @@ export class Paso2Component implements OnInit {
 
   onChange(event) {
     this.verify();
-
-
-
   }
-
+  areaConstruida: boolean;
+  superficieTerreno: boolean;
+  edad: boolean;
   verify() {
+
+
+    if (this.avaluoForm['area_construida'] >= 30 && this.avaluoForm['area_construida'] <= 1000) {
+      this.areaConstruida = true;
+      //console.log(this.avaluoForm['area_construida']);
+    } else { this.areaConstruida = false }
+
+    if (this.avaluoForm['superficie_terreno'] >= 0 && this.avaluoForm['superficie_terreno'] >= 1000) {
+      this.superficieTerreno = true;
+    } else { this.superficieTerreno = false; }
+
+    if (this.avaluoForm['edad'] >= 0 && this.avaluoForm['edad'] <= 99) {
+      this.edad = true;
+    } else { this.edad = false; }
+
     if (this.avaluoForm['id_tipo_propiedad']
       && this.avaluoForm['recamaras']
       && this.avaluoForm['banos']
       && this.avaluoForm['medios_banos']
       && this.avaluoForm['estacionamientos']
-      && this.avaluoForm['area_construida']
-      && this.avaluoForm['superficie_terreno']
-      && (this.avaluoForm['edad']) || this.isNew) {
+      && this.areaConstruida//this.avaluoForm['area_construida']
+      && this.superficieTerreno//this.avaluoForm['superficie_terreno']
+      && (this.edad/*this.avaluoForm['edad']*/) || this.isNew) {
       this.completed.emit(true);
     } else {
+      if (this.areaConstruida == false) {
+        this.messageService.add({ severity: 'error', summary: 'Área Construída', detail: 'El valor del área construida debe estar entre 30 y 1000 m2' });
+      }
+      if(this.superficieTerreno ==false){
+        this.messageService.add({ severity: 'error', summary: 'Superficie Construída', detail: 'El valor de la superficie del terreno debe estar entre 0 y 1000 m2' });
+      }
+      if(this.edad ==false){
+        this.messageService.add({ severity: 'error', summary: 'Años de antigüedad', detail: 'Los años de antigüedad deben ser entre 0 y 99' });
+      }
       this.completed.emit(false);
     }
   }

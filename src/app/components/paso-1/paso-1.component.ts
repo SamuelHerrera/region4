@@ -36,8 +36,15 @@ export class Paso1Component implements OnInit {
   onChange(event) {
     this.verify();
   }
-
+  zipCode: boolean;
   verify() {
+
+    /*if(this.avaluoForm['zip'].length == 5) {
+      this.zipCode = true;
+    } else{
+      this.zipCode = false;
+    }*/
+
     if (this.avaluoForm['street']
       && this.avaluoForm['num_ext']
       && this.avaluoForm['zip']
