@@ -76,7 +76,7 @@ PSW:ItexSolutions1!
   /** */
   ngOnInit() {
     this.clientService.getClients().subscribe((response: any) => {
-      //console.log(response)
+      console.log("Response",response)
       this.dataSource = new MatTableDataSource(response.data.docs);
     });
     this.yals.getConfigs().subscribe((response: any) => {
@@ -85,7 +85,9 @@ PSW:ItexSolutions1!
     this.yals.getRequest().subscribe((response: any) => {
       //console.log(response);
       response.data.docs.forEach(element => {
+        //console.log("Elemento-", element);
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
+          
           element['client'] = cli.data.docs[0].name;
           element['ramo'] = cli.data.docs[0].ramo;
         });
