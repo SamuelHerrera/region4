@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatDialogModule } from '@angular/material/dialog';
 /** */
 import { MatTableModule } from '@angular/material/table';
 
@@ -57,6 +58,7 @@ import { CuponesComponent } from './components/cupones/cupones.component';
 import { MailService } from './services/mail.service';
 import { ForgotpassComponent } from './components/forgotpass/forgotpass.component';
 import { ReenviarClaveComponent } from './components/reenviar-clave/reenviar-clave.component';
+import { DialogCuponesComponent } from './components/dialog-cupones/dialog-cupones.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +86,8 @@ import { ReenviarClaveComponent } from './components/reenviar-clave/reenviar-cla
     AdministracionComponent,
     CuponesComponent,
     ForgotpassComponent,
-    ReenviarClaveComponent
+    ReenviarClaveComponent,
+    DialogCuponesComponent
   ],
   imports: [
     HttpClientModule,
@@ -102,6 +105,7 @@ import { ReenviarClaveComponent } from './components/reenviar-clave/reenviar-cla
     SelectButtonModule,
     MatStepperModule,
     MatTableModule,
+    MatDialogModule,
     TabViewModule,
     MatInputModule,
     ChartModule,

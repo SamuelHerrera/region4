@@ -1,5 +1,25 @@
 <p-tabView>
-  <p-tabPanel header="Usuarios" leftIcon="fa-user">
+  <p-tabPanel header="Login Admin" leftIcon="fa-user" *ngIf="login">
+    <div class="login">
+      <div class="containerLogin">
+        <!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">-->
+        <span class="ui-float-label">
+          <input id="User" type="text" size="30" name="user" [(ngModel)]="user" pInputText>
+          <label for="User">Usuario</label>
+        </span>
+
+        <span class="ui-float-label">
+          <input id="Cont" type="password" size="30" name="pass" [(ngModel)]="pass" pInputText>
+          <label for="Cont">Contraseña</label>
+        </span>
+
+        <p-button label="Iniciar Sesión" (onClick)="validarLogin()"></p-button>
+        <!--</form>-->
+      </div>
+    </div>
+  </p-tabPanel>
+  
+  <p-tabPanel header="Usuarios" leftIcon="fa-user" *ngIf="loginSuccess">
     <div class="example-container mat-elevation-z8">
       <div class="example-header">
         <mat-form-field>
@@ -34,7 +54,7 @@
       </mat-table>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key">
+  <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key" *ngIf="loginSuccess">
     <span class="ui-float-label">
       <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['url']">
       <label for="float-input">URL</label>
@@ -49,7 +69,7 @@
     </span>
     <p-button (onClick)="saveconfig()" label="Guardar" class="mle"></p-button>
   </p-tabPanel>
-  <p-tabPanel header="Reportes" leftIcon="fa-file">
+  <p-tabPanel header="Reportes" leftIcon="fa-file" *ngIf="loginSuccess">
     <div class="example-container mat-elevation-z8">
       <div class="example-header">
         <mat-form-field>
@@ -109,7 +129,51 @@
       </mat-table>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Administrar Cupones" leftIcon="fa-bell-o">
+  <p-tabPanel header="Administrar Cupones" leftIcon="fa-bell-o" *ngIf="loginSuccess">
+    <!-- Tabla de cupones-->
+    <div clas="botonesCupon">
+      <div class="buttonContainer">
+        <p-button label="Agregar Cupón" (onClick)="openDialog()"></p-button>
+        <p-button label="Guardar y Salir" (onClick)="saveExit()"></p-button>
+      </div>
+    </div>
+
+    <div class="example-container mat-elevation-z8">
+
+      <mat-table #table [dataSource]="dataSource2">
+        <!-- Position Column -->
+        <ng-container matColumnDef="campania">
+          <mat-header-cell *matHeaderCellDef> Campaña </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.client}} </mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="descuento">
+          <mat-header-cell *matHeaderCellDef> Descuento </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.dateCreated| date:'yyyy-MM-dd HH:mm a'}}
+          </mat-cell>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="cupon">
+          <mat-header-cell *matHeaderCellDef> Cupon </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{element.response.address.estado}}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+          <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.response.address.colonia}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="estatus">
+          <mat-header-cell *matHeaderCellDef> Estatus </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ramo}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsCupones"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsCupones;"></mat-row>
+      </mat-table>
+    </div>
 
   </p-tabPanel>
 </p-tabView>

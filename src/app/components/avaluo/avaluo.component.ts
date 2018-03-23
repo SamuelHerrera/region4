@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import * as jsPDF from 'jspdf';
 import * as html2pdf from 'html2pdf.js';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { MailService } from '../../services/mail.service';
 
 @Component({
   selector: 'app-avaluo',
@@ -31,7 +32,7 @@ export class AvaluoComponent implements OnInit {
   avaluoResponse: any = null;
   loading = false;
 
-  constructor(private router: Router, private yals: YalsService, private messageService: MessageService) {
+  constructor(private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -52,6 +53,10 @@ export class AvaluoComponent implements OnInit {
       this.avaluoResponse = response;
       this.index = 4;
       this.loading = false;
+      this.messageService.add({
+        severity: 'info', summary: 'Reporte',
+        detail: `Se ha generado satisfactoriamente su reporte.`
+      });
     }, error => {
       this.loading = false;
       this.messageService.add({
@@ -60,10 +65,20 @@ export class AvaluoComponent implements OnInit {
         e intente nuevamente, en caso contrario porfavor contacte a soporte.`
       });
     });
-  }
-
-  nvoAvaluo() {
-
+    if (this.isHidden) {
+      // this.mail.sendMail({ to: "ventas@region4.mx", subject: "Facturacion", text: this.facturacion })
+      this.mail.sendMail({
+        from: "facturacion@valorinmuebles.com.mx",
+        to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
+        html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
+      })
+        .subscribe(response => {
+          this.messageService.add({
+            severity: 'info', summary: 'Reporte',
+            detail: `Se esta generando su factura, se la haremos llegar en un plazo maximo de 72horas.`
+          });
+        });
+    }
   }
 
   imprimir() {

@@ -33,7 +33,7 @@ exports.sendMail = async (function (req, res, next) {
       filepath = path.join(uploaddir, file[0].originalname);
       console.log(filepath);
       mailOptions = {
-        from: 'activation@itexsolutions.com.mx',
+        from: req.body.from || 'ventas@valorinmuebles.com',
         to: req.body.to,
         subject: req.body.subject,
         text: req.body.text,
@@ -45,7 +45,7 @@ exports.sendMail = async (function (req, res, next) {
       };
     } else {
       mailOptions = {
-        from: 'activation@itexsolutions.com.mx',
+        from: req.body.from || 'ventas@valorinmuebles.com',
         to: req.body.to,
         subject: req.body.subject,
         html: req.body.html,
@@ -66,7 +66,7 @@ exports.sendMail = async (function (req, res, next) {
 
     return res.status(200).json({
       status: 200,
-      data: data,
+      data: true,
       message: "Succesfully generated report"
     });
   } catch (e) {

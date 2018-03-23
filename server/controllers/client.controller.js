@@ -47,7 +47,7 @@ exports.createClient = async (function (req, res, next) {
 
     var createdClient = await (ClientService.createClient(req.body));
     var mailOptions = {
-      from: 'activation@itexsolutions.com.mx',
+      from: 'usuario@valorinmuebles.com.mx',
       to: createdClient.mail,
       subject: 'Activar mi cuenta de Region4',
       text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://itexsolutions.com.mx/activacion'

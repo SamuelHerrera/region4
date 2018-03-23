@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="scrollable">
+    <div class="promoContainer">
+      <div class="campaña">
+        <span class="ui-float-label">
+          <input id="campania" type="text" size="50" pInputText [(ngModel)]="data.campania" name="Campania" ngModel required>
+          <label for="campania">Campaña</label>
+        </span>
+      </div>
+      <div class="cupon">
+        <span class="ui-float-label">
+          <input id="cupon" type="text" size="50" pInputText name="Cupon" [(ngModel)]="data.cupon" ngModel required>
+          <label for="cupon">Cupón</label>
+        </span>
+      </div>
+      <div class="Descuento">
+        <div class="ui-float-label">
+          <p-dropdown #descuento id="Descuentos" [options]="descuentos" name="Descuento" placeholder="Descuento" optionLabel="descuento"
+            ngModel required></p-dropdown>
+          <label for="Descuentos" *ngIf="descuento.value">Descuentos</label>
+        </div>
+      </div>
+
+      <div class="estatus">
+        <div class="ui-float-label">
+          <p-dropdown #estatus id="estatus" [options]="Estatus" name="estatus" placeholder="Estatus" optionLabel="estatus" ngModel
+            required></p-dropdown>
+          <label for="estatus" *ngIf="estatus.value">Estatus</label>
+        </div>
+      </div>
+      <div class="button">
+        <p-button label="Crear" (onClick)="crearCupon()" ></p-button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ var await = require('asyncawait/await');
 var Client = require('../models/client.model');
 
 _this = this;
-
+limit = 100;
 exports.getClients = async (function (query, page, limit) {
   var options = {
     page,
@@ -11,7 +11,8 @@ exports.getClients = async (function (query, page, limit) {
   }
 
   try {
-    var clients = await (Client.paginate(query, options));
+    //var clients = await (Client.paginate(query, options));
+    var clients = await (Client.paginate(query, {page, limit:100}));
     return clients;
 
   } catch (e) {
