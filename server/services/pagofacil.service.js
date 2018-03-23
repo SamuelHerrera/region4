@@ -74,13 +74,15 @@ exports.createPago = async (function (clientid, pagofacil_request) {
   }
 });
 
-exports.createPagoPayPal = async (function (clientid) {
+exports.createPagoPayPal = async (function (clientid, amount) {
   var pagofacil_model = new model();
   pagofacil_model.dateCreated = new Date();
   pagofacil_model.clientid = clientid;
   pagofacil_model.reportid = null;
   var response = await (new Promise(function (resolve, reject) {
-    paypal.pay('20180001', 1, 'Reporte region4', 'MXN', false, [clientid], function (err, url) {
+    var today = new Date();
+    var invoicen = today.getFullYear() + today.getMonth() + today.getDay() + Math.floor(Math.random() * 10000);
+    paypal.pay(invoicen, amount, 'Reporte region4', 'MXN', false, [clientid], function (err, url) {
       if (err) {
         reject(err);
         return;

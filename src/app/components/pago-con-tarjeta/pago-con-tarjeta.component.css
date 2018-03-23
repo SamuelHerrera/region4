@@ -47,6 +47,12 @@
   vertical-align: middle;
 }
 
+.descuentos {
+  align-self: center;
+  margin-right: 35px;
+  color: darkgreen;
+}
+
 .progress {
   width: 300px;
   margin: 10px;

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { MatVerticalStepper } from '@angular/material';
+import { YalsService } from '../../services/yals.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class Paso1Component implements OnInit {
   @Input() avaluoForm: any;
   @Output() completed = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private yals: YalsService) { }
 
   ngOnInit() {
     if (navigator.geolocation) {
@@ -44,6 +45,17 @@ export class Paso1Component implements OnInit {
       && this.avaluoForm['municipio']
       && this.avaluoForm['estado']
       && this.avaluoForm['ciudad']) {
+
+      this.yals.getCoords(this.avaluoForm).subscribe((response: any) => {
+        console.log(response);
+        try {
+          this.avaluoForm['latitud'] = this.lat = response.results[0].geometry.location.lat;
+          this.avaluoForm['longitud'] = this.lng = response.results[0].geometry.location.lng;
+        } catch (e) {
+          //do nothing
+        }
+      });
+
       setTimeout(() => {
         this.completed.emit(true);
       });

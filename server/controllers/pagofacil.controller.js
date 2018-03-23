@@ -63,7 +63,7 @@ exports.createPagoPayPal = async (function (req, res, next) {
     }
   } else {
     try {
-      var data = await (Service.createPagoPayPal(req.body.clientid));
+      var data = await (Service.createPagoPayPal(req.body.clientid, req.body.amount));
       return res.status(200).json({
         status: 200,
         data: data,

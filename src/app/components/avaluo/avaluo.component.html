@@ -32,7 +32,7 @@
       </mat-step>
       <mat-step [completed]="step4">
         <form>
-          <ng-template matStepLabel>Pagar Avalúo
+          <ng-template matStepLabel>Pagar Reporte
             <span *ngIf="!step4" class="alerta">Sin completar</span>
           </ng-template>
           <app-pago-con-tarjeta *ngIf="!step4" (completed)="step4=$event" [facturacion]="facturacion"></app-pago-con-tarjeta>
@@ -58,7 +58,7 @@
         </form>
       </mat-step>
       <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
+        <ng-template matStepLabel>Obtener reporte</ng-template>
         <div class="nvoAvaluo">
           <p-button *ngIf="avaluoResponse" (click)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
           <p-button *ngIf="avaluoResponse" (click)="imprimir()" label="Imprimir"></p-button>
