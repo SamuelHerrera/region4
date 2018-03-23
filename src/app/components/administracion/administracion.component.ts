@@ -5,6 +5,7 @@ import { YalsService } from '../../services/yals.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import * as jsPDF from 'jspdf';
 import * as html2pdf from 'html2pdf.js';
+import { style } from '@angular/animations';
 
 @Component({
   selector: 'app-administracion',
@@ -50,8 +51,9 @@ export class AdministracionComponent implements OnInit {
   }
 
   imprimir(id) {
-    const element = document.getElementById(id);
-    console.log(element)
+    
+    const element = document.getElementById(id).childNodes[1];
+    console.log("Print element",document.getElementById(id).childNodes[1]);
     html2pdf(element, {
       margin: 1,
       filename: 'reporte.pdf',
