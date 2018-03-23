@@ -37,7 +37,7 @@ export class RegistroComponent implements OnInit {
 
   register() {
 
-    if (this.form.form.valid) {
+    if (this.form.form.valid && (this.form.form.get("Correo") != "" && this.form.form.get("Contrasena") != "" && this.form.form.get("Nombre") != "" && this.form.form.get("Repetir") != "" && this.form.form.get("Telefono") != "" && this.form.form.get("Ramo") != "Ramo")) {
 
       this.controlContrasena = this.form.form.get("Contrasena");
       this.controlRepeatContrasena = this.form.form.get("Repetir");
@@ -66,7 +66,8 @@ export class RegistroComponent implements OnInit {
         }
       });
 
-      if (this.controlContrasena != this.controlRepeatContrasena) {
+      if (this.controlContrasena.value != this.controlRepeatContrasena.value) {
+        
         this.messageService.add({ severity: 'error', summary: 'Validacion', detail: ('Las contraseñas no coinciden.') });
       }
 
