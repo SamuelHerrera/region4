@@ -11,6 +11,9 @@ export class ClientService {
   getClients() {
     return this._http.get("/api/client");
   }
+  getClientsByMail(mail) {
+    return this._http.get("/api/client?mail=" + mail);
+  }
 
   registerClient(client: Client) {
     return this._http.post("/api/client", client);

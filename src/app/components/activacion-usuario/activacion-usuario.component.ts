@@ -39,10 +39,10 @@ export class ActivacionUsuarioComponent implements OnInit {
   public onSubmit(form) {
     this.clientService.activateClient(form.Clave).subscribe(reponse => {
       this.router.navigate(['/iniciosesion']);
-      this.messageService.add({ severity: 'success', summary: 'Activacion', detail: "Usuario activado satisfactoriamente." });
+      this.messageService.add({ severity: 'success', summary: 'Activación', detail: "Usuario activado satisfactoriamente." });
     },
       error => {
-        this.messageService.add({ severity: 'error', summary: 'Server', detail: error });
+        this.messageService.add({ severity: 'error', summary: 'Server', detail: error.error.message });        
       });
   }
 

@@ -10,6 +10,7 @@ import { ReporteComponent } from '../components/reporte/reporte.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { AdministracionComponent } from '../components/administracion/administracion.component';
 import { CuponesComponent } from '../components/cupones/cupones.component';
+import { ForgotpassComponent } from '../components/forgotpass/forgotpass.component';
 
 const routes: Routes = [
     {
@@ -47,6 +48,10 @@ const routes: Routes = [
         path: "reporte",
         canActivate: [AuthGuard],
         component: ReporteComponent
+    },
+    {
+        path: "forgotpass",
+        component: ForgotpassComponent
     },
     //Routings de muestra
     {
