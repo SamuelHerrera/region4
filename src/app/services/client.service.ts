@@ -12,6 +12,10 @@ export class ClientService {
     return this._http.get("/api/client");
   }
 
+  getClientById(id) {
+    return this._http.get("/api/client?_id=" + id);
+  }
+
   registerClient(client: Client) {
     return this._http.post("/api/client", client);
   }

@@ -23,4 +23,11 @@ export class YalsService {
     return this._http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${avaluoForm['street']}+${avaluoForm['num_ext']}+${avaluoForm['colonia']},+${avaluoForm['municipio']}+${avaluoForm['estado']}&key=AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc`);
   }
 
+  getConfigs() {
+    return this._http.get("/api/yals/configuracion");
+  }
+  setConfigs(url, mail, key) {
+    return this._http.post("/api/yals", { url: url, mail: mail, cuponid: key });
+  }
+
 }

@@ -33,13 +33,81 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
     </div>
-
   </p-tabPanel>
   <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key">
-
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['url']">
+      <label for="float-input">URL</label>
+    </span>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['mail']">
+      <label for="float-input">Mail</label>
+    </span>
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['key']">
+      <label for="float-input">API Key</label>
+    </span>
+    <p-button (onClick)="saveconfig()" label="Guardar" class="mle"></p-button>
   </p-tabPanel>
   <p-tabPanel header="Reportes" leftIcon="fa-file">
+    <div class="example-container mat-elevation-z8">
+      <div class="example-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter2($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+      </div>
+      <mat-table #table [dataSource]="dataSource2">
+        <!-- Position Column -->
+        <ng-container matColumnDef="position">
+          <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.client}} </mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.dateCreated| date:'yyyy-MM-dd HH:mm a'}}
+          </mat-cell>
+        </ng-container>
+        <!-- Weight Column -->
+        <ng-container matColumnDef="weight">
+          <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{element.response.address.estado}}
+          </mat-cell>
+        </ng-container>
 
+        <ng-container matColumnDef="symbol">
+          <mat-header-cell *matHeaderCellDef> Colonia </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.response.address.colonia}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="symbol1">
+          <mat-header-cell *matHeaderCellDef> Ramo </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ramo}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="symbol2">
+          <mat-header-cell *matHeaderCellDef> Cupon </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.cupon}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <!-- {{element|json}} -->
+            {{element._id}}
+            <p-button (onClick)="imprimir(element._id)" label="Descargar PDF"></p-button>
+            <div id="{{element._id}}" class="oculto">
+              <app-reporte [datos]="{data:element}"></app-reporte>
+            </div>
+
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns2;"></mat-row>
+      </mat-table>
+    </div>
   </p-tabPanel>
   <p-tabPanel header="Administrar Cupones" leftIcon="fa-bell-o">
 

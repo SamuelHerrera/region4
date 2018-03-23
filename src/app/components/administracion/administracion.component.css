@@ -20,3 +20,18 @@
   overflow: auto;
   max-height: 500px;
 }
+
+.ui-float-label {
+  margin: 20px;
+}
+
+.mle {
+  margin-left: 90px;
+}
+
+.oculto {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
