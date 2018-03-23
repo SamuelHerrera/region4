@@ -50,7 +50,7 @@ exports.createClient = async (function (req, res, next) {
       from: 'activation@itexsolutions.com.mx',
       to: createdClient.mail,
       subject: 'Activar mi cuenta de Region4',
-      text: 'Use el codigo ' + createdClient.activationCode + ' para activar su cuenta en http://itexsolutions.com.mx/activacion'
+      text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://itexsolutions.com.mx/activacion'
     };
 
     transporter.sendMail(mailOptions, function (error, info) {

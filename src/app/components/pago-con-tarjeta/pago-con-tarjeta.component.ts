@@ -18,17 +18,23 @@ export class PagoConTarjetaComponent implements OnInit {
   disabled = true;
   codigo = false;
   pf: Pagofacilrequest = new Pagofacilrequest();
+  public montoDescuento = "Descuento: 30% =  - $100";
 
   constructor(private pagofacil: PagofacilService, private messageService: MessageService) { }
 
   ngOnInit() {
+    setTimeout(() => {
+      this.facturacion["costoAvaluo"] = 1200;
+      this.facturacion["subTotal"] = 1200;
+      this.facturacion["total"] = 1200;
+    })
   }
 
   aplicarCodigo() { }
 
   pagarAvaluo() {
     this.loading = true;
-    this.pf.monto = "1";
+    this.pf.monto = this.facturacion["total"];
     this.pf.email = "region4mid@gmail.com"
     this.pagofacil.generatePago(this.pf).subscribe(response => {
       if (response) {
@@ -49,8 +55,9 @@ export class PagoConTarjetaComponent implements OnInit {
   }
 
   pagarAvaluoPayPal() {
+    console.log(this.facturacion)
     this.loading = true;
-    this.pagofacil.generatePagoPayPal().subscribe((response: any) => {
+    this.pagofacil.generatePagoPayPal(null, null, this.facturacion["total"]).subscribe((response: any) => {
       const win = window.open(response.data.response, "Secure Payment");
       if (win) {
         const timer = setInterval(() => {
@@ -69,6 +76,13 @@ export class PagoConTarjetaComponent implements OnInit {
                       });
                       this.completed.emit(true);
                       this.loading = false;
+                    } else {
+                      this.messageService.add({
+                        severity: 'info', summary: 'Error procesando pago',
+                        detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+                      });
+                      this.loading = false;
+                      this.completed.emit(false);
                     }
                   }, error => {
                     this.messageService.add({

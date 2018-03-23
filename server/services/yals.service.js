@@ -14,6 +14,28 @@ var config = {
   json: {}
 };
 
+var yals_email = "ventas@region4.mx";
+var yals_apikey = "x_brAgJfLNK5ANWGGMcRAkJR";
+
+exports.getSettings = async (function () {
+  return {
+    url: config.url,
+    mail: yals_email,
+    key: yals_apikey
+  };
+});
+
+exports.setSettings = async (function (url, mail, key) {
+  config.url = url;
+  yals_apikey = key;
+  yals_email = mail;
+  return {
+    url: config.url,
+    mail: yals_email,
+    key: yals_apikey
+  };
+});
+
 exports.getReport = async (function (query, page, limit) {
   var options = {
     page,
@@ -26,7 +48,7 @@ exports.getReport = async (function (query, page, limit) {
   } catch (e) {
     throw Error('Error while Paginating Todos' + e);
   }
-})
+});
 
 exports.createReport = async (function (clientid, yals_request, cuponid) {
   var report_model = new model();
@@ -36,8 +58,8 @@ exports.createReport = async (function (clientid, yals_request, cuponid) {
   report_model.cuponid = cuponid;
   report_model.estado = yals_request.estado;
 
-  yals_request.email = "ventas@region4.mx";
-  yals_request.api_key = "x_brAgJfLNK5ANWGGMcRAkJR";
+  yals_request.email = yals_email;
+  yals_request.api_key = yals_apikey;
 
   config.json = yals_request;
   var response = await (new Promise(function (resolve, reject) {

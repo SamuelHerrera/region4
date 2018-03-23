@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="centered">
+    <div class="header">
+      Ingrese su correo y a continuación presione el botón reenviar clave.
+    </div>
+    <div class="formA">
+      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+        <span class="ui-float-label">
+          <input id="Correo" type="text" size="50" pInputText name="correo" ngModel required>
+          <label for="Correo">Correo</label>
+        </span>
+        <div class="ui-float-label button">
+          <p-button (onClick)="reenviarClave()" label="Reenviar Clave"></p-button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
