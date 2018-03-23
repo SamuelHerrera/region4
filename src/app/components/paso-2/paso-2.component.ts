@@ -38,6 +38,10 @@ export class Paso2Component implements OnInit {
   /** */
   selectedAge: String;
 
+  areaConstruida: boolean;
+  superficieTerreno: boolean;
+  edad: boolean;
+
   constructor(private messageService: MessageService) {
 
 
@@ -93,18 +97,14 @@ export class Paso2Component implements OnInit {
   onChange(event) {
     this.verify();
   }
-  areaConstruida: boolean;
-  superficieTerreno: boolean;
-  edad: boolean;
+
   verify() {
-
-
     if (this.avaluoForm['area_construida'] >= 30 && this.avaluoForm['area_construida'] <= 1000) {
       this.areaConstruida = true;
       //console.log(this.avaluoForm['area_construida']);
     } else { this.areaConstruida = false }
 
-    if (this.avaluoForm['superficie_terreno'] >= 0 && this.avaluoForm['superficie_terreno'] >= 1000) {
+    if (this.avaluoForm['superficie_terreno'] >= 0 && this.avaluoForm['superficie_terreno'] <= 1000) {
       this.superficieTerreno = true;
     } else { this.superficieTerreno = false; }
 
@@ -117,22 +117,35 @@ export class Paso2Component implements OnInit {
       && this.avaluoForm['banos']
       && this.avaluoForm['medios_banos']
       && this.avaluoForm['estacionamientos']
-      && this.areaConstruida//this.avaluoForm['area_construida']
-      && this.superficieTerreno//this.avaluoForm['superficie_terreno']
+      && this.areaConstruida //this.avaluoForm['area_construida']
+      && this.superficieTerreno //this.avaluoForm['superficie_terreno']
       && (this.edad/*this.avaluoForm['edad']*/) || this.isNew) {
       this.completed.emit(true);
     } else {
-      if (this.areaConstruida == false) {
-        this.messageService.add({ severity: 'error', summary: 'Área Construída', detail: 'El valor del área construida debe estar entre 30 y 1000 m2' });
+      this.messageService.clear();
+      if (this.areaConstruida === false) {
+        this.messageService.add({
+          severity: 'info', summary: 'Área Construída',
+          detail: 'El valor del área construida debe estar entre 30 y 1000 m2'
+        });
       }
-      if(this.superficieTerreno ==false){
-        this.messageService.add({ severity: 'error', summary: 'Superficie Construída', detail: 'El valor de la superficie del terreno debe estar entre 0 y 1000 m2' });
+      if (this.superficieTerreno === false) {
+        this.messageService.add({
+          severity: 'info', summary: 'Superficie Construída',
+          detail: 'El valor de la superficie del terreno debe estar entre 0 y 1000 m2'
+        });
       }
-      if(this.edad ==false){
-        this.messageService.add({ severity: 'error', summary: 'Años de antigüedad', detail: 'Los años de antigüedad deben ser entre 0 y 99' });
+      if (this.edad === false) {
+        this.messageService.add({
+          severity: 'info', summary: 'Años de antigüedad',
+          detail: 'Los años de antigüedad deben ser entre 0 y 99'
+        });
       }
       this.completed.emit(false);
     }
+    setTimeout(() => {
+      this.messageService.clear();
+    }, 3500);
   }
 
 }

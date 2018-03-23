@@ -42,6 +42,8 @@ export class PagoConTarjetaComponent implements OnInit {
           severity: 'success', summary: 'Procesamiento de pago',
           detail: "Su pago se ha procesado satisfactoriamente."
         });
+        this.facturacion["formapago"] = "Tarjeta Debito/Credito";
+        this.facturacion["FechaTransaccion"] = new Date().toLocaleDateString();
         this.completed.emit(true);
       }
       this.loading = false;
@@ -75,6 +77,8 @@ export class PagoConTarjetaComponent implements OnInit {
                         detail: "Su pago se ha procesado satisfactoriamente."
                       });
                       this.completed.emit(true);
+                      this.facturacion["formapago"] = "PayPal";
+                      this.facturacion["FechaTransaccion"] = new Date().toLocaleDateString();
                       this.loading = false;
                     } else {
                       this.messageService.add({

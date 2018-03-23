@@ -11,8 +11,10 @@ import { YalsService } from '../../services/yals.service';
 })
 export class Paso1Component implements OnInit {
 
-  lat = 20.975262;
-  lng = -89.640562;
+  zipCode: boolean;
+
+  lat = 21.082189;
+  lng = -89.6368873;
 
   @Input() avaluoForm: any;
   @Output() completed = new EventEmitter<boolean>();
@@ -20,6 +22,8 @@ export class Paso1Component implements OnInit {
   constructor(private yals: YalsService) { }
 
   ngOnInit() {
+    this.avaluoForm['latitud'] = this.lat;
+    this.avaluoForm['longitud'] = this.lng;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         this.lat = position.coords.latitude;
@@ -27,16 +31,13 @@ export class Paso1Component implements OnInit {
         this.avaluoForm['latitud'] = this.lat;
         this.avaluoForm['longitud'] = this.lng;
       });
-    } else {
-      this.avaluoForm['latitud'] = this.lat;
-      this.avaluoForm['longitud'] = this.lng;
     }
   }
 
   onChange(event) {
     this.verify();
   }
-  zipCode: boolean;
+
   verify() {
 
     /*if(this.avaluoForm['zip'].length == 5) {
