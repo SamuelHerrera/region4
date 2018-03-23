@@ -31,6 +31,8 @@ router.delete('/client:id', ClientController.removeClient);
 var YalsController = require('../controllers/yals.controller');
 router.post('/yals', YalsController.createReport);
 router.get('/yals', YalsController.getReport);
+router.post('/yals/configuracion', YalsController.setSettings);
+router.get('/yals/configuracion', YalsController.getSettings);
 
 var PagoFacilController = require('../controllers/pagofacil.controller');
 router.post('/pagofacil', PagoFacilController.createPago);
