@@ -1,0 +1,26 @@
+.container {
+    /*border: 1px red solid;*/
+    width: 100%;
+    height: 100%;
+}
+
+.scrollable {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: center;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.promoContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.promoContainer div{
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}

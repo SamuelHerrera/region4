@@ -48,3 +48,21 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+.botonesCupon{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.buttonContainer{
+  display: flex;
+  width: 90%;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.buttonContainer p-button{
+  padding-left: 10px;
+  padding-right: 10px;
+}

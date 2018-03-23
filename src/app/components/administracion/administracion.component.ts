@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { ClientService } from '../../services/client.service';
 import { YalsService } from '../../services/yals.service';
@@ -7,6 +7,8 @@ import * as jsPDF from 'jspdf';
 import * as html2pdf from 'html2pdf.js';
 import { style } from '@angular/animations';
 import { FormControl } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { DialogCuponesComponent } from '../dialog-cupones/dialog-cupones.component';
 
 @Component({
   selector: 'app-administracion',
@@ -17,6 +19,9 @@ export class AdministracionComponent implements OnInit {
 
   displayedColumns = ['position', 'name', 'weight', 'symbol'];
   displayedColumns2 = ['position', 'name', 'weight', 'symbol', 'symbol1', 'symbol2', 'actions'];
+
+  displayedColumnsCupones = ['campania', 'descuento', 'cupon', 'descripcion', 'estatus'];
+
   dataSource = new MatTableDataSource([]);
   dataSource2 = new MatTableDataSource([]);
   yalsconfig: any = {};
@@ -37,7 +42,7 @@ PSW:ItexSolutions1!
   pass: any;
   //@ViewChild('f') form: any;
   /** */
-  constructor(private clientService: ClientService, private yals: YalsService, private messageService: MessageService) { }
+  constructor(public dialog: MatDialog, private clientService: ClientService, private yals: YalsService, private messageService: MessageService) { }
 
   validarLogin() {
     console.log("user: ", this.user);
@@ -47,11 +52,28 @@ PSW:ItexSolutions1!
       //console.log("Es el administrador 1");
       this.messageService.add({ severity: 'success', summary: 'Inicio de sesión', detail: "Bienvenido administrador: " + this.user });
       this.login = false;
-        this.loginSuccess = true;
+      this.loginSuccess = true;
     } else { this.messageService.add({ severity: 'error', summary: 'No match', detail: "Usuario y contraseña no coinciden." }); }
 
   }
+  /**PopUp Cupones */
 
+  cupon: string;
+  name: string;
+
+  openDialog(): void {
+    let dialogRef = this.dialog.open(DialogCuponesComponent, {
+      width: '350px',
+      data: { cupon: this.cupon }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed', this.cupon);
+      this.cupon = result;
+    });
+  }
+
+  /** */
   ngOnInit() {
     this.clientService.getClients().subscribe((response: any) => {
       //console.log(response)
