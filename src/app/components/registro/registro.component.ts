@@ -27,25 +27,51 @@ export class RegistroComponent implements OnInit {
 
   @ViewChild('f') form: any;
 
+  controlContrasena: FormControl;
+  controlRepeatContrasena: FormControl
+
   constructor(private router: Router, private messageService: MessageService, private clientService: ClientService) { }
 
   ngOnInit() {
   }
 
   register() {
-    if (this.form.form.valid) {
-      this.form.ngSubmit.emit();
-      return true;
+
+    if (this.form.form.valid && (this.form.form.get("Correo") != "" && this.form.form.get("Contrasena") != "" && this.form.form.get("Nombre") != "" && this.form.form.get("Repetir") != "" && this.form.form.get("Telefono") != "" && this.form.form.get("Ramo") != "Ramo")) {
+
+      this.controlContrasena = this.form.form.get("Contrasena");
+      this.controlRepeatContrasena = this.form.form.get("Repetir");
+
+      if (this.controlContrasena.value != this.controlRepeatContrasena.value) {
+        this.messageService.add({ severity: 'error', summary: 'Validacion', detail: ('Las contraseñas no coinciden.') });
+        return false;
+      } else {
+        this.form.ngSubmit.emit();
+        return true;
+      }
     } else {
       Object.keys(this.form.form.controls).forEach(field => {
         const control: FormControl = this.form.form.get(field);
         control.markAsTouched({ onlySelf: true });
         control.markAsPristine({ onlySelf: true });
         control.markAsDirty({ onlySelf: true });
+        if (field === "Contrasena") {
+          this.controlContrasena = this.form.form.get(field);
+        }
+        if (field === "Repetir") {
+          this.controlRepeatContrasena = this.form.form.get(field);
+        }
         if (!control.valid) {
           this.messageService.add({ severity: 'error', summary: 'Validacion', detail: ('Campo ' + field + ' es incorrecto.') });
         }
       });
+
+      if (this.controlContrasena.value != this.controlRepeatContrasena.value) {
+        
+        this.messageService.add({ severity: 'error', summary: 'Validacion', detail: ('Las contraseñas no coinciden.') });
+      }
+
+
     }
     return false;
   }

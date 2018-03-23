@@ -55,6 +55,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdministracionComponent } from './components/administracion/administracion.component';
 import { CuponesComponent } from './components/cupones/cupones.component';
 import { MailService } from './services/mail.service';
+import { ForgotpassComponent } from './components/forgotpass/forgotpass.component';
+import { ReenviarClaveComponent } from './components/reenviar-clave/reenviar-clave.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,9 @@ import { MailService } from './services/mail.service';
     DatosfacturacionComponent,
     ReporteComponent,
     AdministracionComponent,
-    CuponesComponent
+    CuponesComponent,
+    ForgotpassComponent,
+    ReenviarClaveComponent
   ],
   imports: [
     HttpClientModule,

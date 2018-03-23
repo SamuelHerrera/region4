@@ -4,6 +4,7 @@ import { Message } from 'primeng/components/common/api';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { Router } from '@angular/router';
 import { ClientService } from '../../services/client.service';
+import { MailService } from '../../services/mail.service';
 
 @Component({
   selector: 'app-activacion-usuario',
@@ -14,7 +15,7 @@ export class ActivacionUsuarioComponent implements OnInit {
 
   @ViewChild('f') form: any;
 
-  constructor(private clientService: ClientService, private router: Router, private messageService: MessageService) { }
+  constructor(private mails: MailService, private clientService: ClientService, private router: Router, private messageService: MessageService) { }
 
   ngOnInit() {
   }
@@ -39,10 +40,10 @@ export class ActivacionUsuarioComponent implements OnInit {
   public onSubmit(form) {
     this.clientService.activateClient(form.Clave).subscribe(reponse => {
       this.router.navigate(['/iniciosesion']);
-      this.messageService.add({ severity: 'success', summary: 'Activacion', detail: "Usuario activado satisfactoriamente." });
+      this.messageService.add({ severity: 'success', summary: 'Activación', detail: "Usuario activado satisfactoriamente." });
     },
       error => {
-        this.messageService.add({ severity: 'error', summary: 'Server', detail: error });
+        this.messageService.add({ severity: 'error', summary: 'Server', detail: error.error.message });        
       });
   }
 
