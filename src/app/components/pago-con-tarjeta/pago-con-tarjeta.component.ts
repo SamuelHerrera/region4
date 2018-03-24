@@ -35,12 +35,13 @@ export class PagoConTarjetaComponent implements OnInit {
   aplicarCodigo() {
     this.cupones.getCuponByName(this.codigoName).subscribe((response: any) => {
       //console.log("Response", response)
-      if (response && response.data.docs.length >0 ) {
+      if (response && response.data.docs.length > 0) {
         const porcentajeDescuento = response.data.docs[0].porcentaje;
         if (response.data.docs[0].estado) {
 
-          this.montoDescuento = "Descuento: " + porcentajeDescuento + "% = " +((porcentajeDescuento * 1200)/100);
-          this.facturacion["subTotal"] = 1200-((porcentajeDescuento * 1200)/100);
+          this.montoDescuento = "Descuento: " + porcentajeDescuento + "% = " + ((porcentajeDescuento * 1200) / 100);
+          this.facturacion["subTotal"] = 1200 - ((porcentajeDescuento * 1200) / 100);
+          this.facturacion["total"] = 1200 - ((porcentajeDescuento * 1200) / 100);
         } else {
 
           this.messageService.add({
