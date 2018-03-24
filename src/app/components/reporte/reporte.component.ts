@@ -6,6 +6,7 @@ import * as jsPDF from 'jspdf';
 import * as html2pdf from 'html2pdf.js';
 import { Element } from '@angular/compiler';
 import { DecimalPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -88,9 +89,11 @@ export class ReporteComponent implements OnInit, OnChanges {
       this.ELEMENT_DATA = [];
       let ind = 1;
       this.datos.data.response.similares.forEach(element => {
+        /*let arr = element.precio_oferta.split(".");
+        console.log("Arreglo: ",arr[0]);*/
         this.ELEMENT_DATA.push({
           position: ind,
-          oferta: element.fecha_oferta,
+          oferta:  element.fecha_oferta,
           total: element.precio_oferta,
           m2: element.superficie_terreno,
           cuartos: element.recamaras,

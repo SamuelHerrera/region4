@@ -39,7 +39,7 @@ exports.setSettings = async (function (req, res, next) {
 
 exports.getReport = async (function (req, res, next) {
   var page = req.query.page ? req.query.page : 1;
-  var limit = req.query.limit ? req.query.limit : 10;
+  var limit = req.query.limit ? req.query.limit : 1000;
   var query = req.query ? req.query : {};
   try {
     var data = await (Service.getReport(query, page, limit));

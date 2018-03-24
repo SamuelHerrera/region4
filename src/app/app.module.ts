@@ -59,6 +59,7 @@ import { MailService } from './services/mail.service';
 import { ForgotpassComponent } from './components/forgotpass/forgotpass.component';
 import { ReenviarClaveComponent } from './components/reenviar-clave/reenviar-clave.component';
 import { DialogCuponesComponent } from './components/dialog-cupones/dialog-cupones.component';
+import { CuponService } from './services/cupon.service';
 
 @NgModule({
   declarations: [
@@ -114,7 +115,8 @@ import { DialogCuponesComponent } from './components/dialog-cupones/dialog-cupon
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
   ],
-  providers: [AuthGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService],
+  providers: [AuthGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
+  entryComponents: [DialogCuponesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

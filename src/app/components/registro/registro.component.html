@@ -12,7 +12,7 @@
             <label for="Nombre">Nombre Completo</label>
           </span>
           <span class="ui-float-label">
-            <input id="Correo" type="text" size="50" pInputText name="Correo" ngModel required>
+            <input id="Correo" type="email" size="50" pInputText name="Correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel required>
             <label for="Correo">Correo</label>
           </span>
           <span class="ui-float-label morem">

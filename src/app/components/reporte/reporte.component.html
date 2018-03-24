@@ -263,57 +263,57 @@
           <mat-table #table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="position">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> No. </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> No. </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.position | date:'yy-MM-dd'}} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="oferta">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Oferta </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.oferta}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Oferta </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.oferta}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="total">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> $ Total </mat-header-cell>
-              <mat-cell *matCellDef="let element">$ {{element.total | number: '0.1-2'}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> $ Total </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell2">{{element.total | number: '0.1-2'}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="m2">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> $ m2 </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.m2 | number: '0.1-2'}} m<sup>2</sup></mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> $ m2 </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.m2 | number: '0.1-2'}} m<sup>2</sup></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="cuartos">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> No. Cuartos </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.cuartos}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> No. Cuartos </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.cuartos}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="banos">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> No. Baños </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.banos}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> No. Baños </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.banos}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="parking">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> No. Parking </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.parking}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> No. Parking </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.parking}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="construccion">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Construccion </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.construccion | number: '0.1-2'}} m<sup>2</sup></mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Construccion </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.construccion | number: '0.1-2'}} m<sup>2</sup></mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="edad">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Edad </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.edad}} </mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Edad </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.edad}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="distancia">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> Distancia </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.distancia | number: '0.1-2'}} Km</mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Distancia </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.distancia | number: '0.1-2'}} Km</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="similitud">
-              <mat-header-cell *matHeaderCellDef mat-sort-header> % Similitud </mat-header-cell>
-              <mat-cell *matCellDef="let element"> {{element.similitud | number: '0.1-2'}} %</mat-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> % Similitud </mat-header-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.similitud | number: '0.1-2'}} %</mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -327,7 +327,9 @@
     <div class="divisor">
       <hr>
     </div>
+
     <div class="html2pdf__page-break"></div>
+
     <div class="preciosColonia">
       <div class="middleTitle">
         <span>COLONIA {{datos.data.response.address.colonia}}</span>
@@ -436,7 +438,7 @@
     <div class="graficaPrecioColonia">
       <div class="containerGraficaColonia">
 
-        <div class="intro">
+        <div class="intro3">
           <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
         </div>
         <div class="graficaContainer">
@@ -567,6 +569,7 @@
     <div class="divisor">
       <hr>
     </div>
+    <div class="html2pdf__page-break"></div>
 
     <div class="glosario">
       <div class="middleTitle">

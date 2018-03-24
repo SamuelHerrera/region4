@@ -37,18 +37,37 @@ export class RegistroComponent implements OnInit {
 
   register() {
 
-    if (this.form.form.valid && (this.form.form.get("Correo") != "" && this.form.form.get("Contrasena") != "" && this.form.form.get("Nombre") != "" && this.form.form.get("Repetir") != "" && this.form.form.get("Telefono") != "" && this.form.form.get("Ramo") != "Ramo")) {
+    if (this.form.form.valid && (this.form.form.get("Correo") !== "" &&
+      this.form.form.get("Contrasena") !== "" && this.form.form.get("Nombre") !== "" &&
+      this.form.form.get("Repetir") !== "" && this.form.form.get("Telefono") !== "" &&
+      this.form.form.get("Ramo") !== "Ramo")) {
 
       this.controlContrasena = this.form.form.get("Contrasena");
       this.controlRepeatContrasena = this.form.form.get("Repetir");
 
-      if (this.controlContrasena.value != this.controlRepeatContrasena.value) {
+      if (this.controlContrasena.value !== this.controlRepeatContrasena.value) {
         this.messageService.add({ severity: 'error', summary: 'Validacion', detail: ('Las contraseñas no coinciden.') });
         return false;
       } else {
         this.form.ngSubmit.emit();
         return true;
       }
+
+      /*else {
+        // tslint:disable-next-line:max-line-length
+        //const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const re = /[a-z0-9!#$%&'*+\/=?^_{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9][a-z0-9-]*[a-z0-9]/ ;
+        const valid = re.test(String(this.form.form.get("Correo")).toLowerCase());
+        console.log("Valid", valid);
+        if (valid) {
+          this.form.ngSubmit.emit();
+          return true;
+        } else {
+          this.messageService.add({ severity: 'error', summary: 'Validacion', detail: ('Correo no tiene un formato valido.') });
+          return false;
+        }
+
+      }*/
     } else {
       Object.keys(this.form.form.controls).forEach(field => {
         const control: FormControl = this.form.form.get(field);
@@ -66,8 +85,8 @@ export class RegistroComponent implements OnInit {
         }
       });
 
-      if (this.controlContrasena.value != this.controlRepeatContrasena.value) {
-        
+      if (this.controlContrasena.value !== this.controlRepeatContrasena.value) {
+
         this.messageService.add({ severity: 'error', summary: 'Validacion', detail: ('Las contraseñas no coinciden.') });
       }
 

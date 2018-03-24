@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { PagofacilService } from '../../services/pagofacil.service';
 import { Pagofacilrequest } from '../../models/pagofacil.model';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { CuponService } from '../../services/cupon.service';
 
 declare var window: Window;
 
@@ -17,10 +18,11 @@ export class PagoConTarjetaComponent implements OnInit {
   loading = false;
   disabled = true;
   codigo = false;
+  codigoName = "";
   pf: Pagofacilrequest = new Pagofacilrequest();
-  public montoDescuento = "Descuento: 30% =  - $100";
+  public montoDescuento: any;
 
-  constructor(private pagofacil: PagofacilService, private messageService: MessageService) { }
+  constructor(private pagofacil: PagofacilService, private messageService: MessageService, private cupones: CuponService) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -30,7 +32,32 @@ export class PagoConTarjetaComponent implements OnInit {
     })
   }
 
-  aplicarCodigo() { }
+  aplicarCodigo() {
+    this.cupones.getCuponByName(this.codigoName).subscribe((response: any) => {
+      //console.log("Response", response)
+      if (response && response.data.docs.length >0 ) {
+        const porcentajeDescuento = response.data.docs[0].porcentaje;
+        if (response.data.docs[0].estado) {
+
+          this.montoDescuento = "Descuento: " + porcentajeDescuento + "% = " +((porcentajeDescuento * 1200)/100);
+          this.facturacion["subTotal"] = 1200-((porcentajeDescuento * 1200)/100);
+        } else {
+
+          this.messageService.add({
+            severity: 'error', summary: 'Cupón Inválido',
+            detail: "El cupón no se encuentra activo."
+          });
+
+        }
+
+      } else {
+        this.messageService.add({
+          severity: 'info', summary: 'Cupón Inválido',
+          detail: "El cupón no existe."
+        });
+      }
+    });
+  }
 
   pagarAvaluo() {
     this.loading = true;
