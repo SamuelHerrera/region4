@@ -75,16 +75,16 @@ export class AdministracionComponent implements OnInit {
   /** */
   ngOnInit() {
     this.clientService.getClients().subscribe((response: any) => {
-      console.log("Response", response)
+      //console.log("Response", response)
       this.dataSource = new MatTableDataSource(response.data.docs);
     });
     this.yals.getConfigs().subscribe((response: any) => {
       this.yalsconfig = response.data;
     });
     this.yals.getRequest().subscribe((response: any) => {
-      //console.log(response);
+      console.log("Response",response);
       response.data.docs.forEach(element => {
-        //console.log("Elemento-", element);
+        console.log("Elemento-", response.data.docs);
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
 
           element['client'] = cli.data.docs[0].name;
