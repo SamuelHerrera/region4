@@ -82,7 +82,7 @@ export class AdministracionComponent implements OnInit {
       this.yalsconfig = response.data;
     });
     this.yals.getRequest().subscribe((response: any) => {
-      console.log("Response",response);
+      console.log("Response", response);
       response.data.docs.forEach(element => {
         console.log("Elemento-", response.data.docs);
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
