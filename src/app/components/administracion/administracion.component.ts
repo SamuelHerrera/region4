@@ -9,6 +9,7 @@ import { style } from '@angular/animations';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogCuponesComponent } from '../dialog-cupones/dialog-cupones.component';
+import { CuponService } from '../../services/cupon.service';
 
 @Component({
   selector: 'app-administracion',
@@ -24,59 +25,57 @@ export class AdministracionComponent implements OnInit {
 
   dataSource = new MatTableDataSource([]);
   dataSource2 = new MatTableDataSource([]);
+  dataSource3 = new MatTableDataSource([]);
   yalsconfig: any = {};
 
-  /**Para validar el login */
-  /**
-   * 
-   * 
-Usuario:Administrador
-PSW: Region42018
+  cupon: string;
+  name: string;
 
-Usuario:Administrador2
-PSW:ItexSolutions1!
-   */
-  login: boolean = true;
-  loginSuccess: boolean = false;
+  login = true;
+  loginSuccess = false;
+
+  // login = false;
+  // loginSuccess = true;
+
   user: any;
   pass: any;
-  //@ViewChild('f') form: any;
-  /** */
-  constructor(public dialog: MatDialog, private clientService: ClientService, private yals: YalsService, private messageService: MessageService) { }
+
+  constructor(public dialog: MatDialog, private clientService:
+    ClientService, private yals: YalsService, private messageService: MessageService, private cuponService: CuponService) { }
 
   validarLogin() {
-    console.log("user: ", this.user);
-
     if ((this.user === "Administrador" && this.pass === "Region42018") ||
       (this.user === "Administrador2" && this.pass === "ItexSolutions1!")) {
       //console.log("Es el administrador 1");
       this.messageService.add({ severity: 'success', summary: 'Inicio de sesión', detail: "Bienvenido administrador: " + this.user });
-      this.login = false;
-      this.loginSuccess = true;
+      setTimeout(() => {
+        this.login = false;
+        setTimeout(() => {
+          this.loginSuccess = true;
+        });
+      });
     } else { this.messageService.add({ severity: 'error', summary: 'No match', detail: "Usuario y contraseña no coinciden." }); }
 
   }
   /**PopUp Cupones */
 
-  cupon: string;
-  name: string;
-
   openDialog(): void {
-    let dialogRef = this.dialog.open(DialogCuponesComponent, {
-      width: '350px',
+    const dialogRef = this.dialog.open(DialogCuponesComponent, {
+      width: '550px',
       data: { cupon: this.cupon }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed', this.cupon);
-      this.cupon = result;
+      this.cuponService.getCupons().subscribe((response: any) => {
+        this.dataSource3 = new MatTableDataSource(response.data.docs);
+      });
     });
   }
 
   /** */
   ngOnInit() {
     this.clientService.getClients().subscribe((response: any) => {
-      console.log("Response",response)
+      console.log("Response", response)
       this.dataSource = new MatTableDataSource(response.data.docs);
     });
     this.yals.getConfigs().subscribe((response: any) => {
@@ -87,13 +86,17 @@ PSW:ItexSolutions1!
       response.data.docs.forEach(element => {
         //console.log("Elemento-", element);
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
-          
+
           element['client'] = cli.data.docs[0].name;
           element['ramo'] = cli.data.docs[0].ramo;
         });
       });
       this.dataSource2 = new MatTableDataSource(response.data.docs);
       setTimeout(() => { console.log(response.data.docs) })
+    });
+    this.cuponService.getCupons().subscribe((response: any) => {
+      console.log(response)
+      this.dataSource3 = new MatTableDataSource(response.data.docs);
     });
   }
 
@@ -114,6 +117,14 @@ PSW:ItexSolutions1!
       html2canvas: { dpi: 192, letterRendering: true },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     });
+  }
+
+  changeStatus(id, status) {
+    this.cuponService.changeStatus(id, status).subscribe(response => {
+      this.cuponService.getCupons().subscribe((response2: any) => {
+        this.dataSource3 = new MatTableDataSource(response2.data.docs);
+      });
+    })
   }
 
 

@@ -45,6 +45,12 @@ router.get('/cancel', PagoFacilController.cancelPagoPayPal);
 var MailController = require('../controllers/mail.controller');
 router.post('/sendmail', upload.any(), MailController.sendMail);
 
+var CuponController = require('../controllers/cupon.controller');
+router.get('/cupon', CuponController.getCupon);
+router.post('/cupon', CuponController.createCupon);
+router.put('/cupon', CuponController.updateStatus);
+
+
 
 
 module.exports = router;
