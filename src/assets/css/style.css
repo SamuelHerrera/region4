@@ -561,6 +561,7 @@ select,
 textarea,
 input:not([type]),
 input[type="text"],
+input[type="email"],
 input[type="password"] {
   height: 26px;
   max-width: 100%;
