@@ -2,6 +2,13 @@
   <div class="scrollable">
 
     <!--{{datos.data.request.colonia|json}}-->
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logo_.png" />
+        </a>
+      </div>
+    </div>
 
     <div class="title">
       <div class="titleContainer">
@@ -278,7 +285,9 @@
 
             <ng-container matColumnDef="m2">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> $ m2 </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell"> {{element.m2 | number: '0.1-2'}} m<sup>2</sup></mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.m2 | number: '0.1-2'}} m
+                <sup>2</sup>
+              </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="cuartos">
@@ -298,7 +307,9 @@
 
             <ng-container matColumnDef="construccion">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Construccion </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell"> {{element.construccion | number: '0.1-2'}} m<sup>2</sup></mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.construccion | number: '0.1-2'}} m
+                <sup>2</sup>
+              </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="edad">

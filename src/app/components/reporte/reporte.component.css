@@ -805,3 +805,22 @@ table td {
     font-weight: 500;
     color: rgba(0,0,0,.87);;
 }
+.superTitle{
+    background: #28225C;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.superContainer{
+    width: 650px;
+    padding-left:10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start
+
+}
+.logo {
+    width: 200px;
+    height: 50px;
+    margin: 20px;
+  }
