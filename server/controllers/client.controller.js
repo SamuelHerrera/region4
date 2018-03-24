@@ -20,6 +20,12 @@ transporter.verify(function (error, success) {
   }
 });
 
+var mailgun = require('mailgun.js');
+var mg = mailgun.client({
+  username: 'api',
+  key: process.env.MAILGUN_API_KEY || 'key-02b06c51f11de490dbad81b5b63e6da8'
+});
+
 _this = this;
 
 exports.getClients = async (function (req, res, next) {
@@ -46,20 +52,28 @@ exports.createClient = async (function (req, res, next) {
   try {
 
     var createdClient = await (ClientService.createClient(req.body));
-    var mailOptions = {
-      from: 'usuario@valorinmuebles.com.mx',
-      to: createdClient.mail,
-      subject: 'Activar mi cuenta de Region4',
-      text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://itexsolutions.com.mx/activacion'
-    };
+    // var mailOptions = {
+    //   from: 'usuario@valorinmuebles.com.mx',
+    //   to: createdClient.mail,
+    //   subject: 'Activar mi cuenta de Region4',
+    //   text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://itexsolutions.com.mx/activacion'
+    // };
 
-    transporter.sendMail(mailOptions, function (error, info) {
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
+    // transporter.sendMail(mailOptions, function (error, info) {
+    //   if (error) {
+    //     console.log(error);
+    //   } else {
+    //     console.log('Email sent: ' + info.response);
+    //   }
+    // });
+    mg.messages.create('valorinmuebles.com.mx', {
+        from: "Usuario <usuario@valorinmuebles.com.mx>",
+        to: [createdClient.mail],
+        subject: 'Activar mi cuenta de Valor Inmuebles',
+        text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://itexsolutions.com.mx/activacion'
+      })
+      .then(msg => console.log(msg)) // logs response data
+      .catch(err => console.log(err)); // logs any error
     return res.status(200).json({
       status: 200,
       data: createdClient,
