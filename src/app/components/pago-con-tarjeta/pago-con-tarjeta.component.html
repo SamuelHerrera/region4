@@ -7,7 +7,7 @@
     </div>
     <div class="costContainer">
       <span>Código de Cupón</span>
-      <input id="disabled-input" type="text" size="20" pInputText [disabled]="codigo" name="codigoCupon" />
+      <input id="disabled-input" type="text" size="20" pInputText [disabled]="codigo" [(ngModel)]="codigoName" name="codigoCupon" />
     </div>
     <div class="cupon">
       <span class="descuentos">{{montoDescuento}}</span>

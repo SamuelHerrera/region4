@@ -14,11 +14,9 @@
         </span>
 
         <p-button label="Iniciar Sesión" (onClick)="validarLogin()"></p-button>
-        <!--</form>-->
       </div>
     </div>
   </p-tabPanel>
-  
   <p-tabPanel header="Usuarios" leftIcon="fa-user" *ngIf="loginSuccess">
     <div class="example-container mat-elevation-z8">
       <div class="example-header">
@@ -134,40 +132,43 @@
     <div clas="botonesCupon">
       <div class="buttonContainer">
         <p-button label="Agregar Cupón" (onClick)="openDialog()"></p-button>
-        <p-button label="Guardar y Salir" (onClick)="saveExit()"></p-button>
       </div>
     </div>
 
     <div class="example-container mat-elevation-z8">
 
-      <mat-table #table [dataSource]="dataSource2">
+      <mat-table #table [dataSource]="dataSource3">
         <!-- Position Column -->
         <ng-container matColumnDef="campania">
           <mat-header-cell *matHeaderCellDef> Campaña </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.client}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.campana}} </mat-cell>
         </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="descuento">
           <mat-header-cell *matHeaderCellDef> Descuento </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.dateCreated| date:'yyyy-MM-dd HH:mm a'}}
+          <mat-cell *matCellDef="let element"> {{element.porcentaje}}
           </mat-cell>
         </ng-container>
         <!-- Weight Column -->
         <ng-container matColumnDef="cupon">
           <mat-header-cell *matHeaderCellDef> Cupon </mat-header-cell>
           <mat-cell *matCellDef="let element">
-            {{element.response.address.estado}}
+            {{element.nombre}}
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="descripcion">
           <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.response.address.colonia}} </mat-cell>
+          <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="estatus">
           <mat-header-cell *matHeaderCellDef> Estatus </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.ramo}} </mat-cell>
+          <mat-cell *matCellDef="let element">
+            {{element.estado?'Activo':'Desactivado'}}
+            <button *ngIf="!element.estado" pButton type="button" (click)="changeStatus(element._id, true)" label="Activar" class="ui-button-success"></button>
+            <button *ngIf="element.estado" pButton type="button" (click)="changeStatus(element._id, false)" label="Desactivar" class="ui-button-danger"></button>
+          </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumnsCupones"></mat-header-row>

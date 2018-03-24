@@ -25,7 +25,7 @@ _this = this;
 exports.getClients = async (function (req, res, next) {
 
   var page = req.query.page ? req.query.page : 1;
-  var limit = req.query.limit ? req.query.limit : 10;
+  var limit = req.query.limit ? req.query.limit : 1000;
   var query = req.query ? req.query : {};
   try {
     var todos = await (ClientService.getClients(query, page, limit));

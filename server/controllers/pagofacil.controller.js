@@ -7,7 +7,7 @@ _this = this;
 
 exports.getPago = async (function (req, res, next) {
   var page = req.query.page ? req.query.page : 1;
-  var limit = req.query.limit ? req.query.limit : 10;
+  var limit = req.query.limit ? req.query.limit : 1000;
   var query = req.query ? req.query : {};
   try {
     var data = await (Service.getPago(query, page, limit));

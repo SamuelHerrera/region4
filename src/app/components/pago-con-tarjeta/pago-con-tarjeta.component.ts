@@ -2,6 +2,7 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { PagofacilService } from '../../services/pagofacil.service';
 import { Pagofacilrequest } from '../../models/pagofacil.model';
 import { MessageService } from 'primeng/components/common/messageservice';
+import { CuponService } from '../../services/cupon.service';
 
 declare var window: Window;
 
@@ -17,10 +18,11 @@ export class PagoConTarjetaComponent implements OnInit {
   loading = false;
   disabled = true;
   codigo = false;
+  codigoName = "";
   pf: Pagofacilrequest = new Pagofacilrequest();
   public montoDescuento = "Descuento: 30% =  - $100";
 
-  constructor(private pagofacil: PagofacilService, private messageService: MessageService) { }
+  constructor(private pagofacil: PagofacilService, private messageService: MessageService, private cupones: CuponService) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -30,7 +32,14 @@ export class PagoConTarjetaComponent implements OnInit {
     })
   }
 
-  aplicarCodigo() { }
+  aplicarCodigo() {
+    this.cupones.getCuponByName(this.codigoName).subscribe(response => {
+      console.log(response)
+      if (response) {
+
+      }
+    });
+  }
 
   pagarAvaluo() {
     this.loading = true;
