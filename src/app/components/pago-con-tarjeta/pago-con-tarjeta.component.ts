@@ -20,7 +20,7 @@ export class PagoConTarjetaComponent implements OnInit {
   codigo = false;
   codigoName = "";
   pf: Pagofacilrequest = new Pagofacilrequest();
-  public montoDescuento = "Descuento: 30% =  - $100";
+  public montoDescuento: any;
 
   constructor(private pagofacil: PagofacilService, private messageService: MessageService, private cupones: CuponService) { }
 
@@ -33,10 +33,28 @@ export class PagoConTarjetaComponent implements OnInit {
   }
 
   aplicarCodigo() {
-    this.cupones.getCuponByName(this.codigoName).subscribe(response => {
-      console.log(response)
-      if (response) {
+    this.cupones.getCuponByName(this.codigoName).subscribe((response: any) => {
+      //console.log("Response", response)
+      if (response && response.data.docs.length >0 ) {
+        const porcentajeDescuento = response.data.docs[0].porcentaje;
+        if (response.data.docs[0].estado) {
 
+          this.montoDescuento = "Descuento: " + porcentajeDescuento + "% = " +((porcentajeDescuento * 1200)/100);
+          this.facturacion["subTotal"] = 1200-((porcentajeDescuento * 1200)/100);
+        } else {
+
+          this.messageService.add({
+            severity: 'error', summary: 'Cupón Inválido',
+            detail: "El cupón no se encuentra activo."
+          });
+
+        }
+
+      } else {
+        this.messageService.add({
+          severity: 'info', summary: 'Cupón Inválido',
+          detail: "El cupón no existe."
+        });
       }
     });
   }

@@ -49,9 +49,16 @@ export class RegistroComponent implements OnInit {
         this.messageService.add({ severity: 'error', summary: 'Validacion', detail: ('Las contraseñas no coinciden.') });
         return false;
       } else {
+        this.form.ngSubmit.emit();
+        return true;
+      }
+
+      /*else {
         // tslint:disable-next-line:max-line-length
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        //const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const re = /[a-z0-9!#$%&'*+\/=?^_{|}~-]+(?:\.[a-z0-9!#$%&'*+\/=?^_{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9][a-z0-9-]*[a-z0-9]/ ;
         const valid = re.test(String(this.form.form.get("Correo")).toLowerCase());
+        console.log("Valid", valid);
         if (valid) {
           this.form.ngSubmit.emit();
           return true;
@@ -60,7 +67,7 @@ export class RegistroComponent implements OnInit {
           return false;
         }
 
-      }
+      }*/
     } else {
       Object.keys(this.form.form.controls).forEach(field => {
         const control: FormControl = this.form.form.get(field);
