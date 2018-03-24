@@ -18,7 +18,7 @@ import { CuponService } from '../../services/cupon.service';
 })
 export class AdministracionComponent implements OnInit {
 
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['position', 'name', "phone", 'weight', 'symbol'];
   displayedColumns2 = ['position', 'name', 'weight', 'symbol', 'symbol1', 'symbol2', 'actions'];
 
   displayedColumnsCupones = ['campania', 'descuento', 'cupon', 'descripcion', 'estatus'];

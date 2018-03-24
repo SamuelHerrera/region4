@@ -32,9 +32,12 @@
         </ng-container>
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef> Contacto </mat-header-cell>
-          <mat-cell *matCellDef="let element"> {{element.mail}}
-            <br/> {{element.phone}} </mat-cell>
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.mail}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+          <mat-header-cell *matHeaderCellDef> Telefono </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
         </ng-container>
         <!-- Weight Column -->
         <ng-container matColumnDef="weight">
