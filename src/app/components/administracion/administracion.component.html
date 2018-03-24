@@ -116,7 +116,7 @@
           <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
           <mat-cell *matCellDef="let element">
             <!-- {{element|json}} -->
-            {{element._id}}
+            <!-- {{element._id}} -->
             <p-button (onClick)="imprimir(element._id)" label="Descargar PDF"></p-button>
             <div id="{{element._id}}" class="oculto">
               <app-reporte [datos]="{data:element}"></app-reporte>
