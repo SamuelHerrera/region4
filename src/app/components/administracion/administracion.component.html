@@ -134,9 +134,7 @@
         <p-button label="Agregar Cupón" (onClick)="openDialog()"></p-button>
       </div>
     </div>
-
     <div class="example-container mat-elevation-z8">
-
       <mat-table #table [dataSource]="dataSource3">
         <!-- Position Column -->
         <ng-container matColumnDef="campania">
@@ -156,12 +154,10 @@
             {{element.nombre}}
           </mat-cell>
         </ng-container>
-
         <ng-container matColumnDef="descripcion">
           <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.descripcion}} </mat-cell>
         </ng-container>
-
         <ng-container matColumnDef="estatus">
           <mat-header-cell *matHeaderCellDef> Estatus </mat-header-cell>
           <mat-cell *matCellDef="let element">
