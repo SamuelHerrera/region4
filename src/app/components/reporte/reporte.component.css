@@ -127,7 +127,9 @@
 }
 
 .subCarac {
-    width: 150px;
+    width: 120px;
+    padding: 5px 5px 5px 5px;
+    /*border:1px black solid;*/
 }
 
 .middleTitle {
@@ -175,8 +177,13 @@
 }
 
 .subamenidades {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    /*border:1px red solid;*/
     text-align: center;
-    width: 150px;
+    width: 120px;
     display: flex;
     flex-direction: column;
 }
@@ -355,6 +362,7 @@
 }
 
 .houseView {
+    display: none;
     width: 310px;
     height: 200px;
 }
