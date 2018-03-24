@@ -70,7 +70,7 @@ exports.createClient = async (function (req, res, next) {
         from: "Usuario <usuario@valorinmuebles.com.mx>",
         to: [createdClient.mail],
         subject: 'Activar mi cuenta de Valor Inmuebles',
-        text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://itexsolutions.com.mx/activacion'
+        text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://www.valorinmuebles.com.mx/activacion'
       })
       .then(msg => console.log(msg)) // logs response data
       .catch(err => console.log(err)); // logs any error

@@ -41,7 +41,7 @@ export class ReenviarClaveComponent implements OnInit {
       if (cliente.data.docs != "" && (cliente.data.docs[0].mail === this.form.form.controls.correo.value)) {
         const clave = cliente.data.docs[0].activationCode;
 
-        this.mails.sendMail({ to: this.form.form.controls.correo.value, text: "Use el código " + clave + " para activar su cuenta en http://itexsolutions.com.mx/activacion", subject: "Reenvío de clave" }).subscribe((response: any) => {
+        this.mails.sendMail({ to: this.form.form.controls.correo.value, text: "Use el código " + clave + " para activar su cuenta en http://www.valorinmuebles.com.mx/activacion", subject: "Reenvío de clave" }).subscribe((response: any) => {
           //console.log("Response", response);
 
         });
