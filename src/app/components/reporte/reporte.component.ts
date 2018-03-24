@@ -35,8 +35,8 @@ export class ReporteComponent implements OnInit, OnChanges {
   estimatedDate = "ENERO 2016";
   idReport = 123;
 
-  plusvalia = "pending to implement"//14.2;
-
+  //plusvalia = this.datos.data.response.historico.apreciacion_anualizada * 100;//"pending to implement"//14.2;
+  plusvalia: any;
   /*lat = 30.200;
   lng = 20.100;*/
   lat: number;
@@ -52,26 +52,26 @@ export class ReporteComponent implements OnInit, OnChanges {
 
   constructor() {
 
-    
 
-    
+
+
     if (this.datos) {
 
-     /* this.datosPrecioColonia = {
-        //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        labels: this.datos.data.response.colonia_preciosm2_general.labels,
-        datasets: [
-          {
-            label: 'Precio Promedio',
-            backgroundColor: '#42A5F5',
-            borderColor: '#1E88E5',
-            //data: [65, 59, 80, 81, 56, 55, 40]
-            data: this.datos.data.response.colonia_preciosm2_general.data.usado
-          }
-        ]
-      }*/
+      /* this.datosPrecioColonia = {
+         //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+         labels: this.datos.data.response.colonia_preciosm2_general.labels,
+         datasets: [
+           {
+             label: 'Precio Promedio',
+             backgroundColor: '#42A5F5',
+             borderColor: '#1E88E5',
+             //data: [65, 59, 80, 81, 56, 55, 40]
+             data: this.datos.data.response.colonia_preciosm2_general.data.usado
+           }
+         ]
+       }*/
 
-      
+
 
     }
 
@@ -81,8 +81,13 @@ export class ReporteComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(): void {
+
+    this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada )* 100;
+    //console.log("Response", this.datos.data.response.historico.apreciacion_anualizada);
     if (this.datos) {
-      
+
+      console.log(this.datos.data);
+
       this.lat = this.datos.data.request.latitud;
       this.lng = this.datos.data.request.longitud;
 
@@ -93,7 +98,7 @@ export class ReporteComponent implements OnInit, OnChanges {
         console.log("Arreglo: ",arr[0]);*/
         this.ELEMENT_DATA.push({
           position: ind,
-          oferta:  element.fecha_oferta,
+          oferta: element.fecha_oferta,
           total: element.precio_oferta,
           m2: element.superficie_terreno,
           cuartos: element.recamaras,
@@ -166,7 +171,7 @@ export class ReporteComponent implements OnInit, OnChanges {
             label: 'Usado',
             backgroundColor: '#C8FE2E',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_tipos_propiedades.data.usado 
+            data: this.datos.data.response.colonia_tipos_propiedades.data.usado
             //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
           }
         ]

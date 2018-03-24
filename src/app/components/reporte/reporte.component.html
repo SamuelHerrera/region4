@@ -98,6 +98,7 @@
           <div class="containerAmenidades">
 
             <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
+              
               <div class="imgContainer" *ngIf="item=='cocina_integral'">
                 <img class="images" src="../assets/images/cocina.png" alt="Smiley face" height="42" width="42" />
               </div>
@@ -563,11 +564,11 @@
       </div>
       <div class="plusValia">
         <div class="flechaContainer">
-          <img src="../assets/images/flecha.svg" alt="Smiley face">
+          <img src="../assets/images/flecha.png" alt="Smiley face">
         </div>
         <div class="plusValiaContainer">
           <h2>
-            +{{plusvalia}}%
+            +{{plusvalia | number: '0.1-2'}}%
           </h2>
           <p>
             Plusvalía anualizada

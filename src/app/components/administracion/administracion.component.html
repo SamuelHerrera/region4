@@ -56,10 +56,12 @@
     </div>
   </p-tabPanel>
   <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key" *ngIf="loginSuccess">
-    <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['url']">
-      <label for="float-input">URL</label>
-    </span>
+    <div class="isHidden">
+      <span class="ui-float-label">
+        <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['url']">
+        <label for="float-input">URL</label>
+      </span>
+    </div>
     <span class="ui-float-label">
       <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['mail']">
       <label for="float-input">Mail</label>
