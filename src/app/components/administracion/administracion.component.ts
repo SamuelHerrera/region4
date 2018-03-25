@@ -86,7 +86,7 @@ export class AdministracionComponent implements OnInit {
     this.yals.getRequest().subscribe((response: any) => {
       console.log("Response", response);
       response.data.docs.forEach(element => {
-        console.log("Elemento-", response.data.docs);
+        //console.log("Elemento-", response.data.docs);
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
 
           element['client'] = cli.data.docs[0].name;

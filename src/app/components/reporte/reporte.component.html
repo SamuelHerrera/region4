@@ -98,7 +98,7 @@
           <div class="containerAmenidades">
 
             <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
-              
+
               <div class="imgContainer" *ngIf="item=='cocina_integral'">
                 <img class="images" src="../assets/images/cocina.png" alt="Smiley face" height="42" width="42" />
               </div>
@@ -129,6 +129,11 @@
               <div class="imgContainer" *ngIf="item=='jacuzzi'">
                 <img class="images" src="../assets/images/jacuzzi.png" alt="Smiley face" height="42" width="42" />
               </div>
+              <div class="imgContainer" *ngIf="item=='seguridad'">
+                <img class="images" src="../assets/images/seguridad.png" alt="Smiley face" height="42" width="42" />
+              </div>
+
+              <span *ngIf="item=='seguridad'">seguridad</span>
               <span *ngIf="item=='jacuzzi'">Jacuzzi</span>
               <span *ngIf="item=='estudio'">Estudio</span>
               <span *ngIf="item=='amueblado'">Amueblado</span>
@@ -214,13 +219,14 @@
 
       <div class="mapView">
         <div class="houseView">
-          <img src="../assets/images/region4-crop-u9162.jpg">
+          <img [src]="urlImage">
         </div>
         <div class="map">
-          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
-            <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
+          <img [src]="url">
+          <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
+           
             <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-          </agm-map>
+          </agm-map> -->
         </div>
       </div>
 
