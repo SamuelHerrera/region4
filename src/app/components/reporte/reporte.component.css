@@ -363,23 +363,23 @@
 
 .houseView {
     /*display: none;*/
-    width: 310px;
-    height: 200px;
+    width: 650px;
+    height: 350px;
 }
 
 .houseView img {
-    width: 310px;
-    height: 200px;
+    width: 650px;
+    height: 350px;
 }
 
 .map {
-    width: 310px;
-    height: 200px;
+    width: 650px;
+    height: 350px;
 }
 
 .map img {
-    width: 310px;
-    height: 200px;
+    width: 650px;
+    height: 350px;
 }
 
 .textContent {
@@ -831,4 +831,8 @@ table td {
     width: 200px;
     height: 50px;
     margin: 20px;
+  }
+  canvas{
+      display: block;
+      visibility: visible;
   }

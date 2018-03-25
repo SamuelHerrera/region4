@@ -60,12 +60,12 @@ export class ReporteComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=310x200&format=jpg&maptype=roadmap&markers=color:blue%7Clabel:S%7C" + this.lat + "," + this.lng + "&key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
+    this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=650x350&format=jpg&maptype=roadmap&markers=color:blue%7Clabel:S%7C" + this.lat + "," + this.lng + "&key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
       .subscribe((response: any) => {
         this.url = "data:image/jpeg;base64," + response.data;
       });
 
-    this.yals.urlToBase64("https://maps.googleapis.com/maps/api/streetview?size=310x200&format=jpg&location=" + this.lat + "," + this.lng + "&fov=90&heading=235&pitch=10&key=AIzaSyD-mZNHODP64wms0kiJCINVSyrgG5mht3w")
+    this.yals.urlToBase64("https://maps.googleapis.com/maps/api/streetview?size=650x350&format=jpg&location=" + this.lat + "," + this.lng + "&fov=90&heading=235&pitch=10&key=AIzaSyD-mZNHODP64wms0kiJCINVSyrgG5mht3w")
       .subscribe((response: any) => {
         this.urlImage = "data:image/jpeg;base64," + response.data;
       });
