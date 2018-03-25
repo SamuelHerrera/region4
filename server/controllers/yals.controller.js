@@ -1,7 +1,18 @@
 var async = require('asyncawait/async');
 var await = require('asyncawait/await');
+var fs = require('fs');
+var pdf = require('html-pdf');
 
 var Service = require('../services/yals.service');
+
+var mailgun = require('mailgun-js')({
+  apiKey: process.env.MAILGUN_API_KEY || 'key-02b06c51f11de490dbad81b5b63e6da8',
+  domain: 'valorinmuebles.com.mx'
+});
+
+var options = {
+  format: 'Letter'
+};
 
 _this = this; //clientid, yals_request, cuponid
 
@@ -48,6 +59,66 @@ exports.getReport = async (function (req, res, next) {
       data: data,
       message: "Succesfully Client Recieved"
     });
+  } catch (e) {
+    return res.status(400).json({
+      status: 400,
+      message: e.message
+    });
+  }
+});
+
+exports.sendReport = async (function (req, res, next) {
+  var page = req.query.page ? req.query.page : 1;
+  var limit = req.query.limit ? req.query.limit : 1000;
+  var query = req.query ? req.query : {};
+  var mail = query.email;
+  delete query.email;
+  try {
+    var data = await (Service.getReport(query, page, limit));
+    var pdfname = `Reporte-${new Date().getTime()}.pdf`;
+    pdf.create(`<html>${data.docs[0]}</html>`, options).toFile('./temp/' + pdfname, function (err, res) {
+      if (err) return console.log(err);
+      console.log(res);
+      var file = fs.readFileSync('./temp/' + pdfname);
+      var attch = new mailgun.Attachment({
+        data: file,
+        filename: "Reporte.pdf"
+      });
+      var data = {
+        from: "Valor Inmuebles <" + ('ventas@valorinmuebles.com') + ">",
+        to: mail,
+        subject: 'Reporte',
+        text: 'Envio de reporte',
+        attachment: attch
+      };
+
+      mailgun.messages().send(data, function (error, body) {
+        console.log(body);
+        try {
+          fs.unlinkSync('./temp/' + pdfname);
+        } catch (e) {}
+
+      });
+
+      // mg.messages.create('valorinmuebles.com.mx', {
+      //     from: "Valor Inmuebles <" + ('ventas@valorinmuebles.com') + ">",
+      //     to: [mail],
+      //     subject: req.body.subject || 'Reporte',
+      //     text: req.body.text || 'Envio de reporte',
+      //     html: req.body.html || '',
+      //     message: file
+      //   })
+      //   .then(msg => console.log(msg)) // logs response data
+      //   .catch(err => console.log(err)); // logs any error
+
+    });
+
+    return res.status(200).json({
+      status: 200,
+      data: true,
+      message: "Succesfully Sent mail"
+    });
+
   } catch (e) {
     return res.status(400).json({
       status: 400,

@@ -4,7 +4,6 @@ var bluebird = require('bluebird');
 var multer = require('multer');
 var upload = multer();
 
-
 var mongoose = require('mongoose');
 mongoose.Promise = bluebird;
 
@@ -33,6 +32,7 @@ router.post('/yals', YalsController.createReport);
 router.get('/yals', YalsController.getReport);
 router.post('/yals/configuracion', YalsController.setSettings);
 router.get('/yals/configuracion', YalsController.getSettings);
+router.get('/yals/sendEmail', YalsController.sendReport);
 
 var PagoFacilController = require('../controllers/pagofacil.controller');
 router.post('/pagofacil', PagoFacilController.createPago);
