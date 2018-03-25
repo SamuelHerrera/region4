@@ -2,6 +2,7 @@ var async = require('asyncawait/async');
 var await = require('asyncawait/await');
 var fs = require('fs');
 var pdf = require('html-pdf');
+var base64 = require('node-base64-image');
 
 var Service = require('../services/yals.service');
 
@@ -67,6 +68,36 @@ exports.getReport = async (function (req, res, next) {
   }
 });
 
+exports.getImageFromUrlAsBase64 = async (function (req, res, next) {
+  var page = req.query.page ? req.query.page : 1;
+  var limit = req.query.limit ? req.query.limit : 1000;
+  var query = req.query ? req.query : {};
+  try {
+    var response = await (new Promise(function (resolve, reject) {
+      base64.encode(query.url, {
+        string: true
+      }, function (error, response) {
+        if (!error) {
+          resolve(response);
+        } else {
+          reject(error);
+        }
+      });
+    }));
+    return res.status(200).json({
+      status: 200,
+      data: response,
+      message: "Succesfully image converted"
+    });
+  } catch (e) {
+    return res.status(400).json({
+      status: 400,
+      message: e
+    });
+  }
+});
+
+
 exports.sendReport = async (function (req, res, next) {
   var page = req.query.page ? req.query.page : 1;
   var limit = req.query.limit ? req.query.limit : 1000;
@@ -99,17 +130,6 @@ exports.sendReport = async (function (req, res, next) {
         } catch (e) {}
 
       });
-
-      // mg.messages.create('valorinmuebles.com.mx', {
-      //     from: "Valor Inmuebles <" + ('ventas@valorinmuebles.com') + ">",
-      //     to: [mail],
-      //     subject: req.body.subject || 'Reporte',
-      //     text: req.body.text || 'Envio de reporte',
-      //     html: req.body.html || '',
-      //     message: file
-      //   })
-      //   .then(msg => console.log(msg)) // logs response data
-      //   .catch(err => console.log(err)); // logs any error
 
     });
 

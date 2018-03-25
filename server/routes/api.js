@@ -33,6 +33,8 @@ router.get('/yals', YalsController.getReport);
 router.post('/yals/configuracion', YalsController.setSettings);
 router.get('/yals/configuracion', YalsController.getSettings);
 router.get('/yals/sendEmail', YalsController.sendReport);
+router.get('/yals/convert', YalsController.getImageFromUrlAsBase64);
+
 
 var PagoFacilController = require('../controllers/pagofacil.controller');
 router.post('/pagofacil', PagoFacilController.createPago);
