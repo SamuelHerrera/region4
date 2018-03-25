@@ -14,7 +14,7 @@ export class YalsService {
   }
 
   urlToBase64(url) {
-    return this._http.get("/api/yals/convert?url="+url);
+    return this._http.post("/api/yals/convert", { url: url });
   }
 
   generateRequest(yals: YalsRequest, cuponid: String) {
