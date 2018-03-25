@@ -60,7 +60,14 @@
       <mat-step>
         <ng-template matStepLabel>Obtener reporte</ng-template>
         <div class="nvoAvaluo">
-          <p-button *ngIf="avaluoResponse" (click)="nvoAvaluo()" label="Realizar Otro Avalúo"></p-button>
+          <div class="enviarCorreo">
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="30" pInputText name="otroCorreo" [(ngModel)] = "otroCorreo">
+              <label for="float-input">Correo </label>
+            </span>
+            <p-button *ngIf="avaluoResponse" (click)="enviarACorreo()" label="Enviar a correo"></p-button>
+          </div>
+          <p-button *ngIf="avaluoResponse" (click)="nvoAvaluo()" label="Realizar Otro Avalúo" class="isHidden"></p-button>
           <p-button *ngIf="avaluoResponse" (click)="imprimir()" label="Imprimir"></p-button>
         </div>
         <div class="loader" *ngIf="!avaluoResponse"></div>

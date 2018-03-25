@@ -83,10 +83,10 @@ export class ReporteComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
 
     this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada )* 100;
-    //console.log("Response", this.datos.data.response.historico.apreciacion_anualizada);
+    //console.log("Response", this.datos.data.response);
     if (this.datos) {
 
-      console.log(this.datos.data);
+      
 
       this.lat = this.datos.data.request.latitud;
       this.lng = this.datos.data.request.longitud;
@@ -114,6 +114,7 @@ export class ReporteComponent implements OnInit, OnChanges {
       });
 
       /**Graficas con datos obtenidos del json */
+      console.log("labels", this.datos.data.response.colonia_preciosm2_general.labels);
       this.datosPrecioColonia = {
         //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         labels: this.datos.data.response.colonia_preciosm2_general.labels,

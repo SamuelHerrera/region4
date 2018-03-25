@@ -31,7 +31,7 @@ export class AvaluoComponent implements OnInit {
   facturacion: any = {};
   avaluoResponse: any = null;
   loading = false;
-
+  otroCorreo: any;
   constructor(private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
   }
 
@@ -68,7 +68,7 @@ export class AvaluoComponent implements OnInit {
     if (this.isHidden) {
       // this.mail.sendMail({ to: "ventas@region4.mx", subject: "Facturacion", text: this.facturacion })
       this.mail.sendMail({
-        from: "facturacion@valorinmuebles.com.mx",
+        from: "facturacion@valorinmuebles.mx",
         to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
         html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
       })
@@ -90,6 +90,29 @@ export class AvaluoComponent implements OnInit {
       html2canvas: { dpi: 192, letterRendering: true },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     });
+  }
+
+  enviarACorreo() {
+
+    if (this.otroCorreo != "") {
+      console.log(this.otroCorreo);
+      this.mail.sendMail({
+        from: "usuario@valorinmuebles.com.mx",
+        to: this.otroCorreo,
+        subject: "Reporte de avalúo",
+        text: "A generado su reporte con exito",
+        attachments: [
+          {
+            filename: "ac.png",
+            path: "../assets/images/ac.png"
+          }
+        ]
+      }).subscribe((response: any) => {
+        console.log("Respuesta de mail: ",response);
+      });
+    } else {
+      console.log("El correo is empty");
+    }
   }
 
   // stepchanged(event: any) {

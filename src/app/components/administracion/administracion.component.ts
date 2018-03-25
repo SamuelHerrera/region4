@@ -10,6 +10,7 @@ import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogCuponesComponent } from '../dialog-cupones/dialog-cupones.component';
 import { CuponService } from '../../services/cupon.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-administracion',
@@ -41,7 +42,8 @@ export class AdministracionComponent implements OnInit {
   pass: any;
 
   constructor(public dialog: MatDialog, private clientService:
-    ClientService, private yals: YalsService, private messageService: MessageService, private cuponService: CuponService) { }
+    ClientService, private yals: YalsService, private messageService: MessageService, 
+    private cuponService: CuponService,private router: Router) { }
 
   validarLogin() {
     if ((this.user === "Administrador" && this.pass === "Region42018") ||
@@ -110,6 +112,7 @@ export class AdministracionComponent implements OnInit {
   imprimir(id) {
 
     const element = document.getElementById(id).childNodes[1];
+    //this.router.navigate(['/reporte']);
     html2pdf(element, {
       margin: 1,
       filename: 'reporte.pdf',
