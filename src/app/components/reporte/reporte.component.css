@@ -362,7 +362,7 @@
 }
 
 .houseView {
-    display: none;
+    /*display: none;*/
     width: 310px;
     height: 200px;
 }
@@ -377,7 +377,7 @@
     height: 200px;
 }
 
-.map agm-map {
+.map img {
     width: 310px;
     height: 200px;
 }
