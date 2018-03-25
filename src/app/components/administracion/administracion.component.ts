@@ -42,8 +42,8 @@ export class AdministracionComponent implements OnInit {
   pass: any;
 
   constructor(public dialog: MatDialog, private clientService:
-    ClientService, private yals: YalsService, private messageService: MessageService, 
-    private cuponService: CuponService,private router: Router) { }
+    ClientService, private yals: YalsService, private messageService: MessageService,
+    private cuponService: CuponService, private router: Router) { }
 
   validarLogin() {
     if ((this.user === "Administrador" && this.pass === "Region42018") ||

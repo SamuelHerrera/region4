@@ -30,30 +30,34 @@
 }
 
 .oculto {
-  display: none;
-  position: absolute;
   top: 0;
   left: 0;
+  z-index: -1;
+  position: absolute;
+  display: block;
 }
 
-.login{
+.login {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.containerLogin{
+
+.containerLogin {
   width: 25%;
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
 }
-.botonesCupon{
+
+.botonesCupon {
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-.buttonContainer{
+
+.buttonContainer {
   display: flex;
   width: 90%;
   flex-direction: row;
@@ -62,10 +66,23 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.buttonContainer p-button{
+
+.buttonContainer p-button {
   padding-left: 10px;
   padding-right: 10px;
 }
-.isHidden{
+
+.isHidden {
   display: none;
+}
+
+.mascarita {
+  height: 999px;
+  display: block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: white;
+  z-index: -1;
 }
