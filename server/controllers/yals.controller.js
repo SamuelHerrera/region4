@@ -107,7 +107,7 @@ exports.sendReport = async (function (req, res, next) {
     var pdfname = `Reporte-${new Date().getTime()}.pdf`;
     pdf.create(`<html>${data.docs[0]}</html>`, options).toFile('./temp/' + pdfname, function (err, res) {
       if (err) return console.log(err);
-      console.log(res);
+      //console.log(res);
       var file = fs.readFileSync('./temp/' + pdfname);
       var attch = new mailgun.Attachment({
         data: file,
@@ -122,7 +122,7 @@ exports.sendReport = async (function (req, res, next) {
       };
 
       mailgun.messages().send(data, function (error, body) {
-        console.log(body);
+        //console.log(body);
         try {
           fs.unlinkSync('./temp/' + pdfname);
         } catch (e) {}

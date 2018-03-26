@@ -9,9 +9,12 @@ require('dotenv').config();
 const api = require('./server/routes/api');
 
 // Parsers
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+  limit: '50mb'
+}));
 app.use(bodyParser.urlencoded({
-  extended: false
+  limit: '50mb',
+  extended: true
 }));
 
 // Angular DIST output folder

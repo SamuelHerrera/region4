@@ -158,7 +158,7 @@ exports.executePagoPayPal = async (function (query, token, payerid) {
 });
 
 exports.cancelPagoPayPal = async (function (query) {
-  console.log(query);
+  //console.log(query);
   var oldPagofacil = null;
   try {
     oldPagofacil = await (model.findOne({

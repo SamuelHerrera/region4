@@ -41,7 +41,7 @@ exports.updateStatus = async (function (id, estado) {
   } catch (e) {
     throw Error("Error occured while Finding the Todo")
   }
-  console.log(oldCupon)
+ // console.log(oldCupon)
   if (!oldCupon) {
     return false;
   }
