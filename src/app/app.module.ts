@@ -60,6 +60,7 @@ import { ForgotpassComponent } from './components/forgotpass/forgotpass.componen
 import { ReenviarClaveComponent } from './components/reenviar-clave/reenviar-clave.component';
 import { DialogCuponesComponent } from './components/dialog-cupones/dialog-cupones.component';
 import { CuponService } from './services/cupon.service';
+import { TerminosyCondicionesComponent } from './components/terminosy-condiciones/terminosy-condiciones.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { CuponService } from './services/cupon.service';
     CuponesComponent,
     ForgotpassComponent,
     ReenviarClaveComponent,
-    DialogCuponesComponent
+    DialogCuponesComponent,
+    TerminosyCondicionesComponent
   ],
   imports: [
     HttpClientModule,
