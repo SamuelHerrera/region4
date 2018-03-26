@@ -12,17 +12,20 @@
             <label for="Nombre">Nombre Completo</label>
           </span>
           <span class="ui-float-label">
-            <input id="Correo" type="email" size="50" pInputText name="Correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel required>
+            <input id="Correo" type="email" size="50" pInputText name="Correo" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ngModel
+              required>
             <label for="Correo">Correo</label>
           </span>
           <span class="ui-float-label morem">
             <label class="subtext">La contraseña debe ser alfanumérica de mínimo 6 a máximo 10 carácteres.</label>
-            <input id="Contraseña" type="password" size="50"  pInputText name="Contrasena" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" ngModel required >
+            <input id="Contraseña" type="password" size="50" pInputText name="Contrasena" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+              ngModel required>
             <label for="Contraseña">Contraseña</label>
 
           </span>
           <span class="ui-float-label">
-            <input id="Repetir" type="password" size="50"  pInputText name="Repetir" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" ngModel required >
+            <input id="Repetir" type="password" size="50" pInputText name="Repetir" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
+              ngModel required>
             <label for="Repetir">Repetir Contraseña</label>
           </span>
           <span class="ui-float-label">
@@ -36,8 +39,10 @@
           <div class="ui-float-label button">
             <p-button (onClick)="register()" label="Continuar"></p-button>
           </div>
-          <div><span>Al registrarme acepto los <a target="_blank" href="/terminosCondiciones">términos y condiciones</a>,
-            política de privacidad y el uso de cookies</span></div>
+          <div>
+            <span>Al registrarme acepto los
+              <a target="_blank" href="/terminosCondiciones">términos y condiciones</a>, política de privacidad y el uso de cookies</span>
+          </div>
         </form>
       </div>
     </div>

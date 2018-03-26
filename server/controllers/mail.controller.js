@@ -1,7 +1,6 @@
 var async = require('asyncawait/async');
 var await = require('asyncawait/await');
 var nodemailer = require('nodemailer');
-var fs = require('fs');
 
 var mailgun = require('mailgun.js');
 var mg = mailgun.client({
@@ -13,14 +12,15 @@ _this = this; //clientid, yals_request, cuponid
 
 exports.sendMail = async (function (req, res, next) {
   try {
-
-    mg.messages.create('valorinmuebles.com.mx', {
-        from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com') + ">",
-        to: [req.body.to],
-        subject: req.body.subject,
-        text: req.body.text || '',
-        html: req.body.html || ''
-      })
+    let msg = {
+      from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com') + ">",
+      to: [req.body.to],
+      subject: req.body.subject || '',
+      text: req.body.text || '',
+      html: req.body.html || ''
+    }
+    console.log('here')
+    mg.messages.create('valorinmuebles.com.mx', msg)
       .then(msg => console.log(msg)) // logs response data
       .catch(err => console.log(err)); // logs any error
 

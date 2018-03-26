@@ -12,13 +12,15 @@ import { Router } from '@angular/router';
 })
 export class ForgotpassComponent implements OnInit {
   @ViewChild('f') form: any;
+  client: any;
+
   constructor(private router: Router, private mails: MailService,
     private clients: ClientService, private messageService: MessageService) { }
 
   ngOnInit() {
 
   }
-  client:any;
+
   recuperarContrasena() {
     if (this.form.form.valid) {
       this.form.ngSubmit.emit()
@@ -38,20 +40,20 @@ export class ForgotpassComponent implements OnInit {
 
   public onSubmit(form) {
     this.clients.getClientsByMail(this.form.form.controls.correo.value).subscribe((cliente: any) => {
-      this.client = cliente;
+      this.client = cliente.data.docs[0];
       if (cliente.data.docs !== "" && (cliente.data.docs[0].mail === this.form.form.controls.correo.value)) {
-        const pass = cliente.data.docs[0].password;
         const HTMLPassword: any = document.getElementById("recoveryPassword");
         console.log(HTMLPassword);
-        /*this.mails.sendMail({
-          from: "usuario@valorinmuebles.com.mx",
-          to: this.form.form.controls.correo.value,
-          html: ""+HTMLPassword.innerHTML+""
-        }).subscribe((response: any) => {
-
-        });*/
-
-        this.router.navigate(['/iniciosesion']);
+        setTimeout(() => {
+          this.mails.sendMail({
+            from: "usuario@valorinmuebles.com.mx",
+            subject: "Recuperacion de contraseña",
+            to: this.form.form.controls.correo.value,
+            html: "" + HTMLPassword.innerHTML + ""
+          }).subscribe((response: any) => {
+            this.router.navigate(['/iniciosesion']);
+          });
+        }, 2000);
         this.messageService.add({
           severity: 'success',
           summary: 'Recuperación de contraseña', detail: 'Se a enviado un correo con su contraseña.'
