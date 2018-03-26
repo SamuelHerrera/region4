@@ -62,3 +62,21 @@
   
   height: 30px;
 }
+
+.oculto {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    position: absolute;
+    display: block;
+  }
+  .mascarita{
+    height: 400px;
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    z-index: -1;
+  }
