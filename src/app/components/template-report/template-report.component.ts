@@ -12,6 +12,7 @@ export class TemplateReportComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("NombreCliente", this.cliente.name);
   }
 
 }
