@@ -8,6 +8,8 @@ import * as jsPDF from 'jspdf';
 import * as html2pdf from '../../../assets/js/html2pdf';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { MailService } from '../../services/mail.service';
+import { ObservablesService } from '../../services/observables.service';
+import { Client } from '../../models/client.model';
 
 @Component({
   selector: 'app-avaluo',
@@ -33,10 +35,14 @@ export class AvaluoComponent implements OnInit {
   loading = false;
   otroCorreo: any;
   datosHTML: any;
-  constructor(private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
+  public user: Client = new Client();
+  constructor(private observableService: ObservablesService,private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
   }
 
   ngOnInit() {
+    this.observableService.userObservable$.subscribe(user => {
+      this.user = user ? user : new Client();
+    });
   }
 
   enviarCorreo() {
@@ -74,9 +80,9 @@ export class AvaluoComponent implements OnInit {
       this.mail.sendMail({
         from: "facturacion@valorinmuebles.mx",
         //to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
-        to: "erick00mex@gmail.com", subject: "Facturacion",
+        to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
         //html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
-        html: "<pre>" + HTMLFacturacion.innerHTML + "</pre>"
+        html: HTMLFacturacion.innerHTML
       })
         .subscribe(response => {
           this.messageService.add({
@@ -98,10 +104,12 @@ export class AvaluoComponent implements OnInit {
     });
   }
 
+  nomCliente: any = {};
   enviarACorreo() {
     if (this.otroCorreo !== "") {
+      const reportHTML: any = document.getElementById("reportTemplate");
       const element = document.getElementById('element-to-print');
-
+      this.nomCliente['name'] = this.user.name;
       const datauri = html2pdf(element, {
         margin: 1,
         filename: 'reporte.pdf',

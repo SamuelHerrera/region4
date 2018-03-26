@@ -9,7 +9,7 @@ export class DatosfacturacionComponent implements OnInit {
 
   @Input() facturacion: any = {};
   constructor() {
-    console.log(this.facturacion.subTotal);
+    //console.log(this.facturacion.subTotal);
    }
 
   ngOnInit() {

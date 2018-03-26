@@ -39,7 +39,7 @@ const routes: Routes = [
     },
     {
         path: 'templateFacturacion',
-        component: TemplatePasswordRecoveryComponent
+        component: TemplateUserActivationComponent
     },
     {
         path: "reestablecer",

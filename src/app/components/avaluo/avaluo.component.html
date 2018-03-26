@@ -48,12 +48,6 @@
             </div>
             <button pButton type="button" *ngIf="!avaluoResponse&&isHidden" (click)="enviarCorreo()" label="Generar Reporte y factura"
               [disabled]="loading" class="animated" [ngClass]="{'shake':step4,'bounceOut':!step4}"></button>
-
-            <div class="oculto">
-              <app-template-facturacion *ngIf="facturacion" [facturacion] = "facturacion"></app-template-facturacion>
-            </div>
-            <div class="mascarita"></div>
-
             <button pButton type="button" *ngIf="!avaluoResponse&&!isHidden" (click)="enviarCorreo()" label="Generar Reporte" [disabled]="loading"
               class="animated" [ngClass]="{'shake':step4,'bounceOut':!step4}"></button>
             <span class="margintop" *ngIf="loading">Generando reporte...</span>
@@ -78,6 +72,12 @@
         </div>
         <div class="loader" *ngIf="!avaluoResponse"></div>
         <app-reporte *ngIf="avaluoResponse" [datos]="avaluoResponse"></app-reporte>
+
+        <div class="oculto">
+          <app-template-facturacion *ngIf="facturacion" [facturacion]="facturacion"></app-template-facturacion>
+          <app-template-report [cliente]="nomCliente" id="reportTemplate"></app-template-report>
+        </div>
+        <div class="mascarita"></div>
       </mat-step>
     </mat-vertical-stepper>
   </div>

@@ -15,7 +15,7 @@
       </span>
 
       <span class="ui-float-label">
-        <input id="float-input" type="text" size="10" max="5"pInputText name="codigoPostal" [(ngModel)]="avaluoForm['zip']" (ngModelChange)="onChange($event)"
+        <input id="float-input" type="text" size="10" max="5"pInputText name="codigoPostal" pattern="(?=.*[0-9]).{5,5}" [(ngModel)]="avaluoForm['zip']" (ngModelChange)="onChange($event)"
           required>
         <label for="float-input">C.P.</label>
       </span>
