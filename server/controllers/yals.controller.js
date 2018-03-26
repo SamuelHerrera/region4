@@ -102,16 +102,22 @@ exports.sendReport = async (function (req, res, next) {
     var pdfname = `Reporte-${new Date().getTime()}.pdf`;
 
     var temp_dir = path.join(process.cwd(), 'temp/');
-    if (!fs.existsSync(temp_dir))
+    if (!fs.existsSync(temp_dir)) {
+      console.log("searching:" + temp_dir)
       fs.mkdirSync(temp_dir);
+      console.log("created");
+    }
 
     var filepath = path.join(process.cwd(), 'temp/', pdfname);
+    console.log("FILEPATH:" + filepath);
 
     fs.writeFile(filepath, req.body.file, {
       encoding: 'base64'
     }, function (err) {
       if (err) return console.log(err);
+      console.log("im here!:" + filepath)
       var file = fs.readFileSync(filepath);
+      console.log("file passed!!!")
       var attch = new mailgun.Attachment({
         data: file,
         filename: "Reporte.pdf"
