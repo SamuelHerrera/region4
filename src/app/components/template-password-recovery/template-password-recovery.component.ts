@@ -8,11 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TemplatePasswordRecoveryComponent implements OnInit {
 
   @Input() cliente: any = {};
+  name: any;
+  password: any;
   
   constructor() { }
 
   ngOnInit() {
-    console.log(this.cliente);
+    //console.log(this.cliente.data.docs[0].password);
+    if(this.cliente){
+      this.name = this.cliente.data.docs[0].name;
+      this.password = this.cliente.data.docs[0].password;
+    }
   }
 
 }
