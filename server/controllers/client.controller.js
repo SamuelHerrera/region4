@@ -54,9 +54,56 @@ exports.createClient = async (function (req, res, next) {
         from: "Usuario <usuario@valorinmuebles.com.mx>",
         to: [createdClient.mail],
         subject: 'Activar mi cuenta de Valor Inmuebles',
-        text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://www.valorinmuebles.com.mx/activacion'
+        html: `
+        <html >
+        <head>
+        </head>
+        <body>
+            <div class="mainContainer" style="width:100%; display:inline-block; ">
+                <div class="superTitle" style="background: #28225c; width: 100%; display: inline-block;">
+                  <div class="superContainer" style="padding-bottom: 10px; padding-top:10px;  width:100%; display: inline-block;">
+                    <a href="#" style="margin: 15px;">
+                      <img class="logo" src="https://valorinmuebes.herokuapp.com/assets/images/logo_.png" />
+                    </a>
+                  </div>
+                </div>
+                <div class="container2" style=" text-align: left; width: 100%; display: inline-block;">
+                  <div style="    text-align: left; width: 100%; display: inline-block; ">
+                    <h1 style="padding-top:20px; padding-bottom:20px; font-size:25px; font-weight:400;">Apreciable {{cliente.name}}</h1>
+                    <h3 style="text-align:justify;">Hemos recibido tu solicitud de registro, te pedimos que sigas las 
+                      instrucciones a continuación para la activación de tu cuenta.
+                      </h3>
+                  </div>
+                  <div style="text-align: left;  width: 100%; display: inline-block; padding-top:20px; padding-bottom: 20px;">
+                      Ingresa a nuestra página: http://www.valorinmuebles.com.mx/activacion <br>
+                      Usa el código de activación: ${createdClient.activationCode}
+                  </div>
+            
+                  <div style="    text-align: left;
+                  width: 100%;
+                  display: inline-block;">
+                    <span>No respondas a este correo, si requieres más información. Contáctanos al ventas@region4.mx .
+                    </span>
+            
+                  </div>
+            
+                  <div style="text-align: center;
+                  width: 100%;
+                  display: inline-block;">
+                    <h3>
+                      <a href="#">Terms</a> |
+                      <a href="#">Privacy</a>
+                      <!-- | -->
+                      <!-- <a href="#">Unsubscribe</a> -->
+                    </h3>
+                  </div>
+                </div>
+              </div>
+        </body>
+        </html>`,
+        // text: 'Use el código ' + createdClient.activationCode + ' para activar su cuenta en http://www.valorinmuebles.com.mx/activacion'
       })
-      
+
       .then(msg => console.log(msg)) // logs response data
       .catch(err => console.log(err)); // logs any error
     return res.status(200).json({
