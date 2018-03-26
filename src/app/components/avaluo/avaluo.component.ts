@@ -22,7 +22,7 @@ import { Client } from '../../models/client.model';
 export class AvaluoComponent implements OnInit {
 
   isHidden = false;
-
+  nomCliente: any = {};
   index = 0;
   step1 = false;
   step2 = false;
@@ -36,7 +36,7 @@ export class AvaluoComponent implements OnInit {
   otroCorreo: any;
   datosHTML: any;
   public user: Client = new Client();
-  constructor(private observableService: ObservablesService,private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
+  constructor(private observableService: ObservablesService, private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -104,7 +104,7 @@ export class AvaluoComponent implements OnInit {
     });
   }
 
-  nomCliente: any = {};
+
   enviarACorreo() {
     if (this.otroCorreo !== "") {
       const reportHTML: any = document.getElementById("reportTemplate");
@@ -123,6 +123,7 @@ export class AvaluoComponent implements OnInit {
           to: this.otroCorreo,
           subject: "Reporte de avalúo",
           text: ``,
+          html: reportHTML,
           file: data.split(';base64,').pop()
         }).subscribe((response: any) => {
           console.log("Respuesta de mail: ", response);
