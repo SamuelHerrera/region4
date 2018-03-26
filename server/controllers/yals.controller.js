@@ -97,17 +97,13 @@ exports.getImageFromUrlAsBase64 = async (function (req, res, next) {
 
 
 exports.sendReport = async (function (req, res, next) {
-  var page = req.query.page ? req.query.page : 1;
-  var limit = req.query.limit ? req.query.limit : 1000;
-  var query = req.query ? req.query : {};
-  var mail = query.email;
-  delete query.email;
   try {
-    var data = await (Service.getReport(query, page, limit));
     var pdfname = `Reporte-${new Date().getTime()}.pdf`;
-    pdf.create(`<html>${data.docs[0]}</html>`, options).toFile('./temp/' + pdfname, function (err, res) {
+
+    fs.writeFile('./temp/' + pdfname, req.body.file, {
+      encoding: 'base64'
+    }, function (err) {
       if (err) return console.log(err);
-      //console.log(res);
       var file = fs.readFileSync('./temp/' + pdfname);
       var attch = new mailgun.Attachment({
         data: file,
@@ -115,20 +111,18 @@ exports.sendReport = async (function (req, res, next) {
       });
       var data = {
         from: "Valor Inmuebles <" + ('ventas@valorinmuebles.com') + ">",
-        to: mail,
+        to: req.body.to,
         subject: 'Reporte',
         text: 'Envio de reporte',
         attachment: attch
       };
 
       mailgun.messages().send(data, function (error, body) {
-        //console.log(body);
         try {
           fs.unlinkSync('./temp/' + pdfname);
         } catch (e) {}
 
       });
-
     });
 
     return res.status(200).json({

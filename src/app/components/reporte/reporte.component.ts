@@ -3,7 +3,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, Sort } from '@angular/material';
 import * as jsPDF from 'jspdf';
-import * as html2pdf from 'html2pdf.js';
+import * as html2pdf from '../../../assets/js/html2pdf';
 import { Element } from '@angular/compiler';
 import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
@@ -84,8 +84,8 @@ export class ReporteComponent implements OnInit, OnChanges {
       this.ELEMENT_DATA = [];
       let ind = 1;
       this.datos.data.response.similares.forEach(element => {
-        
-        
+
+
         this.ELEMENT_DATA.push({
           position: ind,
           oferta: element.fecha_oferta,
@@ -231,7 +231,8 @@ export class ReporteComponent implements OnInit, OnChanges {
       filename: 'myfile.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { dpi: 192, letterRendering: true },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+      action: "save"
     });
   }
 

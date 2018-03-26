@@ -22,6 +22,10 @@ export class YalsService {
     return this._http.post("/api/yals", { clientid: client._id, yals_request: yals, cuponid: cuponid });
   }
 
+  sendReport(emaildata) {
+    return this._http.post("api/yals/sendEmail", emaildata);
+  }
+
   getCoords(avaluoForm: any) {
     // tslint:disable-next-line:max-line-length
     return this._http.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${avaluoForm['street']}+${avaluoForm['num_ext']}+${avaluoForm['colonia']},+${avaluoForm['municipio']}+${avaluoForm['estado']}&key=AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc`);
