@@ -48,6 +48,12 @@
             </div>
             <button pButton type="button" *ngIf="!avaluoResponse&&isHidden" (click)="enviarCorreo()" label="Generar Reporte y factura"
               [disabled]="loading" class="animated" [ngClass]="{'shake':step4,'bounceOut':!step4}"></button>
+
+            <div class="oculto">
+              <app-template-facturacion *ngIf="facturacion" [facturacion] = "facturacion"></app-template-facturacion>
+            </div>
+            <div class="mascarita"></div>
+
             <button pButton type="button" *ngIf="!avaluoResponse&&!isHidden" (click)="enviarCorreo()" label="Generar Reporte" [disabled]="loading"
               class="animated" [ngClass]="{'shake':step4,'bounceOut':!step4}"></button>
             <span class="margintop" *ngIf="loading">Generando reporte...</span>
@@ -62,7 +68,7 @@
         <div class="nvoAvaluo">
           <div class="enviarCorreo">
             <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText name="otroCorreo" [(ngModel)] = "otroCorreo">
+              <input id="float-input" type="text" size="30" pInputText name="otroCorreo" [(ngModel)]="otroCorreo">
               <label for="float-input">Correo </label>
             </span>
             <p-button *ngIf="avaluoResponse" (click)="enviarACorreo()" label="Enviar a correo"></p-button>
