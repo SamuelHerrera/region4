@@ -135,8 +135,8 @@ exports.sendReport = async (function (req, res, next) {
       console.log("DATA CREATED");
 
       mailgun.messages().send(data, function (error, body) {
-        //console.log(error);
-        //console.log(body);
+        console.log("error:" + error);
+        console.log("body" + body);
         try {
           fs.unlinkSync(filepath);
         } catch (e) {}
