@@ -6,51 +6,36 @@
 </head>
 
 <body>
-  <div class="mainConainer" style="    display: flex;
-  width: 100%;
-  flex-direction: column;">
-    <div class="superTitle" style="background: #28225c;
-    width: 100%;
-    display: flex;">
+  <div class="mainConainer" style="display: flex; width: 100%; flex-direction: column !important;">
+    <div class="superTitle" style="background: #28225c; width: 100%; display: flex; flex-direction:column !important">
       <div class="superContainer" style="padding-bottom: 10px;  width:650px; padding-bottom: 10px;  display: flex;flex-direction: column;
       justify-content: flex-start">
-        <a href="#">
+        <a href="#" style="text-decoration:none;">
           <img class="logo" src="https://valorinmuebes.herokuapp.com/assets/images/logo_.png" />
         </a>
       </div>
     </div>
 
-    <div class="container2" style="    text-align: left;
-    width: 100%;
-    display: flex;
-    flex-direction: column;">
+    <div class="container2" style="text-align: left; width: 100%;display: flex;flex-direction: column !important;">
+      <h1 style="font-size: 25px; font-weight: 500;width: 100% !important;">Solicitud de factura</h1>
+      <h3 style="font-size: 18px; font-weight: 400;width: 100% !important;">Datos para facturación</h3>
+      <div class="datosfacturacion" style="display: flex; flex-direction: columns !important; width: 100% !important;text-align: left; ">
 
-      <h1 style="font-size: 25px;
-      font-weight: 500;
-      padding-left: 55;
-      width: 650px;">Solicitud de factura</h1>
-      <h3 style="padding-left: 55;
-      width: 650px;">Datos para facturación</h3>
-      <div class="datosfacturacion" style="    display: flex;
-    width: 100%;
-    text-align: left;
-    flex-direction: column;">
-
-        <h3 style="padding-left: 75px;
-        width: 650;">RFC: {{facturacion.rfc}} </h3>
-        <h3 style="padding-left: 75px;
-        width: 650;">Direccion Fiscal: Calle: {{facturacion.street}} #{{facturacion.num_ext}}, Col. {{facturacion.colonia}}, {{facturacion.municipio}},
-          {{facturacion.localidad}}, {{facturacion.estadao}}, {{facturacion.pais}} </h3>
-        <h3 style="padding-left: 75px;
-        width: 650;">Nombre: {{facturacion.nombreContacto}} </h3>
-        <h3 style="padding-left: 75px;
-        width: 650;">Correo electronico del cliente: {{facturacion.correoContacto}}</h3>
-        <h3 style="padding-left: 75px;
-        width: 650;">Monto a facturar: {{facturacion.tota}}</h3>
-        <h3 style="padding-left: 75px;
-        width: 650;">Fecha de la transacción: {{facturacion.FechaTransaccion}}</h3>
-        <h3 style="padding-left: 75px;
-        width: 650;">Forma de pago: {{facturacion.formapago}}</h3>
+        <h3 style="padding-left: 25px;
+        width: 100%;">RFC: {{facturacion.rfc}} </h3>
+        <h3 style="padding-left: 25px;
+        width: 100%;">Direccion Fiscal: Calle: {{facturacion.street}} #{{facturacion.num_ext}}, Col. {{facturacion.colonia}}, {{facturacion.municipio}},
+          {{facturacion.localidad}}, {{facturacion.estado}}, {{facturacion.pais}} </h3>
+        <h3 style="padding-left: 25px;
+        width: 100%;">Nombre: {{facturacion.nombreContacto}} </h3>
+        <h3 style="padding-left: 25px;
+        width: 100%;">Correo electronico del cliente: {{facturacion.correoContacto}}</h3>
+        <h3 style="padding-left: 25px;
+        width: 100%;">Monto a facturar: {{facturacion.total}}</h3>
+        <h3 style="padding-left: 25px;
+        width: 100%;">Fecha de la transacción: {{facturacion.FechaTransaccion}}</h3>
+        <h3 style="padding-left: 25px;
+        width: 100%;">Forma de pago: {{facturacion.formapago}}</h3>
       </div>
     </div>
   </div>
