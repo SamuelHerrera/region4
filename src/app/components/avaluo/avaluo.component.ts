@@ -80,9 +80,9 @@ export class AvaluoComponent implements OnInit {
       this.mail.sendMail({
         from: "facturacion@valorinmuebles.mx",
         //to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
-        to: "erick00mex@gmail.com", subject: "Facturacion",
+        to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
         //html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
-        html: "" + HTMLFacturacion.innerHTML + ""
+        html: HTMLFacturacion.innerHTML
       })
         .subscribe(response => {
           this.messageService.add({
