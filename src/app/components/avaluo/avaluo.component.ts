@@ -119,7 +119,7 @@ export class AvaluoComponent implements OnInit {
       });
       datauri.then(data => {
         this.yals.sendReport({
-          from: "usuario@valorinmuebles.com.mx",
+          from: "ventas@valorinmuebles.com",
           to: this.otroCorreo,
           subject: "Reporte de avalúo",
           text: ``,
