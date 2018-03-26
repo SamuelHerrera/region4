@@ -18,7 +18,7 @@ export class ForgotpassComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  client:any;
   recuperarContrasena() {
     if (this.form.form.valid) {
       this.form.ngSubmit.emit()
@@ -38,7 +38,7 @@ export class ForgotpassComponent implements OnInit {
 
   public onSubmit(form) {
     this.clients.getClientsByMail(this.form.form.controls.correo.value).subscribe((cliente: any) => {
-
+      this.client = cliente;
       if (cliente.data.docs !== "" && (cliente.data.docs[0].mail === this.form.form.controls.correo.value)) {
         const pass = cliente.data.docs[0].password;
         const HTMLPassword: any = document.getElementById("recoveryPassword");
