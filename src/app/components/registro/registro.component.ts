@@ -94,7 +94,7 @@ export class RegistroComponent implements OnInit {
     }
     return false;
   }
-
+  cliente:any = {};
   public onSubmit(form) {
     const client: Client = new Client();
     client.name = form.Nombre;
@@ -106,6 +106,10 @@ export class RegistroComponent implements OnInit {
     client.ramo = form.Ramo ? form.Ramo.name : "";
     client.status = "created";
     this.clientService.registerClient(client).subscribe(response => {
+      this.cliente['name'] = client.name;
+      this.cliente['key'] = client.activationCode;
+
+
       this.router.navigate(['/activacion']);
       this.messageService.add({ severity: 'success', summary: 'Bienvenido', detail: "Usuario creado satisfactoriamente." });
     },
