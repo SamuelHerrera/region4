@@ -69,7 +69,7 @@ exports.createClient = async (function (req, res, next) {
                 </div>
                 <div class="container2" style=" text-align: left; width: 100%; display: inline-block;">
                   <div style="    text-align: left; width: 100%; display: inline-block; ">
-                    <h1 style="padding-top:20px; padding-bottom:20px; font-size:25px; font-weight:400;">Apreciable {{cliente.name}}</h1>
+                    <h1 style="padding-top:20px; padding-bottom:20px; font-size:25px; font-weight:400;">Apreciable ${createdClient.name}</h1>
                     <h3 style="text-align:justify;">Hemos recibido tu solicitud de registro, te pedimos que sigas las 
                       instrucciones a continuación para la activación de tu cuenta.
                       </h3>
