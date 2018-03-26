@@ -51,7 +51,7 @@ exports.createClient = async (function (req, res, next) {
     //   }
     // });
     mg.messages.create('valorinmuebles.com.mx', {
-        from: "Usuario <usuario@valorinmuebles.com.mx>",
+        from: "Valor Inmuebles <usuario@valorinmuebles.com.mx>",
         to: [createdClient.mail],
         subject: 'Activar mi cuenta de Valor Inmuebles',
         html: `
