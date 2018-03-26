@@ -12,6 +12,7 @@ import { AdministracionComponent } from '../components/administracion/administra
 import { CuponesComponent } from '../components/cupones/cupones.component';
 import { ForgotpassComponent } from '../components/forgotpass/forgotpass.component';
 import { ReenviarClaveComponent } from '../components/reenviar-clave/reenviar-clave.component';
+import { TerminosyCondicionesComponent } from '../components/terminosy-condiciones/terminosy-condiciones.component';
 
 const routes: Routes = [
     {
@@ -46,9 +47,8 @@ const routes: Routes = [
         component: AvaluoComponent
     },
     {
-        path: "reporte",
-        canActivate: [AuthGuard],
-        component: ReporteComponent
+        path: "terminosCondiciones",
+        component: TerminosyCondicionesComponent
     },
     {
         path: "forgotpass",

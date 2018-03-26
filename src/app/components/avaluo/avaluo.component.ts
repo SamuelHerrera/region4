@@ -32,6 +32,7 @@ export class AvaluoComponent implements OnInit {
   avaluoResponse: any = null;
   loading = false;
   otroCorreo: any;
+  datosHTML: any;
   constructor(private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
   }
 
@@ -121,6 +122,7 @@ export class AvaluoComponent implements OnInit {
         severity: 'success', summary: 'Correo enviado',
         detail: 'Se a enviado el reporte a su correo.'
       });
+      this.otroCorreo = "";
     } else {
       this.messageService.add({
         severity: 'error', summary: 'Error correo',
