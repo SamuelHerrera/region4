@@ -6,7 +6,7 @@ var model = require('../models/yals.model');
 _this = this;
 
 var config = {
-  url: 'https://yals.mx/api/v1/reporte/json',//'https://yals.mx/api/v1/reporte/json/test', //,
+  url: process.env.yals_url || 'https://yals.mx/api/v1/reporte/json/test', //,'https://yals.mx/api/v1/reporte/json',
   encoding: null,
   headers: {
     'Content-Type': 'application/json'
@@ -14,8 +14,8 @@ var config = {
   json: {}
 };
 
-var yals_email = "ventas@region4.mx";
-var yals_apikey = "x_brAgJfLNK5ANWGGMcRAkJR";
+var yals_email = process.env.yals_email || "ventas@region4.mx";
+var yals_apikey = process.env.yals_apikey || "x_brAgJfLNK5ANWGGMcRAkJR";
 
 exports.getSettings = async (function () {
   return {

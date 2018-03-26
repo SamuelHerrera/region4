@@ -1,7 +1,19 @@
 var async = require('asyncawait/async');
 var await = require('asyncawait/await');
+var fs = require('fs');
+var pdf = require('html-pdf');
+var base64 = require('node-base64-image');
 
 var Service = require('../services/yals.service');
+
+var mailgun = require('mailgun-js')({
+  apiKey: process.env.MAILGUN_API_KEY || 'key-02b06c51f11de490dbad81b5b63e6da8',
+  domain: 'valorinmuebles.com.mx'
+});
+
+var options = {
+  format: 'Letter'
+};
 
 _this = this; //clientid, yals_request, cuponid
 
@@ -48,6 +60,77 @@ exports.getReport = async (function (req, res, next) {
       data: data,
       message: "Succesfully Client Recieved"
     });
+  } catch (e) {
+    return res.status(400).json({
+      status: 400,
+      message: e.message
+    });
+  }
+});
+
+exports.getImageFromUrlAsBase64 = async (function (req, res, next) {
+  var query = req.query ? req.query : {};
+  try {
+    var response = await (new Promise(function (resolve, reject) {
+      base64.encode(req.body.url, {
+        string: true
+      }, function (error, response) {
+        if (!error) {
+          resolve(response);
+        } else {
+          reject(error);
+        }
+      });
+    }));
+    return res.status(200).json({
+      status: 200,
+      data: response,
+      message: "Succesfully image converted"
+    });
+  } catch (e) {
+    return res.status(400).json({
+      status: 400,
+      message: e
+    });
+  }
+});
+
+
+exports.sendReport = async (function (req, res, next) {
+  try {
+    var pdfname = `Reporte-${new Date().getTime()}.pdf`;
+
+    fs.writeFile('./temp/' + pdfname, req.body.file, {
+      encoding: 'base64'
+    }, function (err) {
+      if (err) return console.log(err);
+      var file = fs.readFileSync('./temp/' + pdfname);
+      var attch = new mailgun.Attachment({
+        data: file,
+        filename: "Reporte.pdf"
+      });
+      var data = {
+        from: "Valor Inmuebles <" + ('ventas@valorinmuebles.com') + ">",
+        to: req.body.to,
+        subject: 'Reporte',
+        text: 'Envio de reporte',
+        attachment: attch
+      };
+
+      mailgun.messages().send(data, function (error, body) {
+        try {
+          fs.unlinkSync('./temp/' + pdfname);
+        } catch (e) {}
+
+      });
+    });
+
+    return res.status(200).json({
+      status: 200,
+      data: true,
+      message: "Succesfully Sent mail"
+    });
+
   } catch (e) {
     return res.status(400).json({
       status: 400,

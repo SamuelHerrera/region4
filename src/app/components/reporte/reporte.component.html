@@ -98,7 +98,7 @@
           <div class="containerAmenidades">
 
             <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
-              
+
               <div class="imgContainer" *ngIf="item=='cocina_integral'">
                 <img class="images" src="../assets/images/cocina.png" alt="Smiley face" height="42" width="42" />
               </div>
@@ -129,6 +129,11 @@
               <div class="imgContainer" *ngIf="item=='jacuzzi'">
                 <img class="images" src="../assets/images/jacuzzi.png" alt="Smiley face" height="42" width="42" />
               </div>
+              <div class="imgContainer" *ngIf="item=='seguridad'">
+                <img class="images" src="../assets/images/seguridad.png" alt="Smiley face" height="42" width="42" />
+              </div>
+
+              <span *ngIf="item=='seguridad'">seguridad</span>
               <span *ngIf="item=='jacuzzi'">Jacuzzi</span>
               <span *ngIf="item=='estudio'">Estudio</span>
               <span *ngIf="item=='amueblado'">Amueblado</span>
@@ -214,13 +219,14 @@
 
       <div class="mapView">
         <div class="houseView">
-          <img src="../assets/images/region4-crop-u9162.jpg">
+          <img [src]="urlImage">
         </div>
         <div class="map">
-          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
-            <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
+          <img [src]="url">
+          <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
+           
             <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-          </agm-map>
+          </agm-map> -->
         </div>
       </div>
 
@@ -453,7 +459,7 @@
         <div class="intro3">
           <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
         </div>
-        <div class="graficaContainer">
+        <div class="graficaContainer" id = "graficaColonia">
           <p-chart type="bar" [data]="datosPrecioColonia"></p-chart>
         </div>
 
@@ -475,7 +481,7 @@
               <p>La gráfica muestra el porcentaje de las ofertas en la colonia ordenadas por rango de precios (casas y departamentos
                 listados en los últimos 6 meses).</p>
             </div>
-            <div class="graficaContainer1">
+            <div class="graficaContainer1" id = "graficaPropiedadM2">
               <p-chart type="bar" [data]="datosPropiedadesM2"></p-chart>
             </div>
           </div>
@@ -489,7 +495,7 @@
               <p>
                 La gráfica muestra el porcentaje de ofertas en la colonia según su edad.</p>
             </div>
-            <div class="graficaContainer2">
+            <div class="graficaContainer2" id = "graficaDatosVivienda">
               <p-chart type="bar" [data]="datosEdadVivienda"></p-chart>
             </div>
           </div>
@@ -507,7 +513,7 @@
               <p>
                 La gráfica muestra el número de departamentos según su edad y número de recámaras (dormitorios).</p>
             </div>
-            <div class="graficaContainer1">
+            <div class="graficaContainer1" id = "graficaRecamaras">
               <p-chart type="bar" [data]="datosRecamaras"></p-chart>
             </div>
           </div>
@@ -525,7 +531,7 @@
                 La gráfica muestra el número de departamentos según su edad y supercie construida.
               </p>
             </div>
-            <div class="graficaContainer2">
+            <div class="graficaContainer2" id="graficaSuperficie">
               <p-chart type="bar" [data]="datosSuperficieConstruida"></p-chart>
             </div>
           </div>
@@ -671,7 +677,7 @@
     <div class="divisor">
       <hr>
     </div>
-    <div class="html2pdf__page-break"></div>
+    <!--<div class="html2pdf__page-break"></div>-->
     <div class="terminos">
       <div class="middleTitle">
         <span>TÉRMINOS Y CONDICIONES</span>

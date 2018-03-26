@@ -4,12 +4,13 @@ import { ClientService } from '../../services/client.service';
 import { YalsService } from '../../services/yals.service';
 import { MessageService } from 'primeng/components/common/messageservice';
 import * as jsPDF from 'jspdf';
-import * as html2pdf from 'html2pdf.js';
+import * as html2pdf from '../../../assets/js/html2pdf';
 import { style } from '@angular/animations';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogCuponesComponent } from '../dialog-cupones/dialog-cupones.component';
 import { CuponService } from '../../services/cupon.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-administracion',
@@ -31,17 +32,18 @@ export class AdministracionComponent implements OnInit {
   cupon: string;
   name: string;
 
-  login = true;
-  loginSuccess = false;
+  // login = true;
+  // loginSuccess = false;
 
-  // login = false;
-  // loginSuccess = true;
+  login = false;
+  loginSuccess = true;
 
   user: any;
   pass: any;
 
   constructor(public dialog: MatDialog, private clientService:
-    ClientService, private yals: YalsService, private messageService: MessageService, private cuponService: CuponService) { }
+    ClientService, private yals: YalsService, private messageService: MessageService,
+    private cuponService: CuponService, private router: Router) { }
 
   validarLogin() {
     if ((this.user === "Administrador" && this.pass === "Region42018") ||
@@ -84,7 +86,7 @@ export class AdministracionComponent implements OnInit {
     this.yals.getRequest().subscribe((response: any) => {
       console.log("Response", response);
       response.data.docs.forEach(element => {
-        console.log("Elemento-", response.data.docs);
+        //console.log("Elemento-", response.data.docs);
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
 
           element['client'] = cli.data.docs[0].name;
@@ -110,13 +112,19 @@ export class AdministracionComponent implements OnInit {
   imprimir(id) {
 
     const element = document.getElementById(id).childNodes[1];
-    html2pdf(element, {
+    //this.router.navigate(['/reporte']);
+    const datapdf = html2pdf(element, {
       margin: 1,
       filename: 'reporte.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { dpi: 192, letterRendering: true },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+      action: "save"
     });
+    datapdf.then(data => {
+      console.log(data);
+    });
+    // console.log(datapdf.__zone_symbol__value)
   }
 
   changeStatus(id, status) {

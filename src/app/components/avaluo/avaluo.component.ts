@@ -5,7 +5,7 @@ import { YalsService } from '../../services/yals.service';
 import { YalsRequest } from '../../models/yals.model';
 import { Router } from '@angular/router';
 import * as jsPDF from 'jspdf';
-import * as html2pdf from 'html2pdf.js';
+import * as html2pdf from '../../../assets/js/html2pdf';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { MailService } from '../../services/mail.service';
 
@@ -31,7 +31,8 @@ export class AvaluoComponent implements OnInit {
   facturacion: any = {};
   avaluoResponse: any = null;
   loading = false;
-
+  otroCorreo: any;
+  datosHTML: any;
   constructor(private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
   }
 
@@ -68,7 +69,7 @@ export class AvaluoComponent implements OnInit {
     if (this.isHidden) {
       // this.mail.sendMail({ to: "ventas@region4.mx", subject: "Facturacion", text: this.facturacion })
       this.mail.sendMail({
-        from: "facturacion@valorinmuebles.com.mx",
+        from: "facturacion@valorinmuebles.mx",
         to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
         html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
       })
@@ -83,13 +84,51 @@ export class AvaluoComponent implements OnInit {
 
   imprimir() {
     const element = document.getElementById('element-to-print');
-    html2pdf(element, {
+    const datauri = html2pdf(element, {
       margin: 1,
       filename: 'reporte.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { dpi: 192, letterRendering: true },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
     });
+  }
+
+  enviarACorreo() {
+    if (this.otroCorreo !== "") {
+      const element = document.getElementById('element-to-print');
+
+      const datauri = html2pdf(element, {
+        margin: 1,
+        filename: 'reporte.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { dpi: 192, letterRendering: true },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+      });
+      datauri.then(data => {
+        this.yals.sendReport({
+          from: "usuario@valorinmuebles.com.mx",
+          to: this.otroCorreo,
+          subject: "Reporte de avalúo",
+          text: ``,
+          file: data.split(';base64,').pop()
+        }).subscribe((response: any) => {
+          console.log("Respuesta de mail: ", response);
+        });
+      });
+
+
+
+      this.messageService.add({
+        severity: 'success', summary: 'Correo enviado',
+        detail: 'Se a enviado el reporte a su correo.'
+      });
+      this.otroCorreo = "";
+    } else {
+      this.messageService.add({
+        severity: 'error', summary: 'Error correo',
+        detail: 'El correo no pudo ser enviado, verifiquee la direccion de correo introducida.'
+      });
+    }
   }
 
   // stepchanged(event: any) {

@@ -13,9 +13,17 @@ export class YalsService {
     return this._http.get("/api/yals");
   }
 
+  urlToBase64(url) {
+    return this._http.post("/api/yals/convert", { url: url });
+  }
+
   generateRequest(yals: YalsRequest, cuponid: String) {
     const client = this.obsv.currentUser;
     return this._http.post("/api/yals", { clientid: client._id, yals_request: yals, cuponid: cuponid });
+  }
+
+  sendReport(emaildata) {
+    return this._http.post("api/yals/sendEmail", emaildata);
   }
 
   getCoords(avaluoForm: any) {

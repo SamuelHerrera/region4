@@ -3,14 +3,18 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
 const app = express();
+require('dotenv').config();
 
 // API file for interacting with neo4j
 const api = require('./server/routes/api');
 
 // Parsers
-app.use(bodyParser.json());
+app.use(bodyParser.json({
+  limit: '50mb'
+}));
 app.use(bodyParser.urlencoded({
-  extended: false
+  limit: '50mb',
+  extended: true
 }));
 
 // Angular DIST output folder
