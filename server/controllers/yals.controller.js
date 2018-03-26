@@ -101,7 +101,11 @@ exports.sendReport = async (function (req, res, next) {
   try {
     var pdfname = `Reporte-${new Date().getTime()}.pdf`;
 
-    var filepath = path.join(__dirname, pdfname);
+    var temp_dir = path.join(process.cwd(), 'temp/');
+    if (!fs.existsSync(temp_dir))
+      fs.mkdirSync(temp_dir);
+
+    var filepath = path.join(process.cwd(), 'temp/', pdfname);
 
     fs.writeFile(filepath, req.body.file, {
       encoding: 'base64'
