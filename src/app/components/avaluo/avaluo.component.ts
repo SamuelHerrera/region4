@@ -113,6 +113,7 @@ export class AvaluoComponent implements OnInit {
           file: data.split(';base64,').pop()
         }).subscribe((response: any) => {
           console.log("Respuesta de mail: ", response);
+          this.otroCorreo = "";
         });
       });
 
@@ -122,7 +123,7 @@ export class AvaluoComponent implements OnInit {
         severity: 'success', summary: 'Correo enviado',
         detail: 'Se a enviado el reporte a su correo.'
       });
-      this.otroCorreo = "";
+
     } else {
       this.messageService.add({
         severity: 'error', summary: 'Error correo',
