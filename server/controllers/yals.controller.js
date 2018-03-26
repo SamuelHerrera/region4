@@ -115,13 +115,15 @@ exports.sendReport = async (function (req, res, next) {
       encoding: 'base64'
     }, function (err) {
       if (err) return console.log(err);
-      console.log("im here!:" + filepath)
+      console.log("im here!:" + filepath);
       var file = fs.readFileSync(filepath);
-      console.log("file passed!!!")
+      console.log("file passed!!!");
       var attch = new mailgun.Attachment({
         data: file,
         filename: "Reporte.pdf"
       });
+      console.log("ATTACH CREATED");
+
       var data = {
         from: "Valor Inmuebles <" + ('ventas@valorinmuebles.com') + ">",
         to: req.body.to,
@@ -129,8 +131,11 @@ exports.sendReport = async (function (req, res, next) {
         text: 'Envio de reporte',
         attachment: attch
       };
+      console.log("DATA CREATED");
 
       mailgun.messages().send(data, function (error, body) {
+        console.log(error);
+        console.log(body);
         try {
           fs.unlinkSync(filepath);
         } catch (e) {}
