@@ -3,6 +3,7 @@ var await = require('asyncawait/await');
 var fs = require('fs');
 var pdf = require('html-pdf');
 var base64 = require('node-base64-image');
+var path = require('path');
 
 var Service = require('../services/yals.service');
 
@@ -100,11 +101,13 @@ exports.sendReport = async (function (req, res, next) {
   try {
     var pdfname = `Reporte-${new Date().getTime()}.pdf`;
 
-    fs.writeFile('./temp/' + pdfname, req.body.file, {
+    var filepath = path.join(__dirname, pdfname);
+
+    fs.writeFile(filepath, req.body.file, {
       encoding: 'base64'
     }, function (err) {
       if (err) return console.log(err);
-      var file = fs.readFileSync('./temp/' + pdfname);
+      var file = fs.readFileSync(filepath);
       var attch = new mailgun.Attachment({
         data: file,
         filename: "Reporte.pdf"
@@ -119,7 +122,7 @@ exports.sendReport = async (function (req, res, next) {
 
       mailgun.messages().send(data, function (error, body) {
         try {
-          fs.unlinkSync('./temp/' + pdfname);
+          fs.unlinkSync(filepath);
         } catch (e) {}
 
       });
