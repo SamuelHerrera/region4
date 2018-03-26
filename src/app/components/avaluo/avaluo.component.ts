@@ -123,7 +123,7 @@ export class AvaluoComponent implements OnInit {
           to: this.otroCorreo,
           subject: "Reporte de avalúo",
           text: ``,
-          html: reportHTML,
+          html: reportHTML.innerHTML,
           file: data.split(';base64,').pop()
         }).subscribe((response: any) => {
           console.log("Respuesta de mail: ", response);
