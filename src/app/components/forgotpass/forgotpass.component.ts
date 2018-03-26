@@ -41,14 +41,15 @@ export class ForgotpassComponent implements OnInit {
 
       if (cliente.data.docs !== "" && (cliente.data.docs[0].mail === this.form.form.controls.correo.value)) {
         const pass = cliente.data.docs[0].password;
-
-        this.mails.sendMail({
+        const HTMLPassword: any = document.getElementById("recoveryPassword");
+        console.log(HTMLPassword);
+        /*this.mails.sendMail({
           from: "usuario@valorinmuebles.com.mx",
           to: this.form.form.controls.correo.value,
-          text: "Su contraseña es: " + pass, subject: "Recuperación de contraseña"
+          html: ""+HTMLPassword.innerHTML+""
         }).subscribe((response: any) => {
 
-        });
+        });*/
 
         this.router.navigate(['/iniciosesion']);
         this.messageService.add({

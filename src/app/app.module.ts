@@ -61,6 +61,10 @@ import { ReenviarClaveComponent } from './components/reenviar-clave/reenviar-cla
 import { DialogCuponesComponent } from './components/dialog-cupones/dialog-cupones.component';
 import { CuponService } from './services/cupon.service';
 import { TerminosyCondicionesComponent } from './components/terminosy-condiciones/terminosy-condiciones.component';
+import { TemplateFacturacionComponent } from './components/template-facturacion/template-facturacion.component';
+import { TemplatePasswordRecoveryComponent } from './components/template-password-recovery/template-password-recovery.component';
+import { TemplateReportComponent } from './components/template-report/template-report.component';
+import { TemplateUserActivationComponent } from './components/template-user-activation/template-user-activation.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +94,11 @@ import { TerminosyCondicionesComponent } from './components/terminosy-condicione
     ForgotpassComponent,
     ReenviarClaveComponent,
     DialogCuponesComponent,
-    TerminosyCondicionesComponent
+    TerminosyCondicionesComponent,
+    TemplateFacturacionComponent,
+    TemplatePasswordRecoveryComponent,
+    TemplateReportComponent,
+    TemplateUserActivationComponent
   ],
   imports: [
     HttpClientModule,

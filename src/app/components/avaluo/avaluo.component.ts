@@ -49,6 +49,8 @@ export class AvaluoComponent implements OnInit {
     yals_req.area_construida = (+yals_req.area_construida);
     yals_req.superficie_terreno = (+yals_req.superficie_terreno);
     yals_req.edad = (+yals_req.edad);
+
+    const HTMLFacturacion: any = document.getElementById("facturacion");
     this.loading = true;
     this.yals.generateRequest(yals_req, null).subscribe(response => {
       this.avaluoResponse = response;
@@ -68,10 +70,13 @@ export class AvaluoComponent implements OnInit {
     });
     if (this.isHidden) {
       // this.mail.sendMail({ to: "ventas@region4.mx", subject: "Facturacion", text: this.facturacion })
+      //console.log(HTMLFacturacion.innerHTML);
       this.mail.sendMail({
         from: "facturacion@valorinmuebles.mx",
-        to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
-        html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
+        //to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
+        to: "erick00mex@gmail.com", subject: "Facturacion",
+        //html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
+        html: "<pre>" + HTMLFacturacion.innerHTML + "</pre>"
       })
         .subscribe(response => {
           this.messageService.add({

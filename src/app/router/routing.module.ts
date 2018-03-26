@@ -13,6 +13,10 @@ import { CuponesComponent } from '../components/cupones/cupones.component';
 import { ForgotpassComponent } from '../components/forgotpass/forgotpass.component';
 import { ReenviarClaveComponent } from '../components/reenviar-clave/reenviar-clave.component';
 import { TerminosyCondicionesComponent } from '../components/terminosy-condiciones/terminosy-condiciones.component';
+import { TemplateReportComponent } from '../components/template-report/template-report.component';
+import { TemplateUserActivationComponent } from '../components/template-user-activation/template-user-activation.component';
+import { TemplateFacturacionComponent } from '../components/template-facturacion/template-facturacion.component';
+import { TemplatePasswordRecoveryComponent } from '../components/template-password-recovery/template-password-recovery.component';
 
 const routes: Routes = [
     {
@@ -32,6 +36,10 @@ const routes: Routes = [
     {
         path: 'iniciosesion',
         component: InicioDeSesionComponent
+    },
+    {
+        path: 'templateFacturacion',
+        component: TemplatePasswordRecoveryComponent
     },
     {
         path: "reestablecer",
