@@ -100,18 +100,20 @@ export class AvaluoComponent implements OnInit {
         from: "usuario@valorinmuebles.com.mx",
         to: this.otroCorreo,
         subject: "Reporte de avalúo",
-        text: "A generado su reporte con exito",
-        attachments: [
-          {
-            filename: "ac.png",
-            path: "../assets/images/ac.png"
-          }
-        ]
+        text: "A generado su reporte con exito"
       }).subscribe((response: any) => {
-        console.log("Respuesta de mail: ",response);
+        //console.log("Respuesta de mail: ",response);
+      });
+
+      this.messageService.add({
+        severity: 'success', summary: 'Correo enviado',
+        detail: 'Se a enviado el reporte a su correo.'
       });
     } else {
-      console.log("El correo is empty");
+      this.messageService.add({
+        severity: 'error', summary: 'Error correo',
+        detail: 'El correo no pudo ser enviado, verifiquee la direccion de correo introducida.'
+      });
     }
   }
 
