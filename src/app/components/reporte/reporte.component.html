@@ -365,7 +365,7 @@
 
       <div class="ofertasMes">
 
-        <div class="ultimoMes">
+        <div class="ultimoMes" *ngIf="datos.data.response.historico">
 
           <div class="umesContainer">
 
@@ -373,7 +373,7 @@
               <img src="../assets/images/calendary.png" alt="Smiley face">
             </div>
             <div class="numCasas">
-              <h1>{{datos.data.response.historico.listado_promedio_1_mes}}
+              <h1>{{datos.data.response.historico.listado_promedio_1_mes || ''}}
                 <!--{{uMesCasas}}-->
               </h1>
               <p>Casas y departamentos listados en el último mes</p>
@@ -404,7 +404,7 @@
 
         </div>
 
-        <div class="seisMeses">
+        <div class="seisMeses" *ngIf="datos.data.response.historico">
 
           <div class="smesContainer">
 
@@ -459,7 +459,7 @@
         <div class="intro3">
           <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
         </div>
-        <div class="graficaContainer" id = "graficaColonia">
+        <div class="graficaContainer" id="graficaColonia">
           <p-chart type="bar" [data]="datosPrecioColonia"></p-chart>
         </div>
 
@@ -481,7 +481,7 @@
               <p>La gráfica muestra el porcentaje de las ofertas en la colonia ordenadas por rango de precios (casas y departamentos
                 listados en los últimos 6 meses).</p>
             </div>
-            <div class="graficaContainer1" id = "graficaPropiedadM2">
+            <div class="graficaContainer1" id="graficaPropiedadM2">
               <p-chart type="bar" [data]="datosPropiedadesM2"></p-chart>
             </div>
           </div>
@@ -495,7 +495,7 @@
               <p>
                 La gráfica muestra el porcentaje de ofertas en la colonia según su edad.</p>
             </div>
-            <div class="graficaContainer2" id = "graficaDatosVivienda">
+            <div class="graficaContainer2" id="graficaDatosVivienda">
               <p-chart type="bar" [data]="datosEdadVivienda"></p-chart>
             </div>
           </div>
@@ -513,7 +513,7 @@
               <p>
                 La gráfica muestra el número de departamentos según su edad y número de recámaras (dormitorios).</p>
             </div>
-            <div class="graficaContainer1" id = "graficaRecamaras">
+            <div class="graficaContainer1" id="graficaRecamaras">
               <p-chart type="bar" [data]="datosRecamaras"></p-chart>
             </div>
           </div>

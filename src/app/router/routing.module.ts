@@ -78,7 +78,7 @@ const routes: Routes = [
     //Fin de muestras
     {
         path: '**',
-        redirectTo: '/landing'
+        redirectTo: '/generaravaluo'
     }
 ];
 @NgModule({
