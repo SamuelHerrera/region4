@@ -32,11 +32,11 @@ export class AdministracionComponent implements OnInit {
   cupon: string;
   name: string;
 
-  // login = true;
-  // loginSuccess = false;
+  login = true;
+  loginSuccess = false;
 
-  login = false;
-  loginSuccess = true;
+  // login = false;
+  // loginSuccess = true;
 
   user: any;
   pass: any;
