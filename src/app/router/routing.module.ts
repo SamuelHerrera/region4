@@ -17,6 +17,7 @@ import { TemplateReportComponent } from '../components/template-report/template-
 import { TemplateUserActivationComponent } from '../components/template-user-activation/template-user-activation.component';
 import { TemplateFacturacionComponent } from '../components/template-facturacion/template-facturacion.component';
 import { TemplatePasswordRecoveryComponent } from '../components/template-password-recovery/template-password-recovery.component';
+import { IsSecureGuard } from '../guards/is-secure-guard.guard';
 
 const routes: Routes = [
     {
@@ -26,53 +27,58 @@ const routes: Routes = [
     },
     {
         path: 'landing',
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, IsSecureGuard],
         component: LandingPageComponent
     },
     {
         path: 'registro',
+        canActivate: [IsSecureGuard],
         component: RegistroComponent
     },
     {
         path: 'iniciosesion',
+        canActivate: [IsSecureGuard],
         component: InicioDeSesionComponent
     },
     {
-        path: 'templateFacturacion',
-        component: TemplateUserActivationComponent
-    },
-    {
         path: "reestablecer",
+        canActivate: [IsSecureGuard],
         component: OlvideContrasenaComponent
     },
     {
         path: "activacion",
+        canActivate: [IsSecureGuard],
         component: ActivacionUsuarioComponent
     },
     {
         path: "generaravaluo",
-        canActivate: [AuthGuard],
+        canActivate: [AuthGuard, IsSecureGuard],
         component: AvaluoComponent
     },
     {
         path: "terminosCondiciones",
+        canActivate: [IsSecureGuard],
         component: TerminosyCondicionesComponent
     },
     {
         path: "forgotpass",
+        canActivate: [IsSecureGuard],
         component: ForgotpassComponent
     },
     {
         path: "reenviarClave",
+        canActivate: [IsSecureGuard],
         component: ReenviarClaveComponent
     },
     //Routings de muestra
     {
         path: "administracion",
+        canActivate: [IsSecureGuard],
         component: AdministracionComponent
     },
     {
         path: "cupones",
+        canActivate: [IsSecureGuard],
         component: CuponesComponent
     },
     //Fin de muestras

@@ -65,6 +65,7 @@ import { TemplateFacturacionComponent } from './components/template-facturacion/
 import { TemplatePasswordRecoveryComponent } from './components/template-password-recovery/template-password-recovery.component';
 import { TemplateReportComponent } from './components/template-report/template-report.component';
 import { TemplateUserActivationComponent } from './components/template-user-activation/template-user-activation.component';
+import { IsSecureGuard } from './guards/is-secure-guard.guard';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,7 @@ import { TemplateUserActivationComponent } from './components/template-user-acti
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
   ],
-  providers: [AuthGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
+  providers: [AuthGuard, IsSecureGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
   entryComponents: [DialogCuponesComponent],
   bootstrap: [AppComponent]
 })
