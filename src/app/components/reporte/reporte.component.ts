@@ -10,9 +10,6 @@ import { DatePipe } from '@angular/common';
 import { YalsRequest } from '../../models/yals.model';
 import { YalsService } from '../../services/yals.service';
 
-
-
-
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
@@ -20,18 +17,13 @@ import { YalsService } from '../../services/yals.service';
 })
 export class ReporteComponent implements OnInit, OnChanges {
 
+  months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
+
   displayedColumns = ['position', 'oferta', 'total', 'm2', 'cuartos', 'banos',
     'parking', 'construccion', 'edad', 'distancia', 'similitud'];
-  ELEMENT_DATA: any[] = [
-    {
-      position: 1, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
-      banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-    }
-
-  ];
+  ELEMENT_DATA: any[] = [];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   @ViewChild(MatSort) sort: MatSort;
-
   @Input() datos = null;
   dat: any;
   estimatedDate = "ENERO 2016";
@@ -73,34 +65,35 @@ export class ReporteComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
 
-    this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada) * 100;
-    console.log("Response", this.datos.data.request.amenities);
+    if (this.datos.data.response.historico) {
+      this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada) * 100;
+    } else {
+      this.plusvalia = false;
+    }
+
     if (this.datos) {
-
-
-
       this.lat = this.datos.data.request.latitud;
       this.lng = this.datos.data.request.longitud;
       this.ELEMENT_DATA = [];
       let ind = 1;
-      this.datos.data.response.similares.forEach(element => {
-
-
-        this.ELEMENT_DATA.push({
-          position: ind,
-          oferta: element.fecha_oferta,
-          total: element.precio_oferta,
-          m2: element.superficie_terreno,
-          cuartos: element.recamaras,
-          banos: element.banos,
-          parking: element.estacionamientos,
-          construccion: element.area_construida,
-          edad: (element.edad || 0),
-          distancia: element.distancia,
-          similitud: (element.similitud * 100)
+      if (this.datos.data.response.similares) {
+        this.datos.data.response.similares.forEach(element => {
+          this.ELEMENT_DATA.push({
+            position: ind,
+            oferta: element.fecha_oferta,
+            total: element.precio_oferta,
+            m2: element.superficie_terreno,
+            cuartos: element.recamaras,
+            banos: element.banos,
+            parking: element.estacionamientos,
+            construccion: element.area_construida,
+            edad: (element.edad || 0),
+            distancia: element.distancia,
+            similitud: (element.similitud * 100)
+          });
+          ind++;
         });
-        ind++;
-      });
+      }
 
       /**Graficas con datos obtenidos del json */
       //console.log("labels", this.datos.data.response.colonia_preciosm2_general.labels);

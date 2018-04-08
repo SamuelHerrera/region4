@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 export class ReenviarClaveComponent implements OnInit {
   @ViewChild('f') form: any;
   cliente: any;
+
+  block = false;
   constructor(private router: Router, private mails: MailService, private clients: ClientService, private messageService: MessageService) { }
 
   ngOnInit() {
@@ -36,8 +38,8 @@ export class ReenviarClaveComponent implements OnInit {
   }
 
   public onSubmit(form) {
+    this.block = true;
     this.clients.getClientsByMail(this.form.form.controls.correo.value).subscribe((cliente: any) => {
-      console.log(cliente.data.docs[0]);
 
       if (cliente.data.docs !== "" && (cliente.data.docs[0].mail === this.form.form.controls.correo.value)) {
         const clave = cliente.data.docs[0].activationCode;
@@ -45,24 +47,30 @@ export class ReenviarClaveComponent implements OnInit {
         setTimeout(() => {
           this.mails.sendMail({
             to: this.form.form.controls.correo.value,
-            html: document.getElementById("template_activacion"),
+            html: document.getElementById("template_activacion").innerHTML,
+            text: "",
             //"Use el código " + clave + " para activar su cuenta en http://www.valorinmuebles.com.mx/activacion",
-            subject: "Reenvío de clave"
+            subject: "Reenvío de código de activación"
           }).subscribe((response: any) => {
             //console.log("Response", response);
 
           });
+          this.router.navigate(['/activacion']);
+          this.messageService.add({ severity: 'success', summary: 'Reenvío de código de activación', detail: 'Se a enviado un correo con su código de activación.' });
         }, 2500);
 
 
-        this.router.navigate(['/activacion']);
-        this.messageService.add({ severity: 'success', summary: 'Reenvío de clave', detail: 'Se a enviado un correo con su clave de activación.' });
-      } else { this.messageService.add({ severity: 'error', summary: 'Server', detail: "El correo no se encuentra registrado" }); }
+
+      } else {
+        this.messageService.add({ severity: 'error', summary: 'Server', detail: "El correo no se encuentra registrado" });
+        this.block = false;
+      }
 
     },
       error => {
         //console.log("error: ",error)
         this.messageService.add({ severity: 'error', summary: 'Server', detail: error.message });
+        this.block = false;
       });
   }
 
