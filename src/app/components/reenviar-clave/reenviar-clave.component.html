@@ -11,7 +11,7 @@
           <label for="Correo">Correo</label>
         </span>
         <div class="ui-float-label button">
-          <p-button (onClick)="reenviarClave()" label="Reenviar Clave"></p-button>
+          <p-button (onClick)="reenviarClave()" label="Reenviar Clave" [disabled]="block"></p-button>
         </div>
       </form>
     </div>

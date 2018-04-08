@@ -16,7 +16,7 @@
           <span class="principalTitle">REPORTE DEL INMUEBLE</span>
           <div class="idReport">
             <span class="reportID">ID {{datos.data._id}}</span>
-            <span class="generatedDate">Reporte generado el {{datos.data.dateCreated}}
+            <span class="generatedDate">Reporte generado el {{months[datos.data.dateCreated.month]}}{{datos.data.dateCreated| date:' d, y'}}
               <!--{{generatedReport}}-->
             </span>
           </div>

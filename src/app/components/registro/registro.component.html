@@ -29,7 +29,8 @@
             <label for="Repetir">Repetir Contraseña</label>
           </span>
           <span class="ui-float-label">
-            <input id="Telefono" type="text" size="50" pInputText name="Telefono" ngModel required>
+            <input id="Telefono" type="text" size="50" pInputText name="Telefono" ngModel (keypress)="keyPress($event)" minlength=10
+              maxlength=10 required>
             <label for="Telefono">Telefono</label>
           </span>
           <div class="ui-float-label">
@@ -44,7 +45,7 @@
               <a target="_blank" href="/terminosCondiciones">términos y condiciones</a>, política de privacidad y el uso de cookies</span>
           </div>
           <div class="oculto">
-            <app-template-user-activation [cliente] = "cliente"id="templateActivation"></app-template-user-activation>
+            <app-template-user-activation [cliente]="cliente" id="templateActivation"></app-template-user-activation>
           </div>
           <div class="mascarita"></div>
         </form>
