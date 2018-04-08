@@ -30,7 +30,7 @@ export class ReporteComponent implements OnInit, OnChanges {
   idReport = 123;
 
   url: any;
-  urlImage: any;
+  urlImage: any = '';
 
   //plusvalia = this.datos.data.response.historico.apreciacion_anualizada * 100;//"pending to implement"//14.2;
   plusvalia: any;
@@ -97,7 +97,7 @@ export class ReporteComponent implements OnInit, OnChanges {
 
       /**Graficas con datos obtenidos del json */
       //console.log("labels", this.datos.data.response.colonia_preciosm2_general.labels);
-      this.datosPrecioColonia = {
+      this.datosPrecioColonia = this.plusvalia ? {
         //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         labels: this.datos.data.response.colonia_preciosm2_general.labels,
         datasets: [
@@ -116,10 +116,10 @@ export class ReporteComponent implements OnInit, OnChanges {
             data: this.datos.data.response.colonia_preciosm2_general.data.usado
           }
         ]
-      }
+      } : {};
       /**grafica de precio propiedad por m2 */
       /** this.datos.data.response.colonia_preciosm2_especifica */
-      this.datosPropiedadesM2 = {
+      this.datosPropiedadesM2 = this.plusvalia ? {
         labels: this.datos.data.response.colonia_preciosm2_especifica.labels,
         //labels: ['35000', '40000', '50000', '50000+'],
         datasets: [
@@ -137,11 +137,11 @@ export class ReporteComponent implements OnInit, OnChanges {
             //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
           }
         ]
-      }
+      } : {}
 
       /**Grafica edad y tipo de vivienda */
       /** */
-      this.datosEdadVivienda = {
+      this.datosEdadVivienda = this.plusvalia ? {
         labels: ['Casa', 'Departamento'],
         datasets: [
           {
@@ -158,7 +158,7 @@ export class ReporteComponent implements OnInit, OnChanges {
             //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
           }
         ]
-      }
+      } : {}
 
       /**Grafica numero de recamaras */
       /** this.datos.data.response.colonia_recamaras.labels --> .data.nuevo .data.usado */
@@ -170,13 +170,13 @@ export class ReporteComponent implements OnInit, OnChanges {
             label: 'Nuevo',
             backgroundColor: '#82FA58',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_recamaras.data.nuevo
+            data: this.datos.data.response.colonia_recamaras ? this.datos.data.response.colonia_recamaras.data.nuevo : []
             //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
           }, {
             label: 'Usado',
             backgroundColor: '#C8FE2E',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_recamaras.data.usado
+            data: this.datos.data.response.colonia_recamaras ? this.datos.data.response.colonia_recamaras.data.usado : []
             //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
           }
         ]
@@ -192,14 +192,14 @@ export class ReporteComponent implements OnInit, OnChanges {
             label: 'Nuevo',
             backgroundColor: '#82FA58',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_superficies.data.nuevo
+            data: this.datos.data.response.colonia_superficies ? this.datos.data.response.colonia_superficies.data.nuevo : []
             //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
           },
           {
             label: 'Usado',
             backgroundColor: '#C8FE2E',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_superficies.data.usado
+            data: this.datos.data.response.colonia_superficies ? this.datos.data.response.colonia_superficies.data.usado : []
             //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
           }
         ]
