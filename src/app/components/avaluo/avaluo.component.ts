@@ -96,7 +96,7 @@ export class AvaluoComponent implements OnInit {
   imprimir() {
     const element = document.getElementById('element-to-print');
     const datauri = html2pdf(element, {
-      margin: 1,
+      margin: 0.4,
       filename: 'reporte.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { dpi: 192, letterRendering: true },
@@ -112,7 +112,7 @@ export class AvaluoComponent implements OnInit {
       const element = document.getElementById('element-to-print');
       this.nomCliente['name'] = this.user.name;
       const datauri = html2pdf(element, {
-        margin: 1,
+        margin: 0.4,
         filename: 'reporte.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { dpi: 192, letterRendering: true },

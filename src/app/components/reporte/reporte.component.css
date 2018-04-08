@@ -2,6 +2,7 @@
     /*border: 1px red solid;*/
     width: 100%;
     height: 100%;
+    border: 1px black solid;
 }
 
 .scrollable {
@@ -14,12 +15,11 @@
 }
 
 .title {
-    height: 150px;
-    display: table-column;
-    /*display: flex;
+    height: 70px;
+    display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    flex-wrap: wrap;*/
+    justify-content: center;
+    flex-wrap: wrap;
     padding-top: 10px;
     vertical-align: top;
 }
@@ -27,12 +27,14 @@
 .titleContainer {
     display: flex;
     flex-direction: row;
+    width: 800px;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .subTitleContainer {
-    width: 80%;
+    border:1px red solid;
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -42,7 +44,7 @@
 .principalTitle {
     background-color: transparent;
     line-height: 38px;
-    width: 60%;
+    /*width: 60%;*/
     text-align: left;
     font-family: '__Merriweather_5';
     font-weight: 700;
@@ -53,19 +55,20 @@
 }
 
 .idReport {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    /*width: 20%;*/
+    padding-top: 10px;
 }
 
 .reportID {
+    padding-top: 40px;
     font-weight: 300;
     line-height: 14px;
+    padding-right: 5px;
+    color:white;
     font-family: '__Merriweather Sans_5';
     text-align: right;
     background-color: transparent;
-    font-size: 10px;
+    font-size: 14px;
 }
 
 .generatedDate {
@@ -74,6 +77,7 @@
     font-family: '__Merriweather Sans_5';
     text-align: right;
     font-size: 10px;
+    padding-right: 5px;
 }
 
 .characteristics {
@@ -89,13 +93,14 @@
 }
 
 .subAddress {
-    width: 310px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start
 }
 
 .dir {
+    padding-left:7px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -129,6 +134,7 @@
 .subCarac {
     width: 120px;
     padding: 5px 5px 5px 5px;
+    font-size: 11px;
     /*border:1px black solid;*/
 }
 
@@ -148,7 +154,8 @@
 }
 
 .middleTitle span {
-    width: 80%;
+    /*width: 80%;*/
+    width: 800px;
 }
 
 .littleTitle {
@@ -167,7 +174,7 @@
     flex-direction: column;
     justify-content: flex-start;
     /*min-width:300px;*/
-    width: 500px;
+    width: 400px;
 }
 
 .containerAmenidades {
@@ -305,10 +312,16 @@
 }
 
 .mEstimated1 h4 {
-    font-family: '__Merriweather Sans_5';
+    /*font-family: '__Merriweather Sans_5';
     text-align: center;
     min-height: 40px;
-    font-weight: 300;
+    font-weight: 300;*/
+
+    line-height: 25px;
+    color: #31A6E0;
+    font-family: '__Merriweather_5';
+    font-weight: 700;
+    font-size: 21px;
 }
 
 .mEstimated1 p {
@@ -351,7 +364,7 @@
 }
 
 .divisor hr {
-    width: 80%;
+    width: 100%;
 }
 
 .mapView {
@@ -363,22 +376,23 @@
 
 .houseView {
     /*display: none;*/
-    width: 650px;
+    /*width: 650px;*/
+    width: 700px;
     height: 350px;
 }
 
 .houseView img {
-    width: 650px;
+    width: 700px;
     height: 350px;
 }
 
 .map {
-    width: 650px;
+    width: 700px;
     height: 350px;
 }
 
 .map img {
-    width: 650px;
+    width: 700px;
     height: 350px;
 }
 
@@ -421,7 +435,8 @@
 }
 
 .intro h2 {
-    width: 650px;
+    width: 800px;
+    padding-left:7px;
     font-family: '__Merriweather Sans_5';
     font-weight: 300;
     min-height: 26px;
@@ -430,7 +445,8 @@
 }
 
 .intro p {
-    width: 650px;
+    width: 800px;
+    padding-left: 7px;
     font-family: '__Merriweather Sans_5';
     min-height: 58px;
     font-weight: 300;
@@ -820,11 +836,11 @@ table td {
     justify-content: center;
 }
 .superContainer{
-    width: 650px;
+    width: 800px;
     padding-left:10px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start
+    justify-content: space-between;
 
 }
 .logo {

@@ -114,7 +114,7 @@ export class AdministracionComponent implements OnInit {
     const element = document.getElementById(id).childNodes[1];
     //this.router.navigate(['/reporte']);
     const datapdf = html2pdf(element, {
-      margin: 1,
+      margin: 0.4,
       filename: 'reporte.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { dpi: 192, letterRendering: true },

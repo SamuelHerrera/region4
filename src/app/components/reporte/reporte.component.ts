@@ -23,10 +23,10 @@ export class ReporteComponent implements OnInit, OnChanges {
   displayedColumns = ['position', 'oferta', 'total', 'm2', 'cuartos', 'banos',
     'parking', 'construccion', 'edad', 'distancia', 'similitud'];
   ELEMENT_DATA: any[] = [
-    {
+    /*{
       position: 1, oferta: '17 Julio', total: '$6.2m', m2: '$61.7k', cuartos: 2,
       banos: 1, parking: 1, construccion: '100 m2', edad: 1, distancia: '1.23 km', similitud: '96.2%'
-    }
+    }*/
 
   ];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
@@ -60,6 +60,7 @@ export class ReporteComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
+    //console.log(this.datos);
     this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=650x350&format=jpg&maptype=roadmap&markers=color:blue%7Clabel:S%7C" + this.lat + "," + this.lng + "&key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
       .subscribe((response: any) => {
         this.url = "data:image/jpeg;base64," + response.data;
@@ -74,7 +75,7 @@ export class ReporteComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
 
     this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada) * 100;
-    console.log("Response", this.datos.data.request.amenities);
+    console.log("Response", this.datos);
     if (this.datos) {
 
 
@@ -90,7 +91,7 @@ export class ReporteComponent implements OnInit, OnChanges {
           position: ind,
           oferta: element.fecha_oferta,
           total: element.precio_oferta,
-          m2: element.superficie_terreno,
+          m2: element.precio_m2,
           cuartos: element.recamaras,
           banos: element.banos,
           parking: element.estacionamientos,

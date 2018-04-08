@@ -7,6 +7,7 @@
         <a href="#">
           <img class="logo" src="assets/images/logo_.png" />
         </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
     </div>
 
@@ -15,8 +16,8 @@
         <div class="subTitleContainer">
           <span class="principalTitle">REPORTE DEL INMUEBLE</span>
           <div class="idReport">
-            <span class="reportID">ID {{datos.data._id}}</span>
-            <span class="generatedDate">Reporte generado el {{datos.data.dateCreated}}
+            <!--<span class="reportID">ID {{datos.data._id}}</span>-->
+            <span class="generatedDate">Reporte generado el {{datos.data.dateCreated | date: 'mediumDate'}}
               <!--{{generatedReport}}-->
             </span>
           </div>
@@ -58,7 +59,7 @@
             <div class="caracContainer">
               <div class="subCarac">
                 <div class="imgContainer">
-                  <img class="images" src="../assets/images/cuarto.png" alt="Smiley face" height="42" width="42" />
+                  <img class="images" src="../assets/images/cuarto.png" alt="Smiley face" height="16" width="16" />
                 </div>
                 <!--{{numCuartos}}-->{{datos.data.response.characteristics.recamaras}} Cuartos
 
@@ -66,7 +67,7 @@
 
               <div class="subCarac">
                 <div class="imgContainer">
-                  <img class="images" src="../assets/images/bano.png" alt="Smiley face" height="42" width="42" />
+                  <img class="images" src="../assets/images/bano.png" alt="Smiley face" height="16" width="16" />
                 </div>
                 <!--{{numBanos}}-->{{datos.data.response.characteristics.banos}} Baños
 
@@ -74,7 +75,7 @@
 
               <div class="subCarac">
                 <div class="imgContainer">
-                  <img class="images" src="../assets/images/medio-bano.png" alt="Smiley face" height="42" width="42" />
+                  <img class="images" src="../assets/images/medio-bano.png" alt="Smiley face" height="16" width="16" />
                 </div>
                 <!--{{numMBanos}}-->{{datos.data.response.characteristics.medios_banos}} Medios Baños
 
@@ -82,7 +83,7 @@
 
               <div class="subCarac">
                 <div class="imgContainer">
-                  <img class="images" src="../assets/images/parking.png" alt="Smiley face" height="42" width="42" />
+                  <img class="images" src="../assets/images/parking.png" alt="Smiley face" height="16" width="16" />
                 </div>
                 <!--{{numParking}}-->{{datos.data.response.characteristics.estacionamientos}} Parking
 
@@ -100,37 +101,37 @@
             <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
 
               <div class="imgContainer" *ngIf="item=='cocina_integral'">
-                <img class="images" src="../assets/images/cocina.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/cocina.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='aire_acondicionado'">
-                <img class="images" src="../assets/images/ac.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/ac.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='gimnasio'">
-                <img class="images" src="../assets/images/gimnasio.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/gimnasio.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='terraza'">
-                <img class="images" src="../assets/images/terraza.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/terraza.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='alberca'">
-                <img class="images" src="../assets/images/alberca.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/alberca.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='cuarto_servicio'">
-                <img class="images" src="../assets/images/lavado.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/lavado.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='jardin'">
-                <img class="images" src="../assets/images/jardin.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/jardin.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='amueblado'">
-                <img class="images" src="../assets/images/amueblado.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/amueblado.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='estudio'">
-                <img class="images" src="../assets/images/estudio.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/estudio.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='jacuzzi'">
-                <img class="images" src="../assets/images/jacuzzi.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/jacuzzi.png" alt="Smiley face" height="32" width="32" />
               </div>
               <div class="imgContainer" *ngIf="item=='seguridad'">
-                <img class="images" src="../assets/images/seguridad.png" alt="Smiley face" height="42" width="42" />
+                <img class="images" src="../assets/images/seguridad.png" alt="Smiley face" height="32" width="32" />
               </div>
 
               <span *ngIf="item=='seguridad'">seguridad</span>
@@ -157,7 +158,7 @@
     <div class="estimatedValue">
 
       <div class="middleTitle">
-        <span>ESTIMADO DE VALOR EN {{datos.data.dateCreated}}</span>
+        <span>ESTIMADO DE VALOR EN {{datos.data.dateCreated | date: 'MMM y'}}</span>
       </div>
 
       <div class="prices">
@@ -190,7 +191,9 @@
           </div>
 
         </div>
-        <div class="html2pdf__page-break"></div>
+        
+        <!--<div class="html2pdf__page-break"></div>-->
+        
         <div class="mEstimated">
 
           <div class="mEstimated1">
@@ -216,6 +219,8 @@
 
         </div>
       </div>
+      
+      <div class="html2pdf__page-break"></div>
 
       <div class="mapView">
         <div class="houseView">
@@ -282,7 +287,7 @@
             </ng-container>
             <ng-container matColumnDef="oferta">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Oferta </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.precio_oferta}} </mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.oferta}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="total">

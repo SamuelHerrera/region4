@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
@@ -126,7 +127,7 @@ import { IsSecureGuard } from './guards/is-secure-guard.guard';
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
   ],
-  providers: [AuthGuard, IsSecureGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
+  providers: [ AuthGuard, IsSecureGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
   entryComponents: [DialogCuponesComponent],
   bootstrap: [AppComponent]
 })
