@@ -32,4 +32,6 @@
 
 .nota {
   color: darkslategrey;
+  margin: 15px;
+  text-align: justify;
 }

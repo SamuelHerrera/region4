@@ -237,7 +237,7 @@
           El reporte de tu inmueble de Región4 se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
           dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Región4
           se alimentan de los precios de millones de ofertas y cierres de transacciones. Región4 provee un estimado de valor
-          y no sustituye aun avalúo certificado.
+          y no sustituye a un avalúo certificado.
         </p>
       </div>
 
@@ -278,11 +278,11 @@
 
             <ng-container matColumnDef="position">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> No. </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell"> {{element.position | date:'yy-MM-dd'}} </mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell"> {{element.fecha_oferta | date:'MMM yy'}} </mat-cell>
             </ng-container>
             <ng-container matColumnDef="oferta">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Oferta </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.oferta}} </mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.precio_oferta}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="total">
