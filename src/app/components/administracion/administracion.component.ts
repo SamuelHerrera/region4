@@ -84,7 +84,7 @@ export class AdministracionComponent implements OnInit {
       this.yalsconfig = response.data;
     });
     this.yals.getRequest().subscribe((response: any) => {
-      console.log("Response", response);
+      //console.log("Response", response);
       response.data.docs.forEach(element => {
         //console.log("Elemento-", response.data.docs);
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
@@ -94,10 +94,9 @@ export class AdministracionComponent implements OnInit {
         });
       });
       this.dataSource2 = new MatTableDataSource(response.data.docs);
-      setTimeout(() => { console.log(response.data.docs) })
+//      setTimeout(() => { console.log(response.data.docs) })
     });
     this.cuponService.getCupons().subscribe((response: any) => {
-      console.log(response)
       this.dataSource3 = new MatTableDataSource(response.data.docs);
     });
   }

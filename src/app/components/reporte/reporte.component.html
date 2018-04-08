@@ -17,7 +17,7 @@
           <span class="principalTitle">REPORTE DEL INMUEBLE</span>
           <div class="idReport">
             <!--<span class="reportID">ID {{datos.data._id}}</span>-->
-            <span class="generatedDate">Reporte generado el {{datos.data.dateCreated | date: 'mediumDate'}}
+            <span class="generatedDate">Reporte generado el {{months[datos.data.dateCreated | json]}}{{datos.data.dateCreated| date:' d, y'}}
               <!--{{generatedReport}}-->
             </span>
           </div>
@@ -573,7 +573,7 @@
         </p>
 
       </div>
-      <div class="plusValia">
+      <div class="plusValia" *ngIf="plusvalia">
         <div class="flechaContainer">
           <img src="../assets/images/flecha.png" alt="Smiley face">
         </div>

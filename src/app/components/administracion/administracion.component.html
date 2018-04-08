@@ -1,23 +1,22 @@
-<p-tabView>
-  <p-tabPanel header="Login Admin" leftIcon="fa-user" *ngIf="login">
-    <div class="login">
-      <div class="containerLogin">
-        <!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">-->
-        <span class="ui-float-label">
-          <input id="User" type="text" size="30" name="user" [(ngModel)]="user" pInputText>
-          <label for="User">Usuario</label>
-        </span>
+<div class="login" *ngIf="login">
+  <div class="containerLogin">
+    <!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">-->
+    <span class="ui-float-label">
+      <input id="User" type="text" size="30" name="user" (keyup.enter)="validarLogin()" [(ngModel)]="user" pInputText>
+      <label for="User">Usuario</label>
+    </span>
 
-        <span class="ui-float-label">
-          <input id="Cont" type="password" size="30" name="pass" [(ngModel)]="pass" pInputText>
-          <label for="Cont">Contraseña</label>
-        </span>
+    <span class="ui-float-label">
+      <input id="Cont" type="password" size="30" name="pass" (keyup.enter)="validarLogin()" [(ngModel)]="pass" pInputText>
+      <label for="Cont">Contraseña</label>
+    </span>
 
-        <p-button label="Iniciar Sesión" (onClick)="validarLogin()"></p-button>
-      </div>
-    </div>
-  </p-tabPanel>
-  <p-tabPanel header="Usuarios" leftIcon="fa-user" *ngIf="loginSuccess">
+    <p-button label="Iniciar Sesión" (onClick)="validarLogin()"></p-button>
+  </div>
+</div>
+
+<p-tabView *ngIf="loginSuccess">
+  <p-tabPanel header="Usuarios" leftIcon="fa-user">
     <div class="example-container mat-elevation-z8">
       <div class="example-header">
         <mat-form-field>
@@ -55,7 +54,7 @@
       </mat-table>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key" *ngIf="loginSuccess">
+  <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key">
     <div class="isHidden">
       <span class="ui-float-label">
         <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['url']">
@@ -72,7 +71,7 @@
     </span>
     <p-button (onClick)="saveconfig()" label="Guardar" class="mle"></p-button>
   </p-tabPanel>
-  <p-tabPanel header="Reportes" leftIcon="fa-file" *ngIf="loginSuccess">
+  <p-tabPanel header="Reportes" leftIcon="fa-file">
     <div class="example-container mat-elevation-z8">
       <div class="example-header">
         <mat-form-field>
@@ -119,6 +118,7 @@
           <mat-cell *matCellDef="let element">
             <!-- {{element|json}} -->
             <!-- {{element._id}} -->
+            ID: {{element.dateCreated | date:'yyyy-dms'}}
             <p-button (onClick)="imprimir(element._id)" label="Descargar PDF"></p-button>
             <div id="{{element._id}}" class="oculto">
               <app-reporte [datos]="{data:element}"></app-reporte>
@@ -133,7 +133,7 @@
       </mat-table>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Administrar Cupones" leftIcon="fa-bell-o" *ngIf="loginSuccess">
+  <p-tabPanel header="Administrar Cupones" leftIcon="fa-bell-o">
     <!-- Tabla de cupones-->
     <div clas="botonesCupon">
       <div class="buttonContainer">

@@ -67,6 +67,7 @@ import { TemplatePasswordRecoveryComponent } from './components/template-passwor
 import { TemplateReportComponent } from './components/template-report/template-report.component';
 import { TemplateUserActivationComponent } from './components/template-user-activation/template-user-activation.component';
 import { IsSecureGuard } from './guards/is-secure-guard.guard';
+import { ShortNumberPipe } from './pipes/short-number.pipe';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { IsSecureGuard } from './guards/is-secure-guard.guard';
     TemplateFacturacionComponent,
     TemplatePasswordRecoveryComponent,
     TemplateReportComponent,
-    TemplateUserActivationComponent
+    TemplateUserActivationComponent,
+    ShortNumberPipe
   ],
   imports: [
     HttpClientModule,

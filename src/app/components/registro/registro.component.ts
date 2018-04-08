@@ -36,6 +36,15 @@ export class RegistroComponent implements OnInit {
   ngOnInit() {
   }
 
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
   register() {
 
     if (this.form.form.valid && (this.form.form.get("Correo") !== "" &&
