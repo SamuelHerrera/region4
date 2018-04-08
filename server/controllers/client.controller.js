@@ -82,7 +82,7 @@ exports.createClient = async (function (req, res, next) {
                   <div style="    text-align: left;
                   width: 100%;
                   display: inline-block;">
-                    <span>No respondas a este correo, si requieres más información. Contáctanos al ventas@region4.mx .
+                    <span>No respondas a este correo, si requieres más información. Contáctanos a ventas@region4.mx .
                     </span>
             
                   </div>
@@ -91,9 +91,7 @@ exports.createClient = async (function (req, res, next) {
                   width: 100%;
                   display: inline-block;">
                     <h3>
-                      <a href="#">Terms</a> |
-                      <a href="#">Privacy</a>
-                      <!-- | -->
+                      <a href="https://www.valorinmuebles.com.mx/terminosCondiciones">Términos y Condiciones</a>
                       <!-- <a href="#">Unsubscribe</a> -->
                     </h3>
                   </div>
