@@ -15,14 +15,15 @@ import { v4 as uuid } from 'uuid';
 export class RegistroComponent implements OnInit {
 
   selectedValue: string[] = [];
-
+  cliente: any = {};
   isHidden = false;
 
   public ramos: any[] = [
     { name: 'Agente Inmobiliario Independiente', code: 'AII' },
+    { name: 'Agente Inmobiliario', code: 'AI' },
+    { name: 'Propietario Inmobiliario', code: 'PI' },
     { name: 'Estudiante', code: 'E' },
-    { name: 'Dueño', code: 'D' },
-    { name: 'Propietario', code: 'P' }
+    { name: 'Particular', code: 'PA' }
   ];
 
   @ViewChild('f') form: any;
@@ -94,7 +95,7 @@ export class RegistroComponent implements OnInit {
     }
     return false;
   }
-  cliente:any = {};
+
   public onSubmit(form) {
     const client: Client = new Client();
     client.name = form.Nombre;
