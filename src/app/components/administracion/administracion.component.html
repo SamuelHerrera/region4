@@ -119,9 +119,9 @@
             <!-- {{element|json}} -->
             <!-- {{element._id}} -->
             ID: {{element.dateCreated | date:'yyyy-dms'}}
-            <p-button (onClick)="imprimir(element._id)" label="Descargar PDF"></p-button>
+            <p-button (onClick)="imprimir(element._id, element)" label="Descargar PDF"></p-button>
             <div id="{{element._id}}" class="oculto">
-              <app-reporte [datos]="{data:element}"></app-reporte>
+              <app-reporte [datos]="{data:element}" *ngIf = "element['hidden']"></app-reporte>
             </div>
             <div class="mascarita"></div>
 

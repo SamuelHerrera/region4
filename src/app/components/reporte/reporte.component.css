@@ -1,8 +1,8 @@
 .container {
-    /*border: 1px red solid;*/
+    
     width: 100%;
     height: 100%;
-    border: 1px black solid;
+    
 }
 
 .scrollable {
@@ -33,7 +33,6 @@
 }
 
 .subTitleContainer {
-    border:1px red solid;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -135,7 +134,10 @@
     width: 120px;
     padding: 5px 5px 5px 5px;
     font-size: 11px;
-    /*border:1px black solid;*/
+    font-family: '__Merriweather Sans_5';
+    font-weight: 300;
+    color: #28245B;
+    
 }
 
 .middleTitle {
@@ -188,9 +190,9 @@
     padding-bottom: 5px;
     padding-left: 5px;
     padding-right: 5px;
-    /*border:1px red solid;*/
+    
     text-align: center;
-    width: 120px;
+    width: 100px;
     display: flex;
     flex-direction: column;
 }
@@ -518,7 +520,7 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    /*border:1px purple solid;*/
+    
 }
 
 
@@ -575,12 +577,12 @@
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-    /*border:1px gray solid;*/
+    
 }
 
 .tablaMes {
     padding-top: 15px;
-    /*border:1px red solid;*/
+    
 }
 
 .tablaMes table {
@@ -813,7 +815,7 @@ table td {
 
 .headerCell{
     width: 30px;
-    font-size: 12px;
+    font-size: 10px;
     color: rgba(0,0,0,.54);
     font-weight: 500;
 }
@@ -851,4 +853,19 @@ table td {
   canvas{
       display: block;
       visibility: visible;
+  }
+  .position{
+      width: 16px;
+      height: 19px;
+  }
+  .icon{
+      width: 16px;
+      height: 16px;
+  }
+  .headerCell1{
+      width:20px;
+  }
+  .headerCell2{
+      width: 40px;
+      
   }

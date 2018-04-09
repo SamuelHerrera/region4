@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, Sort } from '@angular/material';
@@ -9,13 +9,14 @@ import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { YalsRequest } from '../../models/yals.model';
 import { YalsService } from '../../services/yals.service';
+import { ShortNumberPipe } from '../../pipes/short-number.pipe'; 
 
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
   styleUrls: ['./reporte.component.css']
 })
-export class ReporteComponent implements OnInit, OnChanges {
+export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
 
   months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
@@ -66,6 +67,7 @@ export class ReporteComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
 
+    console.log(this.datos.data.response);
     if (this.datos.data.response.historico) {
       this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada) * 100;
     } else {
@@ -83,7 +85,7 @@ export class ReporteComponent implements OnInit, OnChanges {
             position: ind,
             oferta: element.fecha_oferta,
             total: element.precio_oferta,
-            m2: element.superficie_terreno,
+            m2: element.precio_m2,
             cuartos: element.recamaras,
             banos: element.banos,
             parking: element.estacionamientos,
@@ -96,8 +98,6 @@ export class ReporteComponent implements OnInit, OnChanges {
         });
       }
 
-      /**Graficas con datos obtenidos del json */
-      //console.log("labels", this.datos.data.response.colonia_preciosm2_general.labels);
       this.datosPrecioColonia = this.plusvalia ? {
         //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         labels: this.datos.data.response.colonia_preciosm2_general.labels,
