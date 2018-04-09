@@ -126,7 +126,7 @@ export class AdministracionComponent implements OnInit {
         action: "save"
       });
       datapdf.then(data => {
-        console.log(data);
+        //console.log(data);
       });
     }, 2000);
 

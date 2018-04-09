@@ -633,11 +633,12 @@ table td {
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
+    padding-top: 20px;
 }
 
 .plusValiaContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .plusValiaContainer h2 {
@@ -656,8 +657,8 @@ table td {
 }
 
 .flechaContainer img {
-    width: 100px;
-    height: 40px;
+    width: 40px;
+    height: 32px;
 }
 
 .glosario {

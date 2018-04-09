@@ -9,7 +9,7 @@ import { DecimalPipe } from '@angular/common';
 import { DatePipe } from '@angular/common';
 import { YalsRequest } from '../../models/yals.model';
 import { YalsService } from '../../services/yals.service';
-import { ShortNumberPipe } from '../../pipes/short-number.pipe'; 
+import { ShortNumberPipe } from '../../pipes/short-number.pipe';
 
 @Component({
   selector: 'app-reporte',
@@ -19,7 +19,10 @@ import { ShortNumberPipe } from '../../pipes/short-number.pipe';
 export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
 
   months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-
+  indexMonth: number;
+  fechaCreacion: any;
+  fechaConsulta: any;
+  fechaSimilares: any;
   displayedColumns = ['position', 'oferta', 'total', 'm2', 'cuartos', 'banos',
     'parking', 'construccion', 'edad', 'distancia', 'similitud'];
   ELEMENT_DATA: any[] = [];
@@ -27,8 +30,6 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @Input() datos = null;
   dat: any;
-  estimatedDate = "ENERO 2016";
-  idReport = 123;
 
   url: any;
   urlImage: any = '';
@@ -67,7 +68,16 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnChanges(): void {
 
-    console.log(this.datos.data.response);
+    /*console.log(this.datos);*/
+    const fecha: any = (this.datos.data.dateCreated).split("-");
+    /*if(fecha[1]==="04"){
+      this.indexMonth = 3;
+    }*/
+    this.indexMonth = parseInt(fecha[1]);
+    const diaCreacion:any = fecha[2].split("T");
+    this.fechaCreacion = diaCreacion[0] +" de "+this.months[this.indexMonth-1]+" del "+fecha[0];
+    this.fechaConsulta = this.months[this.indexMonth-1] +" "+fecha[0];
+    //console.log("fecha", this.months[this.indexMonth]);
     if (this.datos.data.response.historico) {
       this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada) * 100;
     } else {
@@ -81,9 +91,15 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
       let ind = 1;
       if (this.datos.data.response.similares) {
         this.datos.data.response.similares.forEach(element => {
+          //console.log("fechaOferta:", element.fecha_oferta);
+          const fechaOferta: any = (element.fecha_oferta).split("/");
+          this.indexMonth = parseInt(fechaOferta[0]);
+          this.fechaSimilares = this.months[this.indexMonth-1] +" "+ fechaOferta[2];
+          
           this.ELEMENT_DATA.push({
             position: ind,
-            oferta: element.fecha_oferta,
+            //oferta: element.fecha_oferta,
+            oferta: this.fechaSimilares,
             total: element.precio_oferta,
             m2: element.precio_m2,
             cuartos: element.recamaras,
