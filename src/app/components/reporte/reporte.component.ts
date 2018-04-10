@@ -33,7 +33,8 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
 
   url: any;
   urlImage: any = '';
-
+  ulrMultipleMarkers: any;
+  urlAux: any;
   //plusvalia = this.datos.data.response.historico.apreciacion_anualizada * 100;//"pending to implement"//14.2;
   plusvalia: any;
   /*lat = 30.200;
@@ -54,7 +55,7 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnInit() {
-    //console.log(this.datos);
+    //console.log("Total de similares", this.datos.data.response.similares.length);
     this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=650x350&format=jpg&maptype=roadmap&markers=color:blue%7Clabel:S%7C" + this.lat + "," + this.lng + "&key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
       .subscribe((response: any) => {
         this.url = "data:image/jpeg;base64," + response.data;
@@ -64,6 +65,22 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
       .subscribe((response: any) => {
         this.urlImage = "data:image/jpeg;base64," + response.data;
       });
+
+    let idx = 1;
+
+    if (this.datos.data.response.similares) {
+      this.datos.data.response.similares.forEach(element => {
+        this.urlAux += "&markers=color:blue%7Clabel:" + idx + "%7C" + element.latitud + "," + element.longitud;
+        idx++;
+      });
+      this.urlAux += "&";
+      this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=700x400&format=jpg&maptype=roadmap"
+        + this.urlAux +
+        "key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
+        .subscribe((response: any) => {
+          this.ulrMultipleMarkers = "data:image/jpeg;base64," + response.data;
+        });
+    }
   }
 
   ngOnChanges(): void {
@@ -74,9 +91,9 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
       this.indexMonth = 3;
     }*/
     this.indexMonth = parseInt(fecha[1]);
-    const diaCreacion:any = fecha[2].split("T");
-    this.fechaCreacion = diaCreacion[0] +" de "+this.months[this.indexMonth-1]+" del "+fecha[0];
-    this.fechaConsulta = this.months[this.indexMonth-1] +" "+fecha[0];
+    const diaCreacion: any = fecha[2].split("T");
+    this.fechaCreacion = diaCreacion[0] + " de " + this.months[this.indexMonth - 1] + " del " + fecha[0];
+    this.fechaConsulta = this.months[this.indexMonth - 1] + " " + fecha[0];
     //console.log("fecha", this.months[this.indexMonth]);
     if (this.datos.data.response.historico) {
       this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada) * 100;
@@ -94,8 +111,8 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
           //console.log("fechaOferta:", element.fecha_oferta);
           const fechaOferta: any = (element.fecha_oferta).split("/");
           this.indexMonth = parseInt(fechaOferta[0]);
-          this.fechaSimilares = this.months[this.indexMonth-1] +" "+ fechaOferta[2];
-          
+          this.fechaSimilares = this.months[this.indexMonth - 1] + " " + fechaOferta[2];
+
           this.ELEMENT_DATA.push({
             position: ind,
             //oferta: element.fecha_oferta,

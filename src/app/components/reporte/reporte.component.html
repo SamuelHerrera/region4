@@ -18,7 +18,7 @@
           <div class="idReport">
             <!--<span class="reportID">ID {{datos.data._id}}</span>-->
             <!--<span class="generatedDate">Reporte generado el {{datos.data.dateCreated | json}}{{datos.data.dateCreated| date:' d, y'}}-->
-                <span class="generatedDate">Reporte generado el {{fechaCreacion}}
+            <span class="generatedDate">Reporte generado el {{fechaCreacion}}
               <!--{{generatedReport}}-->
             </span>
           </div>
@@ -192,9 +192,9 @@
           </div>
 
         </div>
-        
+
         <!--<div class="html2pdf__page-break"></div>-->
-        
+
         <div class="mEstimated">
 
           <div class="mEstimated1">
@@ -220,7 +220,7 @@
 
         </div>
       </div>
-      
+
       <div class="html2pdf__page-break"></div>
 
       <div class="mapView">
@@ -271,11 +271,12 @@
 
       </div>
 
-      <!-- <div class="map2">
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
-          <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-        </agm-map>
-      </div> -->
+      <!-- Aquí va el mapa con multiple marcadores. -->
+      
+      <div class="map2">
+        <img [src]="ulrMultipleMarkers">
+      </div>
+      <div class="html2pdf__page-break"></div> 
 
       <div class="table">
         <div class="example-container ">
@@ -284,7 +285,8 @@
 
             <ng-container matColumnDef="position">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell headerCell1"> No. </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell"> <img src="../assets/images/{{element.position}}.png" class="position"> </mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell">
+                <img src="../assets/images/{{element.position}}.png" class="position"> </mat-cell>
             </ng-container>
             <ng-container matColumnDef="oferta">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Oferta </mat-header-cell>
@@ -303,17 +305,21 @@
             </ng-container>
 
             <ng-container matColumnDef="cuartos">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> <img src="../assets/images/cuarto.png" class="icon"></mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell">
+                <img src="../assets/images/cuarto.png" class="icon">
+              </mat-header-cell>
               <mat-cell *matCellDef="let element" class="containerCell2"> {{element.cuartos}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="banos">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> <img src="../assets/images/bano.png" class="icon"> </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell">
+                <img src="../assets/images/bano.png" class="icon"> </mat-header-cell>
               <mat-cell *matCellDef="let element" class="containerCell2"> {{element.banos}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="parking">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> <img src="../assets/images/parking.png" class="icon"> </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell">
+                <img src="../assets/images/parking.png" class="icon"> </mat-header-cell>
               <mat-cell *matCellDef="let element" class="containerCell2"> {{element.parking}} </mat-cell>
             </ng-container>
 
@@ -684,6 +690,7 @@
       <hr>
     </div>
     <!--<div class="html2pdf__page-break"></div>-->
+    <div class="html2pdf__page-break"></div>
     <div class="terminos">
       <div class="middleTitle">
         <span>TÉRMINOS Y CONDICIONES</span>
