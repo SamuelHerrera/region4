@@ -23,6 +23,12 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
   fechaCreacion: any;
   fechaConsulta: any;
   fechaSimilares: any;
+
+  /**Para mostrar los datos de las gráficas */
+  labelm2General: any = {};
+  coloniam2General: any[] = [];
+  /** */
+
   displayedColumns = ['position', 'oferta', 'total', 'm2', 'cuartos', 'banos',
     'parking', 'construccion', 'edad', 'distancia', 'similitud'];
   ELEMENT_DATA: any[] = [];
@@ -85,7 +91,7 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnChanges(): void {
 
-    /*console.log(this.datos);*/
+    //console.log(this.datos);
     const fecha: any = (this.datos.data.dateCreated).split("-");
     /*if(fecha[1]==="04"){
       this.indexMonth = 3;
@@ -110,7 +116,7 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
         this.datos.data.response.similares.forEach(element => {
           //console.log("fechaOferta:", element.fecha_oferta);
           const fechaOferta: any = (element.fecha_oferta).split("/");
-          this.indexMonth = parseInt(fechaOferta[0]);
+          this.indexMonth = parseInt(fechaOferta[1]);
           this.fechaSimilares = this.months[this.indexMonth - 1] + " " + fechaOferta[2];
 
           this.ELEMENT_DATA.push({
@@ -131,28 +137,52 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
         });
       }
 
+      let indx = 0;
+      let indx1 = 0;
+      let indx2 = 0;
+      const coloniaGeneralNuevo: any[] = [];
+      this.datos.data.response.colonia_preciosm2_general.data.nuevo.forEach(element => {
+        coloniaGeneralNuevo[indx2] = element * 100 ;
+        indx2++;
+      });
+      this.datos.data.response.colonia_preciosm2_general.data.usado.forEach(element => {
+        this.coloniam2General[indx] = element * 100;
+        indx++;
+
+      });
       this.datosPrecioColonia = this.plusvalia ? {
-        //labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
         labels: this.datos.data.response.colonia_preciosm2_general.labels,
         datasets: [
           {
             label: 'Precio Promedio Nuevo',
             backgroundColor: '#0000FF',
             borderColor: '#0080FF',
-            //data: [65, 59, 80, 81, 56, 55, 40]
-            data: this.datos.data.response.colonia_preciosm2_general.data.nuevo
+            data: coloniaGeneralNuevo
           },
           {
             label: 'Precio Promedio Usado',
             backgroundColor: '#2E64FE',
             borderColor: '#0080FF',
-            //data: [65, 59, 80, 81, 56, 55, 40]
-            data: this.datos.data.response.colonia_preciosm2_general.data.usado
+            //data: this.datos.data.response.colonia_preciosm2_general.data.usado
+            data: this.coloniam2General
           }
         ]
       } : {};
       /**grafica de precio propiedad por m2 */
       /** this.datos.data.response.colonia_preciosm2_especifica */
+      const coloniaEspecificaNuevo: any[] = [];
+      const coloniaEspecificaUsado: any[] = [];
+      let idx0 = 0;
+      let idx1 = 0;
+
+      this.datos.data.response.colonia_preciosm2_especifica.data.nuevo.forEach(element => {
+        coloniaEspecificaNuevo[idx0] = element * 100;
+        idx0++;
+      });
+      this.datos.data.response.colonia_preciosm2_especifica.data.usado.forEach(element => {
+        coloniaEspecificaUsado[idx1] = element * 100;
+        idx1++;
+      });
       this.datosPropiedadesM2 = this.plusvalia ? {
         labels: this.datos.data.response.colonia_preciosm2_especifica.labels,
         //labels: ['35000', '40000', '50000', '50000+'],
@@ -161,20 +191,34 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
             label: 'Nuevo',
             backgroundColor: '#82FA58',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_preciosm2_especifica.data.nuevo
-            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+            //data: this.datos.data.response.colonia_preciosm2_especifica.data.nuevo
+            data: coloniaEspecificaNuevo
           }, {
             label: 'Usado',
             backgroundColor: '#C8FE2E',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_preciosm2_especifica.data.usado
-            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+            //data: this.datos.data.response.colonia_preciosm2_especifica.data.usado
+            data: coloniaEspecificaUsado
           }
         ]
       } : {}
 
       /**Grafica edad y tipo de vivienda */
       /** */
+      const tipoColoniaNuevo: any[] = [];
+      const tipoColoniaUsado: any[] = [];
+      let idxTipo = 0;
+      let idxTipo0 = 0;
+      this.datos.data.response.colonia_tipos_propiedades.data.nuevo.forEach(element =>{
+        tipoColoniaNuevo[idxTipo] = element*100;
+        idxTipo++;
+      });
+      this.datos.data.response.colonia_tipos_propiedades.data.usado.forEach(element=>{
+        tipoColoniaUsado[idxTipo0] = element * 100;
+        idxTipo0;
+      });
+
+      //console.log("tipoColonia", tipoColoniaNuevo);
       this.datosEdadVivienda = this.plusvalia ? {
         labels: ['Casa', 'Departamento'],
         datasets: [
@@ -182,20 +226,21 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
             label: 'Nuevo',
             backgroundColor: '#82FA58',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_tipos_propiedades.data.nuevo
-            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+            //data: this.datos.data.response.colonia_tipos_propiedades.data.nuevo
+            data: tipoColoniaNuevo
           }, {
             label: 'Usado',
             backgroundColor: '#C8FE2E',
             borderColor: '#74DF00',
-            data: this.datos.data.response.colonia_tipos_propiedades.data.usado
-            //data: this.datos.data.response.colonia_preciosm2_general.labels.data.usado
+            //data: this.datos.data.response.colonia_tipos_propiedades.data.usado
+            data: tipoColoniaUsado
           }
         ]
       } : {}
 
       /**Grafica numero de recamaras */
       /** this.datos.data.response.colonia_recamaras.labels --> .data.nuevo .data.usado */
+
       this.datosRecamaras = {
         //labels: this.datos.data.response.colonia_recamaras.labels,
         labels: ['1', '2', '3', '4+'],
