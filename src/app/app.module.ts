@@ -68,6 +68,7 @@ import { TemplateReportComponent } from './components/template-report/template-r
 import { TemplateUserActivationComponent } from './components/template-user-activation/template-user-activation.component';
 import { IsSecureGuard } from './guards/is-secure-guard.guard';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
+import { ReporteFakeComponent } from './components/reporte-fake/reporte-fake.component';
 
 @NgModule({
   declarations: [
@@ -102,7 +103,8 @@ import { ShortNumberPipe } from './pipes/short-number.pipe';
     TemplatePasswordRecoveryComponent,
     TemplateReportComponent,
     TemplateUserActivationComponent,
-    ShortNumberPipe
+    ShortNumberPipe,
+    ReporteFakeComponent
   ],
   imports: [
     HttpClientModule,

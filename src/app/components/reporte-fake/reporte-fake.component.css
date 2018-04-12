@@ -222,6 +222,7 @@
     flex-direction: row;
     /*flex-wrap: wrap;*/
     justify-content: center;
+    padding-bottom: 220px;
 }
 
 .totalEstimated {
@@ -370,6 +371,7 @@
 }
 
 .mapView {
+    padding-top:7px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -637,8 +639,6 @@ table td {
 }
 
 .plusValiaContainer {
-    width: 700px;
-    border:1px red solid;
     display: flex;
     flex-direction: row;
 }
@@ -662,7 +662,6 @@ table td {
     padding-right: 5px;
     width: 40px;
     height: 32px;
-    padding-left: 150px;
 }
 
 .glosario {
@@ -844,6 +843,7 @@ table td {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    height: 70px;
 }
 .superContainer{
     width: 800px;
@@ -856,7 +856,7 @@ table td {
 .logo {
     width: 200px;
     height: 50px;
-    margin: 20px;
+    margin: 10px;
   }
   canvas{
       display: block;
@@ -881,4 +881,54 @@ table td {
       padding-top: 10px;
       width: 700px;
       height: 350px;
+  }
+  .footer{
+    background: #28225C;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 21px;
+  }
+  .footerContainer{
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color:white;
+    font-size: 11px;
+    padding: 5px;
+  }
+
+  .separador{
+      height: 50px;
+  }
+  .separador2{
+      height: 340px;
+  }
+  .separador3{
+      height: 200px;
+  }
+  .separador4{
+      height: 190px;
+  }
+  .separador5{
+      height: 380px;
+  }
+  .separador6{
+      height: 240px;
+  }
+  .separador7{
+      height: 13px;
+  }
+  .separador8{
+      height: 670px;
+  }
+  .superficieConstruida{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .html2pdf__page-break{
+      padding-bottom: 10px;
   }
