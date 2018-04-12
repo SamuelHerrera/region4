@@ -70,6 +70,7 @@ import { IsSecureGuard } from './guards/is-secure-guard.guard';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { ReporteFakeComponent } from './components/reporte-fake/reporte-fake.component';
 import { BasicReportComponent } from './components/basic-report/basic-report.component';
+import { BasicReportFakeComponent } from './components/basic-report-fake/basic-report-fake.component';
 
 @NgModule({
   declarations: [
@@ -106,7 +107,8 @@ import { BasicReportComponent } from './components/basic-report/basic-report.com
     TemplateUserActivationComponent,
     ShortNumberPipe,
     ReporteFakeComponent,
-    BasicReportComponent
+    BasicReportComponent,
+    BasicReportFakeComponent
   ],
   imports: [
     HttpClientModule,

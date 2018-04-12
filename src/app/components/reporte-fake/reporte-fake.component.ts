@@ -91,7 +91,6 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnChanges(): void {
 
-    console.log(this.datos);
     const fecha: any = (this.datos.data.dateCreated).split("-");
     /*if(fecha[1]==="04"){
       this.indexMonth = 3;
@@ -100,7 +99,6 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
     const diaCreacion: any = fecha[2].split("T");
     this.fechaCreacion = diaCreacion[0] + " de " + this.months[this.indexMonth - 1] + " del " + fecha[0];
     this.fechaConsulta = this.months[this.indexMonth - 1] + " " + fecha[0];
-    //console.log("fecha", this.months[this.indexMonth]);
     if (this.datos.data.response.historico) {
       this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada) * 100;
     } else {
@@ -114,7 +112,6 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
       let ind = 1;
       if (this.datos.data.response.similares) {
         this.datos.data.response.similares.forEach(element => {
-          //console.log("fechaOferta:", element.fecha_oferta);
           const fechaOferta: any = (element.fecha_oferta).split("/");
           this.indexMonth = parseInt(fechaOferta[1]);
           this.fechaSimilares = this.months[this.indexMonth - 1] + " " + fechaOferta[2];
@@ -247,7 +244,6 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         idxTipo0;
       });
 
-      //console.log("tipoColonia", tipoColoniaNuevo);
       this.datosEdadVivienda = this.plusvalia ? {
         labels: ['Casa', 'Departamento'],
         datasets: [
@@ -379,7 +375,6 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
 
   imprimir() {
     const element = document.getElementById('element-to-print');
-    console.log("Elementos a imprimir: ", element);
     html2pdf(element, {
       margin: 1,
       filename: 'myfile.pdf',

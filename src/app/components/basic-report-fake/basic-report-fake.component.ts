@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, Sort } from '@angular/material';
@@ -10,16 +10,12 @@ import { DatePipe } from '@angular/common';
 import { YalsRequest } from '../../models/yals.model';
 import { YalsService } from '../../services/yals.service';
 import { ShortNumberPipe } from '../../pipes/short-number.pipe';
-
-
 @Component({
-  selector: 'app-basic-report',
-  templateUrl: './basic-report.component.html',
-  styleUrls: ['./basic-report.component.css']
+  selector: 'app-basic-report-fake',
+  templateUrl: './basic-report-fake.component.html',
+  styleUrls: ['./basic-report-fake.component.css']
 })
-export class BasicReportComponent implements OnInit, OnChanges, AfterViewInit {
-
-
+export class BasicReportFakeComponent implements OnInit, OnChanges, AfterViewInit {
   months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
   indexMonth: number;
   fechaCreacion: any;
@@ -36,8 +32,6 @@ export class BasicReportComponent implements OnInit, OnChanges, AfterViewInit {
   lng = 20.100;*/
   lat: number;
   lng: number;
-
-
 
   constructor(private yals: YalsService) { }
 
@@ -72,6 +66,5 @@ export class BasicReportComponent implements OnInit, OnChanges, AfterViewInit {
   ngAfterViewInit() {
   }
 
+
 }
-
-
