@@ -121,7 +121,8 @@
             ID: {{element.dateCreated | date:'yyyy-dms'}}
             <p-button (onClick)="imprimir(element._id, element)" label="Descargar PDF"></p-button>
             <div id="{{element._id}}" class="oculto">
-              <app-reporte-fake [datos]="{data:element}" *ngIf = "element['hidden']"></app-reporte-fake>
+              <app-reporte-fake [datos]="{data:element}" *ngIf = "element['hidden']&&element.response.similares"></app-reporte-fake>
+              <app-basic-report-fake [datos]="{data:element}" *ngIf = "element['hidden']"></app-basic-report-fake>
             </div>
             <div class="mascarita"></div>
 

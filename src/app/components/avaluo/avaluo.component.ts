@@ -92,10 +92,14 @@ export class AvaluoComponent implements OnInit {
         });
     }
   }
-
+  elementToPrint: any;
   imprimir() {
-    const element = document.getElementById('element-to-print');
-    const datauri = html2pdf(element, {
+    if(this.avaluoResponse.data.response.similares){
+      this.elementToPrint = document.getElementById('element-to-print');
+    }else{
+      this.elementToPrint = document.getElementById('basic-element-to-print');
+    }
+    const datauri = html2pdf(this.elementToPrint, {
       margin: 0.4,
       filename: 'reporte.pdf',
       image: { type: 'jpeg', quality: 0.98 },
@@ -108,10 +112,14 @@ export class AvaluoComponent implements OnInit {
 
   enviarACorreo() {
     if (this.otroCorreo !== "") {
+      if(this.avaluoResponse.data.response.similares){
+        this.elementToPrint = document.getElementById('element-to-print');
+      }else{
+        this.elementToPrint =  document.getElementById('basic-element-to-print');
+      }
       const reportHTML: any = document.getElementById("reportTemplate");
-      const element = document.getElementById('element-to-print');
       this.nomCliente['name'] = this.user.name;
-      const datauri = html2pdf(element, {
+      const datauri = html2pdf(this.elementToPrint, {
         margin: 0.4,
         filename: 'reporte.pdf',
         image: { type: 'jpeg', quality: 0.98 },

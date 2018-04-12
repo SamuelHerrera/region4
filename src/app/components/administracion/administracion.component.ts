@@ -48,7 +48,6 @@ export class AdministracionComponent implements OnInit {
   validarLogin() {
     if ((this.user === "Administrador" && this.pass === "Region42018") ||
       (this.user === "Administrador2" && this.pass === "ItexSolutions1!")) {
-      //console.log("Es el administrador 1");
       this.messageService.add({ severity: 'success', summary: 'Inicio de sesión', detail: "Bienvenido administrador: " + this.user });
       setTimeout(() => {
         this.login = false;
@@ -77,16 +76,13 @@ export class AdministracionComponent implements OnInit {
   /** */
   ngOnInit() {
     this.clientService.getClients().subscribe((response: any) => {
-      //console.log("Response", response)
       this.dataSource = new MatTableDataSource(response.data.docs);
     });
     this.yals.getConfigs().subscribe((response: any) => {
       this.yalsconfig = response.data;
     });
     this.yals.getRequest().subscribe((response: any) => {
-      //console.log("Response", response);
       response.data.docs.forEach(element => {
-        //console.log("Elemento-", response.data.docs);
         element['hidden'] = false;
 
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
@@ -96,7 +92,6 @@ export class AdministracionComponent implements OnInit {
         });
       });
       this.dataSource2 = new MatTableDataSource(response.data.docs);
-      //      setTimeout(() => { console.log(response.data.docs) })
     });
     this.cuponService.getCupons().subscribe((response: any) => {
       this.dataSource3 = new MatTableDataSource(response.data.docs);
@@ -109,15 +104,20 @@ export class AdministracionComponent implements OnInit {
       this.messageService.add({ severity: 'success', summary: 'Inicio de sesion', detail: "Usuario inicio sesion satisfactoriamente." });
     });
   }
-
+  datosImprimir: any;
   imprimir(id, elemento) {
-    elemento['hidden'] = true;
-    
+
+    elemento['hidden'] = true;+
     setTimeout(() => {
-      /*console.log(document.getElementById(id).childNodes)*/
-      const element = document.getElementById(id).childNodes[2];
-    
-      const datapdf = html2pdf(element, {
+      console.log("Elements", elemento);
+      console.log("childs node", document.getElementById(id).childNodes);
+      if (elemento.response.similares) {
+        this.datosImprimir = document.getElementById(id).childNodes[2];
+      }else{
+        this.datosImprimir = document.getElementById(id).childNodes[4];
+      }
+      
+      const datapdf = html2pdf(this.datosImprimir, {
         margin: 0.4,
         filename: 'reporte.pdf',
         image: { type: 'jpeg', quality: 0.98 },
@@ -126,11 +126,9 @@ export class AdministracionComponent implements OnInit {
         action: "save"
       });
       datapdf.then(data => {
-        //console.log(data);
       });
     }, 2000);
 
-    // console.log(datapdf.__zone_symbol__value)
   }
 
   changeStatus(id, status) {

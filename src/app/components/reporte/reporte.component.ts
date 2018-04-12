@@ -38,10 +38,10 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() datos = null;
   dat: any;
 
-  url: any;
+  url: any = '';
   urlImage: any = '';
-  ulrMultipleMarkers: any;
-  urlAux: any;
+  ulrMultipleMarkers: any = '';
+  urlAux: any = '';
   //plusvalia = this.datos.data.response.historico.apreciacion_anualizada * 100;//"pending to implement"//14.2;
   plusvalia: any;
   /*lat = 30.200;
