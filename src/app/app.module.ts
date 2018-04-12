@@ -3,6 +3,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
@@ -66,6 +67,9 @@ import { TemplatePasswordRecoveryComponent } from './components/template-passwor
 import { TemplateReportComponent } from './components/template-report/template-report.component';
 import { TemplateUserActivationComponent } from './components/template-user-activation/template-user-activation.component';
 import { IsSecureGuard } from './guards/is-secure-guard.guard';
+import { ShortNumberPipe } from './pipes/short-number.pipe';
+import { ReporteFakeComponent } from './components/reporte-fake/reporte-fake.component';
+import { BasicReportComponent } from './components/basic-report/basic-report.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +103,10 @@ import { IsSecureGuard } from './guards/is-secure-guard.guard';
     TemplateFacturacionComponent,
     TemplatePasswordRecoveryComponent,
     TemplateReportComponent,
-    TemplateUserActivationComponent
+    TemplateUserActivationComponent,
+    ShortNumberPipe,
+    ReporteFakeComponent,
+    BasicReportComponent
   ],
   imports: [
     HttpClientModule,
@@ -126,7 +133,7 @@ import { IsSecureGuard } from './guards/is-secure-guard.guard';
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
   ],
-  providers: [AuthGuard, IsSecureGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
+  providers: [ AuthGuard, IsSecureGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
   entryComponents: [DialogCuponesComponent],
   bootstrap: [AppComponent]
 })

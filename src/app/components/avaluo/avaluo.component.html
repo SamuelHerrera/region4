@@ -76,6 +76,7 @@
         <div class="oculto">
           <app-template-facturacion *ngIf="facturacion" [facturacion]="facturacion"></app-template-facturacion>
           <app-template-report [cliente]="nomCliente" id="reportTemplate"></app-template-report>
+          <app-reporte-fake *ngIf="avaluoResponse" [datos]="avaluoResponse"></app-reporte-fake>
         </div>
         <div class="mascarita"></div>
       </mat-step>

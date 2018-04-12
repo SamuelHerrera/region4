@@ -1,0 +1,278 @@
+<div class="container" id="element-to-print">
+    <div class="scrollable">
+  
+      <!--{{datos.data.request.colonia|json}}-->
+      <div class="superTitle">
+        <div class="superContainer">
+          <a href="#">
+            <img class="logo" src="assets/images/logo_.png" />
+          </a>
+          <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+        </div>
+      </div>
+  
+      <div class="title">
+        <div class="titleContainer">
+          <div class="subTitleContainer">
+            <span class="principalTitle">REPORTE DEL INMUEBLE</span>
+            <div class="idReport">
+              <!--<span class="reportID">ID {{datos.data._id}}</span>-->
+              <!--<span class="generatedDate">Reporte generado el {{datos.data.dateCreated | json}}{{datos.data.dateCreated| date:' d, y'}}-->
+              <span class="generatedDate">Reporte generado el {{fechaCreacion}}
+                <!--{{generatedReport}}-->
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="characteristics">
+        <div class="middleTitle">
+          <span>CARACTERÍSTICAS DE LA PROPIEDAD</span>
+        </div>
+        <div class="address">
+          <div class="subAddress">
+            <div class="dir">
+              <div class="littleTitle">
+                <span>DIRECCIÓN</span>
+              </div>
+  
+              <div class="direcContent">
+                <p> {{datos.data.response.address.colonia}}, {{datos.data.response.address.street}}
+                  <!--{{colonia}}, {{calle}}-->No. Ext. {{datos.data.response.address.num_ext}}
+                  <!--{{numExt}}-->, No. Int s/n
+                  <!--{{numInt}}-->
+                </p>
+                <p>C.P. {{datos.data.response.address.zip}}
+                  <!--{{codigoPostal}}-->
+                </p>
+                <p> {{datos.data.response.address.ciudad}}, {{datos.data.response.address.estado}}
+                  <!--{{ciudad}}, {{estado}}-->
+                </p>
+              </div>
+  
+            </div>
+            <div class="carac">
+              <div class="littleTitle">
+                <span>CARACTERÍSTICAS</span>
+              </div>
+  
+              <div class="caracContainer">
+                <div class="subCarac">
+                  <div class="imgContainer">
+                    <img class="images" src="../assets/images/cuarto.png" alt="Smiley face" height="16" width="16" />
+                  </div>
+                  <!--{{numCuartos}}-->{{datos.data.response.characteristics.recamaras}} Cuartos
+  
+                </div>
+  
+                <div class="subCarac">
+                  <div class="imgContainer">
+                    <img class="images" src="../assets/images/bano.png" alt="Smiley face" height="16" width="16" />
+                  </div>
+                  <!--{{numBanos}}-->{{datos.data.response.characteristics.banos}} Baños
+  
+                </div>
+  
+                <div class="subCarac">
+                  <div class="imgContainer">
+                    <img class="images" src="../assets/images/medio-bano.png" alt="Smiley face" height="16" width="16" />
+                  </div>
+                  <!--{{numMBanos}}-->{{datos.data.response.characteristics.medios_banos}} Medios Baños
+  
+                </div>
+  
+                <div class="subCarac">
+                  <div class="imgContainer">
+                    <img class="images" src="../assets/images/parking.png" alt="Smiley face" height="16" width="16" />
+                  </div>
+                  <!--{{numParking}}-->{{datos.data.response.characteristics.estacionamientos}} Parking
+  
+                </div>
+  
+              </div>
+            </div>
+  
+          </div>
+  
+          <div class="amenidades">
+            <div class="littleTitle">AMENIDADES</div>
+            <div class="containerAmenidades">
+  
+              <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
+  
+                <div class="imgContainer" *ngIf="item=='cocina_integral'">
+                  <img class="images" src="../assets/images/cocina.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='aire_acondicionado'">
+                  <img class="images" src="../assets/images/ac.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='gimnasio'">
+                  <img class="images" src="../assets/images/gimnasio.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='terraza'">
+                  <img class="images" src="../assets/images/terraza.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='alberca'">
+                  <img class="images" src="../assets/images/alberca.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='cuarto_servicio'">
+                  <img class="images" src="../assets/images/lavado.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='jardin'">
+                  <img class="images" src="../assets/images/jardin.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='amueblado'">
+                  <img class="images" src="../assets/images/amueblado.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='estudio'">
+                  <img class="images" src="../assets/images/estudio.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='jacuzzi'">
+                  <img class="images" src="../assets/images/jacuzzi.png" alt="Smiley face" height="32" width="32" />
+                </div>
+                <div class="imgContainer" *ngIf="item=='seguridad'">
+                  <img class="images" src="../assets/images/seguridad.png" alt="Smiley face" height="32" width="32" />
+                </div>
+  
+                <span *ngIf="item=='seguridad'">seguridad</span>
+                <span *ngIf="item=='jacuzzi'">Jacuzzi</span>
+                <span *ngIf="item=='estudio'">Estudio</span>
+                <span *ngIf="item=='amueblado'">Amueblado</span>
+                <span *ngIf="item=='jardin'">Jardín</span>
+                <span *ngIf="item=='cuarto_servicio'">Cuarto de Servicio</span>
+                <span *ngIf="item=='alberca'">Alberca</span>
+                <span *ngIf="item=='terraza'">Roof garden/ terraza</span>
+                <span *ngIf="item=='gimnasio'">Gimnasio</span>
+                <span *ngIf="item=='aire_acondicionado'">Aire Acondicionado</span>
+                <span *ngIf="item=='cocina_integral'">Cocina Integral</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="divisor">
+        <hr>
+      </div>
+  
+      <div class="estimatedValue">
+  
+        <div class="middleTitle">
+          <span>ESTIMADO DE VALOR EN {{fechaConsulta}}</span>
+        </div>
+  
+        <div class="prices">
+          <div class="totalEstimated">
+            <div class="estimated1">
+              <h3>Estimado del valor total</h3>
+  
+              <h4>$
+                <!--{{precioEstimado}}-->{{datos.data.response.valuacion.valuacion | number:'0.1-2'}}</h4>
+              <p>Estimado de valor total*</p>
+            </div>
+  
+            <div class="estimated2">
+              <div class="inferior">
+                <h4>$
+                  <!--{{precioInferior}}-->{{datos.data.response.valuacion.intervalo_bajo | number:'0.1-2'}}</h4>
+                <p>Limite inferior</p>
+              </div>
+              <div class="superior">
+                <h4>$
+                  <!--{{precioSuperior}}-->{{datos.data.response.valuacion.intervalo_alto | number:'0.1-2'}}</h4>
+                <p>Limite Superior</p>
+              </div>
+            </div>
+  
+            <div class="subText">
+              <p>
+                *Estimación calibrada con información de precios de oferta
+              </p>
+            </div>
+  
+          </div>
+  
+          <!--<div class="html2pdf__page-break"></div>-->
+  
+          <div class="mEstimated">
+  
+            <div class="mEstimated1">
+              <h3>Estimado del valor por m2</h3>
+  
+              <h4>$
+                <!--{{precioEstimadoM2}}-->{{datos.data.response.valuacion.valuacion_m2 | number:'0.1-2'}}</h4>
+              <p>Estimado de valor por m2*</p>
+            </div>
+  
+            <div class="mEstimated2">
+              <div class="mInferior">
+                <h4>$
+                  <!--{{precioMInferior}}-->{{datos.data.response.valuacion.intervalo_bajo_m2 | number:'0.1-2'}}</h4>
+                <p>Limite inferior</p>
+              </div>
+              <div class="mSuperior">
+                <h4>$
+                  <!--{{precioMSuperior}}-->{{datos.data.response.valuacion.intervalo_alto_m2 | number:'0.1-2'}} </h4>
+                <p>Limite Superior</p>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+  
+        <div class="footer">
+          <div class="footerContainer">
+            <span>Reporte Generado el {{fechaCreacion}}</span>
+            <span>www.valorinmuebles.com.mx</span>
+            <span>Página 1 de 2</span>
+          </div>
+        </div>
+        <div class="html2pdf__page-break"></div>
+  
+        <!--Divisor de Mapa y primera página-->
+  
+        <div>
+          <div class="superTitle">
+            <div class="superContainer">
+              <a href="#">
+                <img class="logo" src="assets/images/logo_.png" />
+              </a>
+              <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+            </div>
+          </div>
+          <div class="mapView">
+  
+            <div class="houseView">
+              <img [src]="urlImage">
+            </div>
+            <div class="map">
+              <img [src]="url">
+            </div>
+          </div>
+  
+          <div class="intro ">
+            <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
+            <h3></h3>
+            <p>
+              El reporte de tu inmueble de Región4 se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
+              dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Región4
+              se alimentan de los precios de millones de ofertas y cierres de transacciones. Región4 provee un estimado de
+              valor y no sustituye a un avalúo certificado.
+            </p>
+          </div>
+        </div>
+        <div class="separador">
+  
+        </div>
+        <div class="footer">
+          <div class="footerContainer">
+            <span>Reporte Generado el {{fechaCreacion}}</span>
+            <span>www.valorinmuebles.com.mx</span>
+            <span>Página 2 de 2</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>

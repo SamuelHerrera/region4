@@ -1,4 +1,4 @@
-<div class="container" id="element-to-print2">
+<div class="container" id="element-to-print">
   <div class="scrollable">
 
     <!--{{datos.data.request.colonia|json}}-->
@@ -221,41 +221,69 @@
         </div>
       </div>
 
+      <div class="footer">
+        <div class="footerContainer">
+          <span>Reporte Generado el {{fechaCreacion}}</span>
+          <span>www.valorinmuebles.com.mx</span>
+          <span>Página 1 de 9</span>
+        </div>
+      </div>
       <div class="html2pdf__page-break"></div>
 
-      <div class="mapView">
-        <div class="houseView">
-          <img [src]="urlImage">
+      <!--Divisor de Mapa y primera página-->
+
+      <div>
+        <div class="superTitle">
+          <div class="superContainer">
+            <a href="#">
+              <img class="logo" src="assets/images/logo_.png" />
+            </a>
+            <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+          </div>
         </div>
-        <div class="map">
-          <img [src]="url">
-          <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
-           
-            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-          </agm-map> -->
+        <div class="mapView">
+
+          <div class="houseView">
+            <img [src]="urlImage">
+          </div>
+          <div class="map">
+            <img [src]="url">
+          </div>
+        </div>
+
+        <div class="intro ">
+          <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
+          <h3></h3>
+          <p>
+            El reporte de tu inmueble de Región4 se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
+            dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Región4
+            se alimentan de los precios de millones de ofertas y cierres de transacciones. Región4 provee un estimado de
+            valor y no sustituye a un avalúo certificado.
+          </p>
         </div>
       </div>
+      <div class="separador">
 
-      <div class="intro">
-        <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
-        <h3></h3>
-        <p>
-          El reporte de tu inmueble de Región4 se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
-          dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Región4
-          se alimentan de los precios de millones de ofertas y cierres de transacciones. Región4 provee un estimado de valor
-          y no sustituye a un avalúo certificado.
-        </p>
       </div>
-
-
-
-    </div>
-
-    <div class="divisor">
-      <hr>
+      <div class="footer">
+        <div class="footerContainer">
+          <span>Reporte Generado el {{fechaCreacion}}</span>
+          <span>www.valorinmuebles.com.mx</span>
+          <span>Página 2 de 9</span>
+        </div>
+      </div>
     </div>
 
     <div class="html2pdf__page-break"></div>
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logo_.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
 
     <div class="propiedades">
 
@@ -276,7 +304,28 @@
       <div class="map2">
         <img [src]="ulrMultipleMarkers">
       </div>
+      <div class="separador2">
+
+      </div>
+
+      <div class="footer">
+        <div class="footerContainer">
+          <span>Reporte Generado el {{fechaCreacion}}</span>
+          <span>www.valorinmuebles.com.mx</span>
+          <span>Página 3 de 9</span>
+        </div>
+      </div>
+
       <div class="html2pdf__page-break"></div>
+
+      <div class="superTitle">
+        <div class="superContainer">
+          <a href="#">
+            <img class="logo" src="assets/images/logo_.png" />
+          </a>
+          <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+        </div>
+      </div>
 
       <div class="table">
         <div class="example-container ">
@@ -353,11 +402,29 @@
       </div>
     </div>
 
-    <div class="divisor">
+    <!--<div class="divisor">
       <hr>
+    </div>-->
+    <div class="separador3"></div>
+
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 4 de 9</span>
+      </div>
     </div>
 
     <div class="html2pdf__page-break"></div>
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logo_.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
 
     <div class="preciosColonia">
       <div class="middleTitle">
@@ -477,7 +544,28 @@
       </div>
     </div>
 
+    <div class="separador4">
+
+    </div>
+
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 5 de 9</span>
+      </div>
+    </div>
+
     <div class="html2pdf__page-break"></div>
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logo_.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
 
     <div class="graficaDescripciones">
 
@@ -530,8 +618,6 @@
           </div>
         </div>
 
-        <div class="html2pdf__page-break"></div>
-
         <div class=superficieConstruida>
           <div class="grafica2Container">
             <div class="intro">
@@ -542,7 +628,7 @@
                 La gráfica muestra el número de departamentos según su edad y supercie construida.
               </p>
             </div>
-            <div class="graficaContainer2" id="graficaSuperficie">
+            <div class="graficaContainer2 numDepartamentos" id="graficaSuperficie">
               <p-chart type="bar" [data]="datosSuperficieConstruida" [options]="options"></p-chart>
             </div>
           </div>
@@ -550,10 +636,28 @@
       </div>
     </div>
 
-    <div class="divisor">
-      <hr>
+    <div class="separador5">
     </div>
+
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 6 de 9</span>
+      </div>
+    </div>
+
+    <div class="html2pdf__page-break"></div>
     <!-- Fin graficas-->
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logo_.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
 
     <div class="evolucionColonia">
       <div class="middleTitle">
@@ -580,11 +684,10 @@
 
       </div>
       <div class="plusValia" *ngIf="plusvalia">
-
+        <div class="flechaContainer">
+          <img src="../assets/images/flecha.png" alt="Smiley face">
+        </div>
         <div class="plusValiaContainer">
-          <div class="flechaContainer">
-            <img src="../assets/images/flecha.png" alt="Smiley face">
-          </div>
           <h2>
             +{{plusvalia | number: '0.1-2'}}%
           </h2>
@@ -601,10 +704,26 @@
 
     </div>
 
-    <div class="divisor">
-      <hr>
+    <div class="separador6">
+    </div>
+
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 7 de 9</span>
+      </div>
     </div>
     <div class="html2pdf__page-break"></div>
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logo_.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
 
     <div class="glosario">
       <div class="middleTitle">
@@ -690,12 +809,27 @@
         </div>
       </div>
     </div>
-
-    <div class="divisor">
-      <hr>
-    </div>
     <!--<div class="html2pdf__page-break"></div>-->
+    <div class="separador7"></div>
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 8 de 9</span>
+      </div>
+    </div>
+
     <div class="html2pdf__page-break"></div>
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logo_.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
+
     <div class="terminos">
       <div class="middleTitle">
         <span>TÉRMINOS Y CONDICIONES</span>
@@ -715,6 +849,16 @@
           <br> El reporte de Región4 constituye únicamente un estimado de valor. Derechos reservados Región4 Asesores Inmobiliarios
           S.C.P. 2017.
         </p>
+      </div>
+    </div>
+    <div class="separador8">
+
+    </div>
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 9 de 9</span>
       </div>
     </div>
 

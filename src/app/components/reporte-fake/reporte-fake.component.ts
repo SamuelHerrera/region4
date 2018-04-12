@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, Sort } from '@angular/material';
@@ -12,13 +12,13 @@ import { YalsService } from '../../services/yals.service';
 import { ShortNumberPipe } from '../../pipes/short-number.pipe';
 
 @Component({
-  selector: 'app-reporte',
-  templateUrl: './reporte.component.html',
-  styleUrls: ['./reporte.component.css']
+  selector: 'app-reporte-fake',
+  templateUrl: './reporte-fake.component.html',
+  styleUrls: ['./reporte-fake.component.css']
 })
-export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
+export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
 
-  optionsPlusvalia: any;
+
   months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
   indexMonth: number;
   fechaCreacion: any;
@@ -38,11 +38,10 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() datos = null;
   dat: any;
 
-  url: any;
+  url: any = '';
   urlImage: any = '';
-  ulrMultipleMarkers: any;
-  urlAux: any;
-  //plusvalia = this.datos.data.response.historico.apreciacion_anualizada * 100;//"pending to implement"//14.2;
+  ulrMultipleMarkers: any = '';
+  urlAux: any = '';
   plusvalia: any;
   /*lat = 30.200;
   lng = 20.100;*/
@@ -54,17 +53,15 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
   datosPrecioColonia: any;
   datoPlusvalia: any;
   options: any;
+  optionsPlusvalia: any;
   datosPropiedadesM2: any;
   datosEdadVivienda: any;
   datosRecamaras: any;
   datosSuperficieConstruida: any;
 
-  constructor(private yals: YalsService) {
-
-  }
+  constructor(private yals: YalsService) { }
 
   ngOnInit() {
-    console.log("Total de similares", this.datos);
     this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=650x350&format=jpg&maptype=roadmap&markers=color:blue%7Clabel:S%7C" + this.lat + "," + this.lng + "&key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
       .subscribe((response: any) => {
         this.url = "data:image/jpeg;base64," + response.data;
@@ -94,7 +91,7 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnChanges(): void {
 
-    //console.log(this.datos);
+    console.log(this.datos);
     const fecha: any = (this.datos.data.dateCreated).split("-");
     /*if(fecha[1]==="04"){
       this.indexMonth = 3;

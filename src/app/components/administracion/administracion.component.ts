@@ -84,9 +84,11 @@ export class AdministracionComponent implements OnInit {
       this.yalsconfig = response.data;
     });
     this.yals.getRequest().subscribe((response: any) => {
-      console.log("Response", response);
+      //console.log("Response", response);
       response.data.docs.forEach(element => {
         //console.log("Elemento-", response.data.docs);
+        element['hidden'] = false;
+
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
 
           element['client'] = cli.data.docs[0].name;
@@ -94,10 +96,9 @@ export class AdministracionComponent implements OnInit {
         });
       });
       this.dataSource2 = new MatTableDataSource(response.data.docs);
-      setTimeout(() => { console.log(response.data.docs) })
+      //      setTimeout(() => { console.log(response.data.docs) })
     });
     this.cuponService.getCupons().subscribe((response: any) => {
-      console.log(response)
       this.dataSource3 = new MatTableDataSource(response.data.docs);
     });
   }
@@ -109,21 +110,26 @@ export class AdministracionComponent implements OnInit {
     });
   }
 
-  imprimir(id) {
+  imprimir(id, elemento) {
+    elemento['hidden'] = true;
+    
+    setTimeout(() => {
+      /*console.log(document.getElementById(id).childNodes)*/
+      const element = document.getElementById(id).childNodes[2];
+    
+      const datapdf = html2pdf(element, {
+        margin: 0.4,
+        filename: 'reporte.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { dpi: 192, letterRendering: true },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+        action: "save"
+      });
+      datapdf.then(data => {
+        //console.log(data);
+      });
+    }, 2000);
 
-    const element = document.getElementById(id).childNodes[1];
-    //this.router.navigate(['/reporte']);
-    const datapdf = html2pdf(element, {
-      margin: 1,
-      filename: 'reporte.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { dpi: 192, letterRendering: true },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-      action: "save"
-    });
-    datapdf.then(data => {
-      console.log(data);
-    });
     // console.log(datapdf.__zone_symbol__value)
   }
 
