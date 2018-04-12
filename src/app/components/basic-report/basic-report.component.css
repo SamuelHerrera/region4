@@ -222,6 +222,7 @@
     flex-direction: row;
     /*flex-wrap: wrap;*/
     justify-content: center;
+    padding-bottom: 220px;
 }
 
 .totalEstimated {
@@ -370,6 +371,7 @@
 }
 
 .mapView {
+    padding-top:7px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -628,71 +630,6 @@ table td {
     font-weight: 300;
 }
 
-.plusValia {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-top: 20px;
-}
-
-.plusValiaContainer {
-    width: 700px;
-    display: flex;
-    flex-direction: row;
-}
-
-.plusValiaContainer h2 {
-    line-height: 25px;
-    color: #31A6E0;
-    font-family: '__Merriweather_5';
-    font-weight: 700;
-    font-size: 21px;
-}
-
-.plusValiaContainer p {
-    font-weight: 300;
-    font-family: '__Merriweather Sans_5';
-    color: #000000;
-    font-size: 18px;
-}
-
-.flechaContainer img {
-    padding-right: 5px;
-    width: 40px;
-    height: 32px;
-    padding-left: 150px;
-}
-
-.glosario {
-    display: table-column;
-}
-
-.glosarioContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.leftText {
-    width: 150px;
-}
-
-.leftText p {
-    height: 65px;
-    font-family: '__Raleway_5';
-    font-weight: 700;
-    line-height: 15px;
-    font-size: 11px;
-}
-
-.rightText {
-    width: 800px;
-    
-    /*display: flex;
-    flex-direction: column;*/
-    /*justify-content: flex-start;*/
-}
 .intro2{
     margin: 0;
     padding-bottom: 10px;
@@ -712,18 +649,7 @@ table td {
     text-align: justify;
 }
 
-/*.rightText p {
-    height: 65px;
-    color: #999999;
-    line-height: 15px;
-    font-family: Geneva, Verdana, Lucida Sans, Lucida Sans Unicode, sans-serif;
-    text-align: justify;
-    font-size: 11px;
-}*/
 
-.terminos {
-    display: table-column;
-}
 
 .contenido {
     display: flex;
@@ -743,31 +669,7 @@ table td {
     text-align: justify;
 }
 
-.graficaPrecioColonia {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-}
 
-.containerGraficaColonia {
-    width: 650px;
-    display: flex;
-    flex-direction: column;
-
-};
-
-.graficaContainer {
-    width: 100%;
-}
-
-.graficaContainer p-chart {
-    width: 100%;
-}
-
-.graficaDescripciones {
-    display: table-column;
-}
 
 .propiedadesEdad {
     display: flex;
@@ -779,18 +681,6 @@ table td {
 .propiedadesPrecioM2 {
     display: table-column;
     width: 320px;
-}
-
-.grafica1Container {
-    width: 320px;
-    padding-left: 10px;;
-    padding-top: 10px;
-}
-
-.grafica2Container {
-    width: 320px;
-    padding-left: 10px;
-    padding-top: 10px;
 }
 
 .edadVivienda {
@@ -820,29 +710,12 @@ table td {
     font-family: '__Merriweather_5';
 }
 
-.headerCell{
-    width: 30px;
-    font-size: 10px;
-    color: rgba(0,0,0,.54);
-    font-weight: 500;
-}
-.containerCell{
-    width:30px;
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(0,0,0,.87);;
-}
-.containerCell2{
-    width:30px;
-    font-size: 10px;
-    font-weight: 500;
-    color: rgba(0,0,0,.87);;
-}
 .superTitle{
     background: #28225C;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    height: 70px;
 }
 .superContainer{
     width: 800px;
@@ -855,29 +728,35 @@ table td {
 .logo {
     width: 200px;
     height: 50px;
-    margin: 20px;
+    margin: 10px;
   }
   canvas{
       display: block;
       visibility: visible;
   }
-  .position{
-      width: 16px;
-      height: 19px;
+  .footer{
+    background: #28225C;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 21px;
   }
-  .icon{
-      width: 16px;
-      height: 16px;
+  .footerContainer{
+    width: 800px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color:white;
+    font-size: 11px;
+    padding: 5px;
   }
-  .headerCell1{
-      width:20px;
+
+  .superficieConstruida{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
   }
-  .headerCell2{
-      width: 40px;
-      
-  }
-  .graficaPlusvalia{
-      padding-top: 10px;
-      width: 700px;
-      height: 350px;
+  .html2pdf__page-break{
+      padding-bottom: 10px;
   }
