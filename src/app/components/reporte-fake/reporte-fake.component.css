@@ -752,8 +752,10 @@ table td {
 
 .containerGraficaColonia {
     width: 650px;
+    display: table;
+    /*
     display: flex;
-    flex-direction: column !important;
+    flex-direction: column !important;*/
     /*flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;*/
