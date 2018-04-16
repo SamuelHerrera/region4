@@ -109,8 +109,8 @@ export class AdministracionComponent implements OnInit {
 
     elemento['hidden'] = true;+
     setTimeout(() => {
-      console.log("Elements", elemento);
-      console.log("childs node", document.getElementById(id).childNodes);
+      /*console.log("Elements", elemento);
+      console.log("childs node", document.getElementById(id).childNodes);*/
       if (elemento.response.similares) {
         this.datosImprimir = document.getElementById(id).childNodes[2];
       }else{
@@ -127,7 +127,7 @@ export class AdministracionComponent implements OnInit {
       });
       datapdf.then(data => {
       });
-    }, 2000);
+    }, 1000);
 
   }
 
