@@ -158,7 +158,7 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
           },
           {
             label: 'Precio Promedio Usado',
-            backgroundColor: '#2E64FE',
+            backgroundColor: '#00CED1',
             borderColor: '#0080FF',
             //data: this.datos.data.response.colonia_preciosm2_general.data.usado
             data: this.coloniam2General

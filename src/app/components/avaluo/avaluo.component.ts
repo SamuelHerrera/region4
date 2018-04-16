@@ -56,10 +56,19 @@ export class AvaluoComponent implements OnInit {
     yals_req.superficie_terreno = (+yals_req.superficie_terreno);
     yals_req.edad = (+yals_req.edad);
 
+    
+
     const HTMLFacturacion: any = document.getElementById("facturacion");
     this.loading = true;
     this.yals.generateRequest(yals_req, null).subscribe(response => {
       this.avaluoResponse = response;
+      if(!this.avaluoResponse.data.response.similares){
+        this.messageService.add({
+          severity: 'error', summary: 'Datos Insuficientes',
+          detail: `No se han encontrado datos suficientes para realizar un reporte detallado, 
+          favor de ponerse en contacto con ventas@region4.com.mx para la devolución del efectivo`
+        });
+      }
       this.index = 4;
       this.loading = false;
       this.messageService.add({
