@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, AfterViewInit} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, Sort } from '@angular/material';
@@ -79,7 +79,7 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         this.urlAux += "&markers=color:blue%7Clabel:" + idx + "%7C" + element.latitud + "," + element.longitud;
         idx++;
       });
-      this.urlAux += "&markers=color:green%7Clabel:*%7C"+this.lat +","+this.lng+"&";
+      this.urlAux += "&markers=color:green%7Clabel:*%7C" + this.lat + "," + this.lng + "&";
       this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=700x400&format=jpg&maptype=roadmap"
         + this.urlAux +
         "key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
@@ -90,7 +90,7 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnChanges(): void {
-
+    //console.log("Datos: ", this.datos.data);
     const fecha: any = (this.datos.data.dateCreated).split("-");
     /*if(fecha[1]==="04"){
       this.indexMonth = 3;
@@ -111,6 +111,21 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
       this.ELEMENT_DATA = [];
       let ind = 1;
       if (this.datos.data.response.similares) {
+        this.ELEMENT_DATA.push({
+          position: 0,
+          //oferta: element.fecha_oferta,
+          oferta: this.fechaConsulta,
+          total: this.datos.data.response.valuacion.valuacion,
+          m2: this.datos.data.response.valuacion.valuacion_m2,
+          cuartos: this.datos.data.response.characteristics.recamaras,
+          banos: this.datos.data.response.characteristics.banos,
+          parking: this.datos.data.response.characteristics.estacionamientos,
+          construccion: this.datos.data.response.characteristics.area_construida,
+          edad: this.datos.data.response.characteristics.edad,
+          distancia: "-",
+          similitud: "-"
+        });
+
         this.datos.data.response.similares.forEach(element => {
           const fechaOferta: any = (element.fecha_oferta).split("/");
           this.indexMonth = parseInt(fechaOferta[1]);
@@ -125,10 +140,10 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
             cuartos: element.recamaras,
             banos: element.banos,
             parking: element.estacionamientos,
-            construccion: element.area_construida,
+            construccion: element.area_construida.toFixed(2),
             edad: (element.edad || 0),
-            distancia: element.distancia,
-            similitud: (element.similitud * 100)
+            distancia: element.distancia.toFixed(2),
+            similitud: (element.similitud * 100).toFixed(2)
           });
           ind++;
         });
@@ -240,10 +255,11 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         idxTipo++;
       });
       this.datos.data.response.colonia_tipos_propiedades.data.usado.forEach(element => {
-        tipoColoniaUsado[idxTipo0] = element * 100;
-        idxTipo0;
-      });
 
+        tipoColoniaUsado[idxTipo0] = element * 100;
+        idxTipo0++;
+      });
+      //console.log(tipoColoniaUsado);
       this.datosEdadVivienda = this.plusvalia ? {
         labels: ['Casa', 'Departamento'],
         datasets: [

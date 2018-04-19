@@ -374,7 +374,7 @@
 
             <ng-container matColumnDef="construccion">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell headerCell2"> Construcción </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.construccion | number: '0.1-2'}} m
+              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.construccion}} m
                 <sup>2</sup>
               </mat-cell>
             </ng-container>
@@ -386,12 +386,12 @@
 
             <ng-container matColumnDef="distancia">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Distancia </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.distancia | number: '0.1-2'}} Km</mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.distancia}} Km</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="similitud">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> % Similitud </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.similitud | number: '0.1-2'}} %</mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.similitud}} %</mat-cell>
             </ng-container>
 
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
