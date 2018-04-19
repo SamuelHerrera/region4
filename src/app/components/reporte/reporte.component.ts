@@ -116,6 +116,22 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
       this.ELEMENT_DATA = [];
       let ind = 1;
       if (this.datos.data.response.similares) {
+
+        this.ELEMENT_DATA.push({
+          position: 0,
+          //oferta: element.fecha_oferta,
+          oferta: this.fechaConsulta,
+          total: this.datos.data.response.valuacion.valuacion,
+          m2: this.datos.data.response.valuacion.valuacion_m2,
+          cuartos: this.datos.data.response.characteristics.recamaras,
+          banos: this.datos.data.response.characteristics.banos,
+          parking: this.datos.data.response.characteristics.estacionamientos,
+          construccion: this.datos.data.response.characteristics.area_construida,
+          edad: this.datos.data.response.characteristics.edad,
+          distancia: "-",
+          similitud: "-"
+        });
+
         this.datos.data.response.similares.forEach(element => {
           //console.log("fechaOferta:", element.fecha_oferta);
           const fechaOferta: any = (element.fecha_oferta).split("/");
@@ -131,10 +147,10 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
             cuartos: element.recamaras,
             banos: element.banos,
             parking: element.estacionamientos,
-            construccion: element.area_construida,
+            construccion: element.area_construida.toFixed(2),
             edad: (element.edad || 0),
-            distancia: element.distancia,
-            similitud: (element.similitud * 100)
+            distancia: element.distancia.toFixed(2),
+            similitud: (element.similitud * 100).toFixed(2)
           });
           ind++;
         });
@@ -247,7 +263,7 @@ export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
       });
       this.datos.data.response.colonia_tipos_propiedades.data.usado.forEach(element => {
         tipoColoniaUsado[idxTipo0] = element * 100;
-        idxTipo0;
+        idxTipo0++;
       });
 
       //console.log("tipoColonia", tipoColoniaNuevo);
