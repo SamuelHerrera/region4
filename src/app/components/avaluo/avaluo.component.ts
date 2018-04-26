@@ -80,7 +80,7 @@ export class AvaluoComponent implements OnInit {
       this.messageService.add({
         severity: 'error', summary: 'Error procesando reporte',
         detail: `Se ha producido un error procesando su reporte, verifique los datos proporcionados 
-        e intente nuevamente, en caso contrario porfavor contacte a soporte.`
+        o su conexion a internet e intente nuevamente, en caso contrario porfavor contacte a soporte.`
       });
     });
     if (this.isHidden) {
