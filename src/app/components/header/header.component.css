@@ -9,8 +9,11 @@
 
 .logo {
   width: 200px;
-  height: 50px;
+  height: 70px;
   margin: 20px;
+  background: rgba(255, 255, 255, 0.075);
+  border-radius: 13px;
+  filter: hue-rotate(130deg);
 }
 
 .actions {
@@ -28,7 +31,6 @@
   align-content: center;
   flex-direction: column;
 }
-
 
 .container1 {
   width: 100%;
