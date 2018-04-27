@@ -28,3 +28,48 @@
   align-content: center;
   flex-direction: column;
 }
+
+
+.container1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header {
+  min-height: 49px;
+  background-color: transparent;
+  color: #28225C;
+  text-align: center;
+  font-size: 30px;
+  line-height: 36px;
+  font-family: '__Merriweather_5';
+  font-weight: 700;
+}
+
+.ui-float-label {
+  margin: 20px;
+}
+
+.button {
+  justify-content: space-around;
+  display: flex;
+}
+
+.morem {
+  margin-bottom: 30px;
+}
+
+.subtext {
+  margin: 15px;
+  font-size: x-small;
+}

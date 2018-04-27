@@ -19,6 +19,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { GrowlModule } from 'primeng/growl';
 import { CheckboxModule } from 'primeng/checkbox';
+import { DialogModule } from 'primeng/dialog';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { ChartModule } from 'primeng/chart';
@@ -123,6 +124,7 @@ import { BasicReportFakeComponent } from './components/basic-report-fake/basic-r
     DropdownModule,
     GrowlModule,
     CheckboxModule,
+    DialogModule,
     SelectButtonModule,
     MatStepperModule,
     MatTableModule,
@@ -135,7 +137,7 @@ import { BasicReportFakeComponent } from './components/basic-report-fake/basic-r
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
   ],
-  providers: [ AuthGuard, IsSecureGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
+  providers: [AuthGuard, IsSecureGuard, PagofacilService, ClientService, MessageService, ObservablesService, YalsService, MailService, CuponService],
   entryComponents: [DialogCuponesComponent],
   bootstrap: [AppComponent]
 })

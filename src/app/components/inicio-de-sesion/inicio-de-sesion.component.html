@@ -1,26 +1,105 @@
-<div class="container">
+<div class="body">
+  <!-- Nav -->
+  <nav id="menu">
+    <ul class="links">
+      <li>
+        <a href="index.html">Home</a>
+      </li>
+      <li>
+        <a href="elements.html">Elements</a>
+      </li>
+      <li>
+        <a href="generic.html">Generic</a>
+      </li>
+    </ul>
+  </nav>
 
-  <div class="centered">
-    <div class="header">
-      INICIO DE SESION
+  <!-- Banner -->
+  <section id="banner">
+    <div class="inner">
+      <h1 style="    font-weight: 700;">Valor Inmuebles</h1>
+      <h2>CONOCE EL PRECIO ESTIMADO DE UNA CASA O DEPARTAMENTO EN YUCATÁN</h2>
     </div>
-    <div class="formA">
-      <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-        <span class="ui-float-label">
-          <input id="Correo" type="text" size="50" pInputText name="Correo" ngModel required (keyup.enter)="login()">
-          <label for="Correo">Correo</label>
-        </span>
-        <span class="ui-float-label morem">
+    <video autoplay loop muted playsinline src="/assets/images/banner.mp4"></video>
+  </section>
 
-          <input id="Cont" type="password" size="50" pInputText name="Contrasena" ngModel required (keyup.enter)="login()">
-          <label for="Cont">Contraseña</label>
-        </span>
-        <div class="ui-float-label button">
-          <p-checkbox name="recuerdame" label="Recuerdame" ngModel binary="true" (onChange)="change($event)"></p-checkbox>
-          <p-button (onClick)="login()" label="Iniciar Sesion"></p-button>
-        </div>
-        <label class="subtext clickable" [routerLink]="'/forgotpass'">Olvide mi contraseña</label>
-      </form>
+  <!-- Highlights -->
+  <section class="wrapper">
+    <div class="inner">
+      <header class="special">
+        <h2>LA INFORMACIÓN QUE NECESITAS EN UN SOLO REPORTE</h2>
+        <p>Todo lo que necesitas saber para comprar o vender un inmueble. Valor inmuebles compara en segundos, millones de propiedades
+          en el mercado inmobiliario, para que conozcas al instante el valor estimado de una casa o departamento.</p>
+      </header>
     </div>
-  </div>
+  </section>
+
+  <section id="cta" class="wrapper">
+    <div class="inner">
+      <h2>¿CÓMO OBTENER UN REPORTE?</h2>
+      <p>Sólo ingresa algunos datos sobre la casa o departamento que te interesa y nuestra base de datos hará todo el trabajo</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="wrapper">
+    <div class="inner">
+      <div class="testimonials" style="    display: flex;
+      flex-direction: row;
+      justify-content: center;">
+        <section>
+          <blockquote>
+            <p>1.- Ingresa algunos datos sobre la propiedad que te interesa
+            </p>
+          </blockquote>
+        </section>
+        <section>
+          <blockquote>
+            <p>2.- Valor Inmuebles verificará que los datos sean suficientes para generar el reporte
+            </p>
+          </blockquote>
+        </section>
+        <section>
+          <blockquote>
+            <p>3.- ¡Listo! Descarga tu reporte en .PDF
+            </p>
+          </blockquote>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="inner">
+      <div class="content">
+        <section style="    flex-grow: 1;">
+          <h2>CONTÁCTANOS</h2>
+          <h3>¿Tienes dudas? ¡ponte en contacto!</h3>
+          <h4>9992-40-99-55</h4>
+        </section>
+        <!-- <section>
+          <h4>Magna sed ipsum</h4>
+          <ul class="plain">
+            <li>
+              <a href="#">
+                <i class="icon fa-twitter">&nbsp;</i>Twitter</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon fa-facebook">&nbsp;</i>Facebook</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon fa-instagram">&nbsp;</i>Instagram</a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="icon fa-github">&nbsp;</i>Github</a>
+            </li>
+          </ul>
+        </section> -->
+      </div>
+    </div>
+  </footer>
 </div>
