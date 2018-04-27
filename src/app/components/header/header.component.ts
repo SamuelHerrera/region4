@@ -52,6 +52,10 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  public change(val) {
+    this.observableService.announceStoreUpdate(val);
+  }
+
   login() {
     if (this.form.form.valid) {
       this.form.ngSubmit.emit()
