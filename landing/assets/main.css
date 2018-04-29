@@ -854,7 +854,7 @@
 	}
 
 		.image.filtered:after {
-			background-image: url("overlay.png"), linear-gradient(45deg, rgba(114, 97, 147, 0.25) 25%, rgba(227, 123, 124, 0.25) 50%, rgba(255, 228, 180, 0.25));
+			background-image: url(overlay.png), linear-gradient(45deg, rgba(26, 12, 140, 0.34) 25%, rgba(87, 111, 224, 0.44) 50%, rgba(152, 213, 249, 0.26));
 			background-size: 128px 128px, auto;
 			-moz-pointer-events: none;
 			-webkit-pointer-events: none;
@@ -2175,7 +2175,7 @@
 		}
 
 			.panel > *.color0 {
-				background-image: url("overlay.png"), linear-gradient(45deg, #726193 20%, #e37b7c 60%, #ffe4b4);
+				background-image: url(overlay.png), linear-gradient(45deg, #5944af 20%, #1b439e 60%, #6b98d0);
 				background-size: 128px 128px, auto;
 			}
 
@@ -2524,7 +2524,7 @@
 		}
 
 		.panel.medium {
-			width: 50rem;
+			/*width: 50rem;*/
 		}
 
 		.panel.large {
@@ -2608,7 +2608,8 @@
 		}
 
 		.panel.small .span-5, .panel.medium .span-5, .panel.large .span-5 {
-			width: 50%;
+			/*width: 50%;*/
+			width:100%;
 		}
 
 		.panel.small .span-5-25, .panel.medium .span-5-25, .panel.large .span-5-25 {
@@ -2640,7 +2641,8 @@
 		}
 
 		.panel.small .span-7, .panel.medium .span-7, .panel.large .span-7 {
-			width: 70%;
+			/*width: 70%;*/
+			width: 100%;
 		}
 
 		.panel.small .span-7-25, .panel.medium .span-7-25, .panel.large .span-7-25 {
@@ -3371,6 +3373,7 @@
 		-ms-align-items: stretch;
 		align-items: stretch;
 		position: relative;
+		width:40rem;
 	}
 
 		.panel.spotlight > * {
