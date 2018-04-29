@@ -2,7 +2,7 @@
   <a class="clickable" [routerLink]="'/iniciosesion'">
     <img class="logo" src="assets/images/logo2.png" />
   </a>
-  <div class="actions" *ngIf="!user.mail">
+  <div class="overbutton actions" *ngIf="!user.mail">
     <button pButton [routerLink]="'/registro'" label="Registro"></button>
     <button pButton (click)="showDialog()" label="Inicio Sesion"></button>
   </div>

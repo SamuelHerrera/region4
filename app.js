@@ -19,19 +19,7 @@ app.use(bodyParser.urlencoded({
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '/dist/')));
-app.use(express.static(path.join(__dirname, '/landing/css')));
-app.use(express.static(path.join(__dirname, '/landing/device-mockups')));
-app.use(express.static(path.join(__dirname, '/landing/img')));
-app.use(express.static(path.join(__dirname, '/landing/vendor')));
-app.use(express.static(path.join(__dirname, '/landing/vendor/jquery')));
-app.use(express.static(path.join(__dirname, '/landing/vendor/jquery-easing')));
-app.use(express.static(path.join(__dirname, '/landing/vendor/bootstrap/css')));
-app.use(express.static(path.join(__dirname, '/landing/vendor/bootstrap/js')));
-app.use(express.static(path.join(__dirname, '/landing/vendor/font-awesome/css')));
-app.use(express.static(path.join(__dirname, '/landing/vendor/font-awesome/fonts')));
-app.use(express.static(path.join(__dirname, '/landing/vendor/simple-line-icons/css')));
-app.use(express.static(path.join(__dirname, '/landing/vendor/simple-line-icons/fonts')));
-app.use(express.static(path.join(__dirname, '/landing/js')));
+app.use(express.static(path.join(__dirname, '/landing/assets')));
 
 app.use((req, res, next) => {
   // The 'x-forwarded-proto' check is for Heroku
