@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600");
 .body {
-  overflow: auto;
+  overflow: hidden;
   height: 100%;
   width: 100%;
 }
@@ -2777,7 +2777,7 @@ ul.icons li .icon:before {
   border-top: 0;
   display: -ms-flexbox;
   height: 40rem !important;
-  min-height: 40  rem;
+  min-height: 40 rem;
   overflow: hidden;
   position: relative;
   text-align: center;
