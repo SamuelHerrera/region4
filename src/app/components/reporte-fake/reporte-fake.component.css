@@ -862,6 +862,7 @@ table td {
     width: 200px;
     height: 50px;
     margin: 10px;
+    filter: hue-rotate(130deg);
   }
   canvas{
       display: block;
@@ -920,7 +921,7 @@ table td {
       height: 370px;
   }
   .separador6{
-      height: 240px;
+      height: 220px;
   }
   .separador7{
       height: 13px;
