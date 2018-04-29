@@ -5,7 +5,7 @@
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
-          <img class="logo" src="assets/images/logo_.png" />
+          <img class="logo" src="assets/images/logo2.png" />
         </a>
         <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
@@ -240,9 +240,9 @@
         <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
         <h3></h3>
         <p>
-          El reporte de tu inmueble de Región4 se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
-          dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Región4
-          se alimentan de los precios de millones de ofertas y cierres de transacciones. Región4 provee un estimado de valor
+          El reporte de tu inmueble de Valor Inmuebles se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
+          dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Valor Inmuebles
+          se alimentan de los precios de millones de ofertas y cierres de transacciones. Valor Inmuebles provee un estimado de valor
           y no sustituye a un avalúo certificado.
         </p>
       </div>
@@ -337,7 +337,7 @@
 
             <ng-container matColumnDef="distancia">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Distancia </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.distancia}} Km</mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.distancia  | number : '1.0-0'}} m</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="similitud">
@@ -575,7 +575,7 @@
           del reporte). Esta información está basada en una valuación automática que utiliza los datos históricos disponibles
           de propiedades similares en la misma colonia.
           <br> Una vez obtenida la información, ésta se compara con el desempeño del mercado local usando la base de datos de
-          Región4.
+          Valor Inmuebles.
         </p>
 
       </div>
@@ -616,7 +616,7 @@
           <div class="intro2">
             <h3>Apreciación</h3>
             <p>Cambio positivo en el precio del inmueble comparado con un periodo base (enero 2014). El cálculo se hace con
-              el modelo de valuación automática de Región4. El cálculo no toma en cuenta inflación.</p>
+              el modelo de valuación automática de Valor Inmuebles. El cálculo no toma en cuenta inflación.</p>
           </div>
 
           <div class="intro2">
@@ -651,7 +651,7 @@
 
           <div class="intro2">
             <h3>Modelo de Valuación Automática</h3>
-            <p>Modelo estadístico propietario de Región4 el cual toma en cuenta las características de la vivienda (ubicación,
+            <p>Modelo estadístico propietario de Valor Inmuebles el cual toma en cuenta las características de la vivienda (ubicación,
               superficie, tipología, edad, etc.), los precios de cierre y precios de oferta de propiedades similares, para
               construir una estimación del precio de mercado del inmueble.</p>
           </div>
@@ -673,7 +673,7 @@
 
           <div class="intro2">
             <h3>Similitud</h3>
-            <p>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Región4. La
+            <p>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Valor Inmuebles. La
               similitud va del 0 al 100%, donde 100% equivale a dos propiedades exactamente iguales.</p>
           </div>
 
@@ -703,7 +703,7 @@
 
       <div class="contenido">
         <p>
-          Región4 es un estimador del valor de propiedades residenciales.
+            Región4 es un estimador del valor de propiedades residenciales.
           <br>
           <br> Región4 provee una opinión de valor objetiva basada en millones de puntos de información sobre viviendas en México.
           Esto te permite obtener información para la toma de decisiones cuando compras, vendes o rentas un inmueble. Para

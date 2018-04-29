@@ -3719,6 +3719,7 @@ body:before {
   line-height: inherit;
   padding: 0 1.25rem;
   text-decoration: none;
+  filter: hue-rotate(130deg);
 }
 
 #header>nav>a {

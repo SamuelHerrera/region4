@@ -82,7 +82,7 @@ exports.createPagoPayPal = async (function (clientid, amount) {
   var response = await (new Promise(function (resolve, reject) {
     var today = new Date();
     var invoicen = today.getFullYear() + today.getMonth() + today.getDay() + Math.floor(Math.random() * 10000);
-    paypal.pay(invoicen, amount, 'Reporte region4', 'MXN', false, [clientid], function (err, url) {
+    paypal.pay(invoicen, amount, 'Reporte Valor Inmuebles', 'MXN', false, [clientid], function (err, url) {
       if (err) {
         reject(err);
         return;

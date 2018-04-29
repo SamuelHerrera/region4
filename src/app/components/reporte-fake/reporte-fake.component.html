@@ -5,7 +5,7 @@
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
-          <img class="logo" src="assets/images/logo_.png" />
+          <img class="logo" src="assets/images/logo2.png" />
         </a>
         <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
@@ -236,7 +236,7 @@
         <div class="superTitle">
           <div class="superContainer">
             <a href="#">
-              <img class="logo" src="assets/images/logo_.png" />
+              <img class="logo" src="assets/images/logo2.png" />
             </a>
             <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
           </div>
@@ -255,10 +255,10 @@
           <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
           <h3></h3>
           <p>
-            El reporte de tu inmueble de Región4 se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
-            dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Región4
-            se alimentan de los precios de millones de ofertas y cierres de transacciones. Región4 provee un estimado de
-            valor y no sustituye a un avalúo certificado.
+            El reporte de tu inmueble de Valor Inmuebles se construye a partir de nuestros modelos de valuación automática, los cuales
+            nos permiten dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados
+            por Valor Inmuebles se alimentan de los precios de millones de ofertas y cierres de transacciones. Valor Inmuebles
+            provee un estimado de valor y no sustituye a un avalúo certificado.
           </p>
         </div>
       </div>
@@ -279,7 +279,7 @@
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
-          <img class="logo" src="assets/images/logo_.png" />
+          <img class="logo" src="assets/images/logo2.png" />
         </a>
         <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
@@ -321,7 +321,7 @@
       <div class="superTitle">
         <div class="superContainer">
           <a href="#">
-            <img class="logo" src="assets/images/logo_.png" />
+            <img class="logo" src="assets/images/logo2.png" />
           </a>
           <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
         </div>
@@ -386,7 +386,7 @@
 
             <ng-container matColumnDef="distancia">
               <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Distancia </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.distancia}} Km</mat-cell>
+              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.distancia | number : '1.0-0'}} m</mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="similitud">
@@ -420,7 +420,7 @@
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
-          <img class="logo" src="assets/images/logo_.png" />
+          <img class="logo" src="assets/images/logo2.png" />
         </a>
         <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
@@ -561,7 +561,7 @@
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
-          <img class="logo" src="assets/images/logo_.png" />
+          <img class="logo" src="assets/images/logo2.png" />
         </a>
         <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
@@ -653,7 +653,7 @@
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
-          <img class="logo" src="assets/images/logo_.png" />
+          <img class="logo" src="assets/images/logo2.png" />
         </a>
         <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
@@ -679,7 +679,7 @@
           del reporte). Esta información está basada en una valuación automática que utiliza los datos históricos disponibles
           de propiedades similares en la misma colonia.
           <br> Una vez obtenida la información, ésta se compara con el desempeño del mercado local usando la base de datos de
-          Región4.
+          Valor Inmuebles.
         </p>
 
       </div>
@@ -719,7 +719,7 @@
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
-          <img class="logo" src="assets/images/logo_.png" />
+          <img class="logo" src="assets/images/logo2.png" />
         </a>
         <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
@@ -735,7 +735,7 @@
           <div class="intro2">
             <h3>Apreciación</h3>
             <p>Cambio positivo en el precio del inmueble comparado con un periodo base (enero 2014). El cálculo se hace con
-              el modelo de valuación automática de Región4. El cálculo no toma en cuenta inflación.</p>
+              el modelo de valuación automática de Valor Inmuebles. El cálculo no toma en cuenta inflación.</p>
           </div>
 
           <div class="intro2">
@@ -770,7 +770,7 @@
 
           <div class="intro2">
             <h3>Modelo de Valuación Automática</h3>
-            <p>Modelo estadístico propietario de Región4 el cual toma en cuenta las características de la vivienda (ubicación,
+            <p>Modelo estadístico propietario de Valor Inmuebles el cual toma en cuenta las características de la vivienda (ubicación,
               superficie, tipología, edad, etc.), los precios de cierre y precios de oferta de propiedades similares, para
               construir una estimación del precio de mercado del inmueble.</p>
           </div>
@@ -792,8 +792,8 @@
 
           <div class="intro2">
             <h3>Similitud</h3>
-            <p>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Región4. La
-              similitud va del 0 al 100%, donde 100% equivale a dos propiedades exactamente iguales.</p>
+            <p>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Valor Inmuebles.
+              La similitud va del 0 al 100%, donde 100% equivale a dos propiedades exactamente iguales.</p>
           </div>
 
           <div class="intro2">
@@ -824,7 +824,7 @@
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
-          <img class="logo" src="assets/images/logo_.png" />
+          <img class="logo" src="assets/images/logo2.png" />
         </a>
         <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
@@ -865,24 +865,36 @@
           los datos, la información que de ellos se recaba y los fines que se le darán a dicha información.
           <br> Los datos personales que recabamos de usted serán utilizados para las siguientes finalidades, las cuales son necesarias
           para concretar nuestra relación con usted así como atender los servicios y/o pedidos que solicite:
-          <br><br>
-          
-          <sup>*</sup>Generar una estimación de valor de un bien inmueble<br>
-          <sup>*</sup>Emitir factura por el costo total de la estimación de valor de un bien inmueble<br>
-          <sup>*</sup>Contacto y envió de información relevante relacionada con nuestros productos y servicios<br>
-          <sup>*</sup>Realizar la gestión interna necesaria relacionadas con la relación comercial vigente incluyendo cuestiones de
-              crédito y pagos<br>
-          
+          <br>
+          <br>
+
+          <sup>*</sup>Generar una estimación de valor de un bien inmueble
+          <br>
+          <sup>*</sup>Emitir factura por el costo total de la estimación de valor de un bien inmueble
+          <br>
+          <sup>*</sup>Contacto y envió de información relevante relacionada con nuestros productos y servicios
+          <br>
+          <sup>*</sup>Realizar la gestión interna necesaria relacionadas con la relación comercial vigente incluyendo cuestiones
+          de crédito y pagos
+          <br>
+
           <br> Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los siguientes datos
           personales
-          <br><br>
-          
-          <sup>*</sup>Nombre Completo<br>
-          <sup>*</sup>Correo electronico<br>
-          <sup>*</sup>Teléfono<br>
-          <sup>*</sup>Ramo u Ocupación<br>
-          <sup>*</sup>Razón Social<br>
-          <sup>*</sup>RFC <br>
+          <br>
+          <br>
+
+          <sup>*</sup>Nombre Completo
+          <br>
+          <sup>*</sup>Correo electronico
+          <br>
+          <sup>*</sup>Teléfono
+          <br>
+          <sup>*</sup>Ramo u Ocupación
+          <br>
+          <sup>*</sup>Razón Social
+          <br>
+          <sup>*</sup>RFC
+          <br>
           <br> Por otra parte, informamos a usted, que sus datos personales no serán compartidos con ninguna autoridad, empresa,
           organización o persona distintas a nosotros y serán utilizados exclusivamente para los fines señalados.
           <br> Usted tiene en todo momento el derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos
