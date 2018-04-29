@@ -27,7 +27,6 @@ const routes: Routes = [
     },
     {
         path: 'landing',
-        canActivate: [AuthGuard, IsSecureGuard],
         component: LandingPageComponent
     },
     {

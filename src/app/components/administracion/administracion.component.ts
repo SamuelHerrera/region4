@@ -19,6 +19,8 @@ import { Router } from '@angular/router';
 })
 export class AdministracionComponent implements OnInit {
 
+  datosImprimir: any;
+
   displayedColumns = ['position', 'name', "phone", 'weight', 'symbol'];
   displayedColumns2 = ['position', 'name', 'weight', 'symbol', 'symbol1', 'symbol2', 'actions'];
 
@@ -109,30 +111,30 @@ export class AdministracionComponent implements OnInit {
       this.messageService.add({ severity: 'success', summary: 'Inicio de sesion', detail: "Usuario inicio sesion satisfactoriamente." });
     });
   }
-  datosImprimir: any;
+
   imprimir(id, elemento) {
 
-    elemento['hidden'] = true; +
-      setTimeout(() => {
-        /*console.log("Elements", elemento);
-        console.log("childs node", document.getElementById(id).childNodes);*/
-        if (elemento.response.similares) {
-          this.datosImprimir = document.getElementById(id).childNodes[2];
-        } else {
-          this.datosImprimir = document.getElementById(id).childNodes[4];
-        }
+    elemento['hidden'] = true;
+    setTimeout(() => {
+      /*console.log("Elements", elemento);
+      console.log("childs node", document.getElementById(id).childNodes);*/
+      if (elemento.response.similares) {
+        this.datosImprimir = document.getElementById(id).childNodes[2];
+      } else {
+        this.datosImprimir = document.getElementById(id).childNodes[4];
+      }
 
-        const datapdf = html2pdf(this.datosImprimir, {
-          margin: 0.4,
-          filename: 'reporte.pdf',
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { dpi: 192, letterRendering: true },
-          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-          action: "save"
-        });
-        datapdf.then(data => {
-        });
-      }, 1000);
+      const datapdf = html2pdf(this.datosImprimir, {
+        margin: 0.4,
+        filename: 'reporte.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { dpi: 192, letterRendering: true },
+        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+        action: "save"
+      });
+      datapdf.then(data => {
+      });
+    }, 1000);
 
   }
 
