@@ -12,13 +12,24 @@ _this = this; //clientid, yals_request, cuponid
 
 exports.sendMail = async (function (req, res, next) {
   try {
-    let msg = {
-      from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com') + ">",
-      to: [req.body.to],
-      subject: req.body.subject || '',
-      text: req.body.text || '',
-      html: req.body.html || ''
+    let msg = {}
+    if (req.body.landing) {
+      msg = {
+        from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com') + ">",
+        to: [req.body.to],
+        subject: req.body.subject || '',
+        text: '<' + req.body.name + ', ' + req.body.email + '>' + req.body.message
+      }
+    } else {
+      msg = {
+        from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com') + ">",
+        to: [req.body.to],
+        subject: req.body.subject || '',
+        text: req.body.text || '',
+        html: req.body.html || ''
+      }
     }
+
     console.log('here')
     mg.messages.create('valorinmuebles.com.mx', msg)
       .then(msg => console.log(msg)) // logs response data
