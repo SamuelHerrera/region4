@@ -16,7 +16,7 @@ exports.sendMail = async (function (req, res, next) {
     if (req.body.landing) {
       msg = {
         from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com') + ">",
-        to: [req.body.to],
+        to: ["ventas@valorinmuebles.com"],
         subject: req.body.subject || '',
         text: '<' + req.body.name + ', ' + req.body.email + '>' + req.body.message
       }
