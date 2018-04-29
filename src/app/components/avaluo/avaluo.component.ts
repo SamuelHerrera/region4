@@ -21,6 +21,8 @@ import { Client } from '../../models/client.model';
 })
 export class AvaluoComponent implements OnInit {
 
+  elementToPrint: any;
+
   isHidden = false;
   nomCliente: any = {};
   index = 0;
@@ -56,13 +58,13 @@ export class AvaluoComponent implements OnInit {
     yals_req.superficie_terreno = (+yals_req.superficie_terreno);
     yals_req.edad = (+yals_req.edad);
 
-    
+
 
     const HTMLFacturacion: any = document.getElementById("facturacion");
     this.loading = true;
     this.yals.generateRequest(yals_req, null).subscribe(response => {
       this.avaluoResponse = response;
-      if(!this.avaluoResponse.data.response.similares){
+      if (!this.avaluoResponse.data.response.similares) {
         this.messageService.add({
           severity: 'error', summary: 'Datos Insuficientes',
           detail: `No se han encontrado datos suficientes para realizar un reporte detallado, 
@@ -101,11 +103,11 @@ export class AvaluoComponent implements OnInit {
         });
     }
   }
-  elementToPrint: any;
+
   imprimir() {
-    if(this.avaluoResponse.data.response.similares){
+    if (this.avaluoResponse.data.response.similares) {
       this.elementToPrint = document.getElementById('element-to-print');
-    }else{
+    } else {
       this.elementToPrint = document.getElementById('basic-element-to-print');
     }
     const datauri = html2pdf(this.elementToPrint, {
@@ -121,10 +123,10 @@ export class AvaluoComponent implements OnInit {
 
   enviarACorreo() {
     if (this.otroCorreo !== "") {
-      if(this.avaluoResponse.data.response.similares){
+      if (this.avaluoResponse.data.response.similares) {
         this.elementToPrint = document.getElementById('element-to-print');
-      }else{
-        this.elementToPrint =  document.getElementById('basic-element-to-print');
+      } else {
+        this.elementToPrint = document.getElementById('basic-element-to-print');
       }
       const reportHTML: any = document.getElementById("reportTemplate");
       this.nomCliente['name'] = this.user.name;
