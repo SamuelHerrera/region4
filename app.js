@@ -19,7 +19,22 @@ app.use(bodyParser.urlencoded({
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '/dist/')));
-app.use(express.static(path.join(__dirname, '/landing/assets')));
+app.use(express.static(path.join(__dirname, '/landing/assest')));
+app.use(express.static(path.join(__dirname, '/landing/assest/js')));
+app.use(express.static(path.join(__dirname, '/landing/assest/js/vendor')));
+app.use(express.static(path.join(__dirname, '/landing/assest/img')));
+app.use(express.static(path.join(__dirname, '/landing/assest/img/about')));
+app.use(express.static(path.join(__dirname, '/landing/assest/img/blog')));
+app.use(express.static(path.join(__dirname, '/landing/assest/img/home')));
+app.use(express.static(path.join(__dirname, '/landing/assest/img/icon')));
+app.use(express.static(path.join(__dirname, '/landing/assest/img/screenshot')));
+app.use(express.static(path.join(__dirname, '/landing/assest/img/team')));
+app.use(express.static(path.join(__dirname, '/landing/assest/img/testmonial')));
+app.use(express.static(path.join(__dirname, '/landing/assest/fonts')));
+app.use(express.static(path.join(__dirname, '/landing/assest/css')));
+app.use(express.static(path.join(__dirname, '/landing/assest/css/core')));
+app.use(express.static(path.join(__dirname, '/landing/assest/css/icons')));
+app.use(express.static(path.join(__dirname, '/landing/assest/css/plugins')));
 
 app.use((req, res, next) => {
   // The 'x-forwarded-proto' check is for Heroku
