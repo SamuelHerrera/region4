@@ -715,10 +715,10 @@ table td {
 }
 
 .logo {
-  width: 200px;
+  width: 130px;
   height: 50px;
   margin: 10px;
-  filter: hue-rotate(130deg);
+  
 }
 
 canvas {

@@ -859,10 +859,11 @@ table td {
 
 }
 .logo {
-    width: 200px;
+    /*filter: hue-rotate(0.35turn);*/
+    width: 130px;
     height: 50px;
     margin: 10px;
-    filter: hue-rotate(130deg);
+    
   }
   canvas{
       display: block;
