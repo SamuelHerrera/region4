@@ -1,0 +1,37 @@
+/*--------------------
+    BACKGROUND
+---------------------*/
+
+.theme-bg {
+    background: #8256ff;
+}
+
+.green-bg {
+    background: #f6fafb;
+}
+
+.white-green {
+    background: #eaf6fa;
+}
+
+.gray-bg {
+    background: #f5f4f4;
+}
+
+.bg-light-gray {
+    background-color: #f7f7f7;
+}
+
+.sky-gray-bg {
+    background: #f7f9fc;
+}
+
+.dark-bg {
+    background: rgba(0, 0, 0, .85);
+    color: #ffffff;
+}
+
+.deep-dark-bg {
+    background: rgba(0, 0, 0, .9);
+    color: #ffffff;
+}
