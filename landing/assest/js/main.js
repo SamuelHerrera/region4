@@ -8,11 +8,11 @@ jQuery(document).on('ready', function ($) {
       var element1=window.parent.document.getElementById("action-button-2")
 
       element.style.border='0';
-      element.style.height='80px';
+      element.style.height='60px';
       element.style.background='none';
 
       element1.style.border='0';
-      element1.style.height='80px';
+      element1.style.height='60px';
       element1.style.background='none';
 
       document.getElementById('nav').appendChild(element);
