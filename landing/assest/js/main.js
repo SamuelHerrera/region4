@@ -11,12 +11,12 @@ jQuery(document).on('ready', function ($) {
       element.style.height='80px';
       element.style.background='none';
 
-      element2.style.border='0';
-      element2.style.height='80px';
-      element2.style.background='none';
+      element1.style.border='0';
+      element1.style.height='80px';
+      element1.style.background='none';
 
       document.getElementById('nav').appendChild(element);
-      document.getElementById('nav').appendChild(element2);
+      document.getElementById('nav').appendChild(element1);
     } catch (e) {}
   },1000);
 
