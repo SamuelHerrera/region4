@@ -3,8 +3,10 @@ jQuery(document).on('ready', function ($) {
 
   setInterval(function () {
     try {
-      document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-1"));
-      document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-2"));
+      if(!document.getElementById('action-button-1')){
+        document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-1").cloneNode(true));
+        document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-2").cloneNode(true));
+      }
     } catch (e) {}
   },1000);
 
