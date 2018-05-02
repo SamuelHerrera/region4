@@ -3,10 +3,20 @@ jQuery(document).on('ready', function ($) {
 
   setInterval(function () {
     try {
-      if(!document.getElementById('action-button-1')){
-        document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-1").cloneNode(true));
-        document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-2").cloneNode(true));
-      }
+
+      var element=window.parent.document.getElementById("action-button-1")
+      var element1=window.parent.document.getElementById("action-button-2")
+
+      element.style.border='0';
+      element.style.height='80px';
+      element.style.background='none';
+
+      element2.style.border='0';
+      element2.style.height='80px';
+      element2.style.background='none';
+
+      document.getElementById('nav').appendChild(element);
+      document.getElementById('nav').appendChild(element2);
     } catch (e) {}
   },1000);
 
