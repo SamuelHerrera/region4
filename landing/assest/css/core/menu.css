@@ -243,9 +243,8 @@ ul#nav li ul a,
         margin-top: -3px;
     }
     .navbar-brand > img {
-        margin-top: 2px;
-        ;
-        width: 90%;
+        margin-top: -4px;
+			width: 60%;
     }
     .mainmenu-area {
         background: #272727 none repeat scroll 0 0;

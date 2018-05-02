@@ -3,8 +3,8 @@
     <img class="logo" src="assets/images/logo2.png" />
   </a>
   <div class="overbutton actions" *ngIf="!user.mail">
-    <button pButton [routerLink]="'/registro'" label="Registro"></button>
-    <button pButton (click)="showDialog()" label="Inicio Sesion"></button>
+    <button id="action-button-1" pButton [routerLink]="'/registro'" label="Registro"></button>
+    <button id="action-button-2" pButton (click)="showDialog()" label="Inicio Sesion"></button>
   </div>
   <div class="actions" *ngIf="user.mail">
     <div class="username">{{user.name}}</div>
