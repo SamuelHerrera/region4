@@ -3,8 +3,8 @@ jQuery(document).on('ready', function ($) {
 
   setInterval(function () {
     try {
-      var element = document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-1"));
-      var element1 = document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-2"));
+      var element = window.parent.document.getElementById("action-button-1");
+      var element1 = window.parent.document.getElementById("action-button-2");
 
       element.style.border='1px black solid';
       element.style.borderRadius=  '7px';
