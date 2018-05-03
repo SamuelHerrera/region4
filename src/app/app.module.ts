@@ -72,6 +72,8 @@ import { ShortNumberPipe } from './pipes/short-number.pipe';
 import { ReporteFakeComponent } from './components/reporte-fake/reporte-fake.component';
 import { BasicReportComponent } from './components/basic-report/basic-report.component';
 import { BasicReportFakeComponent } from './components/basic-report-fake/basic-report-fake.component';
+import { PoliticaPrivacidadComponent } from './components/politica-privacidad/politica-privacidad.component';
+import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.component';
 
 @NgModule({
   declarations: [
@@ -109,7 +111,9 @@ import { BasicReportFakeComponent } from './components/basic-report-fake/basic-r
     ShortNumberPipe,
     ReporteFakeComponent,
     BasicReportComponent,
-    BasicReportFakeComponent
+    BasicReportFakeComponent,
+    PoliticaPrivacidadComponent,
+    AvisoCookiesComponent
   ],
   imports: [
     HttpClientModule,
