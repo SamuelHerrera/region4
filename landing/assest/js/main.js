@@ -3,8 +3,21 @@ jQuery(document).on('ready', function ($) {
 
   setInterval(function () {
     try {
-      document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-1"));
-      document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-2"));
+      var element = document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-1"));
+      var element1 = document.getElementById('nav').appendChild(window.parent.document.getElementById("action-button-2"));
+
+      element.style.border='1px black solid';
+      element.style.borderRadius=  '7px';
+      element.style.height= '60px';
+      element.style.background = 'none';
+
+      element1.style.border='1px black solid';
+      element1.style.borderRadius= '7px';
+      element1.style.height= '60px';
+      element1.style.background = 'none';
+
+      document.getElementById('nav').appendChild(element);
+      document.getElementById('nav').appendChild(element1);
     } catch (e) {}
   },1000);
 
