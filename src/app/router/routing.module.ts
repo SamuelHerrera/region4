@@ -18,6 +18,8 @@ import { TemplateUserActivationComponent } from '../components/template-user-act
 import { TemplateFacturacionComponent } from '../components/template-facturacion/template-facturacion.component';
 import { TemplatePasswordRecoveryComponent } from '../components/template-password-recovery/template-password-recovery.component';
 import { IsSecureGuard } from '../guards/is-secure-guard.guard';
+import { PoliticaPrivacidadComponent } from '../components/politica-privacidad/politica-privacidad.component';
+import { AvisoCookiesComponent } from '../components/aviso-cookies/aviso-cookies.component';
 
 const routes: Routes = [
     {
@@ -55,9 +57,19 @@ const routes: Routes = [
         component: AvaluoComponent
     },
     {
-        path: "terminosCondiciones",
+        path: "terminos-y-condiciones",
         canActivate: [IsSecureGuard],
         component: TerminosyCondicionesComponent
+    },
+    {
+        path: "politica-de-privacidad",
+        canActivate: [IsSecureGuard],
+        component: PoliticaPrivacidadComponent
+    },
+    {
+        path: "politica-de-cookies",
+        canActivate: [IsSecureGuard],
+        component: AvisoCookiesComponent
     },
     {
         path: "forgotpass",

@@ -13,7 +13,7 @@
     font-family: '__Merriweather_5';
     font-size: 30px;
 }
-.container span{
+.container p{
     text-align: justify;
     padding-top: 10px;
     padding-left: 15px;
@@ -30,4 +30,14 @@ a:hover{
 }
 a:visited{
     color: rgb(38, 31, 99);
+}
+span{
+    display: flex;
+    flex-direction: column;
+}
+span h2{
+    text-align: center;
+    color:#28225C;
+    font-weight: 700;
+    padding-top: 10px;
 }
