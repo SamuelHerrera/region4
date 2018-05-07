@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
 
   public user: Client = new Client();
   display = false;
+  display2 = false;
   @ViewChild('f') form: any;
 
   constructor(private messageService: MessageService, private clientService: ClientService, private observableService: ObservablesService, private router: Router) { }
@@ -27,6 +28,10 @@ export class HeaderComponent implements OnInit {
 
   showDialog() {
     this.display = true;
+  }
+
+  showDialog2(){
+    this.display2 = true;
   }
 
   logout() {

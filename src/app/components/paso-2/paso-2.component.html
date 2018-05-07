@@ -83,20 +83,20 @@
 
       <span class="ui-float-label">
         <input id="float-input" type="text" size="30" pInputText name="areaConstruida" pattern="(?=.*[0-9]).{2,4}" [(ngModel)]="avaluoForm['area_construida']"
-          (ngModelChange)="onChange($event)">
+          (ngModelChange)="onChange(1)">
         <label for="float-input">Área Construída(m2) </label>
       </span>
 
       <span class="ui-float-label">
         <input id="float-input" type="text" size="30" pInputText name="superficieTerreno" pattern="(?=.*[0-9]).{1,4}" [(ngModel)]="avaluoForm['superficie_terreno']"
-          (ngModelChange)="onChange($event)">
+          (ngModelChange)="onChange(1)">
         <label for="float-input">Superficie del terreno(m2) </label>
       </span>
 
       <div class="years">
         <span class="ui-float-label">
           <input id="float-input" type="text" size="30" pInputText name="antiguedad" pattern="(?=.*[0-9]).{1,2}" [(ngModel)]="avaluoForm['edad']" [disabled]='isNew'
-            (ngModelChange)="onChange($event)">
+            (ngModelChange)="onChange(3)">
           <label for="float-input">Años de antigüedad</label>
         </span>
 
