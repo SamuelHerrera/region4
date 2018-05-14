@@ -26,13 +26,13 @@ export class PagoConTarjetaComponent implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      // this.facturacion["costoAvaluo"] = 1200;
-      // this.facturacion["subTotal"] = 1200;
-      // this.facturacion["total"] = 1200;
+      this.facturacion["costoAvaluo"] = 1200;
+      this.facturacion["subTotal"] = 1200;
+      this.facturacion["total"] = 1200;
 
-      this.facturacion["costoAvaluo"] = 1;
-      this.facturacion["subTotal"] = 1;
-      this.facturacion["total"] = 1;
+      // this.facturacion["costoAvaluo"] = 1;
+      // this.facturacion["subTotal"] = 1;
+      // this.facturacion["total"] = 1;
     })
   }
 
