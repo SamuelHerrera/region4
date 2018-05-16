@@ -4,7 +4,7 @@
     <mat-vertical-stepper #stepper="matVerticalStepper" [linear]="true" [selectedIndex]="index">
       <mat-step [completed]="step1">
         <ng-template matStepLabel>Ubicar Propiedad
-          <span *ngIf="!step1" class="alerta">Sin completar</span>
+          <!-- <span *ngIf="!step1" class="alerta">Sin completar</span> -->
         </ng-template>
         <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
         <app-paso-1 [avaluoForm]="avaluoForm" (completed)="step1=$event"></app-paso-1>
@@ -13,7 +13,7 @@
       <mat-step [completed]="step2">
         <form>
           <ng-template matStepLabel>Propiedad
-            <span *ngIf="!step2" class="alerta">Sin completar</span>
+            <!-- <span *ngIf="!step2" class="alerta">Sin completar</span> -->
           </ng-template>
           <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
           <app-paso-2 *ngIf="avaluoForm" [avaluoForm]="avaluoForm" (completed)="step2=$event"></app-paso-2>
@@ -33,7 +33,7 @@
       <mat-step [completed]="step4">
         <form>
           <ng-template matStepLabel>Pagar Reporte
-            <span *ngIf="!step4" class="alerta">Sin completar</span>
+            <!-- <span *ngIf="!step4" class="alerta">Sin completar</span> -->
           </ng-template>
           <app-pago-con-tarjeta *ngIf="!step4" (completed)="step4=$event" [facturacion]="facturacion"></app-pago-con-tarjeta>
           <div *ngIf="step4" class="centered">
