@@ -38,6 +38,7 @@ app.use(express.static(path.join(__dirname, '/landing/assest/css/icons')));
 app.use(express.static(path.join(__dirname, '/landing/assest/css/plugins')));
 
 app.use((req, res, next) => {
+  res.header('X-FRAME-OPTIONS', 'ALLOW-FROM ' + req.query.domain);
   if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
     return res.redirect('https://' + req.get('host') + req.url);
   }
