@@ -34,6 +34,7 @@
   margin-bottom: 15px;
   font-weight: 700;
   line-height: 1.1;
+  text-align: center;
 }
 
 mat-card {
@@ -83,6 +84,12 @@ mat-form-field {
 
 .condiciones {
   max-width: 70%;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 16px;
+  line-height: 1.6em;
+  font-weight: 400;
+  color: #4d557d !important;
+  text-align: justify;
 }
 
 .hint {

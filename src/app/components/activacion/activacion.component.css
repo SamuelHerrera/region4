@@ -29,6 +29,16 @@
   text-align: center;
 }
 
+.sub-header {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 16px;
+  line-height: 1.6em;
+  font-weight: 400;
+  color: #4d557d !important;
+  text-align: justify;
+  margin: 20px;
+}
+
 mat-card {
   width: 80%;
   height: 80%;
@@ -38,13 +48,25 @@ mat-card {
   align-items: center;
 }
 
-.terminos {
-  overflow: auto;
-  font-family: 'Poppins', sans-serif;
-  font-size: 16px;
-  line-height: 1.6em;
-  font-weight: 400;
-  color: #4d557d;
-  text-align: justify;
-  width: 80%;
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+mat-form-field {
+  max-width: 350px;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 5px;
 }

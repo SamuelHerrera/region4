@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import { YalsService } from './services/yals.service';
 import { MailService } from './services/mail.service';
 import { CuponService } from './services/cupon.service';
 import { TerminosComponent } from './components/terminos/terminos.component';
+import { ActivacionComponent } from './components/activacion/activacion.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { TerminosComponent } from './components/terminos/terminos.component';
     SafePipe,
     LoginComponent,
     RegisterComponent,
-    TerminosComponent
+    TerminosComponent,
+    ActivacionComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { TerminosComponent } from './components/terminos/terminos.component';
     MatButtonModule,
     MatCheckboxModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule
   ],
   providers: [AuthGuard,
     IsSecureGuard,

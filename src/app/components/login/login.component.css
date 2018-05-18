@@ -11,7 +11,7 @@
 
 .regresar {
   align-self: flex-start;
-  top: 30px;
+  top: 5px;
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -26,6 +26,7 @@
   margin-bottom: 15px;
   font-weight: 700;
   line-height: 1.1;
+  text-align: center;
 }
 
 mat-card {
