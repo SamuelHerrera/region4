@@ -75,7 +75,7 @@ exports.createClient = async (function (req, res, next) {
                       </h3>
                   </div>
                   <div style="text-align: left;  width: 100%; display: inline-block; padding-top:20px; padding-bottom: 20px;">
-                      Ingresa a nuestra página: http://www.valorinmuebles.com.mx/activacion <br>
+                      Ingresa a nuestra página <a href="http://www.valorinmuebles.com.mx/activacion/${createdClient.activationCode}">aquí</a> <br>
                       Usa el código de activación: ${createdClient.activationCode}
                   </div>
             

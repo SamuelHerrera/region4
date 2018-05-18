@@ -5,6 +5,7 @@ import { RegisterComponent } from '../components/register/register.component';
 import { LoginComponent } from '../components/login/login.component';
 import { TerminosComponent } from '../components/terminos/terminos.component';
 import { ActivacionComponent } from '../components/activacion/activacion.component';
+import { ReenviarComponent } from '../components/reenviar/reenviar.component';
 
 const routes: Routes = [
   {
@@ -35,9 +36,10 @@ const routes: Routes = [
         component: ActivacionComponent
       }
     ]
-  },
-
-
+  }, {
+    path: 'reenviar',
+    component: ReenviarComponent
+  }
 ];
 
 @NgModule({

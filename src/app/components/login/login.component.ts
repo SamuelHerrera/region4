@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/generaravaluo']);
       } else {
         this.snackBar.open(response.message, 'Ok', {
-          duration: 2000,
+          duration: 3000,
         });
       }
     },
