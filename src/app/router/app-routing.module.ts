@@ -6,6 +6,7 @@ import { LoginComponent } from '../components/login/login.component';
 import { TerminosComponent } from '../components/terminos/terminos.component';
 import { ActivacionComponent } from '../components/activacion/activacion.component';
 import { ReenviarComponent } from '../components/reenviar/reenviar.component';
+import { RestablecerComponent } from '../components/restablecer/restablecer.component';
 
 const routes: Routes = [
   {
@@ -39,7 +40,19 @@ const routes: Routes = [
   }, {
     path: 'reenviar',
     component: ReenviarComponent
-  }
+  }, {
+    path: 'restablecer',
+    children: [
+      {
+        path: ':mail',
+        component: RestablecerComponent
+      },
+      {
+        path: '**',
+        component: RestablecerComponent
+      }
+    ]
+  },
 ];
 
 @NgModule({

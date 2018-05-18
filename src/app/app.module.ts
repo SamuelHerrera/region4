@@ -28,6 +28,7 @@ import { CuponService } from './services/cupon.service';
 import { TerminosComponent } from './components/terminos/terminos.component';
 import { ActivacionComponent } from './components/activacion/activacion.component';
 import { ReenviarComponent } from './components/reenviar/reenviar.component';
+import { RestablecerComponent } from './components/restablecer/restablecer.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ReenviarComponent } from './components/reenviar/reenviar.component';
     RegisterComponent,
     TerminosComponent,
     ActivacionComponent,
-    ReenviarComponent
+    ReenviarComponent,
+    RestablecerComponent
   ],
   imports: [
     BrowserModule,

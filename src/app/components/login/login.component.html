@@ -27,6 +27,7 @@
         <mat-checkbox>Recuerdame</mat-checkbox>
         <button mat-raised-button color="primary" [disabled]="(!emailFormControl.valid||!passFormControl.valid)" (click)="login()">Entrar</button>
       </div>
+      <label [routerLink]="'/restablecer'">Olvide mi contraseña</label>
     </form>
   </mat-card>
 </div>

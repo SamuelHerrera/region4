@@ -7,11 +7,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MailService } from '../../services/mail.service';
 
 @Component({
-  selector: 'app-reenviar',
-  templateUrl: './reenviar.component.html',
-  styleUrls: ['./reenviar.component.css']
+  selector: 'app-restablecer',
+  templateUrl: './restablecer.component.html',
+  styleUrls: ['./restablecer.component.css']
 })
-export class ReenviarComponent implements OnInit {
+export class RestablecerComponent implements OnInit {
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -30,27 +30,28 @@ export class ReenviarComponent implements OnInit {
   ngOnInit() {
   }
 
-  public reenviar() {
+  public recuperar() {
     this.block = true;
     this.clientService.getClientsByMail(this.emailFormControl.value).subscribe((cliente: any) => {
+      this.cliente = cliente.data.docs[0];
       if (cliente.data.docs !== '' && (cliente.data.docs[0].mail === this.emailFormControl.value)) {
-        const clave = cliente.data.docs[0].activationCode;
-        this.cliente = cliente.data.docs[0];
+        const HTMLPassword: any = document.getElementById('recoveryPassword');
+        console.log(HTMLPassword);
         setTimeout(() => {
           this.mails.sendMail({
+            from: 'usuario@valorinmuebles.com.mx',
+            subject: 'Recuperacion de contraseña',
             to: this.emailFormControl.value,
-            html: document.getElementById('template_activacion').innerHTML,
-            text: '',
-            subject: 'Reenvío de código de activación'
+            html: HTMLPassword.innerHTML
           }).subscribe((response: any) => {
-            this.snackBar.open('Se a enviado un correo con su código de activación.', 'Ok', {
+            this.router.navigate(['/sesion']);
+            this.snackBar.open('Se ha enviado un correo con su contraseña.', 'Ok', {
               duration: 2000,
             });
-            this.router.navigate(['/activacion']);
           });
         }, 1000);
       } else {
-        this.snackBar.open('El correo no se encuentra registrado', 'Ok', {
+        this.snackBar.open('El correo no se encuentra registrado.', 'Ok', {
           duration: 2000,
         });
         this.block = false;
