@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  url = 'http://localhost:5000/landing';
+  url = 'https://www.valorinmuebles.com.mx/landing';
 
   constructor() { }
 
