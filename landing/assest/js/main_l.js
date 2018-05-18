@@ -8,7 +8,9 @@ jQuery(document).on('ready', function ($) {
 
       document.getElementById('nav').appendChild(element);
       document.getElementById('nav').appendChild(element1);
-    } catch (e) {}
+    } catch (e) {
+      console.log(e)
+    }
   }, 1000);
 
   /*--------------------------
