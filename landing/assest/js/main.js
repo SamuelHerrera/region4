@@ -6,28 +6,10 @@ jQuery(document).on('ready', function ($) {
       var element = window.parent.document.getElementById("action-button-1");
       var element1 = window.parent.document.getElementById("action-button-2");
 
-      element.style.borderRadius = '5px';
-      element.style.background ='transparent';
-      element.style.border = '1px solid cornflowerblue';
-      element.style.margin = '5px';
-      element.style.marginTop= '24px';
-
-      element1.style.borderRadius = '5px';
-      element1.style.background ='transparent';
-      element1.style.border = '1px solid cornflowerblue';
-      element1.style.margin = '5px';
-      element1.style.marginTop= '24px';
-
-      /*element1.style.border='0';
-      element1.style.height= '60px';
-      element1.style.background = 'none';
-      element1.style.fontWeight = 'bold';
-      element1.style.color='#28225C';*/
-
       document.getElementById('nav').appendChild(element);
       document.getElementById('nav').appendChild(element1);
     } catch (e) {}
-  },1000);
+  }, 1000);
 
   /*--------------------------
       STICKY MAINMENU

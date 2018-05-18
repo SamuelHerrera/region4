@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class ObservablesService {
@@ -34,12 +34,12 @@ export class ObservablesService {
 
     }
 
-    this.currentUser = data
+    this.currentUser = data;
     this.userSource.next(data);
   }
 
   public announceStoreUpdate(data) {
-    this.storeInfo = data
+    this.storeInfo = data;
     this.storeInfoSource.next(data);
   }
 
