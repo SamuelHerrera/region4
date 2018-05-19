@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, '/landing/assest/css/plugins')));
 
 app.use((req, res, next) => {
   console.log(req.get('host'),req.query )
-  res.header('X-FRAME-OPTIONS', 'ALLOW-FROM ' + 'https://' + req.get('host') );
+  // res.header('X-FRAME-OPTIONS', 'ALLOW-FROM ' + 'https://' + req.get('host') );
   if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
     return res.redirect('https://' + req.get('host') + req.url);
   }

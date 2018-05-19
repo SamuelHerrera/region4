@@ -1,15 +1,21 @@
 jQuery(document).on('ready', function ($) {
   "use strict";
 
-  setInterval(function () {
+  var changed = false;
+  var interval = setInterval(function () {
     try {
       var element = window.parent.document.getElementById("action-button-1");
       var element1 = window.parent.document.getElementById("action-button-2");
 
       document.getElementById('nav').appendChild(element);
       document.getElementById('nav').appendChild(element1);
+      changed = true;
     } catch (e) {
-      console.log(e)
+      console.log(e);
+      if (changed == true) {
+        clearInterval(interval);
+        changed = false;
+      }
     }
   }, 1000);
 
