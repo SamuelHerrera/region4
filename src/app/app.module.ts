@@ -29,6 +29,8 @@ import { TerminosComponent } from './components/terminos/terminos.component';
 import { ActivacionComponent } from './components/activacion/activacion.component';
 import { ReenviarComponent } from './components/reenviar/reenviar.component';
 import { RestablecerComponent } from './components/restablecer/restablecer.component';
+import { PoliticaprivacidadComponent } from './components/politicaprivacidad/politicaprivacidad.component';
+import { AvisocookiesComponent } from './components/avisocookies/avisocookies.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { RestablecerComponent } from './components/restablecer/restablecer.compo
     TerminosComponent,
     ActivacionComponent,
     ReenviarComponent,
-    RestablecerComponent
+    RestablecerComponent,
+    PoliticaprivacidadComponent,
+    AvisocookiesComponent
   ],
   imports: [
     BrowserModule,

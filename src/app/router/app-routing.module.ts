@@ -7,6 +7,8 @@ import { TerminosComponent } from '../components/terminos/terminos.component';
 import { ActivacionComponent } from '../components/activacion/activacion.component';
 import { ReenviarComponent } from '../components/reenviar/reenviar.component';
 import { RestablecerComponent } from '../components/restablecer/restablecer.component';
+import { PoliticaprivacidadComponent } from '../components/politicaprivacidad/politicaprivacidad.component';
+import { AvisocookiesComponent } from '../components/avisocookies/avisocookies.component';
 
 const routes: Routes = [
   {
@@ -25,6 +27,13 @@ const routes: Routes = [
   }, {
     path: 'terminos-y-condiciones',
     component: TerminosComponent
+  }, {
+    path: 'politica-de-privacidad',
+    component: PoliticaprivacidadComponent
+  },
+  {
+    path: 'politica-de-cookies',
+    component: AvisocookiesComponent
   }, {
     path: 'activacion',
     children: [
