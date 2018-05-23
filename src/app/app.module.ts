@@ -31,6 +31,7 @@ import { ReenviarComponent } from './components/reenviar/reenviar.component';
 import { RestablecerComponent } from './components/restablecer/restablecer.component';
 import { PoliticaprivacidadComponent } from './components/politicaprivacidad/politicaprivacidad.component';
 import { AvisocookiesComponent } from './components/avisocookies/avisocookies.component';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -60,14 +61,22 @@ import { AvisocookiesComponent } from './components/avisocookies/avisocookies.co
     HttpClientModule,
     MatSelectModule
   ],
-  providers: [AuthGuard,
+  providers: [
+    AuthGuard,
     IsSecureGuard,
     PagofacilService,
     ClientService,
     ObservablesService,
     YalsService,
     MailService,
-    CuponService],
+    CuponService,
+    {
+      provide: 'externalUrlRedirectResolver',
+      useValue: (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
+        window.location.href = (route.data as any).externalUrl;
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

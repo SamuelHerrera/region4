@@ -13,11 +13,17 @@ import { AvisocookiesComponent } from '../components/avisocookies/avisocookies.c
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/inicio',
+    redirectTo: 'inicio',
     pathMatch: 'full'
   }, {
     path: 'inicio',
-    component: LandingComponent
+    component: LandingComponent,
+    resolve: {
+      url: 'externalUrlRedirectResolver'
+    },
+    data: {
+      externalUrl: 'https://www.valorinmuebles.com.mx/landing'
+    }
   }, {
     path: 'sesion',
     component: LoginComponent

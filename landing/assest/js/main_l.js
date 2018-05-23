@@ -2,7 +2,7 @@ jQuery(document).on('ready', function ($) {
   "use strict";
 
   var changed = false;
-  var interval = setInterval(function () {
+  /*var interval = setInterval(function () {
     try {
       var element = window.parent.document.getElementById("action-button-1");
       var element1 = window.parent.document.getElementById("action-button-2");
@@ -17,7 +17,7 @@ jQuery(document).on('ready', function ($) {
         changed = false;
       }
     }
-  }, 1000);
+  }, 1000);*/
 
   /*--------------------------
       STICKY MAINMENU
