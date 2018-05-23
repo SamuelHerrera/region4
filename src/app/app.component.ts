@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     setTimeout(() => {
       // tslint:disable-next-line:max-line-length
       this.snackBar.open('Al entrar en esta web ya has sido informado sobre la utilización de las cookies a través de un aviso o alerta. Si has accedido y sigues navegando, estás aceptando la instalación de estas cookies. Consultalas en https://www.valorinmuebles.com.mx/politica-de-cookies', 'Ok', {
-        duration: 15000,
+        duration: 5000,
       });
     });
 
