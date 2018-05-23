@@ -6,4 +6,9 @@
     <a [routerLink]="'/sesion'">Inicio de sesión</a>
   </li>
 </div>
-<iframe id="iframeId" [src]="url | safe" (load)="loaded()"></iframe>
+<!--<iframe id="iframeId" [src]="url | safe" (load)="loaded()" style="border:1px red solid"></iframe>-->
+<div style="overflow: scroll; -webkit-overflow-scrolling: touch; width: 300px; border:1px red solid;" >
+    <iframe [src]="url | safe" (load)="loaded()" style="width: 600px; border:1px blue solid;"></iframe>
+ </div>
+
+ 
