@@ -9,6 +9,7 @@ import { ReenviarComponent } from '../components/reenviar/reenviar.component';
 import { RestablecerComponent } from '../components/restablecer/restablecer.component';
 import { PoliticaprivacidadComponent } from '../components/politicaprivacidad/politicaprivacidad.component';
 import { AvisocookiesComponent } from '../components/avisocookies/avisocookies.component';
+import { ReporteComponent } from '../components/reporte/reporte.component';
 
 const routes: Routes = [
   {
@@ -36,6 +37,9 @@ const routes: Routes = [
   }, {
     path: 'politica-de-privacidad',
     component: PoliticaprivacidadComponent
+  }, {
+    path: 'reporte',
+    component: ReporteComponent
   },
   {
     path: 'politica-de-cookies',

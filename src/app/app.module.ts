@@ -10,6 +10,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +33,21 @@ import { RestablecerComponent } from './components/restablecer/restablecer.compo
 import { PoliticaprivacidadComponent } from './components/politicaprivacidad/politicaprivacidad.component';
 import { AvisocookiesComponent } from './components/avisocookies/avisocookies.component';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ReporteComponent } from './components/reporte/reporte.component';
+import {MatTabsModule} from '@angular/material/tabs';
+
+import { AgmCoreModule } from '@agm/core';
+
+/**Material */
+/** */
+
+/**PrimeNG */
+import {SelectButtonModule} from 'primeng/selectbutton';
+import {CheckboxModule} from 'primeng/checkbox';
+import {ButtonModule} from 'primeng/button';
+import {TabViewModule} from 'primeng/tabview';
+import {InputTextModule} from 'primeng/inputtext';
+import {GMapModule} from 'primeng/gmap';
 
 @NgModule({
   declarations: [
@@ -45,7 +61,8 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
     ReenviarComponent,
     RestablecerComponent,
     PoliticaprivacidadComponent,
-    AvisocookiesComponent
+    AvisocookiesComponent,
+    ReporteComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +76,18 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
     MatCheckboxModule,
     MatSnackBarModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    SelectButtonModule,
+    ButtonModule,
+    TabViewModule,
+    InputTextModule,
+    CheckboxModule,
+    MatButtonToggleModule,
+    GMapModule,
+    MatTabsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
+    })
   ],
   providers: [
     AuthGuard,

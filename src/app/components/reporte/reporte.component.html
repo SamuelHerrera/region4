@@ -1,0 +1,433 @@
+<div class="container">
+  <mat-card>
+    <div class="regresar" [routerLink]="'/inicio'">
+      <i class="material-icons">
+        arrow_back
+      </i>Cerrar Sesión</div>
+    <div class="title">GENERAR REPORTE</div>
+
+    <div style="
+    width:100%;
+    justify-content: center;
+    display:  flex;
+    flex-direction:  row;
+    flex-wrap:  wrap;
+    padding-left:  10px;
+    padding-right:  10px;
+    align-items: center;
+    ">
+      <button mat-button color="primary" (click)="anterior()">Anterior</button>
+      <h4 *ngIf="contador==0">Paso 1</h4>
+      <h4 *ngIf="contador==1">Paso 2</h4>
+      <h4 *ngIf="contador==2">Paso 3</h4>
+      <h4 *ngIf="contador==3">Paso 4</h4>
+      <h4 *ngIf="contador==4">Paso 5</h4>
+      <button mat-button color="primary" (click)="siguiente()">siguiente</button>
+    </div>
+
+    <!--Paso 1-->
+    <form #f="ngForm" *ngIf="contador==0">
+      <div class="addressDesc">
+
+        <mat-form-field class="input_address">
+          <input matInput placeholder="Calle">
+        </mat-form-field>
+        <div class="nums">
+
+          <mat-form-field class="input_address">
+            <input matInput placeholder="Núm. Exterior">
+          </mat-form-field>
+
+          <mat-form-field class="input_address">
+            <input matInput placeholder="Código postal">
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="input_address">
+          <input matInput placeholder="Colonia">
+        </mat-form-field>
+
+        <mat-form-field class="input_address">
+          <input matInput placeholder="Municipio/Delegación">
+        </mat-form-field>
+
+        <mat-form-field class="input_address">
+          <input matInput placeholder="Estado">
+        </mat-form-field>
+
+        <mat-form-field class="input_address">
+          <input matInput placeholder="Ciudad">
+        </mat-form-field>
+
+      </div>
+      <div class="maps">
+        <agm-map [latitude]="21.082189" [longitude]="-89.6368873" [zoom]="16" [scrollwheel]="false">
+          <agm-marker [latitude]="21.082189" [longitude]="-89.6368873" [markerDraggable]="true"></agm-marker>
+        </agm-map>
+        <!--<p-gmap [options]="options" style="width:100%; height: 230px;" ></p-gmap>-->
+        <div class="nota">
+          <b>Importante:</b> Es necesario que ubiques el marcador dentro o lo mas cercano a tu propiedad. Es posible que la
+          foto final del reporte no sea exacta pero esto no afecta el estimado de valor.</div>
+      </div>
+    </form>
+    <!--Fin de paso 1-->
+
+    <!--Paso 2-->
+    <form #f="ngForm" *ngIf="contador==1">
+      <div class="characteristics" style="width:100%;">
+
+        <div class="address">
+          <div class="subAddress">
+            <span>Dirección:</span>
+            <br>
+            <!--<p>
+              Calle: {{avaluoForm.street}} #{{avaluoForm.num_ext}}, Col. {{avaluoForm.colonia}}
+              <br> C.P. {{avaluoForm.zip}}, {{avaluoForm.municipio}}
+              <br> {{avaluoForm.ciudad}}, {{avaluoForm.estado}}
+            </p>-->
+          </div>
+
+          <div class="kind">
+            <h4>Tipo de propiedad.</h4>
+            <br>
+
+            <mat-button-toggle-group #group="matButtonToggleGroup">
+              <mat-button-toggle value="casa">Casa</mat-button-toggle>
+              <mat-button-toggle value="departamento">Departamento</mat-button-toggle>
+            </mat-button-toggle-group>
+
+          </div>
+        </div>
+
+        <div class="articles">
+
+          <div class="article_button">
+            <div class="button_title">
+              <div class="image_title">
+                <img class="images" src="../assets/images/cuarto.svg" alt="Smiley face" height="42" width="42" />
+                <h4>Recámaras</h4>
+              </div>
+
+
+              <mat-button-toggle-group name="numCuartos">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="3">3</mat-button-toggle>
+                <mat-button-toggle value="4">4+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="article_button">
+
+            <div class="button_title">
+              <div class="image_title">
+                <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
+                <h4>Baños</h4>
+              </div>
+
+              <mat-button-toggle-group name="numBanos">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="3">3</mat-button-toggle>
+                <mat-button-toggle value="4">4+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="article_button">
+
+            <div class="button_title">
+              <div class="image_title">
+                <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42">
+                <h4>Medios Baños</h4>
+              </div>
+              <mat-button-toggle-group name="numMedioBanos" class="medioBano">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="3">3+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="article_button">
+            <div>
+
+            </div>
+            <div class="button_title">
+              <div class="image_title">
+                <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42">
+                <h4>Cajones</h4>
+              </div>
+
+              <mat-button-toggle-group name="numParking">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="3">3+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="description">
+
+          <div class="subDescription">
+
+            <mat-form-field class="input_Description">
+              <input matInput placeholder="Área construída (m2)">
+            </mat-form-field>
+
+            <mat-form-field class="input_Description">
+              <input matInput placeholder="Superficie del terreno (m2)">
+            </mat-form-field>
+
+            <div class="years">
+              <mat-form-field class="input-Description">
+                <input matInput placeholder="Años de antigüedad">
+              </mat-form-field>
+
+              <div class="ui-g-12">
+                <p-checkbox name="nuevo" value="Nuevo" label="Nuevo" (onChange)="nuevo()" inputId="Nvo"></p-checkbox>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--Fin de paso 2-->
+
+    <!--Paso 3-->
+    <form #f="ngForm" *ngIf="contador==2">
+      <div class="amenidades">
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/ac.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Aire Acondicionado</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="aireAcondicionado" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/cocina.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Cocina Integral</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="cocinaIntegral" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/gimnasio.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Gimnasio</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="gimnasio" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/terraza.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Roof garden/ terrazas</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="roofGarden" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/alberca.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Alberca</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="alberca" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/lavado.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Cuarto de servicio</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="cuartoServicio" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/jardin.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Jardín</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="jardin" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/amueblado.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Amueblado</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="amueblado" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/estudio.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Estudio</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="estudio" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/jacuzzi.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Jacuzzi</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="jacuzzi" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/seguridad.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Seguridad Privada</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="seguridadPrivada" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+        </div>
+
+      </div>
+    </form>
+    <!--Fin de paso 3-->
+
+    <!--Pago con tarjeta-->
+    <form #f="ngForm" *ngIf="contador==3">
+      <div class="pago-tarjeta">
+        <div class="cost">
+          <div class="costContainer">
+            <span class="texto">Costo Reporte</span>
+            <mat-form-field class="input-costo-reporte">
+              <input matInput disabled value="costoReporte">
+            </mat-form-field>
+          </div>
+          <div class="costContainer">
+            <span class="texto">Código de Cupón</span>
+            <mat-form-field class="input-costo-reporte">
+              <input matInput placeholder="Código">
+            </mat-form-field>
+          </div>
+          <div class="cupon">
+            <span class="descuentos">{{montoDescuento}}</span>
+            <button mat-raised-button color="primary" (onClick)="aplicarCodigo()">Aplicar</button>
+          </div>
+          <div class="costContainer">
+            <span class="texto">Subtotal</span>
+            <mat-form-field class="input-costo-reporte">
+              <input matInput disabled value="subtotalReporte">
+            </mat-form-field>
+          </div>
+          <div class="divisor">
+            <hr>
+          </div>
+          <div class="costContainer">
+            <span class="texto">TOTAL</span>
+            <mat-form-field class="input-costo-reporte">
+              <input matInput disabled value="totalReporte">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-tab-group class="payment">
+          <mat-tab label="Tarjeta Credito/Debito">
+            <div class="paymentInfo">
+              <div class="tittle">Ingresa los datos de tu tarjeta de crédito o débito</div>
+              <div class="subContainer">
+                <div class="containerPayment1">
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Nombre">
+                  </mat-form-field>
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Apellidos">
+                  </mat-form-field>
+
+                  <div class="expiredDate">
+                    <mat-form-field class="input-expiredDate">
+                      <input matInput placeholder="MM">
+                    </mat-form-field>
+                    <mat-form-field class="input-payment">
+                      <input matInput placeholder="AA">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="containerPayment">
+                  <mat-form-field class="input-tarjeta">
+                    <input matInput placeholder="Número de tarjeta">
+                  </mat-form-field>
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Código de seguridad">
+                  </mat-form-field>
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Código postal">
+                  </mat-form-field>
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Teléfono">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="payButton">
+                <button mat-raised-button color="primary" (onClick)="pagarAvaluo()" [disabled]="loading">Pagar Ahora</button>
+                <!--<p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>-->
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="PayPal">
+            <button mat-raised-button color="primary" (onClick)="pagarAvaluoPayPal()" [disabled]="loading">Pagar Ahora con PayPal</button>
+
+            <!--<p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>-->
+          </mat-tab>
+        </mat-tab-group>
+
+
+      </div>
+    </form>
+    <!--Fin pago con tarjeta-->
+
+    <!--Datos facturacion-->
+    <form #f="ngForm" *ngIf="contador==4">
+      <div class="datos-facturacion">
+        <div class="content">
+          <div class="principal">
+            <div class="principalContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="Razón social">
+              </mat-form-field>
+            </div>
+
+            <div class="principalContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="RFC">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="contact">
+
+            <div class="tittle">Datos del contacto</div>
+
+            <div class="contactContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="Nombre del contacto">
+              </mat-form-field>
+            </div>
+
+            <div class="contactContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="Teléfono celular">
+              </mat-form-field>
+            </div>
+
+            <div class="contactContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="Correo">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+    <!--Fin datos facturacion-->
+
+  </mat-card>
+</div>
