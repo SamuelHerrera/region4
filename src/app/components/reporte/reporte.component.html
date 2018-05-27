@@ -184,9 +184,9 @@
                 <input matInput placeholder="Años de antigüedad">
               </mat-form-field>
 
-              <div class="ui-g-12">
-                <p-checkbox name="nuevo" value="Nuevo" label="Nuevo" (onChange)="nuevo()" inputId="Nvo"></p-checkbox>
-              </div>
+              
+                <mat-checkbox class="example-margin" (onChange)="nuevo()" [(ngModel)]="Nuevo" [ngModelOptions]="{standalone: true}">Nuevo</mat-checkbox>
+              
             </div>
 
           </div>

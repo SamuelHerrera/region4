@@ -38,16 +38,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 import { AgmCoreModule } from '@agm/core';
 
-/**Material */
-/** */
-
-/**PrimeNG */
-import {SelectButtonModule} from 'primeng/selectbutton';
-import {CheckboxModule} from 'primeng/checkbox';
-import {ButtonModule} from 'primeng/button';
-import {TabViewModule} from 'primeng/tabview';
-import {InputTextModule} from 'primeng/inputtext';
-import {GMapModule} from 'primeng/gmap';
 
 @NgModule({
   declarations: [
@@ -77,13 +67,7 @@ import {GMapModule} from 'primeng/gmap';
     MatSnackBarModule,
     HttpClientModule,
     MatSelectModule,
-    SelectButtonModule,
-    ButtonModule,
-    TabViewModule,
-    InputTextModule,
-    CheckboxModule,
     MatButtonToggleModule,
-    GMapModule,
     MatTabsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
