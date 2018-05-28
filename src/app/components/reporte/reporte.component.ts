@@ -12,7 +12,17 @@ import { group } from '@angular/animations';
 })
 export class ReporteComponent implements OnInit {
 
+  data: any = [];
+  dataRFC: any = [];
+  dataCreditCar: any = [];
   zipCode: boolean;
+  street = 100;
+  num_ext = "489B";
+  colonia = "Bojorquez";
+  zip = 9700;
+  municipio = "Mérida";
+  ciudad = "Mérida";
+  estado="Yucatán";
 
   /**Maps */
   lat = 21.082189;
@@ -30,26 +40,6 @@ export class ReporteComponent implements OnInit {
   isNew = false;
   loading = false;
   disabled = true;
-  types: SelectItem[];
-  selectedType: String;
-
-  homeTypes: SelectItem[];
-  selectedHomeType: String;
-
-  numbers1: SelectItem[];
-  numbers0: SelectItem[];
-  selectedNumRec: String;
-  selectedNumBath: String;
-  selectedNumMBath: String;
-  selectedNumBox: String;
-
-  calle: number;
-  numExt: String;
-  codigoPostal: number;
-  municipio: String;
-  estado: String;
-  ciudad: String;
-  colonia: String;
   /** */
 
   /**Paso 3 */
@@ -122,6 +112,9 @@ export class ReporteComponent implements OnInit {
     if (this.contador < 4) {
       this.contador += 1;
     }
+    console.log(this.data);
+    console.log(this.dataRFC);
+    console.log(this.dataCreditCar);
 
   }
   nuevo() {

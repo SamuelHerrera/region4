@@ -1,3 +1,7 @@
+<div class="oculto">
+  <!--<app-reporte-fake [datos]="data" *ngIf="data"></app-reporte-fake>
+  <app-basic-report-fake [datos]="data" *ngIf="data"></app-basic-report-fake>-->
+</div>
 <div class="container">
   <mat-card>
     <div class="regresar" [routerLink]="'/inicio'">
@@ -26,37 +30,37 @@
     </div>
 
     <!--Paso 1-->
-    <form #f="ngForm" *ngIf="contador==0">
+    <form #f="ngForm" *ngIf="contador==0" (ngSubmit)="onSubmit(f.value)">
       <div class="addressDesc">
 
         <mat-form-field class="input_address">
-          <input matInput placeholder="Calle">
+          <input matInput name = "street" placeholder="Calle" [(ngModel)] = "data['street']">
         </mat-form-field>
         <div class="nums">
 
           <mat-form-field class="input_address">
-            <input matInput placeholder="Núm. Exterior">
+            <input matInput name="num_ext" placeholder="Núm. Exterior" [(ngModel)] = "data['num_ext']">
           </mat-form-field>
 
           <mat-form-field class="input_address">
-            <input matInput placeholder="Código postal">
+            <input matInput name="zipCode" placeholder="Código postal" [(ngModel)] = "data['zipCode']">
           </mat-form-field>
         </div>
 
         <mat-form-field class="input_address">
-          <input matInput placeholder="Colonia">
+          <input matInput name="colonia" placeholder="Colonia" [(ngModel)] = "data['colonia']">
         </mat-form-field>
 
         <mat-form-field class="input_address">
-          <input matInput placeholder="Municipio/Delegación">
+          <input matInput name="municipio" placeholder="Municipio/Delegación" [(ngModel)] = "data['municipio']">
         </mat-form-field>
 
         <mat-form-field class="input_address">
-          <input matInput placeholder="Estado">
+          <input matInput name="estado" placeholder="Estado" [(ngModel)] = "data['estado']">
         </mat-form-field>
 
         <mat-form-field class="input_address">
-          <input matInput placeholder="Ciudad">
+          <input matInput name="city"placeholder="Ciudad" [(ngModel)] = "data['ciudad']">
         </mat-form-field>
 
       </div>
@@ -73,27 +77,37 @@
     <!--Fin de paso 1-->
 
     <!--Paso 2-->
-    <form #f="ngForm" *ngIf="contador==1">
+    <form #f="ngForm" *ngIf="contador==1" >
       <div class="characteristics" style="width:100%;">
 
         <div class="address">
           <div class="subAddress">
             <span>Dirección:</span>
             <br>
-            <!--<p>
-              Calle: {{avaluoForm.street}} #{{avaluoForm.num_ext}}, Col. {{avaluoForm.colonia}}
-              <br> C.P. {{avaluoForm.zip}}, {{avaluoForm.municipio}}
-              <br> {{avaluoForm.ciudad}}, {{avaluoForm.estado}}
-            </p>-->
+            <p>
+              Calle: {{street}} #{{num_ext}}, Col. {{colonia}}
+              <br> C.P. {{zip}}, {{municipio}}
+              <br> {{ciudad}}, {{estado}}
+            </p>
           </div>
 
           <div class="kind">
             <h4>Tipo de propiedad.</h4>
             <br>
 
-            <mat-button-toggle-group #group="matButtonToggleGroup">
+            <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)] = "data['tipo_propiedad']" [ngModelOptions]="{standalone: true}">
               <mat-button-toggle value="casa">Casa</mat-button-toggle>
               <mat-button-toggle value="departamento">Departamento</mat-button-toggle>
+            </mat-button-toggle-group>
+
+          </div>
+          <div class="homeStatus">
+            <h4>Casa.</h4>
+            <br>
+
+            <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)] = "data['status_propiedad']" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle value="sola">Sola</mat-button-toggle>
+              <mat-button-toggle value="privada">Privada/Condominio</mat-button-toggle>
             </mat-button-toggle-group>
 
           </div>
@@ -109,7 +123,7 @@
               </div>
 
 
-              <mat-button-toggle-group name="numCuartos">
+              <mat-button-toggle-group name="numCuartos" [(ngModel)] = "data['num_cuartos']" [ngModelOptions]="{standalone: true}">
                 <mat-button-toggle value="1">1</mat-button-toggle>
                 <mat-button-toggle value="2">2</mat-button-toggle>
                 <mat-button-toggle value="3">3</mat-button-toggle>
@@ -125,7 +139,7 @@
                 <h4>Baños</h4>
               </div>
 
-              <mat-button-toggle-group name="numBanos">
+              <mat-button-toggle-group name="numBanos" [(ngModel)] = "data['num_banos']" [ngModelOptions]="{standalone: true}">
                 <mat-button-toggle value="1">1</mat-button-toggle>
                 <mat-button-toggle value="2">2</mat-button-toggle>
                 <mat-button-toggle value="3">3</mat-button-toggle>
@@ -140,7 +154,7 @@
                 <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42">
                 <h4>Medios Baños</h4>
               </div>
-              <mat-button-toggle-group name="numMedioBanos" class="medioBano">
+              <mat-button-toggle-group name="numMedioBanos" class="medioBano" [(ngModel)] = "data['num_medio_bano']" [ngModelOptions]="{standalone: true}">
                 <mat-button-toggle value="1">1</mat-button-toggle>
                 <mat-button-toggle value="2">2</mat-button-toggle>
                 <mat-button-toggle value="3">3+</mat-button-toggle>
@@ -157,7 +171,7 @@
                 <h4>Cajones</h4>
               </div>
 
-              <mat-button-toggle-group name="numParking">
+              <mat-button-toggle-group name="numParking" [(ngModel)] = "data['num_parking']" [ngModelOptions]="{standalone: true}">
                 <mat-button-toggle value="1">1</mat-button-toggle>
                 <mat-button-toggle value="2">2</mat-button-toggle>
                 <mat-button-toggle value="3">3+</mat-button-toggle>
@@ -172,16 +186,16 @@
           <div class="subDescription">
 
             <mat-form-field class="input_Description">
-              <input matInput placeholder="Área construída (m2)">
+              <input matInput placeholder="Área construída (m2)" [(ngModel)] = "data['area_construida']" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
 
             <mat-form-field class="input_Description">
-              <input matInput placeholder="Superficie del terreno (m2)">
+              <input matInput placeholder="Superficie del terreno (m2)" [(ngModel)] = "data['superficie_terreno']" [ngModelOptions]="{standalone: true}">
             </mat-form-field>
 
             <div class="years">
               <mat-form-field class="input-Description">
-                <input matInput placeholder="Años de antigüedad">
+                <input matInput placeholder="Años de antigüedad" [(ngModel)] = "data['anios_antiguedad']" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
 
               
@@ -204,7 +218,7 @@
             <img class="images" src="../assets/images/ac.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Aire Acondicionado</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="aireAcondicionado" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="aireAcondicionado" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['aire_acondicionado']"></mat-checkbox>
 
         </div>
 
@@ -213,7 +227,7 @@
             <img class="images" src="../assets/images/cocina.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Cocina Integral</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="cocinaIntegral" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="cocinaIntegral" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['cocina_integral']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -221,7 +235,7 @@
             <img class="images" src="../assets/images/gimnasio.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Gimnasio</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="gimnasio" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="gimnasio" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['gimnasio']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -229,7 +243,7 @@
             <img class="images" src="../assets/images/terraza.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Roof garden/ terrazas</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="roofGarden" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="roofGarden" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['terraza']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -237,7 +251,7 @@
             <img class="images" src="../assets/images/alberca.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Alberca</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="alberca" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="alberca" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['alberca']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -245,7 +259,7 @@
             <img class="images" src="../assets/images/lavado.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Cuarto de servicio</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="cuartoServicio" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="cuartoServicio" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['cuarto_servicio']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -253,7 +267,7 @@
             <img class="images" src="../assets/images/jardin.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Jardín</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="jardin" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="jardin" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['jardin']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -261,7 +275,7 @@
             <img class="images" src="../assets/images/amueblado.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Amueblado</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="amueblado" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="amueblado" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['amueblado']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -269,7 +283,7 @@
             <img class="images" src="../assets/images/estudio.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Estudio</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="estudio" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="estudio" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['estudio']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -277,7 +291,7 @@
             <img class="images" src="../assets/images/jacuzzi.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Jacuzzi</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="jacuzzi" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="jacuzzi" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['jacuzzi']"></mat-checkbox>
         </div>
 
         <div class="miniContainers">
@@ -285,7 +299,7 @@
             <img class="images" src="../assets/images/seguridad.svg" alt="Smiley face" height="50" width="50">
           </div>
           <span>Seguridad Privada</span>
-          <mat-checkbox class="example-margin" [(ngModel)]="seguridadPrivada" [ngModelOptions]="{standalone: true}"></mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="seguridadPrivada" [ngModelOptions]="{standalone: true}" [(ngModel)] = "data['seguridad_privada']"></mat-checkbox>
         </div>
 
       </div>
@@ -336,34 +350,34 @@
               <div class="subContainer">
                 <div class="containerPayment1">
                   <mat-form-field class="input-payment">
-                    <input matInput placeholder="Nombre">
+                    <input matInput placeholder="Nombre" [(ngModel)] = "dataCreditCar['nombre']" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="input-payment">
-                    <input matInput placeholder="Apellidos">
+                    <input matInput placeholder="Apellidos" [(ngModel)] = "dataCreditCar['apellidos']" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
 
                   <div class="expiredDate">
                     <mat-form-field class="input-expiredDate">
-                      <input matInput placeholder="MM">
+                      <input matInput placeholder="MM" [(ngModel)] = "dataCreditCar['mm']" [ngModelOptions]="{standalone: true}">
                     </mat-form-field>
                     <mat-form-field class="input-payment">
-                      <input matInput placeholder="AA">
+                      <input matInput placeholder="AA" [(ngModel)] = "dataCreditCar['aa']" [ngModelOptions]="{standalone: true}">
                     </mat-form-field>
                   </div>
                 </div>
 
                 <div class="containerPayment">
                   <mat-form-field class="input-tarjeta">
-                    <input matInput placeholder="Número de tarjeta">
+                    <input matInput placeholder="Número de tarjeta" [(ngModel)] = "dataCreditCar['num_tarjeta']" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="input-payment">
-                    <input matInput placeholder="Código de seguridad">
+                    <input matInput placeholder="Código de seguridad" [(ngModel)] = "dataCreditCar['cod_seguridad']" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="input-payment">
-                    <input matInput placeholder="Código postal">
+                    <input matInput placeholder="Código postal" [(ngModel)] = "dataCreditCar['zip']" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                   <mat-form-field class="input-payment">
-                    <input matInput placeholder="Teléfono">
+                    <input matInput placeholder="Teléfono" [(ngModel)] = "dataCreditCar['telefono']" [ngModelOptions]="{standalone: true}">
                   </mat-form-field>
                 </div>
               </div>
@@ -392,13 +406,13 @@
           <div class="principal">
             <div class="principalContainer">
               <mat-form-field class="input-payment">
-                <input matInput placeholder="Razón social">
+                <input matInput placeholder="Razón social" [(ngModel)] = "dataRFC['razon_social']" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </div>
 
             <div class="principalContainer">
               <mat-form-field class="input-payment">
-                <input matInput placeholder="RFC">
+                <input matInput placeholder="RFC" [(ngModel)] = "dataRFC['rfc']" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </div>
           </div>
@@ -408,19 +422,19 @@
 
             <div class="contactContainer">
               <mat-form-field class="input-payment">
-                <input matInput placeholder="Nombre del contacto">
+                <input matInput placeholder="Nombre del contacto" [(ngModel)] = "dataRFC['nombre_contacto']" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </div>
 
             <div class="contactContainer">
               <mat-form-field class="input-payment">
-                <input matInput placeholder="Teléfono celular">
+                <input matInput placeholder="Teléfono celular" [(ngModel)] = "dataRFC['telefono']" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </div>
 
             <div class="contactContainer">
               <mat-form-field class="input-payment">
-                <input matInput placeholder="Correo">
+                <input matInput placeholder="Correo" [(ngModel)] = "dataRFC['correo']" [ngModelOptions]="{standalone: true}">
               </mat-form-field>
             </div>
           </div>

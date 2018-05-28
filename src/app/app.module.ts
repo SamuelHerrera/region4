@@ -10,7 +10,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSelectModule } from '@angular/material/select';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,9 +36,12 @@ import { PoliticaprivacidadComponent } from './components/politicaprivacidad/pol
 import { AvisocookiesComponent } from './components/avisocookies/avisocookies.component';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ReporteComponent } from './components/reporte/reporte.component';
-import {MatTabsModule} from '@angular/material/tabs';
+import { BasicReportFakeComponent } from './components/basic-report-fake/basic-report-fake.component';
+import { ReporteFakeComponent } from './components/reporte-fake/reporte-fake.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { ShortNumberPipe } from './pipes/short-number.pipe';
+
 
 
 @NgModule({
@@ -52,7 +57,10 @@ import { AgmCoreModule } from '@agm/core';
     RestablecerComponent,
     PoliticaprivacidadComponent,
     AvisocookiesComponent,
-    ReporteComponent
+    ReporteComponent,
+    BasicReportFakeComponent,
+    ReporteFakeComponent, 
+    ShortNumberPipe
   ],
   imports: [
     BrowserModule,
@@ -69,6 +77,7 @@ import { AgmCoreModule } from '@agm/core';
     MatSelectModule,
     MatButtonToggleModule,
     MatTabsModule,
+    MatTableModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })
