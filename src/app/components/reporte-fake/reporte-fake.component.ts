@@ -90,7 +90,7 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   ngOnChanges(): void {
-    //console.log("Datos: ", this.datos.data);
+    console.log("Datos: ", this.datos);
     const fecha: any = (this.datos.data.dateCreated).split("-");
     /*if(fecha[1]==="04"){
       this.indexMonth = 3;
@@ -122,14 +122,29 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
           parking: this.datos.data.response.characteristics.estacionamientos,
           construccion: this.datos.data.response.characteristics.area_construida,
           edad: this.datos.data.response.characteristics.edad,
-          distancia: "-",
-          similitud: "-"
+          distancia: 0,
+          similitud: 0
         });
 
         this.datos.data.response.similares.forEach(element => {
-          const fechaOferta: any = (element.fecha_oferta).split("/");
-          this.indexMonth = parseInt(fechaOferta[1]);
-          this.fechaSimilares = this.months[this.indexMonth - 1] + " " + fechaOferta[2];
+          //const fechaOferta: any = (element.fecha_oferta).split("/");
+          const fechaOferta: any = (element.fecha_oferta).split(" ");
+          console.log("fecha de oferta",element.estacionamientos);
+          var mes = "";
+          if(fechaOferta[2]=="Jan"){mes="Enero"};
+          if(fechaOferta[2]=="Feb"){mes="Febrero"};
+          if(fechaOferta[2]=="Mar"){mes="Marzo"};
+          if(fechaOferta[2]=="Apr"){mes="Abril"};
+          if(fechaOferta[2]=="May"){mes="Mayo"};
+          if(fechaOferta[2]=="Jun"){mes="Junio"};
+          if(fechaOferta[2]=="Jul"){mes="Julio"};
+          if(fechaOferta[2]=="Aug"){mes="Agosto"};
+          if(fechaOferta[2]=="Sep"){mes="Septiembre"};
+          if(fechaOferta[2]=="Oct"){mes="Octubre"};
+          if(fechaOferta[2]=="Nov"){mes="Noviembre"};
+          if(fechaOferta[2]=="Dec"){mes="Diciembre"};
+          //this.indexMonth = parseInt(fechaOferta[1]);
+          this.fechaSimilares = mes + " " + fechaOferta[3];
 
           this.ELEMENT_DATA.push({
             position: ind,

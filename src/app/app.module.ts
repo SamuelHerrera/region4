@@ -42,6 +42,8 @@ import { ReporteFakeComponent } from './components/reporte-fake/reporte-fake.com
 import { AgmCoreModule } from '@agm/core';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
 
+import {ChartModule} from 'primeng/chart';
+
 
 
 @NgModule({
@@ -78,6 +80,7 @@ import { ShortNumberPipe } from './pipes/short-number.pipe';
     MatButtonToggleModule,
     MatTabsModule,
     MatTableModule,
+    ChartModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'
     })

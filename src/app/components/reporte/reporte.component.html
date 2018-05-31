@@ -1,8 +1,16 @@
 <div class="oculto">
-  <!--<app-reporte-fake [datos]="data" *ngIf="data"></app-reporte-fake>
-  <app-basic-report-fake [datos]="data" *ngIf="data"></app-basic-report-fake>-->
+  <app-reporte-fake [datos]="data_response" *ngIf="data_response&&principal"></app-reporte-fake>
+  <app-basic-report-fake [datos]="data_response" *ngIf="data_response&&basic"></app-basic-report-fake>
 </div>
 <div class="container">
+  <div class="buttons">
+    <button (click)="pdfBasico()">
+      PDF básico
+    </button>
+    <button (click)="pdfCompleto()">
+      PDF completo
+    </button>
+  </div>
   <mat-card>
     <div class="regresar" [routerLink]="'/inicio'">
       <i class="material-icons">
@@ -94,9 +102,9 @@
           <div class="kind">
             <h4>Tipo de propiedad.</h4>
             <br>
-            <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="data['tipo_propiedad']" [ngModelOptions]="{standalone: true}">
-              <mat-button-toggle value="casa">Casa</mat-button-toggle>
-              <mat-button-toggle value="departamento">Departamento</mat-button-toggle>
+            <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="data['id_tipo_propiedad']" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle value="2">Casa</mat-button-toggle>
+              <mat-button-toggle value="4">Departamento</mat-button-toggle>
             </mat-button-toggle-group>
           </div>
           <div class="homeStatus">
@@ -121,7 +129,7 @@
               </div>
 
 
-              <mat-button-toggle-group name="numCuartos" [(ngModel)]="data['num_cuartos']" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle-group name="numCuartos" [(ngModel)]="data['recamaras']" [ngModelOptions]="{standalone: true}">
                 <mat-button-toggle value="1">1</mat-button-toggle>
                 <mat-button-toggle value="2">2</mat-button-toggle>
                 <mat-button-toggle value="3">3</mat-button-toggle>
@@ -137,7 +145,7 @@
                 <h4>Baños</h4>
               </div>
 
-              <mat-button-toggle-group name="numBanos" [(ngModel)]="data['num_banos']" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle-group name="numBanos" [(ngModel)]="data['banos']" [ngModelOptions]="{standalone: true}">
                 <mat-button-toggle value="1">1</mat-button-toggle>
                 <mat-button-toggle value="2">2</mat-button-toggle>
                 <mat-button-toggle value="3">3</mat-button-toggle>
@@ -152,7 +160,7 @@
                 <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42">
                 <h4>Medios Baños</h4>
               </div>
-              <mat-button-toggle-group name="numMedioBanos" class="medioBano" [(ngModel)]="data['num_medio_bano']" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle-group name="numMedioBanos" class="medioBano" [(ngModel)]="data['medios_banos']" [ngModelOptions]="{standalone: true}">
                 <mat-button-toggle value="1">1</mat-button-toggle>
                 <mat-button-toggle value="2">2</mat-button-toggle>
                 <mat-button-toggle value="3">3+</mat-button-toggle>
@@ -169,7 +177,7 @@
                 <h4>Cajones</h4>
               </div>
 
-              <mat-button-toggle-group name="numParking" [(ngModel)]="data['num_parking']" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle-group name="numParking" [(ngModel)]="data['estacionamientos']" [ngModelOptions]="{standalone: true}">
                 <mat-button-toggle value="1">1</mat-button-toggle>
                 <mat-button-toggle value="2">2</mat-button-toggle>
                 <mat-button-toggle value="3">3+</mat-button-toggle>
@@ -191,7 +199,7 @@
             </mat-form-field>
             <div class="years">
               <mat-form-field class="input-Description">
-                <input matInput placeholder="Años de antigüedad" name="asffda" [(ngModel)]="data['anios_antiguedad']" [disabled]="Nuevo"
+                <input matInput placeholder="Años de antigüedad" name="asffda" [(ngModel)]="data['edad']" [disabled]="Nuevo"
                   required>
               </mat-form-field>
               <mat-checkbox class="example-margin" (change)="nuevo()" [(ngModel)]="Nuevo" [ngModelOptions]="{standalone: true}">Nuevo</mat-checkbox>

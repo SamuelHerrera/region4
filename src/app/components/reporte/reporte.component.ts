@@ -5,6 +5,9 @@ import { YalsService } from '../../services/yals.service';
 import { SelectItem } from 'primeng/components/common/selectitem';
 import { group } from '@angular/animations';
 import { NgForm } from '@angular/forms';
+import * as jsPDF from 'jspdf';
+import * as html2pdf from '../../../assets/js/html2pdf';
+import { YalsRequest } from '../../models/yals.model';
 
 @Component({
   selector: 'app-reporte',
@@ -19,8 +22,9 @@ export class ReporteComponent implements OnInit {
   @ViewChild('f4') form4: NgForm;
 
   data: any = [];
+  data_response: any = null;
   dataRFC: any = [];
-  dataCreditCar: any = [];
+  dataCreditCar: any = null;
   zipCode: boolean;
   street = 100;
   num_ext = '489B';
@@ -41,11 +45,14 @@ export class ReporteComponent implements OnInit {
   @Output() completed = new EventEmitter<boolean>();
 
   timeout = null;
-
+  elementToPrint: any;
   isNew = false;
   loading = false;
   disabled = true;
   /** */
+
+  basic: boolean = false;
+  principal: boolean = false;
 
   /**Paso 3 */
   /** */
@@ -61,6 +68,141 @@ export class ReporteComponent implements OnInit {
   jacuzzi = false;
   seguridadPrivada = false;
   constructor(private yals: YalsService) {
+
+  }
+  pdfBasico() {
+    this.basic = true;
+    this.data = {
+      "latitud": 20.9699248,
+      "longitud": -89.6513603,
+      "street": "22",
+      "num_ext": "521",
+      "zip": "97240",
+      "colonia": "Francisco I. Madero",
+      "municipio": "Merida",
+      "estado": "Yucatan",
+      "ciudad": "Merida",
+      "id_tipo_propiedad": 2,
+      "recamaras": 4,
+      "banos": 3,
+      "medios_banos": 2,
+      "estacionamientos": 1,
+      "area_construida": 122,
+      "superficie_terreno": 122,
+      "edad": 1,
+      "amenities": [
+        "cocina_integral",
+        "estudio"
+      ],
+      "email": "ventas@region4.mx",
+      "api_key": "x_brAgJfLNK5ANWGGMcRAkJR"
+    };
+
+
+    const yals_req: YalsRequest = this.data;
+    yals_req.id_tipo_propiedad = (+yals_req.id_tipo_propiedad);
+    yals_req.recamaras = (+yals_req.recamaras);
+    yals_req.banos = (+yals_req.banos);
+    yals_req.medios_banos = (+yals_req.medios_banos);
+    yals_req.estacionamientos = (+yals_req.estacionamientos);
+    yals_req.area_construida = (+yals_req.area_construida);
+    yals_req.superficie_terreno = (+yals_req.superficie_terreno);
+    yals_req.edad = (+yals_req.edad);
+
+    console.log("yals", yals_req);
+
+    this.yals.generateRequest(yals_req, null).subscribe(response => {
+
+      this.data_response = response;
+
+      setTimeout(() => {
+        this.elementToPrint = document.getElementById('basic-element-to-print');
+        console.log(this.elementToPrint);
+
+        const datauri = html2pdf(this.elementToPrint, {
+          margin: 0.4,
+          filename: 'reporte.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { dpi: 192, letterRendering: true },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+          action: "save"
+        });
+        datauri.then(data => { });
+      }, 1000)
+      console.log('response de data', this.data_response);
+    }, error => {
+      console.log('Error obteniendo la consulta');
+    });
+
+
+
+
+  }
+  pdfCompleto() {
+    this.principal = true;
+    this.data = {
+      "latitud": 20.9699248,
+      "longitud": -89.6513603,
+      "street": "22",
+      "num_ext": "521",
+      "zip": "97240",
+      "colonia": "Francisco I. Madero",
+      "municipio": "Merida",
+      "estado": "Yucatan",
+      "ciudad": "Merida",
+      "id_tipo_propiedad": 2,
+      "recamaras": 4,
+      "banos": 3,
+      "medios_banos": 2,
+      "estacionamientos": 1,
+      "area_construida": 122,
+      "superficie_terreno": 122,
+      "edad": 1,
+      "amenities": [
+        "cocina_integral",
+        "estudio"
+      ],
+      "email": "ventas@region4.mx",
+      "api_key": "x_brAgJfLNK5ANWGGMcRAkJR"
+    };
+
+
+    const yals_req: YalsRequest = this.data;
+    yals_req.id_tipo_propiedad = (+yals_req.id_tipo_propiedad);
+    yals_req.recamaras = (+yals_req.recamaras);
+    yals_req.banos = (+yals_req.banos);
+    yals_req.medios_banos = (+yals_req.medios_banos);
+    yals_req.estacionamientos = (+yals_req.estacionamientos);
+    yals_req.area_construida = (+yals_req.area_construida);
+    yals_req.superficie_terreno = (+yals_req.superficie_terreno);
+    yals_req.edad = (+yals_req.edad);
+
+    console.log("yals", yals_req);
+
+    this.yals.generateRequest(yals_req, null).subscribe(response => {
+
+      this.data_response = response;
+
+      setTimeout(() => {
+        this.elementToPrint = document.getElementById('element-to-print');
+        console.log(this.elementToPrint);
+
+        const datauri = html2pdf(this.elementToPrint, {
+          margin: 0.4,
+          filename: 'reporte.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { dpi: 192, letterRendering: true },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+          action: "save"
+        });
+        datauri.then(data => { });
+      }, 1000)
+      console.log('response de data', this.data_response);
+    }, error => {
+      console.log('Error obteniendo la consulta');
+    });
+
+
 
   }
 

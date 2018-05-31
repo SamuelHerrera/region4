@@ -18,7 +18,9 @@ export class YalsService {
 
   generateRequest(yals: YalsRequest, cuponid: String) {
     const client = this.obsv.currentUser;
-    return this._http.post('/api/yals', { clientid: client._id, yals_request: yals, cuponid: cuponid });
+    console.log("yals request", yals);
+    return this._http.post('/api/yals', { clientid: "5ab90b990bc461001497237e", yals_request: yals, cuponid: cuponid });
+    //return this._http.post('/api/yals', { clientid: client._id, yals_request: yals, cuponid: cuponid });
   }
 
   sendReport(emaildata) {

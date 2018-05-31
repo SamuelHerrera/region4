@@ -218,7 +218,7 @@
   flex-direction: row;
   /*flex-wrap: wrap;*/
   justify-content: center;
-  padding-bottom: 220px;
+  padding-bottom: 120px;
 }
 
 .totalEstimated {
@@ -435,23 +435,25 @@
 
 .intro h2 {
   width: 800px;
-  padding-left: 7px;
+  padding-left:7px;
   font-family: 'Poppins', sans-serif !important;
   font-weight: 300;
-  min-height: 26px;
+  height: 10px;
   color: #BFBFBF;
   letter-spacing: -1px;
+  font-size: 14px;
 }
 
 .intro p {
   width: 800px;
-  padding-left: 7px;
-  font-family: 'Poppins', sans-serif !important;
-  min-height: 58px;
-  font-weight: 300;
-  z-index: 155;
-  line-height: 22px;
-  text-align: justify;
+    padding-left: 7px;
+    font-family: 'Poppins', sans-serif !important;
+    
+    font-weight: 300;
+    z-index: 155;
+    line-height: 22px;
+    text-align: justify;
+    font-size: 14px;
 }
 
 .map2 {

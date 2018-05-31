@@ -164,7 +164,7 @@
 
       <div class="prices">
         <div class="totalEstimated">
-          <div class="estimated1">
+          <div class="estimated1" style=" height: 100px;">
             <h3>Estimado del valor total</h3>
 
             <h4>$
@@ -253,7 +253,6 @@
 
         <div class="intro ">
           <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
-          <h3></h3>
           <p>
             El reporte de tu inmueble de Valor Inmuebles se construye a partir de nuestros modelos de valuación automática, los cuales
             nos permiten dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados
@@ -538,7 +537,7 @@
           <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
         </div>
         <div class="graficaContainer" id="graficaColonia">
-          <!--<p-chart type="bar" [data]="datosPrecioColonia" [options]="options"></p-chart>-->
+          <p-chart type="bar" [data]="datosPrecioColonia" [options]="options"></p-chart>
         </div>
 
       </div>
@@ -581,7 +580,7 @@
                 listados en los últimos 6 meses).</p>
             </div>
             <div class="graficaContainer1" id="graficaPropiedadM2">
-              <!--<p-chart type="bar" [data]="datosPropiedadesM2" [options]="options"></p-chart>-->
+              <p-chart type="bar" [data]="datosPropiedadesM2" [options]="options"></p-chart>
             </div>
           </div>
         </div>
@@ -595,7 +594,7 @@
                 La gráfica muestra el porcentaje de ofertas en la colonia según su edad.</p>
             </div>
             <div class="graficaContainer2" id="graficaDatosVivienda">
-              <!--<p-chart type="bar" [data]="datosEdadVivienda" [options]="options"></p-chart>-->
+              <p-chart type="bar" [data]="datosEdadVivienda" [options]="options"></p-chart>
             </div>
           </div>
         </div>
@@ -613,7 +612,7 @@
                 La gráfica muestra el número de departamentos según su edad y número de recámaras (dormitorios).</p>
             </div>
             <div class="graficaContainer1" id="graficaRecamaras">
-              <!--<p-chart type="bar" [data]="datosRecamaras" [options]="options"></p-chart>-->
+              <p-chart type="bar" [data]="datosRecamaras" [options]="options"></p-chart>
             </div>
           </div>
         </div>
@@ -629,7 +628,7 @@
               </p>
             </div>
             <div class="graficaContainer2 numDepartamentos" id="graficaSuperficie">
-              <!--<p-chart type="bar" [data]="datosSuperficieConstruida" [options]="options"></p-chart>-->
+              <p-chart type="bar" [data]="datosSuperficieConstruida" [options]="options"></p-chart>
             </div>
           </div>
         </div>
@@ -698,7 +697,7 @@
         </div>
 
         <div class="graficaPlusvalia">
-          <!--<p-chart type="line" [data]="datoPlusvalia" [options]="optionsPlusvalia"></p-chart>-->
+          <p-chart type="line" [data]="datoPlusvalia" [options]="optionsPlusvalia"></p-chart>
         </div>
       </div>
 
@@ -831,7 +830,7 @@
     </div>
 
     <div class="terminos">
-      <div class="middleTitle">
+      <div class="middleTitle" style="height: 12px;">
         <span>TÉRMINOS Y CONDICIONES</span>
       </div>
 
@@ -851,12 +850,12 @@
         </p>
       </div>
 
-      <div class="middleTitle">
+      <div class="middleTitle" style="height: 12px;">
         <span>AVISO DE PRIVACIDAD</span>
       </div>
 
       <div class="contenido">
-        <p>
+        <p style="font-family: 'Poppins', sans-serif;">
           De conformidad con lo establecido en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares REGIÓN4
           ASESORES INMOBILIARIOS S.C.P por medio de www.valorinmuebles.com.mx pone a su disposición el siguiente aviso de privacidad.
           <br> REGIÓN4 ASESORES INMOBILIARIOS S.C.P por medio de www.valorinmuebles.com.mx es responsable del uso y protección de
@@ -906,9 +905,9 @@
         </p>
       </div>
     </div>
-    <div class="separador8">
+    <!--<div class="separador8">
 
-    </div>
+    </div>-->
     <div class="footer">
       <div class="footerContainer">
         <span>Reporte Generado el {{fechaCreacion}}</span>
