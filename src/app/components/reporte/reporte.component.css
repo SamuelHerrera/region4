@@ -489,19 +489,19 @@ mat-button-toggle {
     width: 100%;
     height: 100%;
     overflow: auto;
-  }  
-  @media only screen and (max-width:632px){
-    .addressDesc{
-        width: 100%;
-        height: 350px;
-        padding-left: 5px;
+  }
+  @media only screen and (max-width:632px) {
+    .addressDesc {
+      width: 100%;
+      height: 350px;
+      padding-left: 5px;
     }
-    .maps{
-        width: 100%;
-        padding-top: 40px;
+    .maps {
+      width: 100%;
+      padding-top: 40px;
     }
-    .address{
-      width:100%;
+    .address {
+      width: 100%;
       padding-left: 5px;
       padding-left: 10px;
       padding-right: 10px;
@@ -517,54 +517,57 @@ mat-button-toggle {
       
       justify-content: center;
     }*/
-    .subAddress{
-      width:100%;
-    }
-    .kind{
-      width:100%;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .kind h4{
+    .subAddress {
       width: 100%;
-    text-align: center;
     }
-    .homeStatus{
-      width:100%;
+    .kind {
+      width: 100%;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: center;
     }
-    .articles{
-      width:100%;
+    .kind h4 {
+      width: 100%;
+      text-align: center;
+    }
+    .homeStatus {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .articles {
+      width: 100%;
       display: flex;
       flex-direction: column;
       padding-left: 10px;
       padding-right: 10px;
     }
-    .description{
-      width:100%;
+    .description {
+      width: 100%;
       padding-left: 10px;
       padding-right: 10px;
     }
-    .pago-tarjeta{
+    .pago-tarjeta {
       display: flex;
       flex-direction: column;
     }
-    .cost{
+    .cost {
       min-width: 100%;
       min-height: 352px;
     }
-    .payment{
+    .payment {
       width: 100%;
       min-height: 425px;
     }
-    .miniContainers{
+    .miniContainers {
       width: 139px;
     }
-    .expiredDate{
+    .expiredDate {
       display: flex;
       flex-direction: column;
+    }
+  }
+}
