@@ -1,0 +1,30 @@
+div{
+    width:100%; 
+    position: absolute; 
+    bottom: 0; 
+    background-color: #12d726;
+    font-family: 'Poppins', sans-serif !important;
+    /*z-index: 9999999;*/
+}
+.texto{
+    padding-right: 15px; 
+    padding-left: 15px;
+    text-align: justify; 
+    font-weight: 300;
+}
+.link{
+    text-decoration: none;
+    color: black;
+}
+.close{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.boton{
+    padding: 5px 15px 5px 15px;
+    border-radius: 8px;
+    border: 1px gray solid;
+    background-color: lightgray;
+    cursor: pointer;
+}
