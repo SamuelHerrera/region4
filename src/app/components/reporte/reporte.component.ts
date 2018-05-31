@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { MatVerticalStepper } from '@angular/material';
 import { AgmCoreModule } from '@agm/core';
 import { YalsService } from '../../services/yals.service';
 import { SelectItem } from 'primeng/components/common/selectitem';
 import { group } from '@angular/animations';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-reporte',
@@ -11,26 +12,30 @@ import { group } from '@angular/animations';
   styleUrls: ['./reporte.component.css']
 })
 export class ReporteComponent implements OnInit {
+  @ViewChild('f0') form0: NgForm;
+  @ViewChild('f1') form1: NgForm;
+  @ViewChild('f2') form2: NgForm;
+  @ViewChild('f3') form3: NgForm;
+  @ViewChild('f4') form4: NgForm;
 
   data: any = [];
   dataRFC: any = [];
   dataCreditCar: any = [];
   zipCode: boolean;
   street = 100;
-  num_ext = "489B";
-  colonia = "Bojorquez";
+  num_ext = '489B';
+  colonia = 'Bojorquez';
   zip = 9700;
-  municipio = "Mérida";
-  ciudad = "Mérida";
-  estado="Yucatán";
+  municipio = 'Mérida';
+  ciudad = 'Mérida';
+  estado = 'Yucatán';
 
   /**Maps */
   lat = 21.082189;
   lng = -89.6368873;
-  //options: any;
   overlays: any[];
   /**Maps */
-  contador: number = 0;
+  contador = 0;
 
   @Input() avaluoForm: any;
   @Output() completed = new EventEmitter<boolean>();
@@ -53,10 +58,10 @@ export class ReporteComponent implements OnInit {
   jardin = false;
   amueblado = false;
   estudio = false;
-  jacuzzi = false; 
+  jacuzzi = false;
   seguridadPrivada = false;
   constructor(private yals: YalsService) {
-    
+
   }
 
   ngOnInit() {
@@ -88,7 +93,6 @@ export class ReporteComponent implements OnInit {
           this.avaluoForm['latitud'] = this.lat = response.results[0].geometry.location.lat;
           this.avaluoForm['longitud'] = this.lng = response.results[0].geometry.location.lng;
         } catch (e) {
-          //do nothing
         }
       });
 
@@ -109,23 +113,53 @@ export class ReporteComponent implements OnInit {
     }
   }
   siguiente() {
+    switch (this.contador) {
+      case 0:
+        if (!this.form0.valid) {
+          return;
+        }
+        break;
+      case 1:
+        if (!this.form1.valid
+          || !this.data['tipo_propiedad']
+          || !this.data['status_propiedad']
+          || !this.data['num_cuartos']
+          || !this.data['num_banos']
+          || !this.data['num_medio_bano']
+          || !this.data['num_parking']
+        ) {
+          return;
+        }
+        break;
+      case 2:
+        if (!this.form2.valid) {
+          return;
+        }
+        break;
+      case 3:
+        if (!this.form3.valid) {
+          return;
+        }
+        break;
+      case 4:
+        if (!this.form4.valid) {
+          return;
+        }
+        break;
+      default:
+        break;
+    }
     if (this.contador < 4) {
       this.contador += 1;
     }
-    console.log(this.data);
-    console.log(this.dataRFC);
-    console.log(this.dataCreditCar);
-
   }
+
   nuevo() {
     this.isNew = !this.isNew;
-    this.avaluoForm['edad'] = 0;
-    this.verify();
+    this.data['anios_antiguedad'] = 0;
   }
 
-  setConfig() {
 
-  }
   aplicarCodigo() {
     /*
     this.cupones.getCuponByName(this.codigoName).subscribe((response: any) => {

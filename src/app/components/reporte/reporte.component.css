@@ -1,274 +1,486 @@
 .container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/assets/images/ciudad.jpg');
-    background-size: cover;
-  }
-  
-  .regresar {
-    align-self: flex-start;
-    top: 5px;
-    position: absolute;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .title {
-    font-size: 6vh;
-    color: #586082;
-    margin-bottom: 15px;
-    font-weight: 700;
-    line-height: 1.1;
-    text-align: center;
-  }
-  
-  .sub-header {
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 16px;
-    line-height: 1.6em;
-    font-weight: 400;
-    color: #4d557d !important;
-    text-align: justify;
-    margin: 20px;
-  }
-  
-  mat-card {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    /*justify-content: center;*/
-    align-items: center;
-  }
-  
-  form {
-    display: flex;
-    height: 100%;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    font-family: 'Poppins', sans-serif;
-    /*flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/assets/images/ciudad.jpg');
+  background-size: cover;
+}
+
+.years {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.regresar {
+  align-self: flex-start;
+  top: 5px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 6vh;
+  color: #586082;
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.sub-header {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 16px;
+  line-height: 1.6em;
+  font-weight: 400;
+  color: #4d557d !important;
+  text-align: justify;
+  margin: 20px;
+}
+
+mat-card {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  align-items: center;
+}
+
+form {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  /*flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     width: 100% !important;
     max-width: 400px;*/
-  }
-  
-  mat-form-field {
-    max-width: 350px;
+}
+
+mat-form-field {
+  max-width: 350px;
+  width: 100%;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+label {
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 16px;
+  line-height: 1.6em;
+  font-weight: 400;
+  color: #4d557d !important;
+  text-align: justify;
+  margin: 10px;
+}
+
+.oculto {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.addressDesc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 32%;
+  height: 319px;
+  padding-right: 10px;
+}
+
+.input_address {
+  height: 20px;
+}
+
+.nums {
+  display: flex;
+  flex-direction: row;
+}
+
+.nums mat-form-field {
+  width: 49%;
+}
+
+mat-form-field {
+  width: 100%;
+  margin: 3px;
+}
+
+h4 {
+  padding: 5px;
+}
+
+.maps {
+  width: 49%;
+}
+
+.maps agm-map {
+  padding-top: 20px;
+  width: 100%;
+  height: 290px;
+}
+
+.nota {
+  color: darkslategrey;
+  margin: 15px;
+  text-align: justify;
+}
+
+.characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.address {
+  width: 20%;
+  padding-left: 5px;
+  max-width: 300px;
+}
+
+.articles {
+  min-width: 20%;
+  max-width: 40%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.article_button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_title {
+  display: flex;
+  flex-direction: column;
+}
+
+.image_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.description {
+  width: 30%;
+  padding-right: 10px;
+}
+
+.amenidades {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.miniContainers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+
+mat-button-toggle {
+  border: 0.5px rgba(0, 0, 0, .38) solid;
+}
+
+.medioBano {
+  width: 135px;
+}
+
+.pago-tarjeta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.cost {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 30%;
+  padding-left: 5px;
+}
+
+.payment {
+  width: 49%;
+}
+
+.paymentInfo {
+  padding-top: 5px;
+}
+
+.costContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.input-costo-reporte {
+  width: 40%;
+}
+
+.texto {
+  width: 60%;
+}
+
+.subContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.containerPayment1 {
+  width: 50%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.containerPayment {
+  width: 45%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.expiredDate {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.input-expiredDate {
+  width: 49%;
+}
+
+.datos-facturacion {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.principal {
+  padding-top: 23px;
+  padding-right: 10px;
+}
+
+.contact {
+  padding-top: 5px;
+}
+
+.oculto {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+@media only screen and (max-width:632px) {
+  .addressDesc {
     width: 100%;
-  }
-  
-  .actions {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
-    margin: 5px;
-  }
-  
-  label {
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif !important;
-    font-size: 16px;
-    line-height: 1.6em;
-    font-weight: 400;
-    color: #4d557d !important;
-    text-align: justify;
-    margin: 10px;
-  }
-  
-  .oculto {
-    position: absolute;
-    top: 0;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-  }
-  .addressDesc{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 32%;
-    height: 319px;
-    padding-right: 10px;
-  }
-  .input_address{
-    height: 20px;
-  }
-  .nums{
-    display: flex;
-    flex-direction: row;
-  }
-  .nums mat-form-field{
-    width: 49%;
-  }
-  mat-form-field{
-    width:100%;
-    margin:3px;
-  }
-  h4{
-    padding: 5px;
+    height: 350px;
   }
   .maps {
-    width: 49%;
-  }
-  
-  .maps agm-map {
-    padding-top: 20px;
     width: 100%;
-    height: 290px;
   }
-  .nota {
-    color: darkslategrey;
-    margin: 15px;
-    text-align: justify;
+  .address {
+    width: 100%;
+    padding-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  .characteristics{
+  /*.address{
+      width:100%;
+      padding-left: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+      justify-content: center;
+    }*/
+  .subAddress {
+    width: 100%;
+  }
+  .kind {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .kind h4 {
+    width: 100%;
+    text-align: center;
+  }
+  .homeStatus {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .articles {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .description {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .pago-tarjeta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .cost {
+    min-width: 100%;
+    min-height: 352px;
+  }
+  .payment {
+    width: 100%;
+    min-height: 425px;
+  }
+  .miniContainers {
+    width: 139px;
+  }
+  .expiredDate {
+    display: flex;
+    flex-direction: column;
+  }
+  .subContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .containerPayment1 {
+    width: 90%;
+  }
+  .containerPayment {
+    width: 90%;
+  }
+  .input-expiredDate {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:1040px) {
+  .address {
+    width: 100%;
+    padding-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    justify-content: center;
+  }
+  .kind {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .kind h4 {
+    width: 100%;
+    text-align: center;
+  }
+  .homeStatus {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .homeStatus h4 {
+    width: 100%;
+    text-align: center;
+  }
+  .articles {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .description {
+    padding-top: 10px;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .subDescription {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
   }
-  .address{
-    width:20%;
-    padding-left: 5px;
+  .pago-tarjeta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
-  .articles{
-    min-width: 20%;
-    max-width: 40%;
+  .cost {
     width: 40%;
-    display: flex;
-    flex-direction: column;
   }
-  .article_button{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  }
-  .button_title{
-    display: flex;
-    flex-direction: column;
-  }
-  .image_title{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  .description{
-    width:30%;
-    padding-right: 10px;
-  }
-  .amenidades{
-    width:100%;
-    display:flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .miniContainers{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-  }
-  .example-margin {
-    margin: 0 10px;
-  }
-  mat-button-toggle{
-    border:0.5px rgba(0,0,0,.38) solid;
-  }
-  .medioBano{
-    width: 135px;
-  }
-  .pago-tarjeta{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  .payment {
     width: 100%;
-  }
-  .cost{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 30%;
-    padding-left: 5px;
-  }
-  .payment{
-    width: 49%;
-  }
-  .paymentInfo{
-    padding-top: 5px;
-  }
-  .costContainer{
-    display: flex;
-    width:100%;
-    align-items: center;
-  }
-  .input-costo-reporte{
-    width:40%;
-  }
-  .texto{
-    width: 60%;
-  }
-  .subContainer{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-  }
-  .containerPayment1{
-    width: 50%;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .containerPayment{
-    width: 45%;
-    padding-left: 5px;
-    padding-right: 5px;
-  }
-  .expiredDate{
-    width:100%;
-    display: flex;
-    flex-direction: row;
-  }
-  .input-expiredDate{
-    width: 49%;
-  }
-  .datos-facturacion{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-  }
-  .content{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    flex-wrap: wrap;
-  }
-  .principal{
-    padding-top: 23px;
-    padding-right: 10px;
-  }
-  .contact{
-    padding-top: 5px;
+    min-height: 425px;
   }
   .oculto {
     position: absolute;
@@ -356,85 +568,3 @@
     .expiredDate{
       display: flex;
       flex-direction: column;
-
-    }
-    .subContainer{
-      display: flex;
-      flex-direction: column;
-    }
-    .containerPayment1{
-      width: 90%;
-    }
-    .containerPayment{
-      width: 90%;
-    }
-    .input-expiredDate{
-      width: 100%;
-    }
-
-  }
-  @media only screen and (max-width:1040px){
-    .address{
-      width:100%;
-      padding-left: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      /* flex-direction: column; */
-      justify-content: center;
-    }
-    .kind{
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .kind h4{
-      width: 100%;
-    text-align: center;
-    }
-    .homeStatus{
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .homeStatus h4{
-      width: 100%;
-      text-align: center;
-    }
-    .articles{
-      width:100%;
-      display: flex;
-      flex-direction: column;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .description{
-      padding-top: 10px;
-      width:100%;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-    .subDescription{
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .pago-tarjeta{
-      display: flex;
-      flex-direction: column;
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
-    .cost{
-      width: 40%;
-    }
-    .payment{
-      width: 100%;
-      min-height: 425px;
-    }
-  }
