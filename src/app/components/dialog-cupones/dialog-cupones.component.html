@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="scrollable">
+    <div class="promoContainer">
+      <div class="campaña">
+        <span class="ui-float-label">
+          <input id="campania" type="text" size="50" pInputText [(ngModel)]="data.campania" name="Campania" required>
+          <label for="campania">Campaña</label>
+        </span>
+      </div>
+      <div class="desc">
+        <span class="ui-float-label">
+          <input id="desc" type="text" size="50" pInputText name="Desc" [(ngModel)]="data.descripcion" required>
+          <label for="desc">Descripción</label>
+        </span>
+      </div>
+      <div class="cupon">
+        <span class="ui-float-label">
+          <input id="cupon" type="text" size="50" pInputText name="Cupon" [(ngModel)]="data.cupon" required>
+          <label for="cupon">Cupón</label>
+        </span>
+      </div>
+      <div class="Descuento">
+        <div class="ui-float-label">
+          <p-dropdown #descuento [appendTo]="'body'" id="Descuentos" [options]="descuentos" name="Descuento" placeholder="Descuento" optionLabel="name"
+          [(ngModel)]="data.porcentaje" required></p-dropdown>
+          <label for="Descuentos" *ngIf="descuento.value">Descuento</label>
+        </div>
+      </div>
+
+      <div class="estatus">
+        <div class="ui-float-label">
+          <p-dropdown #estatus id="estatus" [appendTo]="'body'" [options]="Estatus" name="estatus" placeholder="Estatus" optionLabel="name" [(ngModel)]="data.estatus"
+            required></p-dropdown>
+          <label for="estatus" *ngIf="estatus.value">Estatus</label>
+        </div>
+      </div>
+      <div class="button">
+        <p-button label="Crear" (onClick)="crearCupon()" ></p-button>
+      </div>
+    </div>
+  </div>
+</div>

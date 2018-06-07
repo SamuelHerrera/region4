@@ -1,0 +1,53 @@
+<html id="facturacion">
+
+<head>
+
+</head>
+
+<body>
+  <div class="mainConainer" style="    display: inline-block;
+  width: 100%;">
+    <div class="superTitle" style="background: #28225c;
+    width: 100%;
+    display: flex;">
+      <div class="superContainer" style="padding-bottom: 10px;  width:100%; display: inline-block;">
+        <a href="http://valorinmuebles.com.mx" style="margin: 15px;">
+          <img class="logo" src="https://valorinmuebes.herokuapp.com/assets/images/logo3.png" 
+          style="height: 78px;
+          width: 165px;
+          margin-left: 35px;
+          margin-top: 10px;" />
+        </a>
+      </div>
+    </div>
+
+    <div class="container2" style="    text-align: left; width: 100%; display: inline-block; ">
+      <h1>Solicitud de factura</h1>
+      <h3>Datos para facturación</h3>
+      <div class="datosfacturacion" style="text-align: left;
+    background-color: #f1f4f8;
+      width: 100%;
+      display: inline-block;">
+
+        <div style="padding-left: 75px;
+        width: 650;">RFC: {{facturacion.rfc}} </div>
+        <!-- <div style="padding-left: 75px;
+        width: 650;">Direccion Fiscal: Calle: {{facturacion.street}} #{{facturacion.num_ext}}, Col. {{facturacion.colonia}}, {{facturacion.municipio}},
+          {{facturacion.localidad}}, {{facturacion.estadao}}, {{facturacion.pais}} </div> -->
+        <div style="padding-left: 75px;
+        width: 650;">Nombre: {{facturacion.nombreContacto}} </div>
+        <div style="padding-left: 75px;
+        width: 650;">Correo electronico del cliente: {{facturacion.correoContacto}}</div>
+        <div style="padding-left: 75px;
+        width: 650;">Monto a facturar: {{facturacion.total}}</div>
+        <div style="padding-left: 75px;
+        width: 650;">Fecha de la transacción: {{facturacion.FechaTransaccion}}</div>
+        <div style="padding-left: 75px;
+        width: 650;">Forma de pago: {{facturacion.formapago}}</div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -11,6 +11,12 @@ import { PoliticaprivacidadComponent } from '../components/politicaprivacidad/po
 import { AvisocookiesComponent } from '../components/avisocookies/avisocookies.component';
 import { ReporteComponent } from '../components/reporte/reporte.component';
 
+import { AdministracionComponent } from '../components/administracion/administracion.component';
+import { CuponesComponent } from '../components/cupones/cupones.component';
+import { AvaluoComponent } from '../components/avaluo/avaluo.component';
+import { AuthGuard } from '../guards/auth.guard';
+import { IsSecureGuard } from '../guards/is-secure-guard.guard';
+
 const routes: Routes = [
   {
     path: '',
@@ -71,6 +77,21 @@ const routes: Routes = [
         component: RestablecerComponent
       }
     ]
+  },
+  {
+    path: 'administracion',
+    canActivate: [IsSecureGuard],
+    component: AdministracionComponent
+  },
+  {
+    path: 'cupones',
+    canActivate: [IsSecureGuard],
+    component: CuponesComponent
+  },
+  {
+    path: 'generaravaluo',
+    canActivate: [AuthGuard, IsSecureGuard],
+    component: AvaluoComponent
   },
 ];
 

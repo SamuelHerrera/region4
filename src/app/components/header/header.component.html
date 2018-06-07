@@ -1,0 +1,45 @@
+<div class="container">
+  <a class="clickable" [routerLink]="'/iniciosesion'">
+    <img class="logo" style="filter: hue-rotate(130deg);" src="assets/images/logo2.png" />
+  </a>
+  <div class="overbutton actions" *ngIf="!user.mail">
+    <button id="action-button-1" pButton (click)="showDialog2()" label="Registro"></button>
+    <button id="action-button-2" pButton (click)="showDialog()" label="Inicio Sesion"></button>
+  </div>
+  <div class="actions" *ngIf="user.mail">
+    <div class="username">{{user.name}}</div>
+    <button pButton (click)="logout()" label="Finalizar Sesion"></button>
+  </div>
+</div>
+
+<p-dialog [(visible)]="display2" [draggable]="false" [modal]="true" [responsive]="true" [width]="450" [minWidth]="450" [minY]="70">
+  <app-registro></app-registro>
+</p-dialog>
+
+<p-dialog [(visible)]="display" [draggable]="false" [modal]="true" [responsive]="true" [width]="450" [minWidth]="450" [minY]="70">
+  <div class="container1">
+    <div class="centered">
+      <div class="header">
+        INICIO DE SESION
+      </div>
+      <div class="formA">
+        <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+          <span class="ui-float-label">
+            <input type="text" size="50" pInputText name="Correo" ngModel required (keyup.enter)="login()">
+            <label for="Correo">Correo</label>
+          </span>
+          <span class="ui-float-label morem">
+
+            <input id="Cont" type="password" size="50" pInputText name="Contrasena" ngModel required (keyup.enter)="login()">
+            <label for="Cont">Contraseña</label>
+          </span>
+          <div class="ui-float-label button">
+            <p-checkbox name="recuerdame" label="Recuerdame" ngModel binary="true" (onChange)="change($event)"></p-checkbox>
+            <p-button (onClick)="login()" label="Iniciar Sesion"></p-button>
+          </div>
+          <label class="subtext clickable" [routerLink]="'/forgotpass'">Olvide mi contraseña</label>
+        </form>
+      </div>
+    </div>
+  </div>
+</p-dialog>

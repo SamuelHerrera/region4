@@ -1,0 +1,23 @@
+.amenidades{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    justify-content: space-around;
+}
+.miniContainers{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    height: 100px; 
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 15px;
+    line-height: 14px;
+    font-family: '__Merriweather Sans_5';
+    font-weight: 300;
+}
+.imgContainer{
+    width:100%;
+}

@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="cost mat-elevation-z8">
+    <div class="costContainer">
+      <span>Costo Reporte</span>
+      <input id="disabled-input" type="text" size="20" value="1" pInputText [disabled]="disabled" name="costoAvaluo" [(ngModel)]="facturacion['costoAvaluo']"
+      />
+    </div>
+    <div class="costContainer">
+      <span>Código de Cupón</span>
+      <input id="disabled-input" type="text" size="20" pInputText [disabled]="codigo" [(ngModel)]="codigoName" name="codigoCupon"
+      />
+    </div>
+    <div class="cupon">
+      <span class="descuentos">{{montoDescuento}}</span>
+      <p-button (onClick)="aplicarCodigo()" label="Aplicar"></p-button>
+    </div>
+    <div class="costContainer">
+      <span>Subtotal</span>
+      <input id="disabled-input" type="text" value="1" size="20" pInputText [disabled]="disabled" name="subtotal" [(ngModel)]="facturacion['subTotal']"
+      />
+    </div>
+    <div class="divisor">
+      <hr>
+    </div>
+    <div class="costContainer">
+      <span>TOTAL</span>
+      <input id="disabled-input" type="text" value="1" size="20" pInputText [disabled]="disabled" name="total" [(ngModel)]="facturacion['total']"
+      />
+    </div>
+  </div>
+
+  <p-tabView>
+    <p-tabPanel header="Tarjeta Credito/Debito">
+      <div class="paymentInfo">
+        <div class="tittle">Ingresa los datos de tu tarjeta de crédito o débito</div>
+        <div class="subContainer">
+          <div class="containerPayment1">
+            <div>
+              <span class="ui-float-label">
+                <input id="float-input" type="text" size="25" pInputText name="nombre" [(ngModel)]="pf['nombre']">
+                <label for="float-input">Nombre</label>
+              </span>
+            </div>
+            <div>
+              <span class="ui-float-label">
+                <input id="float-input" type="text" size="25" pInputText name="nombre" [(ngModel)]="pf['apellidos']">
+                <label for="float-input">Apellidos</label>
+              </span>
+            </div>
+            <div class="expiredDate">
+              <span class="ui-float-label">
+                <input id="float-input" type="text" size="5" pInputText name="mes" [(ngModel)]="pf['mesExpiracion']">
+                <label for="float-input">MM</label>
+              </span>
+              <span class="ui-float-label">
+                <input id="float-input" type="text" size="5" pInputText name="anio" [(ngModel)]="pf['anyoExpiracion']">
+                <label for="float-input">AA</label>
+              </span>
+            </div>
+            <!--<div class="isHidden">
+              <span class="ui-float-label">
+                <input id="float-input" type="text" size="25" pInputText name="calle" [(ngModel)]="pf['calleyNumero']">
+                <label for="float-input">Calle y Numero</label>
+              </span>
+            </div>
+            <div class="numInfo isHidden">
+              <span class="ui-float-label">
+                <input id="float-input" type="text" size="8" pInputText name="numInt">
+                <label for="float-input">No. Interior</label>
+              </span>
+            </div>-->
+            <!--<span class="ui-float-label">
+              <input id="float-input" type="text" size="25" pInputText name="colonia" [(ngModel)]="pf['colonia']">
+              <label for="float-input">Colonia</label>
+            </span>
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="25" pInputText name="ciudad" [(ngModel)]="pf['municipio']">
+              <label for="float-input">Ciudad</label>
+            </span>-->
+          </div>
+
+          <div class="containerPayment">
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="25" pInputText name="numTajerta" [(ngModel)]="pf['numeroTarjeta']">
+              <label for="float-input">Número de Tarjeta</label>
+            </span>
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="25" pInputText name="codigoSeguridad" [(ngModel)]="pf['cvt']">
+              <label for="float-input">Código de Seguridad</label>
+            </span>
+
+            <!--<div class="isHidden">
+              <span class="ui-float-label">
+                <input id="float-input" type="text" size="25" pInputText name="estado" [(ngModel)]="pf['estado']">
+                <label for="float-input">Estado</label>
+              </span>
+            </div> -->
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="25" pInputText name="codigoPostal" [(ngModel)]="pf['cp']">
+              <label for="float-input">Código Postal</label>
+            </span>
+            <!--<div class="isHidden">
+              <span class="ui-float-label">
+                <input id="float-input" type="text" size="25" pInputText name="pais" [(ngModel)]="pf['pais']">
+                <label for="float-input">País</label>
+              </span>
+            </div>-->
+            <span class="ui-float-label">
+              <input id="float-input" type="text" size="25" pInputText name="telefono" [(ngModel)]="pf['telefono']">
+              <label for="float-input">Teléfono</label>
+            </span>
+          </div>
+        </div>
+        <div class="payButton">
+          <p-button (onClick)="pagarAvaluo()" label="Pagar Ahora" [disabled]="loading"></p-button>
+          <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
+        </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="PayPal">
+      <p-button (onClick)="pagarAvaluoPayPal()" label="Pagar Ahora con PayPal" [disabled]="loading"></p-button>
+      <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
+    </p-tabPanel>
+  </p-tabView>
+
+
+</div>
