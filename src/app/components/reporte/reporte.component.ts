@@ -141,29 +141,29 @@ export class ReporteComponent implements OnInit {
   pdfCompleto() {
     this.principal = true;
     this.data = {
-      "latitud": 20.9699248,
-      "longitud": -89.6513603,
-      "street": "22",
-      "num_ext": "521",
-      "zip": "97240",
-      "colonia": "Francisco I. Madero",
-      "municipio": "Merida",
-      "estado": "Yucatan",
-      "ciudad": "Merida",
-      "id_tipo_propiedad": 2,
-      "recamaras": 4,
-      "banos": 3,
-      "medios_banos": 2,
-      "estacionamientos": 1,
-      "area_construida": 122,
-      "superficie_terreno": 122,
-      "edad": 1,
-      "amenities": [
-        "cocina_integral",
-        "estudio"
+      'latitud': 20.9699248,
+      'longitud': -89.6513603,
+      'street': '22',
+      'num_ext': '521',
+      'zip': '97240',
+      'colonia': 'Francisco I. Madero',
+      'municipio': 'Merida',
+      'estado': 'Yucatan',
+      'ciudad': 'Merida',
+      'id_tipo_propiedad': 2,
+      'recamaras': 4,
+      'banos': 3,
+      'medios_banos': 2,
+      'estacionamientos': 1,
+      'area_construida': 122,
+      'superficie_terreno': 122,
+      'edad': 1,
+      'amenities': [
+        'cocina_integral',
+        'estudio'
       ],
-      "email": "ventas@region4.mx",
-      "api_key": "x_brAgJfLNK5ANWGGMcRAkJR"
+      'email': 'ventas@region4.mx',
+      'api_key': 'x_brAgJfLNK5ANWGGMcRAkJR'
     };
 
 
@@ -177,7 +177,7 @@ export class ReporteComponent implements OnInit {
     yals_req.superficie_terreno = (+yals_req.superficie_terreno);
     yals_req.edad = (+yals_req.edad);
 
-    console.log("yals", yals_req);
+    console.log('yals', yals_req);
 
     this.yals.generateRequest(yals_req, null).subscribe(response => {
 
@@ -193,10 +193,10 @@ export class ReporteComponent implements OnInit {
           image: { type: 'jpeg', quality: 0.98 },
           html2canvas: { dpi: 192, letterRendering: true },
           jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-          action: "save"
+          action: 'save'
         });
         datauri.then(data => { });
-      }, 1000)
+      }, 1000);
       console.log('response de data', this.data_response);
     }, error => {
       console.log('Error obteniendo la consulta');

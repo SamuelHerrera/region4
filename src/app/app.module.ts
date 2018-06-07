@@ -13,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
-
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -24,8 +23,10 @@ import { DialogModule } from 'primeng/dialog';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { ChartModule } from 'primeng/chart';
-import { ProgressBarModule } from 'primeng/progressbar';
+import { MatStepperModule } from '@angular/material/stepper';
 
+import { ProgressBarModule } from 'primeng/progressbar';
+import { SplitButtonModule } from 'primeng/splitbutton';
 import { AppRoutingModule } from './router/app-routing.module';
 import { AppComponent } from './app.component';
 import { LandingComponent } from './components/landing/landing.component';
@@ -104,15 +105,19 @@ import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.
     AdministracionComponent,
     DatosfacturacionComponent,
     Paso1Component,
+    Paso2Component,
+    Paso3Component,
     AvaluoComponent,
     AppComponent,
     LandingComponent,
+    BasicReportComponent,
     SafePipe,
     LoginComponent,
     RegisterComponent,
     TerminosComponent,
     ActivacionComponent,
     ReenviarComponent,
+    PagoConTarjetaComponent,
     RestablecerComponent,
     PoliticaprivacidadComponent,
     AvisocookiesComponent,
@@ -130,13 +135,21 @@ import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    SplitButtonModule,
     MatCheckboxModule,
+    ButtonModule,
+    TabViewModule,
     MatSnackBarModule,
+    SelectButtonModule,
+    CheckboxModule,
+    ProgressBarModule,
     HttpClientModule,
     MatSelectModule,
     MatButtonToggleModule,
+    MatStepperModule,
     MatTabsModule,
     MatTableModule,
+    DropdownModule,
     ChartModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBYcMrK6MOhpjQ93Cg1BeN8RkGAb5KFHhc'

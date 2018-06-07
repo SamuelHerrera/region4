@@ -56,7 +56,8 @@
     "nodemailer": "^4.6.4",
     "nodemon": "^1.17.4",
     "paypal-express-checkout": "^1.6.3",
-    "primeng": "^6.0.0-alpha.1",
+    "primeicons": "^1.0.0-beta.6",
+    "primeng": "^6.0.0-beta.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
