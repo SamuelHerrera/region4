@@ -1,0 +1,75 @@
+<div id="template_activacion" class="oculto">
+  <html>
+
+  <head>
+  </head>
+
+  <body>
+    <div class="mainContainer" style="width:100%; display:inline-block; ">
+      <div class="superTitle" style="background: #28225c; width: 100%; display: inline-block;">
+        <div class="superContainer" style="padding-bottom: 10px; padding-top:10px;  width:100%; display: inline-block;">
+          <a href="#" style="margin: 15px;">
+            <img class="logo" src="https://valorinmuebes.herokuapp.com/assets/images/logo3.png" style="height: 78px;
+          width: 165px;
+          margin-left: 35px; ">
+          </a>
+        </div>
+      </div>
+      <div class="container2" style=" text-align: left; width: 100%; display: inline-block;">
+        <div style="    text-align: left; width: 100%; display: inline-block; ">
+          <h1 style="padding-top:20px; padding-bottom:20px; font-size:25px; font-weight:400;">Apreciable {{cliente.name}}</h1>
+          <h3 style="text-align:justify;">Hemos recibido tu solicitud de registro, te pedimos que sigas las instrucciones a continuación para la activación
+            de tu cuenta.
+          </h3>
+        </div>
+        <div style="text-align: left;  width: 100%; display: inline-block; padding-top:20px; padding-bottom: 20px;">
+          Ingresa a nuestra página
+          <a href="http://www.valorinmuebles.com.mx/activacion/{{cliente.activationCode}}">aquí</a>
+          <br> Usa el código de activación: {{cliente.key}} {{cliente.activationCode}}
+        </div>
+        <div style="    text-align: left;
+          width: 100%;
+          display: inline-block;">
+          <span>No respondas a este correo, si requieres más información. Contáctanos a ventas@region4.mx .
+          </span>
+        </div>
+        <div style="text-align: center;
+          width: 100%;
+          display: inline-block;">
+          <h3>
+            <a href="https://www.valorinmuebles.com.mx/terminos-y-condiciones">Términos y Condiciones</a>
+          </h3>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  </html>
+</div>
+<div class="container">
+  <mat-card>
+    <div class="regresar" [routerLink]="'/inicio'">
+      <i class="material-icons">
+        arrow_back
+      </i>Volver a inicio</div>
+    <div class="title">REENVIAR CÓDIGO DE ACTIVACIÓN</div>
+    <div class="sub-header">
+      Ingrese su correo y a continuación presione el botón reenviar código.
+    </div>
+    <form #f="ngForm">
+      <mat-form-field class="">
+        <input matInput placeholder="Correo" [formControl]="emailFormControl" type="email">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Ingresa un email valido
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          El correo es
+          <strong>necesario</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="actions">
+        <button mat-raised-button color="primary" [disabled]="(!emailFormControl.valid)||block" (click)="reenviar()">Reenviar</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

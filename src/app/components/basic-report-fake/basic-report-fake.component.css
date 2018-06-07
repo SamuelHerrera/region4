@@ -62,7 +62,7 @@
   line-height: 14px;
   padding-right: 5px;
   color: white;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   text-align: right;
   background-color: transparent;
   font-size: 14px;
@@ -71,7 +71,7 @@
 .generatedDate {
   font-weight: 300;
   line-height: 14px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   text-align: right;
   font-size: 10px;
   padding-right: 5px;
@@ -109,7 +109,7 @@
 
 .direcContent {
   width: 310px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   background-color: transparent;
   /*min-height: 143px;*/
   color: #28245B;
@@ -132,7 +132,7 @@
   width: 120px;
   padding: 5px 5px 5px 5px;
   font-size: 11px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 300;
   color: #28245B;
 }
@@ -140,7 +140,7 @@
 .middleTitle {
   height: 25px;
   line-height: 24px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 300;
   color: #9EA3A3;
   font-size: 20px;
@@ -160,7 +160,7 @@
 .littleTitle {
   /*font-weight: 300;*/
   width: 310px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   background-color: transparent;
   /*min-height: 143px;*/
   color: #28245B;
@@ -196,7 +196,7 @@
 .subamenidades span {
   font-weight: 300;
   line-height: 14px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   text-align: center;
   font-size: 12px;
 }
@@ -218,7 +218,7 @@
   flex-direction: row;
   /*flex-wrap: wrap;*/
   justify-content: center;
-  padding-bottom: 220px;
+  padding-bottom: 120px;
 }
 
 .totalEstimated {
@@ -262,7 +262,7 @@
 }
 
 .estimated2 h4 {
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   text-align: center;
   min-height: 40px;
   font-weight: 300;
@@ -276,7 +276,7 @@
 
 .subText p {
   line-height: 12px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 300;
   min-height: 33px;
   background-color: transparent;
@@ -311,7 +311,7 @@
 }
 
 .mEstimated1 h4 {
-  /*font-family: '__Merriweather Sans_5';
+  /*font-family: 'Poppins', sans-serif !important;
     text-align: center;
     min-height: 40px;
     font-weight: 300;*/
@@ -340,7 +340,7 @@
 }
 
 .mEstimated2 div h4 {
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   text-align: center;
   min-height: 40px;
   font-weight: 300;
@@ -405,7 +405,7 @@
 
 .textContent h2 {
   width: 620px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   margin-top: 14px;
   padding-bottom: 5px;
   background-color: transparent;
@@ -415,7 +415,7 @@
 
 .textContent p {
   width: 620px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   margin-top: 14px;
   background-color: transparent;
   font-weight: 300;
@@ -435,23 +435,25 @@
 
 .intro h2 {
   width: 800px;
-  padding-left: 7px;
-  font-family: '__Merriweather Sans_5';
+  padding-left:7px;
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 300;
-  min-height: 26px;
+  height: 10px;
   color: #BFBFBF;
   letter-spacing: -1px;
+  font-size: 14px;
 }
 
 .intro p {
   width: 800px;
-  padding-left: 7px;
-  font-family: '__Merriweather Sans_5';
-  min-height: 58px;
-  font-weight: 300;
-  z-index: 155;
-  line-height: 22px;
-  text-align: justify;
+    padding-left: 7px;
+    font-family: 'Poppins', sans-serif !important;
+    
+    font-weight: 300;
+    z-index: 155;
+    line-height: 22px;
+    text-align: justify;
+    font-size: 14px;
 }
 
 .map2 {
@@ -556,7 +558,7 @@
   z-index: 194;
   background-color: transparent;
   line-height: 13px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   min-height: 37px;
   color: #494949;
   font-size: 11px;
@@ -586,7 +588,7 @@
   height: 35px;
   background-color: #9c9a9a;
   text-align: center;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   min-height: 40px;
   font-weight: 300;
   color: #FFFFFF;
@@ -608,14 +610,14 @@ table td {
 }
 
 .promediom2 {
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   text-align: center;
   min-height: 40px;
   font-weight: 300;
 }
 
 .txtPromedio {
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   text-align: center;
   min-height: 40px;
   font-weight: 300;
@@ -633,7 +635,7 @@ table td {
 }
 
 .intro2 p {
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   padding-left: 5px;
   font-weight: 300;
   z-index: 155;
@@ -651,7 +653,7 @@ table td {
 .contenido p {
   width: 800px;
   padding-left: 5px;
-  font-family: '__Merriweather Sans_5';
+  font-family: 'Poppins', sans-serif !important;
   font-weight: 300;
   line-height: 17px;
   font-size: 12px;
@@ -699,7 +701,7 @@ table td {
 }
 
 .superTitle {
-  background: #28225C;
+  background: rgb(130, 125, 172);
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -727,7 +729,7 @@ canvas {
 }
 
 .footer {
-  background: #28225C;
+  background: rgb(130, 125, 172);
   display: flex;
   flex-direction: row;
   justify-content: center;

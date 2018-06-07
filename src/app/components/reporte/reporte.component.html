@@ -1,766 +1,448 @@
-<div class="container" id="element-to-print2">
-  <div class="scrollable">
+<div class="oculto">
+  <app-reporte-fake [datos]="data_response" *ngIf="data_response&&principal"></app-reporte-fake>
+  <app-basic-report-fake [datos]="data_response" *ngIf="data_response&&basic"></app-basic-report-fake>
+</div>
+<div class="container">
+  <div class="buttons">
+    <button (click)="pdfBasico()">
+      PDF básico
+    </button>
+    <button (click)="pdfCompleto()">
+      PDF completo
+    </button>
+  </div>
+  <mat-card>
+    <div class="regresar" [routerLink]="'/inicio'">
+      <i class="material-icons">
+        arrow_back
+      </i>Cerrar Sesión</div>
+    <div class="title">GENERAR REPORTE</div>
 
-    <!--{{datos.data.request.colonia|json}}-->
-    <div class="superTitle">
-      <div class="superContainer">
-        <a href="#">
-          <img class="logo" src="assets/images/logo2.png" />
-        </a>
-        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
-      </div>
+    <div style="
+    width:100%;
+    justify-content: center;
+    display:  flex;
+    flex-direction:  row;
+    flex-wrap:  nowrap;
+    padding-left:  10px;
+    padding-right:  10px;
+    align-items: center;
+    ">
+      <button mat-button color="primary" (click)="anterior()">Anterior</button>
+      <h4 *ngIf="contador==0">Paso 1</h4>
+      <h4 *ngIf="contador==1">Paso 2</h4>
+      <h4 *ngIf="contador==2">Paso 3</h4>
+      <h4 *ngIf="contador==3">Paso 4</h4>
+      <h4 *ngIf="contador==4">Paso 5</h4>
+      <button mat-button color="primary" (click)="siguiente()">Siguiente</button>
     </div>
 
-    <div class="title">
-      <div class="titleContainer">
-        <div class="subTitleContainer">
-          <span class="principalTitle">REPORTE DEL INMUEBLE</span>
-          <div class="idReport">
-            <!--<span class="reportID">ID {{datos.data._id}}</span>-->
-            <!--<span class="generatedDate">Reporte generado el {{datos.data.dateCreated | json}}{{datos.data.dateCreated| date:' d, y'}}-->
-            <span class="generatedDate">Reporte generado el {{fechaCreacion}}
-              <!--{{generatedReport}}-->
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!--Paso 1-->
+    <form #f0="ngForm" *ngIf="contador==0" (ngSubmit)="onSubmit(f.value)">
+      <div class="addressDesc">
 
-    <div class="characteristics">
-      <div class="middleTitle">
-        <span>CARACTERÍSTICAS DE LA PROPIEDAD</span>
-      </div>
-      <div class="address">
-        <div class="subAddress">
-          <div class="dir">
-            <div class="littleTitle">
-              <span>DIRECCIÓN</span>
-            </div>
+        <mat-form-field class="input_address">
+          <input matInput name="street" placeholder="Calle" [(ngModel)]="data['street']" required>
+        </mat-form-field>
+        <div class="nums">
 
-            <div class="direcContent">
-              <p> {{datos.data.response.address.colonia}}, {{datos.data.response.address.street}}
-                <!--{{colonia}}, {{calle}}-->No. Ext. {{datos.data.response.address.num_ext}}
-                <!--{{numExt}}-->, No. Int s/n
-                <!--{{numInt}}-->
-              </p>
-              <p>C.P. {{datos.data.response.address.zip}}
-                <!--{{codigoPostal}}-->
-              </p>
-              <p> {{datos.data.response.address.ciudad}}, {{datos.data.response.address.estado}}
-                <!--{{ciudad}}, {{estado}}-->
-              </p>
-            </div>
+          <mat-form-field class="input_address">
+            <input matInput name="num_ext" placeholder="Núm. Exterior" [(ngModel)]="data['num_ext']" required>
+          </mat-form-field>
 
-          </div>
-          <div class="carac">
-            <div class="littleTitle">
-              <span>CARACTERÍSTICAS</span>
-            </div>
-
-            <div class="caracContainer">
-              <div class="subCarac">
-                <div class="imgContainer">
-                  <img class="images" src="../assets/images/cuarto.png" alt="Smiley face" height="16" width="16" />
-                </div>
-                <!--{{numCuartos}}-->{{datos.data.response.characteristics.recamaras}} Cuartos
-
-              </div>
-
-              <div class="subCarac">
-                <div class="imgContainer">
-                  <img class="images" src="../assets/images/bano.png" alt="Smiley face" height="16" width="16" />
-                </div>
-                <!--{{numBanos}}-->{{datos.data.response.characteristics.banos}} Baños
-
-              </div>
-
-              <div class="subCarac">
-                <div class="imgContainer">
-                  <img class="images" src="../assets/images/medio-bano.png" alt="Smiley face" height="16" width="16" />
-                </div>
-                <!--{{numMBanos}}-->{{datos.data.response.characteristics.medios_banos}} Medios Baños
-
-              </div>
-
-              <div class="subCarac">
-                <div class="imgContainer">
-                  <img class="images" src="../assets/images/parking.png" alt="Smiley face" height="16" width="16" />
-                </div>
-                <!--{{numParking}}-->{{datos.data.response.characteristics.estacionamientos}} Parking
-
-              </div>
-
-            </div>
-          </div>
-
+          <mat-form-field class="input_address">
+            <input matInput name="zipCode" type="number" max="5" min="5" placeholder="Código postal" [(ngModel)]="data['zipCode']" required>
+          </mat-form-field>
         </div>
 
-        <div class="amenidades">
-          <div class="littleTitle">AMENIDADES</div>
-          <div class="containerAmenidades">
+        <mat-form-field class="input_address">
+          <input matInput name="colonia" placeholder="Colonia" [(ngModel)]="data['colonia']" required>
+        </mat-form-field>
 
-            <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
+        <mat-form-field class="input_address">
+          <input matInput name="municipio" placeholder="Municipio/Delegación" [(ngModel)]="data['municipio']" required>
+        </mat-form-field>
 
-              <div class="imgContainer" *ngIf="item=='cocina_integral'">
-                <img class="images" src="../assets/images/cocina.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='aire_acondicionado'">
-                <img class="images" src="../assets/images/ac.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='gimnasio'">
-                <img class="images" src="../assets/images/gimnasio.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='terraza'">
-                <img class="images" src="../assets/images/terraza.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='alberca'">
-                <img class="images" src="../assets/images/alberca.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='cuarto_servicio'">
-                <img class="images" src="../assets/images/lavado.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='jardin'">
-                <img class="images" src="../assets/images/jardin.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='amueblado'">
-                <img class="images" src="../assets/images/amueblado.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='estudio'">
-                <img class="images" src="../assets/images/estudio.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='jacuzzi'">
-                <img class="images" src="../assets/images/jacuzzi.png" alt="Smiley face" height="32" width="32" />
-              </div>
-              <div class="imgContainer" *ngIf="item=='seguridad'">
-                <img class="images" src="../assets/images/seguridad.png" alt="Smiley face" height="32" width="32" />
-              </div>
+        <mat-form-field class="input_address">
+          <input matInput name="estado" placeholder="Estado" [(ngModel)]="data['estado']" required>
+        </mat-form-field>
 
-              <span *ngIf="item=='seguridad'">seguridad</span>
-              <span *ngIf="item=='jacuzzi'">Jacuzzi</span>
-              <span *ngIf="item=='estudio'">Estudio</span>
-              <span *ngIf="item=='amueblado'">Amueblado</span>
-              <span *ngIf="item=='jardin'">Jardín</span>
-              <span *ngIf="item=='cuarto_servicio'">Cuarto de Servicio</span>
-              <span *ngIf="item=='alberca'">Alberca</span>
-              <span *ngIf="item=='terraza'">Roof garden/ terraza</span>
-              <span *ngIf="item=='gimnasio'">Gimnasio</span>
-              <span *ngIf="item=='aire_acondicionado'">Aire Acondicionado</span>
-              <span *ngIf="item=='cocina_integral'">Cocina Integral</span>
-            </div>
-          </div>
-        </div>
+        <mat-form-field class="input_address">
+          <input matInput name="city" placeholder="Ciudad" [(ngModel)]="data['ciudad']" required>
+        </mat-form-field>
+
       </div>
-    </div>
-
-    <div class="divisor">
-      <hr>
-    </div>
-
-    <div class="estimatedValue">
-
-      <div class="middleTitle">
-        <span>ESTIMADO DE VALOR EN {{fechaConsulta}}</span>
+      <div class="maps">
+        <agm-map [latitude]="21.082189" [longitude]="-89.6368873" [zoom]="16" [scrollwheel]="false">
+          <agm-marker [latitude]="21.082189" [longitude]="-89.6368873" [markerDraggable]="true"></agm-marker>
+        </agm-map>
+        <!--<p-gmap [options]="options" style="width:100%; height: 230px;" ></p-gmap>-->
+        <div class="nota">
+          <b>Importante:</b> Es necesario que ubiques el marcador dentro o lo mas cercano a tu propiedad. Es posible que la
+          foto final del reporte no sea exacta pero esto no afecta el estimado de valor.</div>
       </div>
+    </form>
+    <!--Fin de paso 1-->
 
-      <div class="prices">
-        <div class="totalEstimated">
-          <div class="estimated1">
-            <h3>Estimado del valor total</h3>
+    <!--Paso 2-->
+    <form #f1="ngForm" *ngIf="contador==1">
+      <div class="characteristics" style="width:100%;">
 
-            <h4>$
-              <!--{{precioEstimado}}-->{{datos.data.response.valuacion.valuacion | number:'0.1-2'}}</h4>
-            <p>Estimado de valor total*</p>
-          </div>
-
-          <div class="estimated2">
-            <div class="inferior">
-              <h4>$
-                <!--{{precioInferior}}-->{{datos.data.response.valuacion.intervalo_bajo | number:'0.1-2'}}</h4>
-              <p>Limite inferior</p>
-            </div>
-            <div class="superior">
-              <h4>$
-                <!--{{precioSuperior}}-->{{datos.data.response.valuacion.intervalo_alto | number:'0.1-2'}}</h4>
-              <p>Limite Superior</p>
-            </div>
-          </div>
-
-          <div class="subText">
+        <div class="address">
+          <div class="subAddress">
+            <span>Dirección:</span>
+            <br>
             <p>
-              *Estimación calibrada con información de precios de oferta
+              Calle: {{data['street']}} #{{data['num_ext']}}, Col. {{data['colonia']}}
+              <br> C.P. {{data['zipCode']}}, {{data['municipio']}}
+              <br> {{data['ciudad']}}, {{data['estado']}}
             </p>
           </div>
 
-        </div>
-
-        <!--<div class="html2pdf__page-break"></div>-->
-
-        <div class="mEstimated">
-
-          <div class="mEstimated1">
-            <h3>Estimado del valor por m2</h3>
-
-            <h4>$
-              <!--{{precioEstimadoM2}}-->{{datos.data.response.valuacion.valuacion_m2 | number:'0.1-2'}}</h4>
-            <p>Estimado de valor por m2*</p>
+          <div class="kind">
+            <h4>Tipo de propiedad.</h4>
+            <br>
+            <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="data['id_tipo_propiedad']" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle value="2">Casa</mat-button-toggle>
+              <mat-button-toggle value="4">Departamento</mat-button-toggle>
+            </mat-button-toggle-group>
           </div>
+          <div class="homeStatus">
+            <h4>Casa.</h4>
+            <br>
 
-          <div class="mEstimated2">
-            <div class="mInferior">
-              <h4>$
-                <!--{{precioMInferior}}-->{{datos.data.response.valuacion.intervalo_bajo_m2 | number:'0.1-2'}}</h4>
-              <p>Limite inferior</p>
-            </div>
-            <div class="mSuperior">
-              <h4>$
-                <!--{{precioMSuperior}}-->{{datos.data.response.valuacion.intervalo_alto_m2 | number:'0.1-2'}} </h4>
-              <p>Limite Superior</p>
-            </div>
+            <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="data['status_propiedad']" [ngModelOptions]="{standalone: true}">
+              <mat-button-toggle value="sola">Sola</mat-button-toggle>
+              <mat-button-toggle value="privada">Privada/Condominio</mat-button-toggle>
+            </mat-button-toggle-group>
+
           </div>
-
-        </div>
-      </div>
-
-      <div class="html2pdf__page-break"></div>
-
-      <div class="mapView">
-        <div class="houseView">
-          <img [src]="urlImage">
-        </div>
-        <div class="map">
-          <img [src]="url">
-          <!-- <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12" [scrollwheel]="false">
-           
-            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-          </agm-map> -->
-        </div>
-      </div>
-
-      <div class="intro">
-        <h2>*Foto aproximada de la fachada y ubicación de inmueble proporcionado por Google.</h2>
-        <h3></h3>
-        <p>
-          El reporte de tu inmueble de Valor Inmuebles se construye a partir de nuestros modelos de valuación automática, los cuales nos permiten
-          dar referencias de valor para tu propiedad de manera instantánea. Los modelos y algoritmos utilizados por Valor Inmuebles
-          se alimentan de los precios de millones de ofertas y cierres de transacciones. Valor Inmuebles provee un estimado de valor
-          y no sustituye a un avalúo certificado.
-        </p>
-      </div>
-
-
-
-    </div>
-
-    <div class="divisor">
-      <hr>
-    </div>
-
-    <div class="html2pdf__page-break"></div>
-
-    <div class="propiedades">
-
-      <div class="middleTitle">
-        <span>PROPIEDADES COMPARABLES</span>
-      </div>
-
-      <div class="intro">
-        <h2>Esta sección muestra propiedades similares a la tuya que fueron anunciadas en los últimos 6 meses.</h2>
-        <h3></h3>
-        <p> Acontinuación proveemos información sobre ofertas de propiedades comparables con la tuya.
-          <br> Están ordenadas utilizando una medida de similitud que toma en cuenta las características de cada propiedad. </p>
-
-      </div>
-
-      <!-- Aquí va el mapa con multiple marcadores. -->
-
-      <div class="map2">
-        <img [src]="ulrMultipleMarkers">
-      </div>
-      <div class="html2pdf__page-break"></div>
-
-      <div class="table">
-        <div class="example-container ">
-          <!--mat-elevation-z8-->
-          <mat-table #table [dataSource]="dataSource" matSort>
-
-            <ng-container matColumnDef="position">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell headerCell1"> No. </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell">
-                <img src="../assets/images/{{element.position}}.png" class="position"> </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="oferta">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Oferta </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.oferta}} </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="total">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> $ Total </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2">${{element.total | ShortNumberPipe }} </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="m2">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> $ m2 </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> ${{element.m2 | ShortNumberPipe}}
-              </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="cuartos">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell">
-                <img src="../assets/images/cuarto.png" class="icon">
-              </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.cuartos}} </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="banos">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell">
-                <img src="../assets/images/bano.png" class="icon"> </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.banos}} </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="parking">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell">
-                <img src="../assets/images/parking.png" class="icon"> </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.parking}} </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="construccion">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell headerCell2"> Construcción </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.construccion}} m
-                <sup>2</sup>
-              </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="edad">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Edad </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.edad}} </mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="distancia">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> Distancia </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.distancia  | number : '1.0-0'}} m</mat-cell>
-            </ng-container>
-
-            <ng-container matColumnDef="similitud">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell"> % Similitud </mat-header-cell>
-              <mat-cell *matCellDef="let element" class="containerCell2"> {{element.similitud}} %</mat-cell>
-            </ng-container>
-
-            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-          </mat-table>
         </div>
 
-      </div>
-    </div>
+        <div class="articles">
 
-    <div class="divisor">
-      <hr>
-    </div>
+          <div class="article_button">
+            <div class="button_title">
+              <div class="image_title">
+                <img class="images" src="../assets/images/cuarto.svg" alt="Smiley face" height="42" width="42" />
+                <h4>Recámaras</h4>
+              </div>
 
-    <div class="html2pdf__page-break"></div>
 
-    <div class="preciosColonia">
-      <div class="middleTitle">
-        <span>COLONIA {{datos.data.response.address.colonia}}</span>
-      </div>
-
-      <div class="intro">
-        <h2>Esta sección te ayudará a conocer los precios en la colonia, el tipo de vivienda que existe y el número de listados
-          mensuales.
-        </h2>
-        <h3>Oferta en los últimos meses</h3>
-        <p>A continuación se muestra un número aproximado de cuántas casas y departamentos han sido listados en portales de
-          Internet.
-        </p>
-      </div>
-
-      <div class="ofertasMes">
-
-        <div class="ultimoMes" *ngIf="datos.data.response.historico">
-
-          <div class="umesContainer">
-
-            <div class="calendarContainer">
-              <img src="../assets/images/calendary.png" alt="Smiley face">
-            </div>
-            <div class="numCasas">
-              <h1>{{datos.data.response.historico.listado_promedio_1_mes || ''}}
-                <!--{{uMesCasas}}-->
-              </h1>
-              <p>Casas y departamentos listados en el último mes</p>
+              <mat-button-toggle-group name="numCuartos" [(ngModel)]="data['recamaras']" [ngModelOptions]="{standalone: true}">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="3">3</mat-button-toggle>
+                <mat-button-toggle value="4">4+</mat-button-toggle>
+              </mat-button-toggle-group>
             </div>
           </div>
-          <div class="tablaMes">
+          <div class="article_button">
 
-            <table>
-              <tr>
-                <th colspan="2" class="titleTable">
-                  Precios promedios de oferta en la colonia {{datos.data.response.address.colonia}}
-                </th>
-              </tr>
+            <div class="button_title">
+              <div class="image_title">
+                <img class="images" src="../assets/images/bano.svg" alt="Smiley face" height="42" width="42" />
+                <h4>Baños</h4>
+              </div>
 
-              <tr>
-                <td class="promedioTotal">$
-                  <!--{{promedioTotal}}-->{{datos.data.response.historico.oferta_promedio_6_meses | number:'0.1-2'}}</td>
-                <td class="promediom2">$
-                  <!--{{promediom2}}-->{{datos.data.response.historico.precio_promedio_m2_6_meses | number:'0.1-2'}}</td>
-              </tr>
-              <tr>
-                <td class="txtPromedio">Total Promedio</td>
-                <td class="txtPromedio">Promedio m2</td>
-              </tr>
+              <mat-button-toggle-group name="numBanos" [(ngModel)]="data['banos']" [ngModelOptions]="{standalone: true}">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="3">3</mat-button-toggle>
+                <mat-button-toggle value="4">4+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="article_button">
 
-            </table>
+            <div class="button_title">
+              <div class="image_title">
+                <img class="images" src="../assets/images/medio-bano.svg" alt="Smiley face" height="42" width="42">
+                <h4>Medios Baños</h4>
+              </div>
+              <mat-button-toggle-group name="numMedioBanos" class="medioBano" [(ngModel)]="data['medios_banos']" [ngModelOptions]="{standalone: true}">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="3">3+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
+          </div>
+          <div class="article_button">
+            <div>
+
+            </div>
+            <div class="button_title">
+              <div class="image_title">
+                <img class="images" src="../assets/images/parking.svg" alt="Smiley face" height="42" width="42">
+                <h4>Cajones</h4>
+              </div>
+
+              <mat-button-toggle-group name="numParking" [(ngModel)]="data['estacionamientos']" [ngModelOptions]="{standalone: true}">
+                <mat-button-toggle value="1">1</mat-button-toggle>
+                <mat-button-toggle value="2">2</mat-button-toggle>
+                <mat-button-toggle value="3">3+</mat-button-toggle>
+              </mat-button-toggle-group>
+            </div>
           </div>
 
         </div>
 
-        <div class="seisMeses" *ngIf="datos.data.response.historico">
+        <div class="description">
 
-          <div class="smesContainer">
+          <div class="subDescription">
 
-            <div class="calendarContainer">
-              <img src="../assets/images/calendary.png" alt="Smiley face">
-            </div>
-            <div class="numCasas">
-              <h1>
-                <!--{{sMesCasas}}-->{{datos.data.response.historico.listado_promedio_6_meses}}</h1>
-              <p>Casas y departamentos listados en los últimos 6 meses</p>
-            </div>
-          </div>
-
-          <div class="tablaMes">
-            <table>
-              <tr>
-                <th colspan="2" class="titleTable">
-                  Información de cierres
-                </th>
-              </tr>
-
-              <tr>
-                <td class="promediom2">
-                  <!--{{cierrePromedioTotal}}-->${{datos.data.response.historico.cierres_promedio_6_meses | number:'0.1-2'}}</td>
-                <td class="promediom2">
-                  <!--{{cierrePromediom2}}-->${{datos.data.response.historico.cierres_promedio_m2_6_meses | number:'0.1-2'}}</td>
-              </tr>
-              <tr>
-                <td class="txtPromedio">Total Promedio</td>
-                <td class="txtPromedio">Promedio m2</td>
-              </tr>
-
-            </table>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="divisor">
-      <hr>
-    </div>
-    <!--<div class="html2pdf__page-break"></div>-->
-
-    <!-- Inicio para aplicar las graficas-->
-    <!-- Grafica Precio promedio en la colonia-->
-    <div class="graficaPrecioColonia">
-      <div class="containerGraficaColonia">
-
-        <div class="intro3">
-          <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
-        </div>
-        <div class="graficaContainer" id="graficaColonia">
-          <p-chart type="bar" [data]="datosPrecioColonia" [options]="options"></p-chart>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="html2pdf__page-break"></div>
-
-    <div class="graficaDescripciones">
-
-      <div class="propiedadesEdad">
-
-        <div class="propiedadPreciom2">
-          <div class="grafica1Container">
-            <div class="intro">
-              <h3> Propiedades según precio por m
-                <sup>2</sup>
-              </h3>
-              <p>La gráfica muestra el porcentaje de las ofertas en la colonia ordenadas por rango de precios (casas y departamentos
-                listados en los últimos 6 meses).</p>
-            </div>
-            <div class="graficaContainer1" id="graficaPropiedadM2">
-              <p-chart type="bar" [data]="datosPropiedadesM2" [options]="options"></p-chart>
-            </div>
-          </div>
-        </div>
-
-        <div class="edadVivienda">
-          <div class="grafica2Container">
-            <div class="intro">
-              <h3> Edad y tipo de vivienda
-              </h3>
-              <p>
-                La gráfica muestra el porcentaje de ofertas en la colonia según su edad.</p>
-            </div>
-            <div class="graficaContainer2" id="graficaDatosVivienda">
-              <p-chart type="bar" [data]="datosEdadVivienda" [options]="options"></p-chart>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="recamarasSuperficie">
-
-        <div class="numRecamaras">
-          <div class="grafica1Container">
-            <div class="intro">
-              <h3> Número de recámaras
-              </h3>
-              <p>
-                La gráfica muestra el número de departamentos según su edad y número de recámaras (dormitorios).</p>
-            </div>
-            <div class="graficaContainer1" id="graficaRecamaras">
-              <p-chart type="bar" [data]="datosRecamaras" [options]="options"></p-chart>
-            </div>
-          </div>
-        </div>
-
-        <div class="html2pdf__page-break"></div>
-
-        <div class=superficieConstruida>
-          <div class="grafica2Container">
-            <div class="intro">
-              <h3>
-                Supercie construida
-              </h3>
-              <p>
-                La gráfica muestra el número de departamentos según su edad y supercie construida.
-              </p>
-            </div>
-            <div class="graficaContainer2" id="graficaSuperficie">
-              <p-chart type="bar" [data]="datosSuperficieConstruida" [options]="options"></p-chart>
+            <mat-form-field class="input_Description">
+              <input matInput placeholder="Área construída (m2)" name="asda" [(ngModel)]="data['area_construida']" required>
+            </mat-form-field>
+            <mat-form-field class="input_Description">
+              <input matInput placeholder="Superficie del terreno (m2)" name="asasda" [(ngModel)]="data['superficie_terreno']" required>
+            </mat-form-field>
+            <div class="years">
+              <mat-form-field class="input-Description">
+                <input matInput placeholder="Años de antigüedad" name="asffda" [(ngModel)]="data['edad']" [disabled]="Nuevo"
+                  required>
+              </mat-form-field>
+              <mat-checkbox class="example-margin" (change)="nuevo()" [(ngModel)]="Nuevo" [ngModelOptions]="{standalone: true}">Nuevo</mat-checkbox>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </form>
+    <!--Fin de paso 2-->
 
-    <div class="divisor">
-      <hr>
-    </div>
-    <!-- Fin graficas-->
+    <!--Paso 3-->
+    <form #f2="ngForm" *ngIf="contador==2">
+      <div class="amenidades">
 
-    <div class="evolucionColonia">
-      <div class="middleTitle">
-        <span>EVOLUCIÓN DE LOS PRECIOS EN LA COLONIA</span>
-      </div>
-
-      <div class="intro">
-        <h2>
-          A continuación te ofrecemos datos que muestran la variación de precios en la colonia.
-        </h2>
-
-        <h3>
-          Precio histórico por m2
-        </h3>
-        <p>
-          Esta sección muestra el comportamiento histórico del valor estimado de la propiedad en cuestión comparado con el cambio en
-          los precios en la colonia a través del tiempo.
-          <br> La siguiente gráfica muestra el valor estimado de la propiedad a través de los años (antes de la fecha de generación
-          del reporte). Esta información está basada en una valuación automática que utiliza los datos históricos disponibles
-          de propiedades similares en la misma colonia.
-          <br> Una vez obtenida la información, ésta se compara con el desempeño del mercado local usando la base de datos de
-          Valor Inmuebles.
-        </p>
-
-      </div>
-      <div class="plusValia" *ngIf="plusvalia">
-
-        <div class="plusValiaContainer">
-          <div class="flechaContainer">
-            <img src="../assets/images/flecha.png" alt="Smiley face">
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/ac.svg" alt="Smiley face" height="50" width="50">
           </div>
-          <h2>
-            +{{plusvalia | number: '0.1-2'}}%
-          </h2>
-          <span>&nbsp;&nbsp;|&nbsp;&nbsp; </span>
-          <p>
-            Plusvalía anualizada
-          </p>
+          <span>Aire Acondicionado</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="aireAcondicionado" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['aire_acondicionado']"></mat-checkbox>
+
         </div>
 
-        <div class="graficaPlusvalia">
-          <p-chart type="line" [data]="datoPlusvalia" [options]="optionsPlusvalia"></p-chart>
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/cocina.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Cocina Integral</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="cocinaIntegral" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['cocina_integral']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/gimnasio.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Gimnasio</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="gimnasio" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['gimnasio']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/terraza.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Roof garden/ terrazas</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="roofGarden" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['terraza']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/alberca.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Alberca</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="alberca" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['alberca']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/lavado.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Cuarto de servicio</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="cuartoServicio" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['cuarto_servicio']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/jardin.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Jardín</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="jardin" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['jardin']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/amueblado.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Amueblado</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="amueblado" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['amueblado']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/estudio.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Estudio</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="estudio" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['estudio']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/jacuzzi.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Jacuzzi</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="jacuzzi" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['jacuzzi']"></mat-checkbox>
+        </div>
+
+        <div class="miniContainers">
+          <div class="imgContainer">
+            <img class="images" src="../assets/images/seguridad.svg" alt="Smiley face" height="50" width="50">
+          </div>
+          <span>Seguridad Privada</span>
+          <mat-checkbox class="example-margin" [(ngModel)]="seguridadPrivada" [ngModelOptions]="{standalone: true}" [(ngModel)]="data['seguridad_privada']"></mat-checkbox>
+        </div>
+
+      </div>
+    </form>
+    <!--Fin de paso 3-->
+
+    <!--Pago con tarjeta-->
+    <form #f3="ngForm" *ngIf="contador==3">
+      <div class="pago-tarjeta">
+        <div class="cost">
+          <div class="costContainer">
+            <span class="texto">Costo Reporte</span>
+            <mat-form-field class="input-costo-reporte">
+              <input matInput disabled value="costoReporte">
+            </mat-form-field>
+          </div>
+          <div class="costContainer">
+            <span class="texto">Código de Cupón</span>
+            <mat-form-field class="input-costo-reporte">
+              <input matInput placeholder="Código">
+            </mat-form-field>
+          </div>
+          <div class="cupon">
+            <span class="descuentos">{{montoDescuento}}</span>
+            <button mat-raised-button color="primary" (onClick)="aplicarCodigo()">Aplicar</button>
+          </div>
+          <div class="costContainer">
+            <span class="texto">Subtotal</span>
+            <mat-form-field class="input-costo-reporte">
+              <input matInput disabled value="subtotalReporte">
+            </mat-form-field>
+          </div>
+          <div class="divisor">
+            <hr>
+          </div>
+          <div class="costContainer">
+            <span class="texto">TOTAL</span>
+            <mat-form-field class="input-costo-reporte">
+              <input matInput disabled value="totalReporte">
+            </mat-form-field>
+          </div>
+        </div>
+
+        <mat-tab-group class="payment">
+          <mat-tab label="Tarjeta Credito/Debito">
+            <div class="paymentInfo">
+              <div class="tittle">Ingresa los datos de tu tarjeta de crédito o débito</div>
+              <div class="subContainer">
+                <div class="containerPayment1">
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Nombre" [(ngModel)]="dataCreditCar['nombre']" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Apellidos" [(ngModel)]="dataCreditCar['apellidos']" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+
+                  <div class="expiredDate">
+                    <mat-form-field class="input-expiredDate">
+                      <input matInput placeholder="MM" [(ngModel)]="dataCreditCar['mm']" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                    <mat-form-field class="input-payment">
+                      <input matInput placeholder="AA" [(ngModel)]="dataCreditCar['aa']" [ngModelOptions]="{standalone: true}">
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div class="containerPayment">
+                  <mat-form-field class="input-tarjeta">
+                    <input matInput placeholder="Número de tarjeta" [(ngModel)]="dataCreditCar['num_tarjeta']" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Código de seguridad" [(ngModel)]="dataCreditCar['cod_seguridad']" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Código postal" [(ngModel)]="dataCreditCar['zip']" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                  <mat-form-field class="input-payment">
+                    <input matInput placeholder="Teléfono" [(ngModel)]="dataCreditCar['telefono']" [ngModelOptions]="{standalone: true}">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="payButton">
+                <button mat-raised-button color="primary" (onClick)="pagarAvaluo()" [disabled]="loading">Pagar Ahora</button>
+                <!--<p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>-->
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="PayPal">
+            <button mat-raised-button color="primary" (onClick)="pagarAvaluoPayPal()" [disabled]="loading">Pagar Ahora con PayPal</button>
+
+            <!--<p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>-->
+          </mat-tab>
+        </mat-tab-group>
+
+
+      </div>
+    </form>
+    <!--Fin pago con tarjeta-->
+
+    <!--Datos facturacion-->
+    <form #f4="ngForm" *ngIf="contador==4">
+      <div class="datos-facturacion">
+        <div class="content">
+          <div class="principal">
+            <div class="principalContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="Razón social" [(ngModel)]="dataRFC['razon_social']" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </div>
+
+            <div class="principalContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="RFC" [(ngModel)]="dataRFC['rfc']" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="contact">
+
+            <div class="tittle">Datos del contacto</div>
+
+            <div class="contactContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="Nombre del contacto" [(ngModel)]="dataRFC['nombre_contacto']" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </div>
+
+            <div class="contactContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="Teléfono celular" [(ngModel)]="dataRFC['telefono']" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </div>
+
+            <div class="contactContainer">
+              <mat-form-field class="input-payment">
+                <input matInput placeholder="Correo" [(ngModel)]="dataRFC['correo']" [ngModelOptions]="{standalone: true}">
+              </mat-form-field>
+            </div>
+          </div>
         </div>
       </div>
+    </form>
+    <!--Fin datos facturacion-->
 
-    </div>
-
-    <div class="divisor">
-      <hr>
-    </div>
-    <div class="html2pdf__page-break"></div>
-
-    <div class="glosario">
-      <div class="middleTitle">
-        <span>GLOSARIO</span>
-      </div>
-      <div class="glosarioContainer">
-
-        <div class="rightText">
-          <div class="intro2">
-            <h3>Apreciación</h3>
-            <p>Cambio positivo en el precio del inmueble comparado con un periodo base (enero 2014). El cálculo se hace con
-              el modelo de valuación automática de Valor Inmuebles. El cálculo no toma en cuenta inflación.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Avalúo</h3>
-            <p>Un avalúo corresponde a la valoración comercial de un bien raíz. Generalmente es un documento elaborado por un
-              valuador profesional, agente de la propiedad inmobiliaria o corredor de propiedades. Además de la valoración
-              comercial, contiene información sobre el avalúo fiscal, los títulos de dominio, así como la contribución, ubicación,
-              tamaño, calidad de construcción y vida útil de la edificación.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Condición</h3>
-            <p>
-              Nueva o usada. La vivienda nueva es la que tiene menos de un año de construida o remodelada. La usada tiene más Fde un año.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Fecha de oferta</h3>
-            <p>Fecha de publicación de la oferta de venta de un inmueble en un portal de Internet.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Información de cierres</h3>
-            <p>Precios de propiedad es que cuentan con un avalúo certificado y un crédito hipotecario asociado. Se toma el precio
-              de cierre como el valor del inmueble.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Límite inferior y superior</h3>
-            <p>Rangos de valor mínimo y máximo construidos a partir de un intervalo de confianza estadística.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Modelo de Valuación Automática</h3>
-            <p>Modelo estadístico propietario de Valor Inmuebles el cual toma en cuenta las características de la vivienda (ubicación,
-              superficie, tipología, edad, etc.), los precios de cierre y precios de oferta de propiedades similares, para
-              construir una estimación del precio de mercado del inmueble.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Precio oferta</h3>
-            <p>Precio al que se ofrece una propiedad en un sitio de listados en Internet.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Propiedades</h3>
-            <p>Casas o departamentos para uso residencial.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Propiedades listadas</h3>
-            <p>Propiedades que aparecen en sitios de ofertas en Internet.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Similitud</h3>
-            <p>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Valor Inmuebles. La
-              similitud va del 0 al 100%, donde 100% equivale a dos propiedades exactamente iguales.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Superficie de construcción</h3>
-            <p>Superficie habitable de la residencia, no considera terrazas, estacionamientos o jardines.</p>
-          </div>
-
-          <div class="intro2">
-            <h3>Superficie de terreno</h3>
-            <p>Superficie total de la propiedad, toma en cuenta terrazas, estacionamientos y jardines.</p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="divisor">
-      <hr>
-    </div>
-    <!--<div class="html2pdf__page-break"></div>-->
-    <div class="html2pdf__page-break"></div>
-    <div class="terminos">
-      <div class="middleTitle">
-        <span>TÉRMINOS Y CONDICIONES</span>
-      </div>
-
-      <div class="contenido">
-        <p>
-            Región4 es un estimador del valor de propiedades residenciales.
-          <br>
-          <br> Región4 provee una opinión de valor objetiva basada en millones de puntos de información sobre viviendas en México.
-          Esto te permite obtener información para la toma de decisiones cuando compras, vendes o rentas un inmueble. Para
-          saber más consulta www.region4.mx
-          <br>
-          <br> El uso de este reporte está sujeto a los Términos y Condiciones sobre los que fue generado. Éstos indican que
-          el usuario reconoce que el reporte fue generado sin la visita física a la propiedad analizada.
-          <br>
-          <br> El reporte de Región4 constituye únicamente un estimado de valor. Derechos reservados Región4 Asesores Inmobiliarios
-          S.C.P. 2017.
-        </p>
-      </div>
-
-      <div class="middleTitle">
-        <span>AVISO DE PRIVACIDAD</span>
-      </div>
-
-      <div class="contenido">
-        <p>
-          De conformidad con lo establecido en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares REGIÓN4
-          ASESORES INMOBILIARIOS S.C.P por medio de valorinmuebles.com.mx pone a su disposición el siguiente aviso de privacidad.
-          <br> REGIÓN4 ASESORES INMOBILIARIOS S.C.P por medio de valorinmuebles.com.mx es responsable del uso y protección de
-          sus datos personales, en este sentido y atendiendo las obligaciones legales establecidas en la Ley Federal de Protección
-          de Datos Personales en Posesión de los Particulares, a través de este instrumento se informa a los titulares de
-          los datos, la información que de ellos se recaba y los fines que se le darán a dicha información.
-          <br> Los datos personales que recabamos de usted serán utilizados para las siguientes finalidades, las cuales son necesarias
-          para concretar nuestra relación con usted así como atender los servicios y/o pedidos que solicite:
-          <br><br>
-          
-          <sup>*</sup>Generar una estimación de valor de un bien inmueble<br>
-          <sup>*</sup>Emitir factura por el costo total de la estimación de valor de un bien inmueble<br>
-          <sup>*</sup>Contacto y envió de información relevante relacionada con nuestros productos y servicios<br>
-          <sup>*</sup>Realizar la gestión interna necesaria relacionadas con la relación comercial vigente incluyendo cuestiones de
-              crédito y pagos<br>
-          
-          <br> Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los siguientes datos
-          personales
-          <br><br>
-          
-          <sup>*</sup>Nombre Completo<br>
-          <sup>*</sup>Correo electronico<br>
-          <sup>*</sup>Teléfono<br>
-          <sup>*</sup>Ramo u Ocupación<br>
-          <sup>*</sup>Razón Social<br>
-          <sup>*</sup>RFC <br>
-          <br> Por otra parte, informamos a usted, que sus datos personales no serán compartidos con ninguna autoridad, empresa,
-          organización o persona distintas a nosotros y serán utilizados exclusivamente para los fines señalados.
-          <br> Usted tiene en todo momento el derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos
-          y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información
-          personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); de igual manera, tiene
-          derecho a que su información se elimine de nuestros registros o bases de datos cuando considere que la misma no
-          está siendo utilizada adecuadamente (Cancelación); así como también a oponerse al uso de sus datos personales para
-          fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.
-        </p>
-      </div>
-    </div>
-
-  </div>
-
+  </mat-card>
 </div>

@@ -1,8 +1,11 @@
-<p-growl [sticky]="true"></p-growl>
-<div class="content">
-  <app-header></app-header>
-  <div class="appcontainer">
-    <router-outlet></router-outlet>
-  </div>
-  <app-footer></app-footer>
+<router-outlet></router-outlet>
+<div id="cerrar">
+    <p class="texto">
+        Al entrar en esta web ya has sido informado sobre la utilización de las cookies a través de un aviso o alerta. Si has accedido
+        y sigues navegando, estás aceptando la instalación de estas cookies. Consultalas en 
+        <a class="link" href="https://www.valorinmuebles.com.mx/politica-de-cookies">https://www.valorinmuebles.com.mx/politica-de-cookies</a>
+    </p>
+    <p class="close"> 
+        <a (click)="close()" class="boton">OK</a>
+    </p>
 </div>

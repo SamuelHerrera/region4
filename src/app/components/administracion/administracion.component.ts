@@ -21,7 +21,7 @@ export class AdministracionComponent implements OnInit {
 
   datosImprimir: any;
 
-  displayedColumns = ['position', 'name', "phone", 'weight', 'symbol'];
+  displayedColumns = ['position', 'name', 'phone', 'weight', 'symbol'];
   displayedColumns2 = ['position', 'name', 'weight', 'symbol', 'symbol1', 'symbol2', 'actions'];
 
   displayedColumnsCupones = ['campania', 'descuento', 'cupon', 'descripcion', 'estatus'];
@@ -48,16 +48,16 @@ export class AdministracionComponent implements OnInit {
     private cuponService: CuponService, private router: Router) { }
 
   validarLogin() {
-    if ((this.user === "Administrador" && this.pass === "Region42018") ||
-      (this.user === "Administrador2" && this.pass === "ItexSolutions1!")) {
-      this.messageService.add({ severity: 'success', summary: 'Inicio de sesión', detail: "Bienvenido administrador: " + this.user });
+    if ((this.user === 'Administrador' && this.pass === 'Region42018') ||
+      (this.user === 'Administrador2' && this.pass === 'ItexSolutions1!')) {
+      this.messageService.add({ severity: 'success', summary: 'Inicio de sesión', detail: 'Bienvenido administrador: ' + this.user });
       setTimeout(() => {
         this.login = false;
         setTimeout(() => {
           this.loginSuccess = true;
         });
       });
-    } else { this.messageService.add({ severity: 'error', summary: 'No match', detail: "Usuario y contraseña no coinciden." }); }
+    } else { this.messageService.add({ severity: 'error', summary: 'No match', detail: 'Usuario y contraseña no coinciden.' }); }
 
   }
   /**PopUp Cupones */
@@ -108,7 +108,7 @@ export class AdministracionComponent implements OnInit {
   saveconfig() {
     this.yals.setConfigs(this.yalsconfig.url, this.yalsconfig.mail, this.yalsconfig.key).subscribe((response: any) => {
       this.yalsconfig = response;
-      this.messageService.add({ severity: 'success', summary: 'Inicio de sesion', detail: "Usuario inicio sesion satisfactoriamente." });
+      this.messageService.add({ severity: 'success', summary: 'Inicio de sesion', detail: 'Usuario inicio sesion satisfactoriamente.' });
     });
   }
 
@@ -130,7 +130,7 @@ export class AdministracionComponent implements OnInit {
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { dpi: 192, letterRendering: true },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-        action: "save"
+        action: 'save'
       });
       datapdf.then(data => {
       });
@@ -143,7 +143,7 @@ export class AdministracionComponent implements OnInit {
       this.cuponService.getCupons().subscribe((response2: any) => {
         this.dataSource3 = new MatTableDataSource(response2.data.docs);
       });
-    })
+    });
   }
 
 

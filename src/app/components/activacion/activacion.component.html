@@ -1,0 +1,25 @@
+<div class="container">
+  <mat-card>
+    <div class="regresar" [routerLink]="'/inicio'">
+      <i class="material-icons">
+        arrow_back
+      </i>Volver a inicio</div>
+    <div class="title">ACTIVACIÓN</div>
+    <div class="sub-header">
+      Ingresa el código de activación que recibiste en tu correo para activar tu usuario.
+    </div>
+    <form #f="ngForm">
+      <mat-form-field class="">
+        <input matInput placeholder="Código de activación" [formControl]="codigoFormControl" type="email">
+        <mat-error *ngIf="codigoFormControl.hasError('required')">
+          El código de activación es
+          <strong>necesario</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="actions">
+        <button mat-raised-button color="primary" [disabled]="(!codigoFormControl.valid)" (click)="activar()">Activar</button>
+      </div>
+      <label [routerLink]="'/reenviar'">No me llegó ningún código</label>
+    </form>
+  </mat-card>
+</div>

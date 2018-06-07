@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '/dist/')));
+app.use(express.static(path.join(__dirname, '/dist/Valorinmuebles')));
 app.use(express.static(path.join(__dirname, '/landing/assest')));
 app.use(express.static(path.join(__dirname, '/landing/assest/js')));
 app.use(express.static(path.join(__dirname, '/landing/assest/js/vendor')));
@@ -37,27 +38,24 @@ app.use(express.static(path.join(__dirname, '/landing/assest/css/icons')));
 app.use(express.static(path.join(__dirname, '/landing/assest/css/plugins')));
 
 app.use((req, res, next) => {
-  // The 'x-forwarded-proto' check is for Heroku
+  console.log(req.get('host'),req.query )
+  // res.header('X-FRAME-OPTIONS', 'ALLOW-FROM ' + 'https://' + req.get('host') );
   if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
     return res.redirect('https://' + req.get('host') + req.url);
   }
   next();
 });
 
-// API location
 app.use('/api', api);
 
-// Send to landing
 app.get('/landing', (req, res) => {
   res.sendFile(path.join(__dirname, '/landing/index.html'));
 });
 
-// Send all other requests to the Angular app
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/dist/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/Valorinmuebles/index.html'));
 });
 
-//Set Port
 const port = process.env.PORT || 5000;
 app.set('port', port);
 

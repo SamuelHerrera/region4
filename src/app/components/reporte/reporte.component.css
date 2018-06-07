@@ -1,888 +1,573 @@
 .container {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/assets/images/ciudad.jpg');
+  background-size: cover;
 }
 
-.scrollable {
-  height: 100%;
-  width: 100%;
+.years {
   display: flex;
-  flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.regresar {
+  align-self: flex-start;
+  top: 5px;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
 }
 
 .title {
-  height: 70px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding-top: 10px;
-  vertical-align: top;
+  font-size: 6vh;
+  color: #586082;
+  margin-bottom: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
 }
 
-.titleContainer {
-  display: flex;
-  flex-direction: row;
-  width: 800px;
-  justify-content: center;
-  flex-wrap: wrap;
+.sub-header {
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 16px;
+  line-height: 1.6em;
+  font-weight: 400;
+  color: #4d557d !important;
+  text-align: justify;
+  margin: 20px;
 }
 
-.subTitleContainer {
+mat-card {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  /*justify-content: center;*/
+  align-items: center;
+}
+
+form {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+  /*flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100% !important;
+    max-width: 400px;*/
+}
+
+mat-form-field {
+  max-width: 350px;
+  width: 100%;
+}
+
+.actions {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+label {
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 16px;
+  line-height: 1.6em;
+  font-weight: 400;
+  color: #4d557d !important;
+  text-align: justify;
+  margin: 10px;
+}
+
+.oculto {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.addressDesc {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  flex-wrap: wrap;
+  width: 32%;
+  height: 319px;
+  padding-right: 10px;
 }
 
-.principalTitle {
-  background-color: transparent;
-  line-height: 38px;
-  /*width: 60%;*/
-  text-align: left;
-  font-family: '__Merriweather_5';
-  font-weight: 700;
-  color: #28265A;
-  font-size: 32px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-}
-
-.idReport {
-  /*width: 20%;*/
-  padding-top: 10px;
-}
-
-.reportID {
-  padding-top: 40px;
-  font-weight: 300;
-  line-height: 14px;
-  padding-right: 5px;
-  color: white;
-  font-family: '__Merriweather Sans_5';
-  text-align: right;
-  background-color: transparent;
-  font-size: 14px;
-}
-
-.generatedDate {
-  font-weight: 300;
-  line-height: 14px;
-  font-family: '__Merriweather Sans_5';
-  text-align: right;
-  font-size: 10px;
-  padding-right: 5px;
-}
-
-.characteristics {
-  /*display: flex;
-    flex-direction: column;*/
-  display: table-column;
-}
-
-.address {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.subAddress {
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start
-}
-
-.dir {
-  padding-left: 7px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.dirContent {
-  height: 100px;
-}
-
-.direcContent {
-  width: 310px;
-  font-family: '__Merriweather Sans_5';
-  background-color: transparent;
-  /*min-height: 143px;*/
-  color: #28245B;
-}
-
-.carac {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-}
-
-.caracContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.subCarac {
-  width: 120px;
-  padding: 5px 5px 5px 5px;
-  font-size: 11px;
-  font-family: '__Merriweather Sans_5';
-  font-weight: 300;
-  color: #28245B;
-}
-
-.middleTitle {
-  height: 25px;
-  line-height: 24px;
-  font-family: '__Merriweather Sans_5';
-  font-weight: 300;
-  color: #9EA3A3;
-  font-size: 20px;
-  padding-bottom: 10px;
-  padding-left: 5px;
-  padding-top: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.middleTitle span {
-  /*width: 80%;*/
-  width: 800px;
-}
-
-.littleTitle {
-  /*font-weight: 300;*/
-  width: 310px;
-  font-family: '__Merriweather Sans_5';
-  background-color: transparent;
-  /*min-height: 143px;*/
-  color: #28245B;
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-
-.amenidades {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  /*min-width:300px;*/
-  width: 400px;
-}
-
-.containerAmenidades {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.subamenidades {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  text-align: center;
-  width: 100px;
-  display: flex;
-  flex-direction: column;
-}
-
-.subamenidades span {
-  font-weight: 300;
-  line-height: 14px;
-  font-family: '__Merriweather Sans_5';
-  text-align: center;
-  font-size: 12px;
-}
-
-.imgContainer {
-  width: 100%;
-  text-align: center;
-}
-
-.estimatedValue {
-  display: table-column;
-  /*display: flex;
-    flex-direction: column;
-    justify-content: space-between;*/
-}
-
-.prices {
-  display: flex;
-  flex-direction: row;
-  /*flex-wrap: wrap;*/
-  justify-content: center;
-}
-
-.totalEstimated {
-  text-align: center;
-  width: 320px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around
-}
-
-.estimated1 h4 {
-  line-height: 25px;
-  color: #31A6E0;
-  font-family: '__Merriweather_5';
-  font-weight: 700;
-  font-size: 21px;
-}
-
-.estimated1 h3 {
-  font-family: '__Merriweather_5';
-  text-align: center;
-  min-height: 37px;
-  font-weight: 700;
-}
-
-.estimated1 p {
-  font-family: '__Merriweather_5';
-  text-align: center;
-  min-height: 37px;
-}
-
-.estimated2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.estimated2 div {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.estimated2 h4 {
-  font-family: '__Merriweather Sans_5';
-  text-align: center;
-  min-height: 40px;
-  font-weight: 300;
-}
-
-.estimated2 p {
-  font-family: '__Merriweather_5';
-  text-align: center;
-  min-height: 37px;
-}
-
-.subText p {
-  line-height: 12px;
-  font-family: '__Merriweather Sans_5';
-  font-weight: 300;
-  min-height: 33px;
-  background-color: transparent;
-  color: #999999;
-  position: relative;
-  margin-top: 7px;
-  font-size: 10px;
-}
-
-.mEstimated {
-  width: 320px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.mEstimated div p {
-  font-family: '__Merriweather_5';
-  text-align: center;
-  min-height: 37px;
-}
-
-.mEstimated1 {
-  height: 100px;
-}
-
-.mEstimated1 h3 {
-  font-family: '__Merriweather_5';
-  text-align: center;
-  min-height: 37px;
-  font-weight: 700;
-}
-
-.mEstimated1 h4 {
-  /*font-family: '__Merriweather Sans_5';
-    text-align: center;
-    min-height: 40px;
-    font-weight: 300;*/
-  line-height: 25px;
-  color: #31A6E0;
-  font-family: '__Merriweather_5';
-  font-weight: 700;
-  font-size: 21px;
-}
-
-.mEstimated1 p {
-  font-family: '__Merriweather_5';
-  text-align: center;
-  min-height: 37px;
-}
-
-.mEstimated2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.mEstimated2 div {
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.mEstimated2 div h4 {
-  font-family: '__Merriweather Sans_5';
-  text-align: center;
-  min-height: 40px;
-  font-weight: 300;
-}
-
-.mEstimated2 div p {
-  font-family: '__Merriweather_5';
-  text-align: center;
-  min-height: 37px;
-}
-
-.divisor {
-  padding-bottom: 10px;
-  padding-top: 10px;
-  height: 10px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.divisor hr {
-  width: 100%;
-}
-
-.mapView {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.houseView {
-  /*display: none;*/
-  /*width: 650px;*/
-  width: 700px;
-  height: 350px;
-}
-
-.houseView img {
-  width: 700px;
-  height: 350px;
-}
-
-.map {
-  width: 700px;
-  height: 350px;
-}
-
-.map img {
-  width: 700px;
-  height: 350px;
-}
-
-.textContent {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 0px;
-}
-
-.textContent h2 {
-  width: 620px;
-  font-family: '__Merriweather Sans_5';
-  margin-top: 14px;
-  padding-bottom: 5px;
-  background-color: transparent;
-  font-weight: 300;
-  color: #999999;
-}
-
-.textContent p {
-  width: 620px;
-  font-family: '__Merriweather Sans_5';
-  margin-top: 14px;
-  background-color: transparent;
-  font-weight: 300;
-  text-align: justify;
-}
-
-.propiedades {
-  display: table-column;
-}
-
-.intro {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.intro h2 {
-  width: 800px;
-  padding-left: 7px;
-  font-family: '__Merriweather Sans_5';
-  font-weight: 300;
-  min-height: 26px;
-  color: #BFBFBF;
-  letter-spacing: -1px;
-}
-
-.intro p {
-  width: 800px;
-  padding-left: 7px;
-  font-family: '__Merriweather Sans_5';
-  min-height: 58px;
-  font-weight: 300;
-  z-index: 155;
-  line-height: 22px;
-  text-align: justify;
-}
-
-.map2 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.map2 img {
-  width: 700px;
-  height: 400px;
-}
-
-.table {
-  padding-top: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: 650px;
-  text-align: center;
-}
-
-.example-container {
-  display: flex;
-  flex-direction: column;
-  width: 670px;
-  height: 650px;
-}
-
-.mat-table {
-  /*overflow: auto;*/
-  max-height: 550px;
-}
-
-.mat-header-cell.mat-sort-header-sorted {
-  color: black;
-}
-
-.preciosColonia {
-  display: table-column;
-}
-
-.intro h3 {
-  width: 700px;
-  font-weight: 700;
-  font-family: '__Merriweather_5';
-}
-
-.ofertasMes {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.ultimoMes {
-  width: 308px;
-  padding-right: 2px;
-}
-
-.umesContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-/*.calendarContainer{
-    
-}*/
-
-.calendarContainer img {
-  width: 60px;
-}
-
-.numCasas {
-  width: 180px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.numCasas h1 {
-  padding-top: 15px;
-  padding-left: 3px;
-  color: #31A6E0;
-  z-index: 202;
-  background-color: transparent;
-  line-height: 36px;
-  font-family: '__Merriweather_5';
-  min-height: 35px;
-  font-weight: 700;
-  text-align: center;
-  font-size: 30px;
-}
-
-.numCasas p {
-  width: 80px;
-  padding-left: 3px;
-  font-weight: 300;
-  z-index: 194;
-  background-color: transparent;
-  line-height: 13px;
-  font-family: '__Merriweather Sans_5';
-  min-height: 37px;
-  color: #494949;
-  font-size: 11px;
-}
-
-.seisMeses {
-  width: 308px;
-  padding-left: 2px;
-}
-
-.smesContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-.tablaMes {
-  padding-top: 15px;
-}
-
-.tablaMes table {
-  width: 100%;
-}
-
-.titleTable {
-  height: 35px;
-  background-color: #9c9a9a;
-  text-align: center;
-  font-family: '__Merriweather Sans_5';
-  min-height: 40px;
-  font-weight: 300;
-  color: #FFFFFF;
-  padding: 3px;
-}
-
-table td {
-  background-color: #ccc4c4;
+.input_address {
   height: 20px;
 }
 
-.promedioTotal {
-  line-height: 24px;
-  color: #31A6E0;
-  font-family: '__Merriweather_5';
-  font-weight: 700;
-  font-size: 20px;
-  text-align: center;
-}
-
-.promediom2 {
-  font-family: '__Merriweather Sans_5';
-  text-align: center;
-  min-height: 40px;
-  font-weight: 300;
-}
-
-.txtPromedio {
-  font-family: '__Merriweather Sans_5';
-  text-align: center;
-  min-height: 40px;
-  font-weight: 300;
-}
-
-.plusValia {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding-top: 20px;
-}
-
-.plusValiaContainer {
-  width: 700px;
+.nums {
   display: flex;
   flex-direction: row;
 }
 
-.plusValiaContainer h2 {
-  line-height: 25px;
-  color: #31A6E0;
-  font-family: '__Merriweather_5';
-  font-weight: 700;
-  font-size: 21px;
+.nums mat-form-field {
+  width: 49%;
 }
 
-.plusValiaContainer p {
-  font-weight: 300;
-  font-family: '__Merriweather Sans_5';
-  color: #000000;
-  font-size: 18px;
-}
-
-.flechaContainer img {
-  padding-right: 5px;
-  width: 40px;
-  height: 32px;
-  padding-left: 150px;
-}
-
-.glosario {
-  display: table-column;
-}
-
-.glosarioContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-
-.leftText {
-  width: 150px;
-}
-
-.leftText p {
-  height: 65px;
-  font-family: '__Raleway_5';
-  font-weight: 700;
-  line-height: 15px;
-  font-size: 11px;
-}
-
-.rightText {
-  width: 800px;
-  /*display: flex;
-    flex-direction: column;*/
-  /*justify-content: flex-start;*/
-}
-
-.intro2 {
-  margin: 0;
-  padding-bottom: 10px;
-}
-
-.intro2 h3 {
-  padding-left: 5px;
-  font-weight: 700;
-  font-family: '__Merriweather_5';
-}
-
-.intro2 p {
-  font-family: '__Merriweather Sans_5';
-  padding-left: 5px;
-  font-weight: 300;
-  z-index: 155;
-  line-height: 22px;
-  text-align: justify;
-}
-
-/*.rightText p {
-    height: 65px;
-    color: #999999;
-    line-height: 15px;
-    font-family: Geneva, Verdana, Lucida Sans, Lucida Sans Unicode, sans-serif;
-    text-align: justify;
-    font-size: 11px;
-}*/
-
-.terminos {
-  display: table-column;
-}
-
-.contenido {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.contenido p {
-  width: 800px;
-  padding-left: 5px;
-  font-family: '__Merriweather Sans_5';
-  font-weight: 300;
-  line-height: 17px;
-  font-size: 12px;
-  padding-bottom: 10px;
-  text-align: justify;
-}
-
-.graficaPrecioColonia {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+mat-form-field {
   width: 100%;
+  margin: 3px;
 }
 
-.containerGraficaColonia {
-  width: 650px;
+h4 {
+  padding: 5px;
+}
+
+.maps {
+  width: 49%;
+}
+
+.maps agm-map {
+  padding-top: 20px;
+  width: 100%;
+  height: 290px;
+}
+
+.nota {
+  color: darkslategrey;
+  margin: 15px;
+  text-align: justify;
+}
+
+.characteristics {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.address {
+  width: 20%;
+  padding-left: 5px;
+  max-width: 300px;
+}
+
+.articles {
+  min-width: 20%;
+  max-width: 40%;
+  width: 40%;
   display: flex;
   flex-direction: column;
 }
 
-;
-.graficaContainer {
-  width: 100%;
-}
-
-.graficaContainer p-chart {
-  width: 100%;
-}
-
-.graficaDescripciones {
-  display: table-column;
-}
-
-.propiedadesEdad {
+.article_button {
   display: flex;
-  flex-flow: row;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+}
+
+.button_title {
+  display: flex;
+  flex-direction: column;
+}
+
+.image_title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.description {
+  width: 30%;
+  padding-right: 10px;
+}
+
+.amenidades {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-}
-
-.propiedadesPrecioM2 {
-  display: table-column;
-  width: 320px;
-}
-
-.grafica1Container {
-  width: 320px;
-  padding-left: 10px;
-  ;
-  padding-top: 10px;
-}
-
-.grafica2Container {
-  width: 320px;
-  padding-left: 10px;
-  padding-top: 10px;
-}
-
-.edadVivienda {
-  display: table-column;
-  width: 320px;
-}
-
-.recamarasSuperficie {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.graficaContainer1 p-chart {
-  width: 100%;
-}
-
-.graficaContainer2 p-chart {
-  width: 310px;
-}
-
-.intro3 h3 {
-  text-align: center;
-  width: 700px;
-  font-weight: 700;
-  font-family: '__Merriweather_5';
-}
-
-.headerCell {
-  width: 30px;
-  font-size: 10px;
-  color: rgba(0, 0, 0, .54);
-  font-weight: 500;
-}
-
-.containerCell {
-  width: 30px;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(0, 0, 0, .87);
-  ;
-}
-
-.containerCell2 {
-  width: 30px;
-  font-size: 10px;
-  font-weight: 500;
-  color: rgba(0, 0, 0, .87);
-  ;
-}
-
-.superTitle {
-  background: #28225C;
-  display: flex;
-  flex-direction: row;
   justify-content: center;
 }
 
-.superContainer {
-  width: 800px;
-  padding-left: 10px;
+.miniContainers {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.logo {
+  flex-direction: column;
+  align-items: center;
   width: 200px;
-  height: 50px;
-  margin: 20px;
-  filter: hue-rotate(130deg);
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 
-canvas {
-  display: block;
-  visibility: visible;
+.example-margin {
+  margin: 0 10px;
 }
 
-.position {
-  width: 16px;
-  height: 19px;
+mat-button-toggle {
+  border: 0.5px rgba(0, 0, 0, .38) solid;
 }
 
-.icon {
-  width: 16px;
-  height: 16px;
+.medioBano {
+  width: 135px;
 }
 
-.headerCell1 {
-  width: 20px;
+.pago-tarjeta {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
-.headerCell2 {
-  width: 40px;
+.cost {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 30%;
+  padding-left: 5px;
 }
 
-.graficaPlusvalia {
-  padding-top: 10px;
-  width: 700px;
-  height: 350px;
+.payment {
+  width: 49%;
+}
+
+.paymentInfo {
+  padding-top: 5px;
+}
+
+.costContainer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.input-costo-reporte {
+  width: 40%;
+}
+
+.texto {
+  width: 60%;
+}
+
+.subContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.containerPayment1 {
+  width: 50%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.containerPayment {
+  width: 45%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.expiredDate {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.input-expiredDate {
+  width: 49%;
+}
+
+.datos-facturacion {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.principal {
+  padding-top: 23px;
+  padding-right: 10px;
+}
+
+.contact {
+  padding-top: 5px;
+}
+
+.oculto {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+@media only screen and (max-width:632px) {
+  .addressDesc {
+    width: 100%;
+    height: 350px;
+  }
+  .maps {
+    width: 100%;
+  }
+  .address {
+    width: 100%;
+    padding-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  /*.address{
+      width:100%;
+      padding-left: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+      justify-content: center;
+    }*/
+  .subAddress {
+    width: 100%;
+  }
+  .kind {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .kind h4 {
+    width: 100%;
+    text-align: center;
+  }
+  .homeStatus {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .articles {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .description {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .pago-tarjeta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .cost {
+    min-width: 100%;
+    min-height: 352px;
+  }
+  .payment {
+    width: 100%;
+    min-height: 425px;
+  }
+  .miniContainers {
+    width: 139px;
+  }
+  .expiredDate {
+    display: flex;
+    flex-direction: column;
+  }
+  .subContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  .containerPayment1 {
+    width: 90%;
+  }
+  .containerPayment {
+    width: 90%;
+  }
+  .input-expiredDate {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width:1040px) {
+  .address {
+    width: 100%;
+    padding-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    justify-content: center;
+  }
+  .kind {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .kind h4 {
+    width: 100%;
+    text-align: center;
+  }
+  .homeStatus {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .homeStatus h4 {
+    width: 100%;
+    text-align: center;
+  }
+  .articles {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .description {
+    padding-top: 10px;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .subDescription {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .pago-tarjeta {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .cost {
+    width: 40%;
+  }
+  .payment {
+    width: 100%;
+    min-height: 425px;
+  }
+  .oculto {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+  }
+  @media only screen and (max-width:632px) {
+    .addressDesc {
+      width: 100%;
+      height: 350px;
+      padding-left: 5px;
+    }
+    .maps {
+      width: 100%;
+      padding-top: 40px;
+    }
+    .address {
+      width: 100%;
+      padding-left: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    /*.address{
+      width:100%;
+      padding-left: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      
+      justify-content: center;
+    }*/
+    .subAddress {
+      width: 100%;
+    }
+    .kind {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .kind h4 {
+      width: 100%;
+      text-align: center;
+    }
+    .homeStatus {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .articles {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .description {
+      width: 100%;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .pago-tarjeta {
+      display: flex;
+      flex-direction: column;
+    }
+    .cost {
+      min-width: 100%;
+      min-height: 352px;
+    }
+    .payment {
+      width: 100%;
+      min-height: 425px;
+    }
+    .miniContainers {
+      width: 139px;
+    }
+    .expiredDate {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }

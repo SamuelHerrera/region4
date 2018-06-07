@@ -1,426 +1,442 @@
-import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { MatVerticalStepper } from '@angular/material';
 import { AgmCoreModule } from '@agm/core';
-import { ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, Sort } from '@angular/material';
+import { YalsService } from '../../services/yals.service';
+import { SelectItem } from 'primeng/components/common/selectitem';
+import { group } from '@angular/animations';
+import { NgForm } from '@angular/forms';
 import * as jsPDF from 'jspdf';
 import * as html2pdf from '../../../assets/js/html2pdf';
-import { Element } from '@angular/compiler';
-import { DecimalPipe } from '@angular/common';
-import { DatePipe } from '@angular/common';
 import { YalsRequest } from '../../models/yals.model';
-import { YalsService } from '../../services/yals.service';
-import { ShortNumberPipe } from '../../pipes/short-number.pipe';
 
 @Component({
   selector: 'app-reporte',
   templateUrl: './reporte.component.html',
   styleUrls: ['./reporte.component.css']
 })
-export class ReporteComponent implements OnInit, OnChanges, AfterViewInit {
+export class ReporteComponent implements OnInit {
+  @ViewChild('f0') form0: NgForm;
+  @ViewChild('f1') form1: NgForm;
+  @ViewChild('f2') form2: NgForm;
+  @ViewChild('f3') form3: NgForm;
+  @ViewChild('f4') form4: NgForm;
 
-  optionsPlusvalia: any;
-  months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
-  indexMonth: number;
-  fechaCreacion: any;
-  fechaConsulta: any;
-  fechaSimilares: any;
+  data: any = [];
+  data_response: any = null;
+  dataRFC: any = [];
+  dataCreditCar: any = null;
+  zipCode: boolean;
+  street = 100;
+  num_ext = '489B';
+  colonia = 'Bojorquez';
+  zip = 9700;
+  municipio = 'Mérida';
+  ciudad = 'Mérida';
+  estado = 'Yucatán';
 
-  /**Para mostrar los datos de las gráficas */
-  labelm2General: any = {};
-  coloniam2General: any[] = [];
+  /**Maps */
+  lat = 21.082189;
+  lng = -89.6368873;
+  overlays: any[];
+  /**Maps */
+  contador = 0;
+
+  @Input() avaluoForm: any;
+  @Output() completed = new EventEmitter<boolean>();
+
+  timeout = null;
+  elementToPrint: any;
+  isNew = false;
+  loading = false;
+  disabled = true;
   /** */
 
-  displayedColumns = ['position', 'oferta', 'total', 'm2', 'cuartos', 'banos',
-    'parking', 'construccion', 'edad', 'distancia', 'similitud'];
-  ELEMENT_DATA: any[] = [];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-  @ViewChild(MatSort) sort: MatSort;
-  @Input() datos = null;
-  dat: any;
+  basic: boolean = false;
+  principal: boolean = false;
 
-  url: any = '';
-  urlImage: any = '';
-  ulrMultipleMarkers: any = '';
-  urlAux: any = '';
-  //plusvalia = this.datos.data.response.historico.apreciacion_anualizada * 100;//"pending to implement"//14.2;
-  plusvalia: any;
-  /*lat = 30.200;
-  lng = 20.100;*/
-  lat: number;
-  lng: number;
-
-  /**Variables para las graficas */
-  /**datos.data.request.colonia_preciosm2_general */
-  datosPrecioColonia: any;
-  datoPlusvalia: any;
-  options: any;
-  datosPropiedadesM2: any;
-  datosEdadVivienda: any;
-  datosRecamaras: any;
-  datosSuperficieConstruida: any;
-
+  /**Paso 3 */
+  /** */
+  aireAcondicionado = false;
+  cocinaIntegral = false;
+  gimnasio = false;
+  roofGarden = false;
+  alberca = false;
+  cuartoServicio = false;
+  jardin = false;
+  amueblado = false;
+  estudio = false;
+  jacuzzi = false;
+  seguridadPrivada = false;
   constructor(private yals: YalsService) {
+
+  }
+  pdfBasico() {
+    this.basic = true;
+    this.data = {
+      "latitud": 20.9699248,
+      "longitud": -89.6513603,
+      "street": "22",
+      "num_ext": "521",
+      "zip": "97240",
+      "colonia": "Francisco I. Madero",
+      "municipio": "Merida",
+      "estado": "Yucatan",
+      "ciudad": "Merida",
+      "id_tipo_propiedad": 2,
+      "recamaras": 4,
+      "banos": 3,
+      "medios_banos": 2,
+      "estacionamientos": 1,
+      "area_construida": 122,
+      "superficie_terreno": 122,
+      "edad": 1,
+      "amenities": [
+        "cocina_integral",
+        "estudio"
+      ],
+      "email": "ventas@region4.mx",
+      "api_key": "x_brAgJfLNK5ANWGGMcRAkJR"
+    };
+
+
+    const yals_req: YalsRequest = this.data;
+    yals_req.id_tipo_propiedad = (+yals_req.id_tipo_propiedad);
+    yals_req.recamaras = (+yals_req.recamaras);
+    yals_req.banos = (+yals_req.banos);
+    yals_req.medios_banos = (+yals_req.medios_banos);
+    yals_req.estacionamientos = (+yals_req.estacionamientos);
+    yals_req.area_construida = (+yals_req.area_construida);
+    yals_req.superficie_terreno = (+yals_req.superficie_terreno);
+    yals_req.edad = (+yals_req.edad);
+
+    console.log("yals", yals_req);
+
+    this.yals.generateRequest(yals_req, null).subscribe(response => {
+
+      this.data_response = response;
+
+      setTimeout(() => {
+        this.elementToPrint = document.getElementById('basic-element-to-print');
+        console.log(this.elementToPrint);
+
+        const datauri = html2pdf(this.elementToPrint, {
+          margin: 0.4,
+          filename: 'reporte.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { dpi: 192, letterRendering: true },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+          action: "save"
+        });
+        datauri.then(data => { });
+      }, 1000)
+      console.log('response de data', this.data_response);
+    }, error => {
+      console.log('Error obteniendo la consulta');
+    });
+
+
+
+
+  }
+  pdfCompleto() {
+    this.principal = true;
+    this.data = {
+      'latitud': 20.9699248,
+      'longitud': -89.6513603,
+      'street': '22',
+      'num_ext': '521',
+      'zip': '97240',
+      'colonia': 'Francisco I. Madero',
+      'municipio': 'Merida',
+      'estado': 'Yucatan',
+      'ciudad': 'Merida',
+      'id_tipo_propiedad': 2,
+      'recamaras': 4,
+      'banos': 3,
+      'medios_banos': 2,
+      'estacionamientos': 1,
+      'area_construida': 122,
+      'superficie_terreno': 122,
+      'edad': 1,
+      'amenities': [
+        'cocina_integral',
+        'estudio'
+      ],
+      'email': 'ventas@region4.mx',
+      'api_key': 'x_brAgJfLNK5ANWGGMcRAkJR'
+    };
+
+
+    const yals_req: YalsRequest = this.data;
+    yals_req.id_tipo_propiedad = (+yals_req.id_tipo_propiedad);
+    yals_req.recamaras = (+yals_req.recamaras);
+    yals_req.banos = (+yals_req.banos);
+    yals_req.medios_banos = (+yals_req.medios_banos);
+    yals_req.estacionamientos = (+yals_req.estacionamientos);
+    yals_req.area_construida = (+yals_req.area_construida);
+    yals_req.superficie_terreno = (+yals_req.superficie_terreno);
+    yals_req.edad = (+yals_req.edad);
+
+    console.log('yals', yals_req);
+
+    this.yals.generateRequest(yals_req, null).subscribe(response => {
+
+      this.data_response = response;
+
+      setTimeout(() => {
+        this.elementToPrint = document.getElementById('element-to-print');
+        console.log(this.elementToPrint);
+
+        const datauri = html2pdf(this.elementToPrint, {
+          margin: 0.4,
+          filename: 'reporte.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { dpi: 192, letterRendering: true },
+          jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
+          action: 'save'
+        });
+        datauri.then(data => { });
+      }, 1000);
+      console.log('response de data', this.data_response);
+    }, error => {
+      console.log('Error obteniendo la consulta');
+    });
+
+
 
   }
 
   ngOnInit() {
-    console.log("Total de similares", this.datos);
-    this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=15&size=650x350&format=jpg&maptype=roadmap&markers=color:blue%7Clabel:S%7C" + this.lat + "," + this.lng + "&key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
-      .subscribe((response: any) => {
-        this.url = "data:image/jpeg;base64," + response.data;
-      });
-
-    this.yals.urlToBase64("https://maps.googleapis.com/maps/api/streetview?size=650x350&format=jpg&location=" + this.lat + "," + this.lng + "&fov=90&heading=235&pitch=10&key=AIzaSyD-mZNHODP64wms0kiJCINVSyrgG5mht3w")
-      .subscribe((response: any) => {
-        this.urlImage = "data:image/jpeg;base64," + response.data;
-      });
-
-    let idx = 1;
-
-    if (this.datos.data.response.similares) {
-      this.datos.data.response.similares.forEach(element => {
-        this.urlAux += "&markers=color:blue%7Clabel:" + idx + "%7C" + element.latitud + "," + element.longitud;
-        idx++;
-      });
-      this.urlAux += "&markers=color:green%7Clabel:*%7C" + this.lat + "," + this.lng + "&";
-      this.yals.urlToBase64("https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=700x400&format=jpg&maptype=roadmap"
-        + this.urlAux +
-        "key=AIzaSyDV1v9VqdOKgnwilfhA25PqEFRoSNjHXAQ")
-        .subscribe((response: any) => {
-          this.ulrMultipleMarkers = "data:image/jpeg;base64," + response.data;
-        });
-    }
   }
 
-  ngOnChanges(): void {
+  onChange(event) {
+    this.verify();
+  }
 
-    //console.log(this.datos);
-    const fecha: any = (this.datos.data.dateCreated).split("-");
-    /*if(fecha[1]==="04"){
-      this.indexMonth = 3;
+  verify() {
+
+    /*if(this.avaluoForm['zip'].length == 5) {
+      this.zipCode = true;
+    } else{
+      this.zipCode = false;
     }*/
-    this.indexMonth = parseInt(fecha[1]);
-    const diaCreacion: any = fecha[2].split("T");
-    this.fechaCreacion = diaCreacion[0] + " de " + this.months[this.indexMonth - 1] + " del " + fecha[0];
-    this.fechaConsulta = this.months[this.indexMonth - 1] + " " + fecha[0];
-    //console.log("fecha", this.months[this.indexMonth]);
-    if (this.datos.data.response.historico) {
-      this.plusvalia = (this.datos.data.response.historico.apreciacion_anualizada) * 100;
+
+    if (this.avaluoForm['street']
+      && this.avaluoForm['num_ext']
+      && this.avaluoForm['zip']
+      && this.avaluoForm['colonia']
+      && this.avaluoForm['municipio']
+      && this.avaluoForm['estado']
+      && this.avaluoForm['ciudad']) {
+
+      this.yals.getCoords(this.avaluoForm).subscribe((response: any) => {
+        console.log(response);
+        try {
+          this.avaluoForm['latitud'] = this.lat = response.results[0].geometry.location.lat;
+          this.avaluoForm['longitud'] = this.lng = response.results[0].geometry.location.lng;
+        } catch (e) {
+        }
+      });
+
+      setTimeout(() => {
+        this.completed.emit(true);
+      });
+
     } else {
-      this.plusvalia = false;
+      setTimeout(() => {
+        this.completed.emit(false);
+      });
     }
+  }
 
-    if (this.datos) {
-      this.lat = this.datos.data.request.latitud;
-      this.lng = this.datos.data.request.longitud;
-      this.ELEMENT_DATA = [];
-      let ind = 1;
-      if (this.datos.data.response.similares) {
+  anterior() {
+    if (this.contador > 0) {
+      this.contador -= 1;
+    }
+  }
+  siguiente() {
+    switch (this.contador) {
+      case 0:
+        if (!this.form0.valid) {
+          return;
+        }
+        break;
+      case 1:
+        if (!this.form1.valid
+          || !this.data['tipo_propiedad']
+          || !this.data['status_propiedad']
+          || !this.data['num_cuartos']
+          || !this.data['num_banos']
+          || !this.data['num_medio_bano']
+          || !this.data['num_parking']
+        ) {
+          return;
+        }
+        break;
+      case 2:
+        if (!this.form2.valid) {
+          return;
+        }
+        break;
+      case 3:
+        if (!this.form3.valid) {
+          return;
+        }
+        break;
+      case 4:
+        if (!this.form4.valid) {
+          return;
+        }
+        break;
+      default:
+        break;
+    }
+    if (this.contador < 4) {
+      this.contador += 1;
+    }
+  }
 
-        this.ELEMENT_DATA.push({
-          position: 0,
-          //oferta: element.fecha_oferta,
-          oferta: this.fechaConsulta,
-          total: this.datos.data.response.valuacion.valuacion,
-          m2: this.datos.data.response.valuacion.valuacion_m2,
-          cuartos: this.datos.data.response.characteristics.recamaras,
-          banos: this.datos.data.response.characteristics.banos,
-          parking: this.datos.data.response.characteristics.estacionamientos,
-          construccion: this.datos.data.response.characteristics.area_construida,
-          edad: this.datos.data.response.characteristics.edad,
-          distancia: "-",
-          similitud: "-"
-        });
+  nuevo() {
+    this.isNew = !this.isNew;
+    this.data['anios_antiguedad'] = 0;
+  }
 
-        this.datos.data.response.similares.forEach(element => {
-          //console.log("fechaOferta:", element.fecha_oferta);
-          const fechaOferta: any = (element.fecha_oferta).split("/");
-          this.indexMonth = parseInt(fechaOferta[1]);
-          this.fechaSimilares = this.months[this.indexMonth - 1] + " " + fechaOferta[2];
 
-          this.ELEMENT_DATA.push({
-            position: ind,
-            //oferta: element.fecha_oferta,
-            oferta: this.fechaSimilares,
-            total: element.precio_oferta,
-            m2: element.precio_m2,
-            cuartos: element.recamaras,
-            banos: element.banos,
-            parking: element.estacionamientos,
-            construccion: element.area_construida.toFixed(2),
-            edad: (element.edad || 0),
-            distancia: element.distancia.toFixed(2),
-            similitud: (element.similitud * 100).toFixed(2)
+  aplicarCodigo() {
+    /*
+    this.cupones.getCuponByName(this.codigoName).subscribe((response: any) => {
+      //console.log("Response", response)
+      if (response && response.data.docs.length > 0) {
+        const porcentajeDescuento = response.data.docs[0].porcentaje;
+        if (response.data.docs[0].estado) {
+
+          this.montoDescuento = "Descuento: " + porcentajeDescuento + "% = " + ((porcentajeDescuento * 1200) / 100);
+          this.facturacion["subTotal"] = 1200 - ((porcentajeDescuento * 1200) / 100);
+          this.facturacion["total"] = 1200 - ((porcentajeDescuento * 1200) / 100);
+        } else {
+
+          this.messageService.add({
+            severity: 'error', summary: 'Cupón Inválido',
+            detail: "El cupón no se encuentra activo."
           });
-          ind++;
-        });
-      }
 
-      let indx = 0;
-      let indx1 = 0;
-      let indx2 = 0;
-      const coloniaGeneralNuevo: any[] = [];
-      this.datos.data.response.colonia_preciosm2_general.data.nuevo.forEach(element => {
-        coloniaGeneralNuevo[indx2] = element * 100;
-        indx2++;
-      });
-      this.datos.data.response.colonia_preciosm2_general.data.usado.forEach(element => {
-        this.coloniam2General[indx] = element * 100;
-        indx++;
-
-      });
-      this.datosPrecioColonia = this.plusvalia ? {
-        labels: this.datos.data.response.colonia_preciosm2_general.labels,
-        datasets: [
-          {
-            label: 'Precio Promedio Nuevo',
-            backgroundColor: '#0d48a8',
-            borderColor: '#082759',
-            data: coloniaGeneralNuevo
-          },
-          {
-            label: 'Precio Promedio Usado',
-            backgroundColor: '#0d52c1',
-            borderColor: '#0341a5',
-            //data: this.datos.data.response.colonia_preciosm2_general.data.usado
-            data: this.coloniam2General
-          }
-        ]
-      } : {};
-      /**grafica de precio propiedad por m2 */
-      /** this.datos.data.response.colonia_preciosm2_especifica */
-      const coloniaEspecificaNuevo: any[] = [];
-      const coloniaEspecificaUsado: any[] = [];
-      let idx0 = 0;
-      let idx1 = 0;
-
-      this.datos.data.response.colonia_preciosm2_especifica.data.nuevo.forEach(element => {
-        coloniaEspecificaNuevo[idx0] = element * 100;
-        idx0++;
-      });
-      this.datos.data.response.colonia_preciosm2_especifica.data.usado.forEach(element => {
-        coloniaEspecificaUsado[idx1] = element * 100;
-        idx1++;
-      });
-      this.datosPropiedadesM2 = this.plusvalia ? {
-        labels: this.datos.data.response.colonia_preciosm2_especifica.labels,
-        //labels: ['35000', '40000', '50000', '50000+'],
-        datasets: [
-          {
-            label: 'Nuevo',
-            backgroundColor: '#0d48a8',
-            borderColor: '#082759',
-            //data: this.datos.data.response.colonia_preciosm2_especifica.data.nuevo
-            data: coloniaEspecificaNuevo
-          }, {
-            label: 'Usado',
-            backgroundColor: '#0d52c1',
-            borderColor: '#0341a5',
-            //data: this.datos.data.response.colonia_preciosm2_especifica.data.usado
-            data: coloniaEspecificaUsado
-          }
-        ]
-      } : {}
-
-      this.options = {
-        scales: {
-          yAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: 'Resultados en %'
-            },
-            ticks: {
-              beginAtZero: true,
-            }
-          }]
         }
-      }
-      this.optionsPlusvalia = {
-        scales: {
-          yAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: 'Resultados en $'
-            },
-            ticks: {
-              beginAtZero: true,
-            }
-          }]
-        }
-      }
 
-
-
-      /**Grafica edad y tipo de vivienda */
-      /** */
-      const tipoColoniaNuevo: any[] = [];
-      const tipoColoniaUsado: any[] = [];
-      let idxTipo = 0;
-      let idxTipo0 = 0;
-      this.datos.data.response.colonia_tipos_propiedades.data.nuevo.forEach(element => {
-        tipoColoniaNuevo[idxTipo] = element * 100;
-        idxTipo++;
-      });
-      this.datos.data.response.colonia_tipos_propiedades.data.usado.forEach(element => {
-        tipoColoniaUsado[idxTipo0] = element * 100;
-        idxTipo0++;
-      });
-
-      //console.log("tipoColonia", tipoColoniaNuevo);
-      this.datosEdadVivienda = this.plusvalia ? {
-        labels: ['Casa', 'Departamento'],
-        datasets: [
-          {
-            label: 'Nuevo',
-            backgroundColor: '#0d48a8',
-            borderColor: '#082759',
-            //data: this.datos.data.response.colonia_tipos_propiedades.data.nuevo
-            data: tipoColoniaNuevo
-          }, {
-            label: 'Usado',
-            backgroundColor: '#0d52c1',
-            borderColor: '#0341a5',
-            //data: this.datos.data.response.colonia_tipos_propiedades.data.usado
-            data: tipoColoniaUsado
-          }
-        ]
-      } : {}
-
-      /**Grafica numero de recamaras */
-      /** this.datos.data.response.colonia_recamaras.labels --> .data.nuevo .data.usado */
-
-      if (this.datos.data.response.colonia_recamaras) {
-        const recamarasNuevo: any[] = []
-        const recamarasUsado: any[] = [];
-        let idxRecamaras = 0;
-        let idxRecamaras0 = 0;
-
-        this.datos.data.response.colonia_recamaras.data.nuevo.forEach(element => {
-          recamarasNuevo[idxRecamaras] = element * 100;
-          idxRecamaras++;
+      } else {
+        this.messageService.add({
+          severity: 'info', summary: 'Cupón Inválido',
+          detail: "El cupón no existe."
         });
-        this.datos.data.response.colonia_recamaras.data.usado.forEach(element => {
-          recamarasUsado[idxRecamaras0] = element * 100;
-          idxRecamaras0++;
-        });
-
-        this.datosRecamaras = {
-          //labels: this.datos.data.response.colonia_recamaras.labels,
-          labels: ['1', '2', '3', '4+'],
-          datasets: [
-            {
-              label: 'Nuevo',
-              backgroundColor: '#0d48a8',
-              borderColor: '#082759',
-              //data: this.datos.data.response.colonia_recamaras ? this.datos.data.response.colonia_recamaras.data.nuevo : []
-              data: recamarasNuevo
-            }, {
-              label: 'Usado',
-              backgroundColor: '#0d52c1',
-              borderColor: '#0341a5',
-              //data: this.datos.data.response.colonia_recamaras ? this.datos.data.response.colonia_recamaras.data.usado : []
-              data: recamarasUsado
-            }
-          ]
-        }
       }
-
-      /**Grafica superficie construida */
-      /** this.datos.data.response.colonia_superficies.labels --> .data.nuevo .data.usado*/
-      if (this.datos.data.response.colonia_superficies) {
-        const coloniaNuevo: any[] = [];
-        const coloniaUsado: any[] = [];
-        let idxColonia = 0;
-        let idxColonia0 = 0;
-        this.datos.data.response.colonia_superficies.data.nuevo.forEach(element => {
-          coloniaNuevo[idxColonia] = element * 100;
-          idxColonia++;
-        });
-        this.datos.data.response.colonia_superficies.data.usado.forEach(element => {
-          coloniaUsado[idxColonia0] = element * 100;
-          idxColonia0++;
-        });
-        this.datosSuperficieConstruida = {
-          labels: ['<60 m2', '60-120 m2', '120-200 m2', '>200 m2'],
-          datasets: [
-            {
-              label: 'Nuevo',
-              backgroundColor: '#0d48a8',
-              borderColor: '#082759',
-              //data: this.datos.data.response.colonia_superficies ? this.datos.data.response.colonia_superficies.data.nuevo : []
-              data: coloniaNuevo
-            },
-            {
-              label: 'Usado',
-              backgroundColor: '#0d52c1',
-              borderColor: '#0341a5',
-              //data: this.datos.data.response.colonia_superficies ? this.datos.data.response.colonia_superficies.data.usado : []
-              data: coloniaUsado
-            }
-          ]
-        }
-      }
-
-      /**Grafica plusvalia */
-      const fechaHistorico: any[] = [];
-      const precioHistorico: any[] = [];
-      let idxHistorico = 0;
-      let idxHistorico0 = 0;
-      this.datos.data.response.precio_historico_m2.forEach(element => {
-        const fechaSplit: any = (element.fecha).split("-");
-        fechaHistorico[idxHistorico] = this.months[parseInt(fechaSplit[1]) - 1] + " " + fechaSplit[0];
-
-        precioHistorico[idxHistorico] = (element.promedio_venta).toFixed(2);
-        idxHistorico++;
-      });
-      this.datoPlusvalia = {
-        labels: fechaHistorico,
-        datasets: [
-          {
-            label: 'Precio Promedio por m2',
-            data: precioHistorico,
-            fill: false,
-            backgroundColor: '#0e63ed',
-            borderColor: '#054dc1'
-          }
-        ]
-      }
-      /**Fin graficas */
-
-      this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-    }
+    });*/
   }
 
-  // tslint:disable-next-line:use-life-cycle-interface
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
+  pagarAvaluo() {
+    /*
+    this.loading = true;
+    this.pf.monto = this.facturacion["total"];
+    this.pf.email = "region4mid@gmail.com";
+    this.pf.calleyNumero = "Calzada General MAriano Escobedo 748";
+    this.pf.colonia = "Anzures";
+    this.pf.estado = "Ciudad de Mexico";
+    this.pf.municipio = "Ciudad de Mexico";
+    this.pf.pais = "Mexico";
+    this.pagofacil.generatePago(this.pf).subscribe((response: any) => {
+      if (response) {
+        if (response.data.response.autorizado === 1) {
+          console.log(response)
+          this.messageService.add({
+            severity: 'success', summary: 'Procesamiento de pago',
+            detail: "Su pago se ha procesado satisfactoriamente."
+          });
+          this.facturacion["formapago"] = "Tarjeta Debito/Credito";
+          this.facturacion["FechaTransaccion"] = new Date().toLocaleDateString();
+          this.completed.emit(true);
+        } else {
+          let errors = "";
+          // tslint:disable-next-line:forin
+          for (const key in response.data.response.error) {
+            const value = response.data.response.error[key];
+            errors += value + " <br> ";
+          }
+          this.messageService.add({
+            severity: 'error', summary: 'Error procesando pago',
+            detail: "Se ha producido un error: " + errors
+          });
+        }
+      }
+      this.loading = false;
+    }, error => {
+      this.messageService.add({
+        severity: 'error', summary: 'Error procesando pago',
+        detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+      });
+      this.loading = false;
+    });*/
   }
-
-  imprimir() {
-    const element = document.getElementById('element-to-print');
-    console.log("Elementos a imprimir: ", element);
-    html2pdf(element, {
-      margin: 1,
-      filename: 'myfile.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { dpi: 192, letterRendering: true },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-      action: "save"
-    });
+  pagarAvaluoPayPal() {
+    /*
+    console.log(this.facturacion)
+    this.loading = true;
+    this.pagofacil.generatePagoPayPal(null, null, this.facturacion["total"]).subscribe((response: any) => {
+      const win = window.open(response.data.response, "Secure Payment");
+      if (win) {
+        const timer = setInterval(() => {
+          if (win.closed) {
+            clearInterval(timer);
+            const token = response.data.request;
+            this.pagofacil.getPagosByToken(token).subscribe((itemres: any) => {
+              console.log(itemres);
+              if (itemres.data.docs[0]) {
+                this.pagofacil.generatePagoPayPal(itemres.data.docs[0].request, itemres.data.docs[0].response)
+                  .subscribe((activeres: any) => {
+                    if (activeres && activeres.data.autorized) {
+                      this.messageService.add({
+                        severity: 'success', summary: 'Procesamiento de pago',
+                        detail: "Su pago se ha procesado satisfactoriamente."
+                      });
+                      this.completed.emit(true);
+                      this.facturacion["formapago"] = "PayPal";
+                      this.facturacion["FechaTransaccion"] = new Date().toLocaleDateString();
+                      this.loading = false;
+                    } else {
+                      this.messageService.add({
+                        severity: 'info', summary: 'Error procesando pago',
+                        detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+                      });
+                      this.loading = false;
+                      this.completed.emit(false);
+                    }
+                  }, error => {
+                    this.messageService.add({
+                      severity: 'error', summary: 'Error procesando pago',
+                      detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+                    });
+                    this.loading = false;
+                  });
+              }
+            }, error => {
+              this.messageService.add({
+                severity: 'error', summary: 'Error procesando pago',
+                detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+              });
+              this.loading = false;
+            });
+          }
+        }, 500);
+      } else {
+        this.messageService.add({
+          severity: 'error', summary: 'Error procesando pago',
+          detail: "Porfavor permite los popups para poder procesar el pago!"
+        });
+        this.loading = false;
+      }
+    }, error => {
+      this.messageService.add({
+        severity: 'error', summary: 'Error procesando pago',
+        detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+      });
+      this.loading = false;
+    });*/
   }
-
 }
-export interface Element {
-  position: number;
-  oferta: string;
-  total: string;
-  m2: string;
-  cuartos: number;
-  banos: number;
-  parking: number;
-  construccion: string;
-  edad: number;
-  distancia: string;
-  similitud: string;
-}
-

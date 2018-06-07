@@ -1,0 +1,33 @@
+<div class="container">
+  <mat-card>
+    <div class="regresar" [routerLink]="'/inicio'">
+      <i class="material-icons">
+        arrow_back
+      </i>Volver a inicio</div>
+    <div class="title">INICIO DE SESION</div>
+    <form #f="ngForm">
+      <mat-form-field class="">
+        <input matInput placeholder="Correo" [formControl]="emailFormControl" type="email">
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          Ingresa un email valido
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          El correo es
+          <strong>necesario</strong>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field style="margin: 10px;">
+        <input matInput placeholder="Contraseña" [formControl]="passFormControl" type="password">
+        <mat-error *ngIf="passFormControl.hasError('required')">
+          La contraseña es
+          <strong>necesaria</strong>
+        </mat-error>
+      </mat-form-field>
+      <div class="actions">
+        <mat-checkbox>Recuerdame</mat-checkbox>
+        <button mat-raised-button color="primary" [disabled]="(!emailFormControl.valid||!passFormControl.valid)" (click)="login()">Entrar</button>
+      </div>
+      <label [routerLink]="'/restablecer'">Olvide mi contraseña</label>
+    </form>
+  </mat-card>
+</div>
