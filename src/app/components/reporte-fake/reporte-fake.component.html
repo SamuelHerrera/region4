@@ -372,7 +372,7 @@
             </ng-container>
 
             <ng-container matColumnDef="construccion">
-              <mat-header-cell *matHeaderCellDef mat-sort-header class="headerCell headerCell2"> Construcción </mat-header-cell>
+              <mat-header-cell *matHeaderCellDef mat-sort-header class=" headerCell2" > Construcción </mat-header-cell>
               <mat-cell *matCellDef="let element" class="containerCell2"> {{element.construccion}} m
                 <sup>2</sup>
               </mat-cell>
@@ -579,7 +579,7 @@
               <p>La gráfica muestra el porcentaje de las ofertas en la colonia ordenadas por rango de precios (casas y departamentos
                 listados en los últimos 6 meses).</p>
             </div>
-            <div class="graficaContainer1" id="graficaPropiedadM2">
+            <div class="graficaContainer1" id="graficaPropiedadM2" style="padding-top: 15px;">
               <p-chart type="bar" [data]="datosPropiedadesM2" [options]="options"></p-chart>
             </div>
           </div>
@@ -593,7 +593,7 @@
               <p>
                 La gráfica muestra el porcentaje de ofertas en la colonia según su edad.</p>
             </div>
-            <div class="graficaContainer2" id="graficaDatosVivienda">
+            <div class="graficaContainer2" id="graficaDatosVivienda" style="padding-top: 15px;">
               <p-chart type="bar" [data]="datosEdadVivienda" [options]="options"></p-chart>
             </div>
           </div>
@@ -611,7 +611,7 @@
               <p>
                 La gráfica muestra el número de departamentos según su edad y número de recámaras (dormitorios).</p>
             </div>
-            <div class="graficaContainer1" id="graficaRecamaras">
+            <div class="graficaContainer1" id="graficaRecamaras" style="padding-top: 15px;">
               <p-chart type="bar" [data]="datosRecamaras" [options]="options"></p-chart>
             </div>
           </div>
@@ -627,7 +627,7 @@
                 La gráfica muestra el número de departamentos según su edad y supercie construida.
               </p>
             </div>
-            <div class="graficaContainer2 numDepartamentos" id="graficaSuperficie">
+            <div class="graficaContainer2 numDepartamentos" id="graficaSuperficie" style="padding-top: 15px;">
               <p-chart type="bar" [data]="datosSuperficieConstruida" [options]="options"></p-chart>
             </div>
           </div>
