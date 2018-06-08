@@ -8,7 +8,7 @@
         </ng-template>
         <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
         <app-paso-1 [avaluoForm]="avaluoForm" (completed)="step1=$event"></app-paso-1>
-        <button class="derecha animated" [ngClass]="{'shake':step1,'bounceOut':!step1}" pButton matStepperNext type="button" label="Siguiente"></button>
+        <button class="derecha animated" [disabled]="!step1" pButton matStepperNext type="button" label="Siguiente"></button>
       </mat-step>
       <mat-step [completed]="step2">
         <form>
@@ -17,7 +17,7 @@
           </ng-template>
           <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
           <app-paso-2 *ngIf="avaluoForm" [avaluoForm]="avaluoForm" (completed)="step2=$event"></app-paso-2>
-          <button pButton matStepperNext type="button" label="Siguiente" class="derecha animated" [ngClass]="{'shake':step2,'bounceOut':!step2}"></button>
+          <button pButton matStepperNext type="button" label="Siguiente" class="derecha animated" [disabled]="!step2"></button>
         </form>
       </mat-step>
       <mat-step [completed]="step3">
@@ -47,9 +47,9 @@
               <app-datosfacturacion *ngIf="facturacion" [facturacion]="facturacion"></app-datosfacturacion>
             </div>
             <button pButton type="button" *ngIf="!avaluoResponse&&isHidden" (click)="enviarCorreo()" label="Generar Reporte y factura"
-              [disabled]="loading" class="animated" [ngClass]="{'shake':step4,'bounceOut':!step4}"></button>
+              [disabled]="loading" class="animated" [disabled]="!step4"></button>
             <button pButton type="button" *ngIf="!avaluoResponse&&!isHidden" (click)="enviarCorreo()" label="Generar Reporte" [disabled]="loading"
-              class="animated" [ngClass]="{'shake':step4,'bounceOut':!step4}"></button>
+              class="animated" [disabled]="!step4"></button>
             <span class="margintop" *ngIf="loading">Generando reporte...</span>
             <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
             <!--  -->

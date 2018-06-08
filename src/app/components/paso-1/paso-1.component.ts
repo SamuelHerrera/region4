@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, DoCheck } from '@angular/core';
 import { AgmCoreModule } from '@agm/core';
 import { MatVerticalStepper } from '@angular/material';
 import { YalsService } from '../../services/yals.service';
@@ -9,7 +9,7 @@ import { YalsService } from '../../services/yals.service';
   templateUrl: './paso-1.component.html',
   styleUrls: ['./paso-1.component.css']
 })
-export class Paso1Component implements OnInit {
+export class Paso1Component implements OnInit, DoCheck {
 
   zipCode: boolean;
 
@@ -33,6 +33,7 @@ export class Paso1Component implements OnInit {
       });
     }
   }
+
 
   onChange(event) {
     this.verify();

@@ -1,49 +1,33 @@
 <div class="container">
   <div class="addressDesc">
-    <span class="x">
-      <input id="float-input" type="text" size="30" pInputText name="calle" [(ngModel)]="avaluoForm['street']" (ngModelChange)="onChange($event)"
-        required>
-      <label for="float-input">Calle</label>
-    </span>
 
-    <div class="nums">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Calle" (change)="verify()" [(ngModel)]="avaluoForm['street']" required>
+    </mat-form-field>
 
-      <span class="x">
-        <input id="float-input1" type="text" size="8" pInputText name="numExt" [(ngModel)]="avaluoForm['num_ext']" (ngModelChange)="onChange($event)"
-          required>
-        <label for="float-input1">Num. Ext</label>
-      </span>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Num. Ext." (change)="verify()" [(ngModel)]="avaluoForm['num_ext']" required>
+    </mat-form-field>
 
-      <span class="x">
-        <input id="float-input" type="text" size="10" max="5" pInputText name="codigoPostal" pattern="(?=.*[0-9]).{5,5}" [(ngModel)]="avaluoForm['zip']"
-          (ngModelChange)="onChange($event)" required>
-        <label for="float-input">C.P.</label>
-      </span>
-    </div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="C.P." size="10" max="5" (change)="verify()" [(ngModel)]="avaluoForm['zip']" required>
+    </mat-form-field>
 
-    <span class="x">
-      <input id="float-input" type="text" size="30" pInputText name="colonia" [(ngModel)]="avaluoForm['colonia']" (ngModelChange)="onChange($event)"
-        required>
-      <label for="float-input">Colonia</label>
-    </span>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Colonia" (change)="verify()" [(ngModel)]="avaluoForm['colonia']" required>
+    </mat-form-field>
 
-    <span class="x">
-      <input id="float-input" type="text" size="30" pInputText name="municipio" [(ngModel)]="avaluoForm['municipio']" (ngModelChange)="onChange($event)"
-        required>
-      <label for="float-input">Municipio</label>
-    </span>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Delegación/Municipio" (change)="verify()" [(ngModel)]="avaluoForm['municipio']" required>
+    </mat-form-field>
 
-    <span class="x">
-      <input id="float-input" type="text" size="30" pInputText name="estado" [(ngModel)]="avaluoForm['estado']" (ngModelChange)="onChange($event)"
-        required>
-      <label for="float-input">Estado</label>
-    </span>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Estado" (change)="verify()" [(ngModel)]="avaluoForm['estado']" required>
+    </mat-form-field>
 
-    <span class="x">
-      <input id="float-input" type="text" size="30" pInputText name="ciudad" [(ngModel)]="avaluoForm['ciudad']" (ngModelChange)="onChange($event)"
-        required>
-      <label for="float-input">Ciudad</label>
-    </span>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Ciudad" (change)="verify()" [(ngModel)]="avaluoForm['ciudad']" required>
+    </mat-form-field>
 
   </div>
   <div class="maps">

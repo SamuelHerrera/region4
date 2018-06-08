@@ -19,3 +19,35 @@ body {
 .ui-dropdown {
   width: 100% !important;
 }
+
+.ui-button {
+  border: 1px solid #009640 !important;
+  background: #009640 !important;
+}
+
+.ui-selectbutton .ui-button {
+  border: 1px solid #96e9ba !important;
+  background: white !important;
+  border-radius: 10px;
+}
+
+.ui-selectbutton .ui-button.ui-state-active {
+  border: 1px solid #009640 !important;
+  background: #009640 !important;
+}
+
+.mat-input-element {
+  color: #009640 !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #575756;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: #575756;
+}
+
+.mat-step-header .mat-step-icon {
+  background-color: #009640 !important;
+}
