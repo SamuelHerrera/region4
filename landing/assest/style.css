@@ -220,7 +220,7 @@ Version: 1.0
 }
 
 .testmonial-area .owl-nav > div:hover {
-    background: #586082 none repeat scroll 0 0;
+    background: #575756 none repeat scroll 0 0;
 }
 
 .owl-carousel:hover .owl-nav > div.owl-next {
@@ -248,7 +248,7 @@ Version: 1.0
 }
 
 .testmonial-area .owl-dots > div {
-    border: 1px solid #586082;
+    border: 1px solid #575756;
     border-radius: 50%;
     display: inline-block;
     height: 15px;

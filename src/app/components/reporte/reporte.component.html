@@ -3,7 +3,7 @@
   <app-basic-report-fake [datos]="data_response" *ngIf="data_response&&basic"></app-basic-report-fake>
 </div>
 <div class="container">
-  <div class="buttons">
+  <div class="buttons" style="display: none">
     <button (click)="pdfBasico()">
       PDF básico
     </button>
@@ -199,8 +199,7 @@
             </mat-form-field>
             <div class="years">
               <mat-form-field class="input-Description">
-                <input matInput placeholder="Años de antigüedad" name="asffda" [(ngModel)]="data['edad']" [disabled]="Nuevo"
-                  required>
+                <input matInput placeholder="Años de antigüedad" name="asffda" [(ngModel)]="data['edad']" [disabled]="Nuevo" required>
               </mat-form-field>
               <mat-checkbox class="example-margin" (change)="nuevo()" [(ngModel)]="Nuevo" [ngModelOptions]="{standalone: true}">Nuevo</mat-checkbox>
             </div>

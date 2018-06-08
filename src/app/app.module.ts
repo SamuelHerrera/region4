@@ -163,6 +163,7 @@ import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.
     ObservablesService,
     YalsService,
     MailService,
+    MessageService,
     CuponService,
     {
       provide: 'externalUrlRedirectResolver',

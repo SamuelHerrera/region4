@@ -71,7 +71,7 @@
           <p-button *ngIf="avaluoResponse" (click)="imprimir()" label="Imprimir"></p-button>
         </div>
         <div class="loader" *ngIf="!avaluoResponse"></div>
-        <app-reporte *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [avaluoForm]="avaluoResponse"></app-reporte>
+        <!-- <app-reporte *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [avaluoForm]="avaluoResponse"></app-reporte> -->
         <app-basic-report *ngIf="avaluoResponse&&avaluoResponse.data.response.error_log" [datos]="avaluoResponse"></app-basic-report>
 
         <div class="oculto">
