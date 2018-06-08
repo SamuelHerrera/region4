@@ -50,6 +50,7 @@ ul#nav {
     float: none;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
+    padding-top: 20px;
 }
 
 .stellarnav.dark {
@@ -73,7 +74,7 @@ ul#nav li li a {
 
 ul#nav li a:hover,
 ul#nav li.active > a {
-    color: #8256ff;
+    color: #009640;
 }
 
 .is-sticky ul#nav li a {
