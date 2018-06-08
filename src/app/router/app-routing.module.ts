@@ -16,6 +16,8 @@ import { CuponesComponent } from '../components/cupones/cupones.component';
 import { AvaluoComponent } from '../components/avaluo/avaluo.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { IsSecureGuard } from '../guards/is-secure-guard.guard';
+import { componentFactoryName } from '@angular/compiler';
+import { TemplateFacturacionComponent } from '../components/template-facturacion/template-facturacion.component';
 
 const routes: Routes = [
   {
@@ -40,6 +42,10 @@ const routes: Routes = [
   }, {
     path: 'terminos-y-condiciones',
     component: TerminosComponent
+  },
+  {
+    path: 'template-facturacion',
+    component: TemplateFacturacionComponent
   }, {
     path: 'politica-de-privacidad',
     component: PoliticaprivacidadComponent
