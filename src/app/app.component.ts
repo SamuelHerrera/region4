@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Message } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-
+  msgs: Message[] = [];
   constructor(public snackBar: MatSnackBar) { }
 
   ngOnInit() {

@@ -24,6 +24,8 @@
   justify-content: space-between;
 }
 
+.mat-form-field {}
+
 .cupon {
   display: flex;
   flex-direction: row;
@@ -35,7 +37,7 @@
 }
 
 .paymentInfo {
-  width: 510px;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -59,7 +61,7 @@
 }
 
 .subContainer {
-  width: 508px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -72,12 +74,16 @@
   justify-content: space-around;
   flex-direction: column;
   padding-top: 5px;
+  width: 100%;
 }
+
 .containerPayment1 {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
-.containerPayment1 div{
+
+.containerPayment1 div {
   padding-top: 30px;
 }
 
@@ -85,6 +91,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .numInfo {

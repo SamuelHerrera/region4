@@ -9,7 +9,7 @@ import { YalsService } from '../../services/yals.service';
   templateUrl: './paso-1.component.html',
   styleUrls: ['./paso-1.component.css']
 })
-export class Paso1Component implements OnInit, DoCheck {
+export class Paso1Component implements OnInit {
 
   zipCode: boolean;
 

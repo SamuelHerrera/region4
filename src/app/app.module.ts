@@ -51,6 +51,7 @@ import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { ReporteComponent } from './components/reporte/reporte.component';
 import { BasicReportFakeComponent } from './components/basic-report-fake/basic-report-fake.component';
 import { ReporteFakeComponent } from './components/reporte-fake/reporte-fake.component';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 import { AgmCoreModule } from '@agm/core';
 import { ShortNumberPipe } from './pipes/short-number.pipe';
@@ -87,7 +88,6 @@ import { TemplateUserActivationComponent } from './components/template-user-acti
 import { BasicReportComponent } from './components/basic-report/basic-report.component';
 import { PoliticaPrivacidadComponent } from './components/politica-privacidad/politica-privacidad.component';
 import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.component';
-
 
 @NgModule({
   declarations: [
@@ -142,12 +142,14 @@ import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.
     MatSnackBarModule,
     SelectButtonModule,
     CheckboxModule,
+    GrowlModule,
     ProgressBarModule,
     HttpClientModule,
     MatSelectModule,
     MatButtonToggleModule,
     MatStepperModule,
     MatTabsModule,
+    ToggleButtonModule,
     MatTableModule,
     DropdownModule,
     ChartModule,

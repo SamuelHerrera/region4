@@ -51,3 +51,24 @@ body {
 .mat-step-header .mat-step-icon {
   background-color: #009640 !important;
 }
+
+.ui-chkbox-box.ui-state-active,
+.ui-radiobutton-box {
+  border: 1px solid #96e9ba !important;
+  background: #96e9ba !important;
+}
+
+.ui-chkbox-box.ui-state-active,
+.ui-radiobutton-box.ui-state-active {
+  border: 1px solid #009640 !important;
+  background: #009640 !important;
+}
+
+.ui-growl-item-container.ui-state-highlight.ui-growl-message-info {
+  background-color: #009640 !important;
+  border-color: #009640 !important;
+}
+
+body {
+  font-family: 'Poppins', sans-serif !important;
+}

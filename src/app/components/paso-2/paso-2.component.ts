@@ -99,52 +99,36 @@ export class Paso2Component implements OnInit {
 
 
   onChange(event) {
+    this.verify();
     if (event === 1) {
-      clearTimeout(this.timeout);
-      this.timeout = setTimeout(() => {
-        this.messageService.clear();
-        if (this.areaConstruida === false) {
-          this.messageService.add({
-            severity: 'info', summary: 'Área Construída',
-            detail: 'El valor del área construida debe estar entre 30 y 1000 m2'
-          });
-        }
-        if (this.superficieTerreno === false) {
-          this.messageService.add({
-            severity: 'info', summary: 'Superficie Construída',
-            detail: 'El valor de la superficie del terreno debe estar entre 0 y 1000 m2'
-          });
-        }
-        if (this.edad === false) {
-          this.messageService.add({
-            severity: 'info', summary: 'Años de antigüedad',
-            detail: 'Los años de antigüedad deben ser entre 0 y 99'
-          });
-        }
-      });
-    }
-    if (event === 3) {
-      this.messageService.clear();
       if (this.areaConstruida === false) {
         this.messageService.add({
           severity: 'info', summary: 'Área Construída',
           detail: 'El valor del área construida debe estar entre 30 y 1000 m2'
         });
       }
+    }
+    if (event === 2) {
       if (this.superficieTerreno === false) {
         this.messageService.add({
-          severity: 'info', summary: 'Superficie Construída',
+          severity: 'info', summary: 'Superficie Terreno',
           detail: 'El valor de la superficie del terreno debe estar entre 0 y 1000 m2'
         });
       }
+
+    }
+
+    if (event === 3) {
       if (this.edad === false) {
         this.messageService.add({
-          severity: 'info', summary: 'Años de antigüedad',
-          detail: 'Los años de antigüedad deben ser entre 0 y 99'
+          severity: 'info', summary: 'Edad',
+          detail: 'El valor de la edad debe ser entre 0 y 99 años'
         });
       }
+
     }
-    this.verify();
+
+
   }
 
   verify() {
@@ -174,8 +158,8 @@ export class Paso2Component implements OnInit {
       this.completed.emit(false);
     }
     setTimeout(() => {
-      this.messageService.clear();
-    }, 3500);
+      // this.messageService.clear();
+    }, 5000);
   }
 
 }

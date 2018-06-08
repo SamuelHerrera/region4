@@ -22,6 +22,12 @@ export class PagoConTarjetaComponent implements OnInit {
   pf: Pagofacilrequest = new Pagofacilrequest();
   public montoDescuento: any;
 
+  selectedType = '';
+
+  public types = [
+    { label: 'Tarjeta Credito/Debito', value: 'tarjeta' },
+    { label: 'PayPal', value: 'paypal' }
+  ];
   constructor(private pagofacil: PagofacilService, private messageService: MessageService, private cupones: CuponService) { }
 
   ngOnInit() {
