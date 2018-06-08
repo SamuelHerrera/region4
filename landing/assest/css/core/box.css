@@ -640,15 +640,15 @@ BOX HOVER 8
 .box-hover-21::before {
     border-bottom: 15px solid transparent;
     border-left: 15px solid transparent;
-    border-top: 15px solid #8256ff;
-    border-right: 15px solid #8256ff;
+    border-top: 15px solid #009640;
+    border-right: 15px solid #009640;
     right: 0;
     top: 0;
 }
 
 .box-hover-21::after {
-    border-left: 15px solid #8256ff;
-    border-bottom: 15px solid #8256ff;
+    border-left: 15px solid #009640;
+    border-bottom: 15px solid #009640;
     border-top: 15px solid transparent;
     border-right: 15px solid transparent;
     bottom: 0;

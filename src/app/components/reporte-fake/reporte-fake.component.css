@@ -873,7 +873,7 @@ table td {
     /*filter: hue-rotate(0.35turn);*/
     width: 190px;
     height: 75px;
-    margin: 10px;
+    /*margin: 10px;*/
     
   }
   canvas{
@@ -936,7 +936,7 @@ table td {
       height: 150px;
   }
   .separador7{
-      height: 360px;
+      height: 600px;
   }
   .separador8{
       height: 60px;
