@@ -10,7 +10,7 @@
                 scrollwheel: false,
 
                 // The latitude and longitude to center the map (always required)
-                center: new google.maps.LatLng(40.6700, -73.9400), // Replace latitude and longitude for your palce.
+                center: new google.maps.LatLng(21.0185389, -89.6091069), // Replace latitude and longitude for your palce.
 
                 styles: [{
                         "featureType": "all",

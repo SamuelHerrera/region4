@@ -1,3 +1,6 @@
+html *{
+    font-family: 'Poppins', sans-serif !important;
+}
 .container {
     
     width: 100%;
@@ -45,7 +48,7 @@
     line-height: 38px;
     /*width: 60%;*/
     text-align: left;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     font-weight: 700;
     color: #28265A;
     font-size: 32px;
@@ -63,8 +66,8 @@
     font-weight: 300;
     line-height: 14px;
     padding-right: 5px;
-    color:white;
-    font-family: 'Poppins', sans-serif !important;
+    color:black;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: right;
     background-color: transparent;
     font-size: 14px;
@@ -73,7 +76,7 @@
 .generatedDate {
     font-weight: 300;
     line-height: 14px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: right;
     font-size: 10px;
     padding-right: 5px;
@@ -111,7 +114,7 @@
 
 .direcContent {
     width: 310px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     background-color: transparent;
     /*min-height: 143px;*/
     color: #28245B;
@@ -134,8 +137,8 @@
     width: 120px;
     padding: 5px 5px 5px 5px;
     font-size: 11px;
-    font-family: 'Poppins', sans-serif !important;
-    font-weight: 300;
+    /*font-family: 'Poppins', sans-serif !important;*/
+    /*-weight: 300;*/
     color: #28245B;
     
 }
@@ -143,7 +146,7 @@
 .middleTitle {
     height: 25px;
     line-height: 24px;
-    font-family: 'Poppins', sans-serif !important;
+    /*-family: 'Poppins', sans-serif !important;*/
     font-weight: 300;
     color: #9EA3A3;
     font-size: 20px;
@@ -163,7 +166,7 @@
 .littleTitle {
     /*font-weight: 300;*/
     width: 310px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     background-color: transparent;
     /*min-height: 143px;*/
     color: #28245B;
@@ -200,7 +203,7 @@
 .subamenidades span {
     font-weight: 300;
     line-height: 14px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     font-size: 12px;
 }
@@ -235,21 +238,21 @@
 
 .estimated1 h4 {
     line-height: 25px;
-    color: #31A6E0;
-    font-family: 'Poppins', sans-serif !important;
+    color: #009640;
+   /* font-family: 'Poppins', sans-serif !important;*/
     font-weight: 700;
     font-size: 21px;
 }
 
 .estimated1 h3 {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 37px;
     font-weight: 700;
 }
 
 .estimated1 p {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 37px;
 }
@@ -266,21 +269,21 @@
 }
 
 .estimated2 h4 {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 40px;
     font-weight: 300;
 }
 
 .estimated2 p {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 37px;
 }
 
 .subText p {
     line-height: 12px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     font-weight: 300;
     min-height: 33px;
     background-color: transparent;
@@ -298,7 +301,7 @@
 }
 
 .mEstimated div p {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 37px;
 }
@@ -308,7 +311,7 @@
 }
 
 .mEstimated1 h3 {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 37px;
     font-weight: 700;
@@ -321,14 +324,14 @@
     font-weight: 300;*/
 
     line-height: 25px;
-    color: #31A6E0;
-    font-family: 'Poppins', sans-serif !important;
+    color: #009640;
+    /*font-family: 'Poppins', sans-serif !important;*/
     font-weight: 700;
     font-size: 21px;
 }
 
 .mEstimated1 p {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 37px;
 }
@@ -345,14 +348,14 @@
 }
 
 .mEstimated2 div h4 {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 40px;
     font-weight: 300;
 }
 
 .mEstimated2 div p {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 37px;
 }
@@ -410,7 +413,7 @@
 
 .textContent h2 {
     width: 620px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     margin-top: 14px;
     padding-bottom: 5px;
     background-color: transparent;
@@ -420,7 +423,7 @@
 
 .textContent p {
     width: 620px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     margin-top: 14px;
     background-color: transparent;
     font-weight: 300;
@@ -441,7 +444,7 @@
 .intro h2 {
     width: 800px;
     padding-left:7px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     font-weight: 300;
     height: 10px;
     color: #BFBFBF;
@@ -452,7 +455,7 @@
 .intro p {
     width: 800px;
     padding-left: 7px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     height: 40px;
     font-weight: 300;
     z-index: 155;
@@ -505,7 +508,7 @@
     width: 700px;
     font-weight: 700;
     height: 2px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
 }
 
 .ofertasMes {
@@ -548,11 +551,11 @@
 .numCasas h1 {
     padding-top: 15px;
     padding-left: 3px;
-    color: #31A6E0;
+    color: #009640;
     z-index: 202;
     background-color: transparent;
     line-height: 36px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     min-height: 35px;
     font-weight: 700;
     text-align: center;
@@ -566,7 +569,7 @@
     z-index: 194;
     background-color: transparent;
     line-height: 13px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     min-height: 37px;
     color: #494949;
     font-size: 11px;
@@ -598,7 +601,7 @@
     height: 35px;
     background-color: #9c9a9a;
     text-align: center;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     min-height: 40px;
     font-weight: 300;
     color: #FFFFFF;
@@ -612,22 +615,22 @@ table td {
 
 .promedioTotal {
     line-height: 24px;
-    color: #31A6E0;
-    font-family: 'Poppins', sans-serif !important;
+    color: #009640;
+    /*font-family: 'Poppins', sans-serif !important;*/
     font-weight: 700;
     font-size: 20px;
     text-align: center;
 }
 
 .promediom2 {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 40px;
     font-weight: 300;
 }
 
 .txtPromedio {
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     text-align: center;
     min-height: 40px;
     font-weight: 300;
@@ -649,15 +652,15 @@ table td {
 
 .plusValiaContainer h2 {
     line-height: 25px;
-    color: #31A6E0;
-    font-family: 'Poppins', sans-serif !important;
+    color: #009640;
+    /*font-family: 'Poppins', sans-serif !important;*/
     font-weight: 700;
     font-size: 21px;
 }
 
 .plusValiaContainer p {
     font-weight: 300;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     color: #000000;
     font-size: 18px;
 }
@@ -684,7 +687,7 @@ table td {
 
 .leftText p {
     height: 65px;
-    font-family: '__Raleway_5';
+    /*font-family: '__Raleway_5';*/
     font-weight: 700;
     line-height: 15px;
     font-size: 11px;
@@ -699,18 +702,18 @@ table td {
 }
 .intro2{
     margin: 0;
-    padding-bottom: 10px;
+    /*padding-bottom: 10px;*/
     
 }
 .intro2 h3{
     padding-left: 5px;
     font-weight: 700;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     font-size: 15px;
 }
 
 .intro2 p{
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     padding-left: 5px;
     font-weight: 300;
     z-index: 155;
@@ -742,7 +745,7 @@ table td {
 .contenido p {
     width: 800px;
     padding-left: 5px;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
     font-weight: 300;
     line-height: 17px;
     font-size: 12px;
@@ -829,7 +832,7 @@ table td {
     text-align: center;
     width: 700px;
     font-weight: 700;
-    font-family: 'Poppins', sans-serif !important;
+    /*font-family: 'Poppins', sans-serif !important;*/
 }
 
 .headerCell{
@@ -851,7 +854,7 @@ table td {
     color: rgba(0,0,0,.87);;
 }
 .superTitle{
-    background: #D7EAD9;
+    /*background: #D7EAD9;*/
     /*background: #28225C;*/
     display: flex;
     flex-direction: row;
@@ -868,7 +871,7 @@ table td {
 }
 .logo {
     /*filter: hue-rotate(0.35turn);*/
-    width: 140px;
+    width: 190px;
     height: 75px;
     margin: 10px;
     
@@ -898,7 +901,7 @@ table td {
       height: 350px;
   }
   .footer{
-    background: #D7EAD9;
+    /*background: #D7EAD9;*/
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -909,7 +912,7 @@ table td {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    color:white;
+    color:black;
     font-size: 11px;
     padding: 5px;
   }

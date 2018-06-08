@@ -182,14 +182,14 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         datasets: [
           {
             label: 'Precio Promedio Nuevo',
-            backgroundColor: '#0d48a8',
-            borderColor: '#082759',
+            backgroundColor: '#009640',
+            borderColor: '#009640',
             data: coloniaGeneralNuevo
           },
           {
             label: 'Precio Promedio Usado',
-            backgroundColor: '#0d52c1',
-            borderColor: '#0341a5',
+            backgroundColor: '#009640',
+            borderColor: '#009640',
             //data: this.datos.data.response.colonia_preciosm2_general.data.usado
             data: this.coloniam2General
           }
@@ -216,14 +216,14 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         datasets: [
           {
             label: 'Nuevo',
-            backgroundColor: '#0d48a8',
-            borderColor: '#082759',
+            backgroundColor: '#009640',
+            borderColor: '#009640',
             //data: this.datos.data.response.colonia_preciosm2_especifica.data.nuevo
             data: coloniaEspecificaNuevo
           }, {
             label: 'Usado',
-            backgroundColor: '#0d52c1',
-            borderColor: '#0341a5',
+            backgroundColor: '#009640',
+            borderColor: '#009640',
             //data: this.datos.data.response.colonia_preciosm2_especifica.data.usado
             data: coloniaEspecificaUsado
           }
@@ -280,14 +280,14 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         datasets: [
           {
             label: 'Nuevo',
-            backgroundColor: '#0d48a8',
-            borderColor: '#082759',
+            backgroundColor: '#009640',
+            borderColor: '#009640',
             //data: this.datos.data.response.colonia_tipos_propiedades.data.nuevo
             data: tipoColoniaNuevo
           }, {
             label: 'Usado',
-            backgroundColor: '#0d52c1',
-            borderColor: '#0341a5',
+            backgroundColor: '#009640',
+            borderColor: '#009640',
             //data: this.datos.data.response.colonia_tipos_propiedades.data.usado
             data: tipoColoniaUsado
           }
@@ -318,14 +318,14 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
           datasets: [
             {
               label: 'Nuevo',
-              backgroundColor: '#0d48a8',
-              borderColor: '#082759',
+              backgroundColor: '#009640',
+              borderColor: '#009640',
               //data: this.datos.data.response.colonia_recamaras ? this.datos.data.response.colonia_recamaras.data.nuevo : []
               data: recamarasNuevo
             }, {
               label: 'Usado',
-              backgroundColor: '#0d52c1',
-              borderColor: '#0341a5',
+              backgroundColor: '#009640',
+              borderColor: '#009640',
               //data: this.datos.data.response.colonia_recamaras ? this.datos.data.response.colonia_recamaras.data.usado : []
               data: recamarasUsado
             }
@@ -353,15 +353,15 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
           datasets: [
             {
               label: 'Nuevo',
-              backgroundColor: '#0d48a8',
-              borderColor: '#082759',
+              backgroundColor: '#009640',
+              borderColor: '#009640',
               //data: this.datos.data.response.colonia_superficies ? this.datos.data.response.colonia_superficies.data.nuevo : []
               data: coloniaNuevo
             },
             {
               label: 'Usado',
-              backgroundColor: '#0d52c1',
-              borderColor: '#0341a5',
+              backgroundColor: '#009640',
+              borderColor: '#009640',
               //data: this.datos.data.response.colonia_superficies ? this.datos.data.response.colonia_superficies.data.usado : []
               data: coloniaUsado
             }
@@ -388,8 +388,8 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
             label: 'Precio Promedio por m2',
             data: precioHistorico,
             fill: false,
-            backgroundColor: '#0e63ed',
-            borderColor: '#054dc1'
+            backgroundColor: '#009640',
+            borderColor: '#009640'
           }
         ]
       }

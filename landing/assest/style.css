@@ -63,7 +63,7 @@ Version: 1.0
 ---------------------------------*/
 
 .features-box-icon {
-    background: #eef3f9 none repeat scroll 0 0;
+    background: #d7ead9 none repeat scroll 0 0;
     border-radius: 5px;
     padding: 30px;
     width: 120px;
@@ -509,7 +509,7 @@ Version: 1.0
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: 2px solid;
     border-radius: 5px;
-    color: #8256ff;
+    color: #009640;
     font-size: 14px;
     letter-spacing: 2px;
     padding: 8px 20px;
@@ -519,8 +519,8 @@ Version: 1.0
 }
 
 .contact-form button:hover {
-    background: #8256ff none repeat scroll 0 0;
-    border-color: #8256ff;
+    background: #009640 none repeat scroll 0 0;
+    border-color: #009640;
     color: #ffffff;
 }
 
@@ -590,9 +590,9 @@ label.mt10.valid {
 }
 
 .contact-area .box-icon {
-    border: 2px solid #8256ff;
+    border: 2px solid #009640;
     border-radius: 50%;
-    color: #8256ff;
+    color: #009640;
     display: inline-block;
     font-size: 30px;
     height: 60px;
@@ -602,8 +602,8 @@ label.mt10.valid {
 }
 
 .contact-area .text-icon-box:hover .box-icon {
-    background: #8256ff none repeat scroll 0 0;
-    border-color: #8256ff;
+    background: #009640 none repeat scroll 0 0;
+    border-color: #009640;
     color: #ffffff;
 }
 
