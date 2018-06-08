@@ -17,6 +17,7 @@ export class Paso2Component implements OnInit {
   isNew = false;
 
   types: SelectItem[];
+  types1: SelectItem[];
   selectedType: String;
 
   homeTypes: SelectItem[];
@@ -50,6 +51,11 @@ export class Paso2Component implements OnInit {
     this.types = [
       { label: 'Casa', value: 2 },
       { label: 'Departamento', value: 4 }
+    ];
+
+    this.types1 = [
+      { label: 'Sola', value: 2 },
+      { label: 'Privada', value: 4 }
     ];
 
     this.homeTypes = [
@@ -99,6 +105,9 @@ export class Paso2Component implements OnInit {
 
 
   onChange(event) {
+    this.avaluoForm['area_construida'] = Math.floor(this.avaluoForm['area_construida']);
+    this.avaluoForm['superficie_terreno'] = Math.floor(this.avaluoForm['superficie_terreno']);
+    this.avaluoForm['edad'] = Math.floor(this.avaluoForm['edad']);
     this.verify();
     if (event === 1) {
       if (this.areaConstruida === false) {

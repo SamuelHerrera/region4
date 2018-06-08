@@ -67,8 +67,9 @@
 
 .nvoAvaluo {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -82,23 +83,28 @@
   opacity: 0.3;
 }
 
-.isHidden{
+.isHidden {
   display: none;
 }
-.enviarCorreo{
+
+.enviarCorreo {
   display: flex;
   flex-direction: row;
   justify-content: center;
   padding-right: 20px;
+  align-items: center;
 }
+
 .oculto {
-  top: 0;
+  position: absolute;
+  height: 1px;
+  top: -100000px;
   left: 0;
   z-index: -1;
-  position: absolute;
   display: block;
 }
-.mascarita{
+
+.mascarita {
   height: 10840px;
   display: block;
   width: 100%;
@@ -107,4 +113,8 @@
   left: 0;
   background: white;
   z-index: -1;
+}
+
+button {
+  border-radius: 30px;
 }

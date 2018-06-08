@@ -87,6 +87,10 @@
   padding-top: 30px;
 }
 
+button {
+  border-radius: 30px;
+}
+
 .expiredDate {
   display: flex;
   flex-direction: row;

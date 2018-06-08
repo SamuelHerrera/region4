@@ -15,12 +15,15 @@
     </div>
 
     <div class="kind">
-      <h4>Tipo de propiedad.</h4>
+      <h4>Tipo de inmueble</h4>
       <br>
 
       <p-selectButton [options]="types" [(ngModel)]="avaluoForm['id_tipo_propiedad']" [ngModelOptions]="{standalone: true}" name="tipoCasa"
         (ngModelChange)="onChange($event)"></p-selectButton>
+      <h4>Tipo de propiedad</h4>
+      <br>
 
+      <p-selectButton [options]="types1" [(ngModel)]="avaluoForm['sola']" [ngModelOptions]="{standalone: true}" name="tipoCasasola"></p-selectButton>
       <!-- <h4>Casa</h4><br>
 
         <p-selectButton [options]="homeTypes" [(ngModel)]="selectedHomeType" [ngModelOptions]="{standalone: true}" name="estadoCasa"></p-selectButton><br> -->

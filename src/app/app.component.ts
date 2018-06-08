@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       document.getElementById("cerrar").style.display = "none";
-    }, 5000);
+    }, 3000);
   }
   close() {
     document.getElementById("cerrar").style.display = "none";

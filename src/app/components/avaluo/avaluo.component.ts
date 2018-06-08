@@ -72,11 +72,18 @@ export class AvaluoComponent implements OnInit {
         });
       }
       this.index = 4;
-      this.loading = false;
+
       this.messageService.add({
         severity: 'info', summary: 'Reporte',
         detail: `Se ha generado satisfactoriamente su reporte.`
       });
+      setTimeout(() => {
+        this.imprimir();
+        setTimeout(() => {
+          this.loading = false;
+        }, 2000);
+      }, 2000);
+
     }, error => {
       this.loading = false;
       this.messageService.add({
@@ -164,6 +171,10 @@ export class AvaluoComponent implements OnInit {
         detail: 'El correo no pudo ser enviado, verifiquee la direccion de correo introducida.'
       });
     }
+  }
+
+  nvoAvaluo() {
+    location.reload();
   }
 
   // stepchanged(event: any) {
