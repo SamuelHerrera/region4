@@ -837,7 +837,7 @@ table td {
 
 .headerCell{
     width: 30px;
-    font-size: 10px;
+    font-size: 9px;
     color: rgba(0,0,0,.54);
     font-weight: 500;
 }
@@ -848,7 +848,7 @@ table td {
     color: rgba(0,0,0,.87);;
 }
 .containerCell2{
-    width:30px;
+    width:80px;
     font-size: 10px;
     font-weight: 500;
     color: rgba(0,0,0,.87);;
@@ -892,7 +892,8 @@ table td {
       width:20px;
   }
   .headerCell2{
-      width: 40px;
+      width: 80px;
+      font-size: 9px;
       
   }
   .graficaPlusvalia{
