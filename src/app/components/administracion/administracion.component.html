@@ -1,16 +1,12 @@
 <div class="login" *ngIf="login">
   <div class="containerLogin">
     <!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">-->
-    <span class="ui-float-label">
-      <input id="User" type="text" size="30" name="user" (keyup.enter)="validarLogin()" [(ngModel)]="user" pInputText>
-      <label for="User">Usuario</label>
-    </span>
-
-    <span class="ui-float-label">
-      <input id="Cont" type="password" size="30" name="pass" (keyup.enter)="validarLogin()" [(ngModel)]="pass" pInputText>
-      <label for="Cont">Contraseña</label>
-    </span>
-
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Usuario" (keyup.enter)="validarLogin()" [(ngModel)]="user" required>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput type="password" placeholder="pass" (keyup.enter)="validarLogin()" [(ngModel)]="pass" required>
+    </mat-form-field>
     <p-button label="Iniciar Sesión" (onClick)="validarLogin()"></p-button>
   </div>
 </div>
@@ -56,19 +52,17 @@
   </p-tabPanel>
   <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key">
     <div class="isHidden">
-      <span class="ui-float-label">
-        <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['url']">
-        <label for="float-input">URL</label>
-      </span>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="URL" [(ngModel)]="yalsconfig['url']">
+      </mat-form-field>
+
     </div>
-    <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['mail']">
-      <label for="float-input">Mail</label>
-    </span>
-    <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText [(ngModel)]="yalsconfig['key']">
-      <label for="float-input">API Key</label>
-    </span>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Mail" [(ngModel)]="yalsconfig['mail']">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="API Key" [(ngModel)]="yalsconfig['key']">
+    </mat-form-field>
     <p-button (onClick)="saveconfig()" label="Guardar" class="mle"></p-button>
   </p-tabPanel>
   <p-tabPanel header="Reportes" leftIcon="fa-file">
@@ -121,8 +115,8 @@
             ID: {{element.dateCreated | date:'yyyy-dms'}}
             <p-button (onClick)="imprimir(element._id, element)" label="Descargar PDF"></p-button>
             <div id="{{element._id}}" class="oculto">
-              <app-reporte-fake [datos]="{data:element}" *ngIf = "element['hidden']&&element.response.similares"></app-reporte-fake>
-              <app-basic-report-fake [datos]="{data:element}" *ngIf = "element['hidden']"></app-basic-report-fake>
+              <app-reporte-fake [datos]="{data:element}" *ngIf="element['hidden']&&element.response.similares"></app-reporte-fake>
+              <app-basic-report-fake [datos]="{data:element}" *ngIf="element['hidden']"></app-basic-report-fake>
             </div>
             <div class="mascarita"></div>
 

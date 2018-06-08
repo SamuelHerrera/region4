@@ -89,6 +89,7 @@ import { BasicReportComponent } from './components/basic-report/basic-report.com
 import { PoliticaPrivacidadComponent } from './components/politica-privacidad/politica-privacidad.component';
 import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.component';
 
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     TemplateReportComponent,
@@ -136,6 +137,7 @@ import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.
     MatInputModule,
     MatButtonModule,
     SplitButtonModule,
+    MatDialogModule,
     MatCheckboxModule,
     ButtonModule,
     TabViewModule,

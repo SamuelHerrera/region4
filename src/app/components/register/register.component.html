@@ -67,7 +67,10 @@
 
           <div class="actions">
             <span class="condiciones">Al registrarme acepto los
-              <a target="_blank" href="/terminos-y-condiciones">términos y condiciones</a>, política de privacidad y el uso de cookies</span>
+              <a target="_blank" href="/terminos-y-condiciones">términos y condiciones</a>,
+              <a target="_blank" href="/politica-de-privacidad">política de privacidad</a> y el
+              <a target="_blank" href="/politica-de-cookies">uso de cookies</a>
+            </span>
             <button mat-raised-button color="primary" [disabled]="(!nombreFormControl.valid||!apellidoFormControl.valid||!emailFormControl.valid||!telefonoFormControl.valid||!passFormControl.valid||!confirmFormControl.valid||!ramoFormControl.valid)"
               (click)="register()">Registrarme</button>
           </div>

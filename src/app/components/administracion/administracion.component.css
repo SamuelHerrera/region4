@@ -29,16 +29,17 @@
   margin-left: 90px;
 }
 
-
-
 .login {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  height: 100%;
+  align-items: center;
 }
 
 .containerLogin {
   width: 25%;
+  height: 200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -69,6 +70,7 @@
 .isHidden {
   display: none;
 }
+
 .oculto {
   top: 0;
   left: 0;
@@ -76,6 +78,7 @@
   position: absolute;
   display: block;
 }
+
 .mascarita {
   height: 999px;
   display: block;

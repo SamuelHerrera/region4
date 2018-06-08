@@ -88,9 +88,11 @@ export class AdministracionComponent implements OnInit {
         element['hidden'] = false;
 
         this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
+          try {
+            element['client'] = cli.data.docs[0].name;
+            element['ramo'] = cli.data.docs[0].ramo;
+          } catch (e)
 
-          element['client'] = cli.data.docs[0].name;
-          element['ramo'] = cli.data.docs[0].ramo;
         });
       });
       try {
