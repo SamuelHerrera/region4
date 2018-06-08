@@ -81,7 +81,7 @@ export class AvaluoComponent implements OnInit {
         this.imprimir();
         setTimeout(() => {
           this.loading = false;
-        }, 2000);
+        }, 15000);
       }, 2000);
 
     }, error => {

@@ -24,6 +24,10 @@ button {
   border-radius: 30px !important;
 }
 
+.mat-fab.mat-primary, .mat-flat-button.mat-primary, .mat-mini-fab.mat-primary, .mat-raised-button.mat-primary{
+  background-color: #009640;
+}
+
 .ui-button {
   border: 1px solid #009640 !important;
   background: #009640 !important;
