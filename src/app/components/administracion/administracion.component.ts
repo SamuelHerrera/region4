@@ -91,7 +91,7 @@ export class AdministracionComponent implements OnInit {
           try {
             element['client'] = cli.data.docs[0].name;
             element['ramo'] = cli.data.docs[0].ramo;
-          } catch (e)
+          } catch (e) { }
 
         });
       });
