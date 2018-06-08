@@ -50,6 +50,7 @@ ul#nav {
     float: none;
     -webkit-transition: all 0.3s ease 0s;
     transition: all 0.3s ease 0s;
+    padding-top: 20px;
 }
 
 .stellarnav.dark {
