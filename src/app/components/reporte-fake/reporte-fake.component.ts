@@ -127,8 +127,8 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         });
 
         this.datos.data.response.similares.forEach(element => {
-          //const fechaOferta: any = (element.fecha_oferta).split("/");
-          const fechaOferta: any = (element.fecha_oferta).split(" ");
+          const fechaOferta: any = (element.fecha_oferta).split("/");
+          /*const fechaOferta: any = (element.fecha_oferta).split(" ");
           console.log("fecha de oferta",element.estacionamientos);
           var mes = "";
           if(fechaOferta[2]=="Jan"){mes="Enero"};
@@ -142,9 +142,9 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
           if(fechaOferta[2]=="Sep"){mes="Septiembre"};
           if(fechaOferta[2]=="Oct"){mes="Octubre"};
           if(fechaOferta[2]=="Nov"){mes="Noviembre"};
-          if(fechaOferta[2]=="Dec"){mes="Diciembre"};
-          //this.indexMonth = parseInt(fechaOferta[1]);
-          this.fechaSimilares = mes + " " + fechaOferta[3];
+          if(fechaOferta[2]=="Dec"){mes="Diciembre"};*/
+          this.indexMonth = parseInt(fechaOferta[1]);
+          this.fechaSimilares = this.months[this.indexMonth -1] + " " + fechaOferta[2];
 
           this.ELEMENT_DATA.push({
             position: ind,
@@ -152,9 +152,9 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
             oferta: this.fechaSimilares,
             total: element.precio_oferta,
             m2: element.precio_m2,
-            cuartos: element.recamaras,
-            banos: element.banos,
-            parking: element.estacionamientos,
+            cuartos: (element.recamaras || 0),
+            banos: (element.banos || 0),
+            parking: (element.estacionamientos || 0),
             construccion: element.area_construida.toFixed(2),
             edad: (element.edad || 0),
             distancia: element.distancia.toFixed(2),
