@@ -701,7 +701,7 @@ table td {
 }
 
 .superTitle {
-  background: rgb(130, 125, 172);
+  background: #D7ead9;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -717,8 +717,8 @@ table td {
 }
 
 .logo {
-  width: 130px;
-  height: 50px;
+  width: 140px;
+  height: 75px;
   margin: 10px;
   
 }
@@ -729,7 +729,7 @@ canvas {
 }
 
 .footer {
-  background: rgb(130, 125, 172);
+  background: #D7ead9;
   display: flex;
   flex-direction: row;
   justify-content: center;

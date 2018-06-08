@@ -851,7 +851,7 @@ table td {
     color: rgba(0,0,0,.87);;
 }
 .superTitle{
-    background: rgb(130, 125, 172);
+    background: #D7ead9;
     /*background: #28225C;*/
     display: flex;
     flex-direction: row;
@@ -868,8 +868,8 @@ table td {
 }
 .logo {
     /*filter: hue-rotate(0.35turn);*/
-    width: 130px;
-    height: 50px;
+    width: 140px;
+    height: 75px;
     margin: 10px;
     
   }
@@ -898,7 +898,7 @@ table td {
       height: 350px;
   }
   .footer{
-    background: rgb(130, 125, 172);
+    background: #D7ead9;
     display: flex;
     flex-direction: row;
     justify-content: center;
