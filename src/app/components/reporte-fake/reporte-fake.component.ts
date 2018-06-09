@@ -188,8 +188,8 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
           },
           {
             label: 'Precio Promedio Usado',
-            backgroundColor: '#009640',
-            borderColor: '#009640',
+            backgroundColor: '#f39205',
+            borderColor: '#f39205',
             //data: this.datos.data.response.colonia_preciosm2_general.data.usado
             data: this.coloniam2General
           }
@@ -222,8 +222,8 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
             data: coloniaEspecificaNuevo
           }, {
             label: 'Usado',
-            backgroundColor: '#009640',
-            borderColor: '#009640',
+            backgroundColor: '#f39205',
+            borderColor: '#f39205',
             //data: this.datos.data.response.colonia_preciosm2_especifica.data.usado
             data: coloniaEspecificaUsado
           }
@@ -286,8 +286,8 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
             data: tipoColoniaNuevo
           }, {
             label: 'Usado',
-            backgroundColor: '#009640',
-            borderColor: '#009640',
+            backgroundColor: '#f39205',
+            borderColor: '#f39205',
             //data: this.datos.data.response.colonia_tipos_propiedades.data.usado
             data: tipoColoniaUsado
           }
@@ -324,8 +324,8 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
               data: recamarasNuevo
             }, {
               label: 'Usado',
-              backgroundColor: '#009640',
-              borderColor: '#009640',
+              backgroundColor: '#f39205',
+              borderColor: '#f39205',
               //data: this.datos.data.response.colonia_recamaras ? this.datos.data.response.colonia_recamaras.data.usado : []
               data: recamarasUsado
             }
@@ -360,8 +360,8 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
             },
             {
               label: 'Usado',
-              backgroundColor: '#009640',
-              borderColor: '#009640',
+              backgroundColor: '#f39205',
+              borderColor: '#f39205',
               //data: this.datos.data.response.colonia_superficies ? this.datos.data.response.colonia_superficies.data.usado : []
               data: coloniaUsado
             }
