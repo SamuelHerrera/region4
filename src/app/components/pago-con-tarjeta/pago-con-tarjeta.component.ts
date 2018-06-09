@@ -71,51 +71,46 @@ export class PagoConTarjetaComponent implements OnInit {
   }
 
   pagarAvaluo() {
-    this.completed.emit(true);
-    return;
-
-
-
-    // this.loading = true;
-    // this.pf.monto = this.facturacion["total"];
-    // this.pf.email = "region4mid@gmail.com";
-    // this.pf.calleyNumero = "Calzada General MAriano Escobedo 748";
-    // this.pf.colonia = "Anzures";
-    // this.pf.estado = "Ciudad de Mexico";
-    // this.pf.municipio = "Ciudad de Mexico";
-    // this.pf.pais = "Mexico";
-    // this.pagofacil.generatePago(this.pf).subscribe((response: any) => {
-    //   if (response) {
-    //     if (response.data.response.autorizado === 1) {
-    //       console.log(response)
-    //       this.messageService.add({
-    //         severity: 'success', summary: 'Procesamiento de pago',
-    //         detail: "Su pago se ha procesado satisfactoriamente."
-    //       });
-    //       this.facturacion["formapago"] = "Tarjeta Debito/Credito";
-    //       this.facturacion["FechaTransaccion"] = new Date().toLocaleDateString();
-    //       this.completed.emit(true);
-    //     } else {
-    //       let errors = "";
-    //       // tslint:disable-next-line:forin
-    //       for (const key in response.data.response.error) {
-    //         const value = response.data.response.error[key];
-    //         errors += value + " <br> ";
-    //       }
-    //       this.messageService.add({
-    //         severity: 'error', summary: 'Error procesando pago',
-    //         detail: "Se ha producido un error: " + errors
-    //       });
-    //     }
-    //   }
-    //   this.loading = false;
-    // }, error => {
-    //   this.messageService.add({
-    //     severity: 'error', summary: 'Error procesando pago',
-    //     detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
-    //   });
-    //   this.loading = false;
-    // });
+    this.loading = true;
+    this.pf.monto = this.facturacion["total"];
+    this.pf.email = "region4mid@gmail.com";
+    this.pf.calleyNumero = "Calzada General MAriano Escobedo 748";
+    this.pf.colonia = "Anzures";
+    this.pf.estado = "Ciudad de Mexico";
+    this.pf.municipio = "Ciudad de Mexico";
+    this.pf.pais = "Mexico";
+    this.pagofacil.generatePago(this.pf).subscribe((response: any) => {
+      if (response) {
+        if (response.data.response.autorizado === 1) {
+          console.log(response)
+          this.messageService.add({
+            severity: 'success', summary: 'Procesamiento de pago',
+            detail: "Su pago se ha procesado satisfactoriamente."
+          });
+          this.facturacion["formapago"] = "Tarjeta Debito/Credito";
+          this.facturacion["FechaTransaccion"] = new Date().toLocaleDateString();
+          this.completed.emit(true);
+        } else {
+          let errors = "";
+          // tslint:disable-next-line:forin
+          for (const key in response.data.response.error) {
+            const value = response.data.response.error[key];
+            errors += value + " <br> ";
+          }
+          this.messageService.add({
+            severity: 'error', summary: 'Error procesando pago',
+            detail: "Se ha producido un error: " + errors
+          });
+        }
+      }
+      this.loading = false;
+    }, error => {
+      this.messageService.add({
+        severity: 'error', summary: 'Error procesando pago',
+        detail: "Se ha producido un error procesando su pago, porfavor contacte a soporte."
+      });
+      this.loading = false;
+    });
   }
 
   pagarAvaluoPayPal() {
