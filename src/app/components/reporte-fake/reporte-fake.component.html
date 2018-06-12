@@ -7,7 +7,7 @@
         <a href="#">
           <img class="logo" src="assets/images/logoFinal.png" />
         </a>
-        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+        <span class="reportID"  *ngIf="datos">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
     </div>
 
@@ -37,7 +37,7 @@
               <span>DIRECCIÓN</span>
             </div>
 
-            <div class="direcContent">
+            <div class="direcContent"  *ngIf="datos">
               <p> {{datos.data.response.address.colonia}}, {{datos.data.response.address.street}}
                 <!--{{colonia}}, {{calle}}-->No. Ext. {{datos.data.response.address.num_ext}}
                 <!--{{numExt}}-->, No. Int s/n
@@ -58,7 +58,7 @@
             </div>
 
             <div class="caracContainer">
-              <div class="subCarac">
+              <div class="subCarac"  *ngIf="datos">
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/cuarto.png" alt="Smiley face" height="16" width="16" />
                 </div>
@@ -97,7 +97,7 @@
 
         <div class="amenidades">
           <div class="littleTitle">AMENIDADES</div>
-          <div class="containerAmenidades">
+          <div class="containerAmenidades" *ngIf="datos">
 
             <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
 
@@ -440,7 +440,7 @@
         </p>
       </div>
 
-      <div class="ofertasMes">
+      <div class="ofertasMes"  *ngIf="datos">
 
         <div class="ultimoMes" *ngIf="datos.data.response.historico">
 

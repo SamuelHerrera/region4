@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { MailService } from '../../services/mail.service';
 import { ObservablesService } from '../../services/observables.service';
 import { Client } from '../../models/client.model';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-avaluo',
@@ -80,7 +81,6 @@ export class AvaluoComponent implements OnInit {
       setTimeout(() => {
         this.imprimir();
         setTimeout(() => {
-          this.loading = false;
         }, 15000);
       }, 2000);
 
@@ -123,7 +123,12 @@ export class AvaluoComponent implements OnInit {
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { dpi: 192, letterRendering: true },
       jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-      action: "save"
+      // action: "save"
+    });
+    datauri.then(data => {
+      this.loading = false;
+      alert('guardar archivo!');
+      FileSaver.saveAs(this.b64toBlob(data.split(';base64,').pop(), "application/pdf"), 'asdasd');
     });
   }
 
@@ -175,6 +180,30 @@ export class AvaluoComponent implements OnInit {
 
   nvoAvaluo() {
     location.reload();
+  }
+
+  b64toBlob(b64Data, contentType) {
+    contentType = contentType || '';
+    let sliceSize = 512;
+
+    var byteCharacters = atob(b64Data);
+    var byteArrays = [];
+
+    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      var byteNumbers = new Array(slice.length);
+      for (var i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      var byteArray = new Uint8Array(byteNumbers);
+
+      byteArrays.push(byteArray);
+    }
+
+    var blob = new Blob(byteArrays, { type: contentType });
+    return blob;
   }
 
   // stepchanged(event: any) {
