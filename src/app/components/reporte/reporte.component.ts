@@ -15,7 +15,8 @@ export class ReporteComponent implements OnInit {
   public datos = null;
 
   ngOnInit() {
-    this.pushed();
+    // this.pushed();
+    FileSaver.saveAs(this.b64toBlob(localStorage.getItem('testObject').split(';base64,').pop(), "application/pdf"), 'reporte.pdf');
   }
 
 

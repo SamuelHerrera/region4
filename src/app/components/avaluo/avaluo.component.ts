@@ -22,6 +22,8 @@ import * as FileSaver from 'file-saver';
 })
 export class AvaluoComponent implements OnInit {
 
+  mostrarImprimir = false;
+
   elementToPrint: any;
 
   isHidden = false;
@@ -79,9 +81,10 @@ export class AvaluoComponent implements OnInit {
         detail: `Se ha generado satisfactoriamente su reporte.`
       });
       setTimeout(() => {
-        this.imprimir();
-        setTimeout(() => {
-        }, 15000);
+        // this.imprimir();
+        this.mostrarImprimir = true,
+          setTimeout(() => {
+          }, 15000);
       }, 2000);
 
     }, error => {
@@ -117,6 +120,9 @@ export class AvaluoComponent implements OnInit {
     } else {
       this.elementToPrint = document.getElementById('basic-element-to-print');
     }
+
+    alert(this.elementToPrint + '');
+
     const datauri = html2pdf(this.elementToPrint, {
       margin: 0.4,
       filename: 'reporte.pdf',
@@ -127,7 +133,8 @@ export class AvaluoComponent implements OnInit {
     datauri.then(data => {
       this.loading = false;
       alert('guardar archivo!');
-      FileSaver.saveAs(this.b64toBlob(data.split(';base64,').pop(), "application/pdf"), 'asdasd');
+      localStorage.setItem('testObject', data);
+      FileSaver.saveAs(this.b64toBlob(data.split(';base64,').pop(), "application/pdf"), 'reporte.pdf');
     });
   }
 

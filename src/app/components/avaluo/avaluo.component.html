@@ -75,6 +75,9 @@
             <p-button *ngIf="avaluoResponse" style="    margin: 10px;" (click)="enviarACorreo()" label="Enviar"></p-button>
           </div>
           <br>
+          
+          <p-button *ngIf="mostrarImprimir" (click)="imprimir()" label="Imprimir"></p-button>
+          <br>
           <p-button *ngIf="avaluoResponse" (click)="nvoAvaluo()" label="Realizar Otro Reporte"></p-button>
           <!-- <p-button *ngIf="avaluoResponse" (click)="imprimir()" label="Imprimir"></p-button> -->
         </div>
