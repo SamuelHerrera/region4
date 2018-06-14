@@ -82,7 +82,7 @@
         <!-- <app-reporte *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [avaluoForm]="avaluoResponse"></app-reporte> -->
         <app-basic-report *ngIf="avaluoResponse&&avaluoResponse.data.response.error_log" [datos]="avaluoResponse"></app-basic-report>
 
-        <div class="oculto">
+        <div class="oculto-bypass">
           <app-template-facturacion *ngIf="facturacion" [facturacion]="facturacion"></app-template-facturacion>
           <app-template-report [cliente]="nomCliente" id="reportTemplate"></app-template-report>
           <app-reporte-fake *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [datos]="avaluoResponse"></app-reporte-fake>
