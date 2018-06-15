@@ -590,14 +590,14 @@ html * {
 }
 
 .titleTable {
-  height: 35px;
+  height: 30px;
   background-color: #9c9a9a;
   text-align: center;
   /*font-family: 'Poppins', sans-serif !important;*/
-  min-height: 40px;
-  font-weight: 300;
+  min-height: 30px;
+  font-weight: normal;
   color: #FFFFFF;
-  padding: 3px;
+  padding: 2px;
 }
 
 table td {
@@ -819,7 +819,7 @@ table td {
 }
 
 .graficaContainer2 p-chart {
-  width: 310px;
+  width: 280px;
 }
 
 .intro3 h3 {
@@ -937,7 +937,7 @@ canvas {
 }
 
 .separador4 {
-  height: 10px;
+  height: 5px;
 }
 
 .separador5 {

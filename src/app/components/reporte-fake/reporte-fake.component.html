@@ -405,7 +405,7 @@
         <span>Esta sección te ayudará a conocer los precios en la colonia, el tipo de vivienda que existe y el número de listados
           mensuales.
         </span>
-        <h3>Oferta en los últimos meses</h3>
+        <h4>Oferta en los últimos meses</h4>
         <p>A continuación se muestra un número aproximado de cuántas casas y departamentos han sido listados en portales de
           Internet.
         </p>
@@ -505,7 +505,360 @@
 
     <div class="html2pdf__page-break"></div>
 
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logoFinal.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
 
+    <div class="graficaDescripciones">
+
+      <div class="propiedadesEdad">
+
+        <div class="propiedadPreciom2">
+          <div class="grafica1Container">
+            <div class="intro">
+              <h3> Propiedades según precio por m
+                <sup>2</sup>
+              </h3>
+              <p>La gráfica muestra el porcentaje de las ofertas en la colonia ordenadas por rango de precios (casas y departamentos
+                listados en los últimos 6 meses).</p>
+            </div>
+            <div class="graficaContainer1" id="graficaPropiedadM2" style="padding-top: 15px;">
+              <p-chart type="bar" [data]="datosPropiedadesM2" [options]="options"></p-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class="edadVivienda">
+          <div class="grafica2Container">
+            <div class="intro">
+              <h3> Edad y tipo de vivienda
+              </h3>
+              <p>
+                La gráfica muestra el porcentaje de ofertas en la colonia según su edad.</p>
+            </div>
+            <div class="graficaContainer2" id="graficaDatosVivienda" style="padding-top: 15px;">
+              <p-chart type="bar" [data]="datosEdadVivienda" [options]="options"></p-chart>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="recamarasSuperficie">
+
+        <div class="numRecamaras">
+          <div class="grafica1Container">
+            <div class="intro">
+              <h3> Número de recámaras
+              </h3>
+              <p>
+                La gráfica muestra el número de departamentos según su edad y número de recámaras (dormitorios).</p>
+            </div>
+            <div class="graficaContainer1" id="graficaRecamaras" style="padding-top: 15px;">
+              <p-chart type="bar" [data]="datosRecamaras" [options]="options"></p-chart>
+            </div>
+          </div>
+        </div>
+
+        <div class=superficieConstruida>
+          <div class="grafica2Container">
+            <div class="intro">
+              <h3>
+                Supercie construida
+              </h3>
+              <p>
+                La gráfica muestra el número de departamentos según su edad y supercie construida.
+              </p>
+            </div>
+            <div class="graficaContainer2 numDepartamentos" id="graficaSuperficie" style="padding-top: 15px;">
+              <p-chart type="bar" [data]="datosSuperficieConstruida" [options]="options"></p-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="separador5">
+    </div>
+
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 6 de 9</span>
+      </div>
+    </div>
+
+    <div class="html2pdf__page-break"></div>
+    
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logoFinal.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
+
+    <div class="evolucionColonia">
+      <div class="middleTitle">
+        <span>EVOLUCIÓN DE LOS PRECIOS EN LA COLONIA</span>
+      </div>
+
+      <div class="intro">
+        <h2>
+          A continuación te ofrecemos datos que muestran la variación de precios en la colonia.
+        </h2>
+
+        <h3>
+          Precio histórico por m2
+        </h3>
+        <p>
+          Esta sección muestra el comportamiento histórico del valor estimado de la propiedad en cuestión comparado con el cambio en
+          los precios en la colonia a través del tiempo.
+          <br> La siguiente gráfica muestra el valor estimado de la propiedad a través de los años (antes de la fecha de generación
+          del reporte). Esta información está basada en una valuación automática que utiliza los datos históricos disponibles
+          de propiedades similares en la misma colonia.
+          <br> Una vez obtenida la información, ésta se compara con el desempeño del mercado local usando la base de datos de
+          Valor Inmuebles.
+        </p>
+
+      </div>
+      <div class="plusValia" *ngIf="plusvalia">
+        <div class="flechaContainer">
+          <img src="../assets/images/flecha.png" alt="Smiley face">
+        </div>
+        <div class="plusValiaContainer">
+          <h2>
+            +{{plusvalia | number: '0.1-2'}}%
+          </h2>
+          <span>&nbsp;&nbsp;|&nbsp;&nbsp; </span>
+          <p>
+            Plusvalía anualizada
+          </p>
+        </div>
+
+        <div class="graficaPlusvalia">
+          <p-chart type="line" [data]="datoPlusvalia" [options]="optionsPlusvalia"></p-chart>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="separador6">
+    </div>
+
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 7 de 9</span>
+      </div>
+    </div>
+    <div class="html2pdf__page-break"></div>
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logoFinal.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
+
+    <div class="glosario">
+      <div class="middleTitle">
+        <span>GLOSARIO</span>
+      </div>
+      <div class="glosarioContainer">
+
+        <div class="rightText">
+          <div class="intro2">
+            <b>Apreciación</b>
+            <div>Cambio positivo en el precio del inmueble comparado con un periodo base (enero 2014). El cálculo se hace con
+              el modelo de valuación automática de Valor Inmuebles. El cálculo no toma en cuenta inflación.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Avalúo</b>
+            <div>Un avalúo corresponde a la valoración comercial de un bien raíz. Generalmente es un documento elaborado por un
+              valuador profesional, agente de la propiedad inmobiliaria o corredor de propiedades. Además de la valoración
+              comercial, contiene información sobre el avalúo fiscal, los títulos de dominio, así como la contribución, ubicación,
+              tamaño, calidad de construcción y vida útil de la edificación.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Condición</b>
+            <div>
+              Nueva o usada. La vivienda nueva es la que tiene menos de un año de construida o remodelada. La usada tiene más Fde un año.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Fecha de oferta</b>
+            <div>Fecha de publicación de la oferta de venta de un inmueble en un portal de Internet.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Información de cierres</b>
+            <div>Precios de propiedad es que cuentan con un avalúo certificado y un crédito hipotecario asociado. Se toma el precio
+              de cierre como el valor del inmueble.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Límite inferior y superior</b>
+            <div>Rangos de valor mínimo y máximo construidos a partir de un intervalo de confianza estadística.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Modelo de Valuación Automática</b>
+            <div>Modelo estadístico propietario de Valor Inmuebles el cual toma en cuenta las características de la vivienda (ubicación,
+              superficie, tipología, edad, etc.), los precios de cierre y precios de oferta de propiedades similares, para
+              construir una estimación del precio de mercado del inmueble.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Precio oferta</b>
+            <div>Precio al que se ofrece una propiedad en un sitio de listados en Internet.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Propiedades</b>
+            <div>Casas o departamentos para uso residencial.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Propiedades listadas</b>
+            <div>Propiedades que aparecen en sitios de ofertas en Internet.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Similitud</b>
+            <div>Medida de similitud entre dos propiedades. Se construye con un modelo estadístico propietario de Valor Inmuebles.
+              La similitud va del 0 al 100%, donde 100% equivale a dos propiedades exactamente iguales.</div>
+          </div>
+
+          <div class="intro2">
+            <b>Superficie de construcción</b>
+            <p>Superficie habitable de la residencia, no considera terrazas, estacionamientos o jardines.</p>
+          </div>
+
+          <div class="intro2">
+            <b>Superficie de terreno</b>
+            <div>Superficie total de la propiedad, toma en cuenta terrazas, estacionamientos y jardines.</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="separador7"></div>
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 8 de 9</span>
+      </div>
+    </div>
+
+    <div class="html2pdf__page-break"></div>
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logoFinal.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
+
+    <div class="terminos">
+      <div class="middleTitle" style="height: 12px;">
+        <span>TÉRMINOS Y CONDICIONES</span>
+      </div>
+
+      <div class="contenido">
+        <p>
+          Región4 es un estimador del valor de propiedades residenciales.
+          <br>
+          <br> Región4 provee una opinión de valor objetiva basada en millones de puntos de información sobre viviendas en México.
+          Esto te permite obtener información para la toma de decisiones cuando compras, vendes o rentas un inmueble. Para
+          saber más consulta www.region4.mx
+          <br>
+          <br> El uso de este reporte está sujeto a los Términos y Condiciones sobre los que fue generado. Éstos indican que
+          el usuario reconoce que el reporte fue generado sin la visita física a la propiedad analizada.
+          <br>
+          <br> El reporte de Región4 constituye únicamente un estimado de valor. Derechos reservados Región4 Asesores Inmobiliarios
+          S.C.P. 2017.
+        </p>
+      </div>
+
+      <div class="middleTitle" style="height: 12px;">
+        <span>AVISO DE PRIVACIDAD</span>
+      </div>
+
+      <div class="contenido">
+        <p style="font-family: 'Poppins', sans-serif;">
+          De conformidad con lo establecido en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares REGIÓN4
+          ASESORES INMOBILIARIOS S.C.P por medio de www.valorinmuebles.com.mx pone a su disposición el siguiente aviso de
+          privacidad.
+          <br> REGIÓN4 ASESORES INMOBILIARIOS S.C.P por medio de www.valorinmuebles.com.mx es responsable del uso y protección
+          de sus datos personales, en este sentido y atendiendo las obligaciones legales establecidas en la Ley Federal de
+          Protección de Datos Personales en Posesión de los Particulares, a través de este instrumento se informa a los titulares
+          de los datos, la información que de ellos se recaba y los fines que se le darán a dicha información.
+          <br> Los datos personales que recabamos de usted serán utilizados para las siguientes finalidades, las cuales son necesarias
+          para concretar nuestra relación con usted así como atender los servicios y/o pedidos que solicite:
+          <br>
+          <br>
+
+          <sup>*</sup>Generar una estimación de valor de un bien inmueble
+          <br>
+          <sup>*</sup>Emitir factura por el costo total de la estimación de valor de un bien inmueble
+          <br>
+          <sup>*</sup>Contacto y envió de información relevante relacionada con nuestros productos y servicios
+          <br>
+          <sup>*</sup>Realizar la gestión interna necesaria relacionadas con la relación comercial vigente incluyendo cuestiones
+          de crédito y pagos
+          <br>
+
+          <br> Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los siguientes datos
+          personales
+          <br>
+          <br>
+
+          <sup>*</sup>Nombre Completo
+          <br>
+          <sup>*</sup>Correo electronico
+          <br>
+          <sup>*</sup>Teléfono
+          <br>
+          <sup>*</sup>Ramo u Ocupación
+          <br>
+          <sup>*</sup>Razón Social
+          <br>
+          <sup>*</sup>RFC
+          <br>
+          <br> Por otra parte, informamos a usted, que sus datos personales no serán compartidos con ninguna autoridad, empresa,
+          organización o persona distintas a nosotros y serán utilizados exclusivamente para los fines señalados.
+          <br> Usted tiene en todo momento el derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos
+          y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información
+          personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); de igual manera, tiene
+          derecho a que su información se elimine de nuestros registros o bases de datos cuando considere que la misma no
+          está siendo utilizada adecuadamente (Cancelación); así como también a oponerse al uso de sus datos personales para
+          fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.
+        </p>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 9 de 9</span>
+      </div>
+    </div>
 
   </div>
 
