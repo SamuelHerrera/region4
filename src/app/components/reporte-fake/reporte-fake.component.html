@@ -255,6 +255,43 @@
 
     <div class="html2pdf__page-break"></div>
 
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logoFinal.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
+
+    <div class="propiedades">
+
+      <div class="middleTitle">
+        <span>PROPIEDADES COMPARABLES</span>
+      </div>
+
+      <div class="intro">
+        <h2>Esta sección muestra propiedades similares a la tuya que fueron anunciadas en los últimos 6 meses.</h2>
+        <h3></h3>
+        <p> Acontinuación proveemos información sobre ofertas de propiedades comparables con la tuya.
+          <br> Están ordenadas utilizando una medida de similitud que toma en cuenta las características de cada propiedad. </p>
+
+      </div>
+      <div class="map2">
+        <img [src]="ulrMultipleMarkers">
+      </div>
+      <div class="separador2">
+
+      </div>
+
+      <div class="footer">
+        <div class="footerContainer">
+          <span>Reporte Generado el {{fechaCreacion}}</span>
+          <span>www.valorinmuebles.com.mx</span>
+          <span>Página 3 de 9</span>
+        </div>
+      </div>
+
 
   </div>
 

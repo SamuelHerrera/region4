@@ -222,7 +222,7 @@ html * {
   flex-direction: row;
   /*flex-wrap: wrap;*/
   justify-content: center;
-  padding-bottom: 120px;
+  padding-bottom: 110px;
 }
 
 .totalEstimated {
