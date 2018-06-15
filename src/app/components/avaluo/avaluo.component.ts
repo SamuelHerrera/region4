@@ -67,6 +67,9 @@ export class AvaluoComponent implements OnInit {
     this.loading = true;
     this.yals.generateRequest(yals_req, null).subscribe(response => {
       this.avaluoResponse = response;
+      localStorage.setItem('dataaa', JSON.stringify(response));
+
+
       if (!this.avaluoResponse.data.response.similares) {
         this.messageService.add({
           severity: 'error', summary: 'Datos Insuficientes',

@@ -14,9 +14,14 @@ export class ReporteComponent implements OnInit {
   public show = false;
   public datos = null;
 
+  public avaluoResponse;
+
   ngOnInit() {
+
+    this.avaluoResponse = JSON.parse(localStorage.getItem('dataaa'));
     // this.pushed();
-    FileSaver.saveAs(this.b64toBlob(localStorage.getItem('testObject').split(';base64,').pop(), "application/pdf"), 'reporte.pdf');
+
+    // FileSaver.saveAs(this.b64toBlob(localStorage.getItem('testObject').split(';base64,').pop(), "application/pdf"), 'reporte.pdf');
   }
 
 

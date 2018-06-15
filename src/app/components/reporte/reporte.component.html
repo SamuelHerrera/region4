@@ -1,6 +1,7 @@
 <a id="somedata" [hidden]="!show" href="app/views/pdf.html" target="xxx">
   Download PDF
 </a>
+<button (click)="pushed()">asjkldñlk</button>
 <div id="element-to-print">
-  <app-terminosy-condiciones></app-terminosy-condiciones>
+    <app-reporte-fake *ngIf="avaluoResponse" [datos]="avaluoResponse"></app-reporte-fake>
 </div>
