@@ -388,6 +388,125 @@
 
     <div class="html2pdf__page-break"></div>
 
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logoFinal.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+      </div>
+    </div>
+
+    <div class="preciosColonia">
+      <div class="middleTitle">
+        <span>COLONIA {{datos.data.response.address.colonia}}</span>
+      </div>
+
+      <div class="intro">
+        <h2>Esta sección te ayudará a conocer los precios en la colonia, el tipo de vivienda que existe y el número de listados
+          mensuales.
+        </h2>
+        <h3>Oferta en los últimos meses</h3>
+        <p>A continuación se muestra un número aproximado de cuántas casas y departamentos han sido listados en portales de
+          Internet.
+        </p>
+      </div>
+
+      <div class="ofertasMes"  *ngIf="datos">
+
+        <div class="ultimoMes" *ngIf="datos.data.response.historico">
+
+          <div class="umesContainer">
+
+            <div class="calendarContainer">
+              <img src="../assets/images/calendary.png" alt="Smiley face">
+            </div>
+            <div class="numCasas">
+              <h1>{{datos.data.response.historico.listado_promedio_1_mes || ''}}
+              </h1>
+              <p>Casas y departamentos listados en el último mes</p>
+            </div>
+          </div>
+          <div class="tablaMes">
+
+            <table>
+              <tr>
+                <th colspan="2" class="titleTable">
+                  Precios promedios de oferta en la colonia {{datos.data.response.address.colonia}}
+                </th>
+              </tr>
+              <tr>
+                <td class="promedioTotal">${{datos.data.response.historico.oferta_promedio_6_meses | number:'0.1-2'}}</td>
+                <td class="promediom2">${{datos.data.response.historico.precio_promedio_m2_6_meses | number:'0.1-2'}}</td>
+              </tr>
+              <tr>
+                <td class="txtPromedio">Total Promedio</td>
+                <td class="txtPromedio">Promedio m2</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="seisMeses" *ngIf="datos.data.response.historico">
+          <div class="smesContainer">
+            <div class="calendarContainer">
+              <img src="../assets/images/calendary.png" alt="Smiley face">
+            </div>
+            <div class="numCasas">
+              <h1>{{datos.data.response.historico.listado_promedio_6_meses}}</h1>
+              <p>Casas y departamentos listados en los últimos 6 meses</p>
+            </div>
+          </div>
+          <div class="tablaMes">
+            <table>
+              <tr>
+                <th colspan="2" class="titleTable">
+                  Información de cierres
+                </th>
+              </tr>
+              <tr>
+                <td class="promediom2">${{datos.data.response.historico.cierres_promedio_6_meses | number:'0.1-2'}}</td>
+                <td class="promediom2">${{datos.data.response.historico.cierres_promedio_m2_6_meses | number:'0.1-2'}}</td>
+              </tr>
+              <tr>
+                <td class="txtPromedio">Total Promedio</td>
+                <td class="txtPromedio">Promedio m2</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="divisor">
+      <hr>
+    </div>
+    <div class="graficaPrecioColonia">
+      <div class="containerGraficaColonia">
+
+        <div class="intro3">
+          <h3>Precios promedio de oferta en la colonia {{datos.data.response.address.colonia}}</h3>
+        </div>
+        <div class="graficaContainer" id="graficaColonia">
+          <p-chart type="bar" [data]="datosPrecioColonia" [options]="options"></p-chart>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="separador4">
+
+    </div>
+
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 5 de 9</span>
+      </div>
+    </div>
+
+    <div class="html2pdf__page-break"></div>
+
+  
 
   </div>
 
