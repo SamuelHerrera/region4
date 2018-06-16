@@ -1,15 +1,9 @@
 import { Component, OnInit, Input, OnChanges, AfterViewInit } from '@angular/core';
-import { AgmCoreModule } from '@agm/core';
 import { ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, Sort } from '@angular/material';
-import * as jsPDF from 'jspdf';
+import { MatTableDataSource, MatSort } from '@angular/material';
 import * as html2pdf from '../../../assets/js/html2pdf';
 import { Element } from '@angular/compiler';
-import { DecimalPipe } from '@angular/common';
-import { DatePipe } from '@angular/common';
-import { YalsRequest } from '../../models/yals.model';
 import { YalsService } from '../../services/yals.service';
-import { ShortNumberPipe } from '../../pipes/short-number.pipe';
 
 @Component({
   selector: 'app-reporte-fake',
@@ -167,7 +161,6 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         }
 
         let indx = 0;
-        let indx1 = 0;
         let indx2 = 0;
         const coloniaGeneralNuevo: any[] = [];
         this.datos.data.response.colonia_preciosm2_general.data.nuevo.forEach(element => {
@@ -375,7 +368,6 @@ export class ReporteFakeComponent implements OnInit, OnChanges, AfterViewInit {
         const fechaHistorico: any[] = [];
         const precioHistorico: any[] = [];
         let idxHistorico = 0;
-        let idxHistorico0 = 0;
         this.datos.data.response.precio_historico_m2.forEach(element => {
           const fechaSplit: any = (element.fecha).split("-");
           fechaHistorico[idxHistorico] = this.months[parseInt(fechaSplit[1]) - 1] + " " + fechaSplit[0];

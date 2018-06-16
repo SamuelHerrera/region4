@@ -102,10 +102,11 @@
     </div>
   </div>
 </div>
-<div class="oculto-bypass">
+<div class="oculto">
   <app-basic-report *ngIf="avaluoResponse&&avaluoResponse.data.response.error_log" [datos]="avaluoResponse"></app-basic-report>
   <app-template-facturacion *ngIf="facturacion" [facturacion]="facturacion"></app-template-facturacion>
   <app-template-report [cliente]="nomCliente" id="reportTemplate"></app-template-report>
-  <app-reporte-fake *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [datos]="avaluoResponse"></app-reporte-fake>
+  <app-reporte-fake  id="element-to-print-ios" *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [datos]="avaluoResponse"></app-reporte-fake>
+  <app-reporte  id="element-to-print" *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [datos]="avaluoResponse"></app-reporte>
   <app-basic-report-fake *ngIf="avaluoResponse" [datos]="avaluoResponse"></app-basic-report-fake>
 </div>
