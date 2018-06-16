@@ -39,7 +39,7 @@
           <ng-template matStepLabel>Pagar Reporte
             <!-- <span *ngIf="!step4" class="alerta">Sin completar</span> -->
           </ng-template>
-          <app-pago-con-tarjeta *ngIf="!step4" (completed)="step4=$event" [facturacion]="facturacion"></app-pago-con-tarjeta>
+          <app-pago-con-tarjeta *ngIf="!step4" (completed)="cambio($event)" [facturacion]="facturacion"></app-pago-con-tarjeta>
           <div *ngIf="step4" class="centered">
             <img class="images" src="../assets/images/pagoefectuado.png" alt="Smiley face" height="100" width="300">
             <div class="checkBoxContainer">
@@ -50,9 +50,9 @@
             <div class="facturacion" *ngIf="isHidden">
               <app-datosfacturacion *ngIf="facturacion" [facturacion]="facturacion"></app-datosfacturacion>
             </div>
-            <button pButton type="button" *ngIf="!avaluoResponse&&isHidden" (click)="enviarCorreo()" label="Generar Reporte y factura"
+            <button pButton type="button" id="scrollhere" *ngIf="!avaluoResponse&&isHidden" (click)="enviarCorreo()" label="Generar Reporte y factura"
               [disabled]="loading" class="animated" [disabled]="!step4"></button>
-            <button pButton type="button" *ngIf="!avaluoResponse&&!isHidden" (click)="enviarCorreo()" label="Generar Reporte" [disabled]="loading"
+            <button pButton type="button" id="scrollhere1" *ngIf="!avaluoResponse&&!isHidden" (click)="enviarCorreo()" label="Generar Reporte" [disabled]="loading"
               class="animated" [disabled]="!step4"></button>
             <span class="margintop" *ngIf="loading">Generando reporte...</span>
             <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>

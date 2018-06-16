@@ -142,6 +142,16 @@ export class AvaluoComponent implements OnInit {
     });
   }
 
+  cambio(event) {
+    this.step4 = event;
+    setTimeout(() => {
+      this.scrollIntoView('scrollhere');
+      try{
+        this.scrollIntoView('scrollhere');
+      }catch(e){}
+    }, 1000);
+  }
+
 
   enviarACorreo() {
     if (this.otroCorreo !== '') {
@@ -221,11 +231,11 @@ export class AvaluoComponent implements OnInit {
   }
 
   scrollIntoView(eleID) {
-    var e = document.getElementById(eleID);
+    const e = document.getElementById(eleID);
     if (!!e && e.scrollIntoView) {
-        e.scrollIntoView();
+      e.scrollIntoView();
     }
- }
+  }
 
   getMobileOperatingSystem() {
     const userAgent = navigator.userAgent || navigator.vendor;
