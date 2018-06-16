@@ -222,7 +222,7 @@ html * {
   flex-direction: row;
   /*flex-wrap: wrap;*/
   justify-content: center;
-  padding-bottom: 110px;
+  padding-bottom: 100px;
 }
 
 .totalEstimated {
@@ -381,22 +381,22 @@ html * {
   /*display: none;*/
   /*width: 650px;*/
   width: 700px;
-  height: 350px;
+  height: 340px;
 }
 
 .houseView img {
   width: 700px;
-  height: 350px;
+  height: 340px;
 }
 
 .map {
   width: 700px;
-  height: 350px;
+  height: 340px;
 }
 
 .map img {
   width: 700px;
-  height: 350px;
+  height: 340px;
 }
 
 .textContent {
@@ -945,7 +945,7 @@ canvas {
 }
 
 .separador5 {
-  height: 240px;
+  height: 255px;
 }
 
 .separador6 {

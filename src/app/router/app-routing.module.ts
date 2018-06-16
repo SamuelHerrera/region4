@@ -18,6 +18,7 @@ import { AuthGuard } from '../guards/auth.guard';
 import { IsSecureGuard } from '../guards/is-secure-guard.guard';
 import { componentFactoryName } from '@angular/compiler';
 import { TemplateFacturacionComponent } from '../components/template-facturacion/template-facturacion.component';
+import { DownloadComponent } from '../components/download/download.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,9 @@ const routes: Routes = [
     data: {
       externalUrl: 'https://www.valorinmuebles.com.mx/landing'
     }
+  }, {
+    path: 'download',
+    component: DownloadComponent
   }, {
     path: 'sesion',
     component: LoginComponent
