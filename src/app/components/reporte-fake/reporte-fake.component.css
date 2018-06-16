@@ -222,7 +222,7 @@ html * {
   flex-direction: row;
   /*flex-wrap: wrap;*/
   justify-content: center;
-  padding-bottom: 120px;
+  padding-bottom: 110px;
 }
 
 .totalEstimated {
@@ -590,14 +590,14 @@ html * {
 }
 
 .titleTable {
-  height: 35px;
+  height: 30px;
   background-color: #9c9a9a;
   text-align: center;
   /*font-family: 'Poppins', sans-serif !important;*/
-  min-height: 40px;
-  font-weight: 300;
+  min-height: 30px;
+  font-weight: normal;
   color: #FFFFFF;
-  padding: 3px;
+  padding: 2px;
 }
 
 table td {
@@ -687,7 +687,7 @@ table td {
 
 .rightText {
   width: 800px;
-  font-size: small;
+  font-size: 8px;
   /*display: flex;
     flex-direction: column;*/
   /*justify-content: flex-start;*/
@@ -710,9 +710,9 @@ table td {
   padding-left: 5px;
   font-weight: 300;
   z-index: 155;
-  line-height: 22px;
+  line-height: 10px;
   text-align: justify;
-  font-size: 11px;
+  font-size: 8px;
 }
 
 /*.rightText p {
@@ -726,6 +726,10 @@ table td {
 
 .terminos {
   display: table-column;
+  line-height: 10px;
+  text-align: justify;
+  font-weight: 300;
+  font-size: 8px;
 }
 
 .contenido {
@@ -736,12 +740,12 @@ table td {
 }
 
 .contenido p {
-  width: 800px;
+  /* width: 800px; */
   padding-left: 5px;
   /*font-family: 'Poppins', sans-serif !important;*/
   font-weight: 300;
-  line-height: 17px;
-  font-size: 12px;
+  line-height: 10px;
+  font-size: 8px;
   padding-bottom: 10px;
   text-align: justify;
 }
@@ -819,7 +823,7 @@ table td {
 }
 
 .graficaContainer2 p-chart {
-  width: 310px;
+  width: 280px;
 }
 
 .intro3 h3 {
@@ -933,15 +937,15 @@ canvas {
 }
 
 .separador3 {
-  height: 200px;
+  height: 190px;
 }
 
 .separador4 {
-  height: 10px;
+  height: 5px;
 }
 
 .separador5 {
-  height: 250px;
+  height: 240px;
 }
 
 .separador6 {
@@ -949,7 +953,7 @@ canvas {
 }
 
 .separador7 {
-  height: 180px;
+  height: 190px;
 }
 
 .separador8 {

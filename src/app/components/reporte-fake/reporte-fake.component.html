@@ -1,13 +1,11 @@
-<div class="container" id="element-to-print">
+<div class="container">
   <div class="scrollable">
-
-    <!--{{datos.data.request.colonia|json}}-->
     <div class="superTitle">
       <div class="superContainer">
         <a href="#">
           <img class="logo" src="assets/images/logoFinal.png" />
         </a>
-        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
+        <span class="reportID" *ngIf="datos">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
     </div>
 
@@ -16,11 +14,7 @@
         <div class="subTitleContainer">
           <span class="principalTitle">REPORTE DEL INMUEBLE</span>
           <div class="idReport">
-            <!--<span class="reportID">ID {{datos.data._id}}</span>-->
-            <!--<span class="generatedDate">Reporte generado el {{datos.data.dateCreated | json}}{{datos.data.dateCreated| date:' d, y'}}-->
-            <span class="generatedDate">Reporte generado el {{fechaCreacion}}
-              <!--{{generatedReport}}-->
-            </span>
+            <span class="generatedDate">Reporte generado el {{fechaCreacion}} </span>
           </div>
         </div>
       </div>
@@ -37,17 +31,13 @@
               <span>DIRECCIÓN</span>
             </div>
 
-            <div class="direcContent">
-              <p> {{datos.data.response.address.colonia}}, {{datos.data.response.address.street}}
-                <!--{{colonia}}, {{calle}}-->No. Ext. {{datos.data.response.address.num_ext}}
-                <!--{{numExt}}-->, No. Int s/n
-                <!--{{numInt}}-->
+            <div class="direcContent" *ngIf="datos">
+              <p> {{datos.data.response.address.colonia}}, {{datos.data.response.address.street}} No. Ext. {{datos.data.response.address.num_ext}}
+                , No. Int s/n
               </p>
               <p>C.P. {{datos.data.response.address.zip}}
-                <!--{{codigoPostal}}-->
               </p>
               <p> {{datos.data.response.address.ciudad}}, {{datos.data.response.address.estado}}
-                <!--{{ciudad}}, {{estado}}-->
               </p>
             </div>
 
@@ -58,11 +48,11 @@
             </div>
 
             <div class="caracContainer">
-              <div class="subCarac">
+              <div class="subCarac" *ngIf="datos">
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/cuarto.png" alt="Smiley face" height="16" width="16" />
                 </div>
-                <!--{{numCuartos}}-->{{datos.data.response.characteristics.recamaras}} Cuartos
+                {{datos.data.response.characteristics.recamaras}} Cuartos
 
               </div>
 
@@ -70,7 +60,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/bano.png" alt="Smiley face" height="16" width="16" />
                 </div>
-                <!--{{numBanos}}-->{{datos.data.response.characteristics.banos}} Baños
+                {{datos.data.response.characteristics.banos}} Baños
 
               </div>
 
@@ -78,7 +68,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/medio-bano.png" alt="Smiley face" height="16" width="16" />
                 </div>
-                <!--{{numMBanos}}-->{{datos.data.response.characteristics.medios_banos}} Medios Baños
+                {{datos.data.response.characteristics.medios_banos}} Medios Baños
 
               </div>
 
@@ -86,7 +76,7 @@
                 <div class="imgContainer">
                   <img class="images" src="../assets/images/parking.png" alt="Smiley face" height="16" width="16" />
                 </div>
-                <!--{{numParking}}-->{{datos.data.response.characteristics.estacionamientos}} Parking
+                {{datos.data.response.characteristics.estacionamientos}} Parking
 
               </div>
 
@@ -97,7 +87,7 @@
 
         <div class="amenidades">
           <div class="littleTitle">AMENIDADES</div>
-          <div class="containerAmenidades">
+          <div class="containerAmenidades" *ngIf="datos">
 
             <div class="subamenidades" *ngFor="let item of datos.data.request.amenities">
 
@@ -167,20 +157,17 @@
           <div class="estimated1" style=" height: 100px;">
             <h3>Estimado del valor total</h3>
 
-            <h4>$
-              <!--{{precioEstimado}}-->{{datos.data.response.valuacion.valuacion | number:'0.1-2'}}</h4>
+            <h4>${{datos.data.response.valuacion.valuacion | number:'0.1-2'}}</h4>
             <p>Estimado de valor total*</p>
           </div>
 
           <div class="estimated2">
             <div class="inferior">
-              <h4>$
-                <!--{{precioInferior}}-->{{datos.data.response.valuacion.intervalo_bajo | number:'0.1-2'}}</h4>
+              <h4>${{datos.data.response.valuacion.intervalo_bajo | number:'0.1-2'}}</h4>
               <p>Limite inferior</p>
             </div>
             <div class="superior">
-              <h4>$
-                <!--{{precioSuperior}}-->{{datos.data.response.valuacion.intervalo_alto | number:'0.1-2'}}</h4>
+              <h4>${{datos.data.response.valuacion.intervalo_alto | number:'0.1-2'}}</h4>
               <p>Limite Superior</p>
             </div>
           </div>
@@ -192,28 +179,22 @@
           </div>
 
         </div>
-
-        <!--<div class="html2pdf__page-break"></div>-->
-
         <div class="mEstimated">
 
           <div class="mEstimated1">
             <h3>Estimado del valor por m2</h3>
 
-            <h4>$
-              <!--{{precioEstimadoM2}}-->{{datos.data.response.valuacion.valuacion_m2 | number:'0.1-2'}}</h4>
+            <h4>${{datos.data.response.valuacion.valuacion_m2 | number:'0.1-2'}}</h4>
             <p>Estimado de valor por m2*</p>
           </div>
 
           <div class="mEstimated2">
             <div class="mInferior">
-              <h4>$
-                <!--{{precioMInferior}}-->{{datos.data.response.valuacion.intervalo_bajo_m2 | number:'0.1-2'}}</h4>
+              <h4>${{datos.data.response.valuacion.intervalo_bajo_m2 | number:'0.1-2'}}</h4>
               <p>Limite inferior</p>
             </div>
             <div class="mSuperior">
-              <h4>$
-                <!--{{precioMSuperior}}-->{{datos.data.response.valuacion.intervalo_alto_m2 | number:'0.1-2'}} </h4>
+              <h4>${{datos.data.response.valuacion.intervalo_alto_m2 | number:'0.1-2'}} </h4>
               <p>Limite Superior</p>
             </div>
           </div>
@@ -228,9 +209,8 @@
           <span>Página 1 de 9</span>
         </div>
       </div>
-      <div class="html2pdf__page-break"></div>
 
-      <!--Divisor de Mapa y primera página-->
+      <div class="html2pdf__page-break"></div>
 
       <div>
         <div class="superTitle">
@@ -261,9 +241,8 @@
           </p>
         </div>
       </div>
-      <div class="separador">
+      <div class="separador"> </div>
 
-      </div>
       <div class="footer">
         <div class="footerContainer">
           <span>Reporte Generado el {{fechaCreacion}}</span>
@@ -297,38 +276,33 @@
           <br> Están ordenadas utilizando una medida de similitud que toma en cuenta las características de cada propiedad. </p>
 
       </div>
-
-      <!-- Aquí va el mapa con multiple marcadores. -->
-
       <div class="map2">
         <img [src]="ulrMultipleMarkers">
       </div>
-      <div class="separador2">
+    </div>
+    <div class="separador2"></div>
 
+    <div class="footer">
+      <div class="footerContainer">
+        <span>Reporte Generado el {{fechaCreacion}}</span>
+        <span>www.valorinmuebles.com.mx</span>
+        <span>Página 3 de 9</span>
       </div>
+    </div>
 
-      <div class="footer">
-        <div class="footerContainer">
-          <span>Reporte Generado el {{fechaCreacion}}</span>
-          <span>www.valorinmuebles.com.mx</span>
-          <span>Página 3 de 9</span>
-        </div>
+    <div class="html2pdf__page-break"></div>
+
+    <div class="superTitle">
+      <div class="superContainer">
+        <a href="#">
+          <img class="logo" src="assets/images/logoFinal.png" />
+        </a>
+        <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
       </div>
-
-      <div class="html2pdf__page-break"></div>
-
-      <div class="superTitle">
-        <div class="superContainer">
-          <a href="#">
-            <img class="logo" src="assets/images/logoFinal.png" />
-          </a>
-          <span class="reportID">ID {{datos.data.dateCreated | date:'yyyy-MMMMMdHms'}}</span>
-        </div>
-      </div>
-
+    </div>
+    <div class="propiedades">
       <div class="table">
         <div class="example-container ">
-          <!--mat-elevation-z8-->
           <mat-table #table [dataSource]="dataSource" matSort>
 
             <ng-container matColumnDef="position">
@@ -400,10 +374,6 @@
 
       </div>
     </div>
-
-    <!--<div class="divisor">
-      <hr>
-    </div>-->
     <div class="separador3"></div>
 
     <div class="footer">
@@ -429,18 +399,16 @@
       <div class="middleTitle">
         <span>COLONIA {{datos.data.response.address.colonia}}</span>
       </div>
-
       <div class="intro">
-        <h2>Esta sección te ayudará a conocer los precios en la colonia, el tipo de vivienda que existe y el número de listados
+        <span>Esta sección te ayudará a conocer los precios en la colonia, el tipo de vivienda que existe y el número de listados
           mensuales.
-        </h2>
-        <h3>Oferta en los últimos meses</h3>
+        </span>
         <p>A continuación se muestra un número aproximado de cuántas casas y departamentos han sido listados en portales de
           Internet.
         </p>
       </div>
 
-      <div class="ofertasMes">
+      <div class="ofertasMes" *ngIf="datos">
 
         <div class="ultimoMes" *ngIf="datos.data.response.historico">
 
@@ -451,7 +419,6 @@
             </div>
             <div class="numCasas">
               <h1>{{datos.data.response.historico.listado_promedio_1_mes || ''}}
-                <!--{{uMesCasas}}-->
               </h1>
               <p>Casas y departamentos listados en el último mes</p>
             </div>
@@ -464,37 +431,27 @@
                   Precios promedios de oferta en la colonia {{datos.data.response.address.colonia}}
                 </th>
               </tr>
-
               <tr>
-                <td class="promedioTotal">$
-                  <!--{{promedioTotal}}-->{{datos.data.response.historico.oferta_promedio_6_meses | number:'0.1-2'}}</td>
-                <td class="promediom2">$
-                  <!--{{promediom2}}-->{{datos.data.response.historico.precio_promedio_m2_6_meses | number:'0.1-2'}}</td>
+                <td class="promedioTotal">${{datos.data.response.historico.oferta_promedio_6_meses | number:'0.1-2'}}</td>
+                <td class="promediom2">${{datos.data.response.historico.precio_promedio_m2_6_meses | number:'0.1-2'}}</td>
               </tr>
               <tr>
                 <td class="txtPromedio">Total Promedio</td>
                 <td class="txtPromedio">Promedio m2</td>
               </tr>
-
             </table>
           </div>
-
         </div>
-
         <div class="seisMeses" *ngIf="datos.data.response.historico">
-
           <div class="smesContainer">
-
             <div class="calendarContainer">
               <img src="../assets/images/calendary.png" alt="Smiley face">
             </div>
             <div class="numCasas">
-              <h1>
-                <!--{{sMesCasas}}-->{{datos.data.response.historico.listado_promedio_6_meses}}</h1>
+              <h1>{{datos.data.response.historico.listado_promedio_6_meses}}</h1>
               <p>Casas y departamentos listados en los últimos 6 meses</p>
             </div>
           </div>
-
           <div class="tablaMes">
             <table>
               <tr>
@@ -502,34 +459,22 @@
                   Información de cierres
                 </th>
               </tr>
-
               <tr>
-                <td class="promediom2">
-                  <!--{{cierrePromedioTotal}}-->${{datos.data.response.historico.cierres_promedio_6_meses | number:'0.1-2'}}</td>
-                <td class="promediom2">
-                  <!--{{cierrePromediom2}}-->${{datos.data.response.historico.cierres_promedio_m2_6_meses | number:'0.1-2'}}</td>
+                <td class="promediom2">${{datos.data.response.historico.cierres_promedio_6_meses | number:'0.1-2'}}</td>
+                <td class="promediom2">${{datos.data.response.historico.cierres_promedio_m2_6_meses | number:'0.1-2'}}</td>
               </tr>
               <tr>
                 <td class="txtPromedio">Total Promedio</td>
                 <td class="txtPromedio">Promedio m2</td>
               </tr>
-
             </table>
           </div>
-
         </div>
-
       </div>
-
     </div>
-
     <div class="divisor">
       <hr>
     </div>
-    <!--<div class="html2pdf__page-break"></div>-->
-
-    <!-- Inicio para aplicar las graficas-->
-    <!-- Grafica Precio promedio en la colonia-->
     <div class="graficaPrecioColonia">
       <div class="containerGraficaColonia">
 
@@ -635,8 +580,7 @@
       </div>
     </div>
 
-    <div class="separador5">
-    </div>
+    <div class="separador5"></div>
 
     <div class="footer">
       <div class="footerContainer">
@@ -647,7 +591,6 @@
     </div>
 
     <div class="html2pdf__page-break"></div>
-    <!-- Fin graficas-->
 
     <div class="superTitle">
       <div class="superContainer">
@@ -808,7 +751,6 @@
         </div>
       </div>
     </div>
-    <!--<div class="html2pdf__page-break"></div>-->
     <div class="separador7"></div>
     <div class="footer">
       <div class="footerContainer">
@@ -836,20 +778,14 @@
 
       <div class="contenido">
         <p>
-          Región4 es un estimador del valor de propiedades residenciales.
-          <br>
-          <br> Región4 provee una opinión de valor objetiva basada en millones de puntos de información sobre viviendas en México.
-          Esto te permite obtener información para la toma de decisiones cuando compras, vendes o rentas un inmueble. Para
-          saber más consulta www.region4.mx
-          <br>
-          <br> El uso de este reporte está sujeto a los Términos y Condiciones sobre los que fue generado. Éstos indican que
-          el usuario reconoce que el reporte fue generado sin la visita física a la propiedad analizada.
-          <br>
-          <br> El reporte de Región4 constituye únicamente un estimado de valor. Derechos reservados Región4 Asesores Inmobiliarios
-          S.C.P. 2017.
+          Región4 es un estimador del valor de propiedades residenciales. Región4 provee una opinión de valor objetiva basada en millones
+          de puntos de información sobre viviendas en México. Esto te permite obtener información para la toma de decisiones
+          cuando compras, vendes o rentas un inmueble. Para saber más consulta www.region4.mx El uso de este reporte está
+          sujeto a los Términos y Condiciones sobre los que fue generado. Éstos indican que el usuario reconoce que el reporte
+          fue generado sin la visita física a la propiedad analizada. El reporte de Región4 constituye únicamente un estimado
+          de valor. Derechos reservados Región4 Asesores Inmobiliarios S.C.P. 2017.
         </p>
       </div>
-
       <div class="middleTitle" style="height: 12px;">
         <span>AVISO DE PRIVACIDAD</span>
       </div>
@@ -906,9 +842,6 @@
         </p>
       </div>
     </div>
-    <!--<div class="separador8">
-
-    </div>-->
     <div class="footer">
       <div class="footerContainer">
         <span>Reporte Generado el {{fechaCreacion}}</span>

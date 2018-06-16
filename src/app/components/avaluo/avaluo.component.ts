@@ -10,6 +10,7 @@ import { MessageService } from 'primeng/components/common/messageservice';
 import { MailService } from '../../services/mail.service';
 import { ObservablesService } from '../../services/observables.service';
 import { Client } from '../../models/client.model';
+import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-avaluo',
@@ -20,6 +21,8 @@ import { Client } from '../../models/client.model';
   ]
 })
 export class AvaluoComponent implements OnInit {
+
+  mostrarImprimir = false;
 
   elementToPrint: any;
 
@@ -45,6 +48,7 @@ export class AvaluoComponent implements OnInit {
     this.observableService.userObservable$.subscribe(user => {
       this.user = user ? user : new Client();
     });
+    console.log()
   }
 
   enviarCorreo() {
@@ -64,6 +68,9 @@ export class AvaluoComponent implements OnInit {
     this.loading = true;
     this.yals.generateRequest(yals_req, null).subscribe(response => {
       this.avaluoResponse = response;
+      localStorage.setItem('dataaa', JSON.stringify(response));
+
+
       if (!this.avaluoResponse.data.response.similares) {
         this.messageService.add({
           severity: 'error', summary: 'Datos Insuficientes',
@@ -78,10 +85,10 @@ export class AvaluoComponent implements OnInit {
         detail: `Se ha generado satisfactoriamente su reporte.`
       });
       setTimeout(() => {
-        this.imprimir();
-        setTimeout(() => {
-          this.loading = false;
-        }, 15000);
+        // this.imprimir();
+        this.mostrarImprimir = true,
+          setTimeout(() => {
+          }, 15000);
       }, 2000);
 
     }, error => {
@@ -113,17 +120,27 @@ export class AvaluoComponent implements OnInit {
 
   imprimir() {
     if (this.avaluoResponse.data.response.similares) {
-      this.elementToPrint = document.getElementById('element-to-print');
+      if (this.getMobileOperatingSystem() === 'iOS') {
+        this.elementToPrint = document.getElementById('element-to-print-ios');
+      } else {
+        this.elementToPrint = document.getElementById('element-to-print');
+      }
+
     } else {
       this.elementToPrint = document.getElementById('basic-element-to-print');
     }
+
     const datauri = html2pdf(this.elementToPrint, {
       margin: 0.4,
       filename: 'reporte.pdf',
       image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { dpi: 192, letterRendering: true },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' },
-      action: "save"
+      html2canvas: { dpi: 96, letterRendering: true },
+      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+    });
+    datauri.then(data => {
+      this.loading = false;
+      localStorage.setItem('testObject', data);
+      FileSaver.saveAs(this.b64toBlob(data.split(';base64,').pop(), "application/pdf"), 'reporte.pdf');
     });
   }
 
@@ -131,7 +148,11 @@ export class AvaluoComponent implements OnInit {
   enviarACorreo() {
     if (this.otroCorreo !== "") {
       if (this.avaluoResponse.data.response.similares) {
-        this.elementToPrint = document.getElementById('element-to-print');
+        if (this.getMobileOperatingSystem() === 'iOS') {
+          this.elementToPrint = document.getElementById('element-to-print-ios');
+        } else {
+          this.elementToPrint = document.getElementById('element-to-print');
+        }
       } else {
         this.elementToPrint = document.getElementById('basic-element-to-print');
       }
@@ -141,7 +162,7 @@ export class AvaluoComponent implements OnInit {
         margin: 0.4,
         filename: 'reporte.pdf',
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { dpi: 192, letterRendering: true },
+        html2canvas: { dpi: 96, letterRendering: true },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
       });
       datauri.then(data => {
@@ -175,6 +196,50 @@ export class AvaluoComponent implements OnInit {
 
   nvoAvaluo() {
     location.reload();
+  }
+
+  b64toBlob(b64Data, contentType) {
+    contentType = contentType || '';
+    let sliceSize = 512;
+
+    var byteCharacters = atob(b64Data);
+    var byteArrays = [];
+
+    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+      var byteNumbers = new Array(slice.length);
+      for (var i = 0; i < slice.length; i++) {
+        byteNumbers[i] = slice.charCodeAt(i);
+      }
+
+      var byteArray = new Uint8Array(byteNumbers);
+
+      byteArrays.push(byteArray);
+    }
+
+    var blob = new Blob(byteArrays, { type: contentType });
+    return blob;
+  }
+
+  getMobileOperatingSystem() {
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+      return "Windows Phone";
+    }
+
+    if (/android/i.test(userAgent)) {
+      return "Android";
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window['MSStream']) {
+      return "iOS";
+    }
+
+    return "unknown";
   }
 
   // stepchanged(event: any) {
