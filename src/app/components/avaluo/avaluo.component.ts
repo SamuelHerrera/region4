@@ -162,7 +162,7 @@ export class AvaluoComponent implements OnInit {
         margin: 0.4,
         filename: 'reporte.pdf',
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { dpi: 96, letterRendering: true },
+        html2canvas: { dpi: 160, letterRendering: true },
         jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
       });
       datauri.then(data => {
