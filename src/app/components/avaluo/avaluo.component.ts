@@ -146,9 +146,9 @@ export class AvaluoComponent implements OnInit {
     this.step4 = event;
     setTimeout(() => {
       this.scrollIntoView('scrollhere');
-      try{
+      try {
         this.scrollIntoView('scrollhere');
-      }catch(e){}
+      } catch (e) { }
     }, 1000);
   }
 
