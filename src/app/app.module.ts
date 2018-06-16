@@ -90,6 +90,7 @@ import { PoliticaPrivacidadComponent } from './components/politica-privacidad/po
 import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { DownloadComponent } from './components/download/download.component';
 @NgModule({
   declarations: [
     TemplateReportComponent,
@@ -125,7 +126,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReporteComponent,
     BasicReportFakeComponent,
     ReporteFakeComponent,
-    ShortNumberPipe
+    ShortNumberPipe,
+    DownloadComponent
   ],
   imports: [
     BrowserModule,

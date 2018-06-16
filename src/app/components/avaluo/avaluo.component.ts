@@ -68,9 +68,6 @@ export class AvaluoComponent implements OnInit {
     this.loading = true;
     this.yals.generateRequest(yals_req, null).subscribe(response => {
       this.avaluoResponse = response;
-      localStorage.setItem('dataaa', JSON.stringify(response));
-
-
       if (!this.avaluoResponse.data.response.similares) {
         this.messageService.add({
           severity: 'error', summary: 'Datos Insuficientes',
@@ -103,9 +100,9 @@ export class AvaluoComponent implements OnInit {
       // this.mail.sendMail({ to: "ventas@region4.mx", subject: "Facturacion", text: this.facturacion })
       //console.log(HTMLFacturacion.innerHTML);
       this.mail.sendMail({
-        from: "facturacion@valorinmuebles.mx",
+        from: 'facturacion@valorinmuebles.mx',
         //to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
-        to: "ventas@region4.mx", subject: "Facturacion",
+        to: 'ventas@region4.mx', subject: 'Facturacion',
         //html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
         html: HTMLFacturacion.innerHTML
       })
@@ -140,13 +137,14 @@ export class AvaluoComponent implements OnInit {
     datauri.then(data => {
       this.loading = false;
       localStorage.setItem('testObject', data);
-      FileSaver.saveAs(this.b64toBlob(data.split(';base64,').pop(), "application/pdf"), 'reporte.pdf');
+      window.open('/download');
+      // FileSaver.saveAs(this.b64toBlob(data.split(';base64,').pop(), 'application/pdf'), 'reporte.pdf');
     });
   }
 
 
   enviarACorreo() {
-    if (this.otroCorreo !== "") {
+    if (this.otroCorreo !== '') {
       if (this.avaluoResponse.data.response.similares) {
         if (this.getMobileOperatingSystem() === 'iOS') {
           this.elementToPrint = document.getElementById('element-to-print-ios');
@@ -156,7 +154,7 @@ export class AvaluoComponent implements OnInit {
       } else {
         this.elementToPrint = document.getElementById('basic-element-to-print');
       }
-      const reportHTML: any = document.getElementById("reportTemplate");
+      const reportHTML: any = document.getElementById('reportTemplate');
       this.nomCliente['name'] = this.user.name;
       const datauri = html2pdf(this.elementToPrint, {
         margin: 0.4,
@@ -167,15 +165,15 @@ export class AvaluoComponent implements OnInit {
       });
       datauri.then(data => {
         this.yals.sendReport({
-          from: "ventas@valorinmuebles.com",
+          from: 'ventas@valorinmuebles.com',
           to: this.otroCorreo,
-          subject: "Reporte de avalúo",
+          subject: 'Reporte de avalúo',
           text: ``,
           html: reportHTML.innerHTML,
           file: data.split(';base64,').pop()
         }).subscribe((response: any) => {
-          console.log("Respuesta de mail: ", response);
-          this.otroCorreo = "";
+          console.log('Respuesta de mail: ', response);
+          this.otroCorreo = '';
         });
       });
 
@@ -222,24 +220,31 @@ export class AvaluoComponent implements OnInit {
     return blob;
   }
 
+  scrollIntoView(eleID) {
+    var e = document.getElementById(eleID);
+    if (!!e && e.scrollIntoView) {
+        e.scrollIntoView();
+    }
+ }
+
   getMobileOperatingSystem() {
     const userAgent = navigator.userAgent || navigator.vendor;
 
     // Windows Phone must come first because its UA also contains "Android"
     if (/windows phone/i.test(userAgent)) {
-      return "Windows Phone";
+      return 'Windows Phone';
     }
 
     if (/android/i.test(userAgent)) {
-      return "Android";
+      return 'Android';
     }
 
     // iOS detection from: http://stackoverflow.com/a/9039885/177710
     if (/iPad|iPhone|iPod/.test(userAgent) && !window['MSStream']) {
-      return "iOS";
+      return 'iOS';
     }
 
-    return "unknown";
+    return 'unknown';
   }
 
   // stepchanged(event: any) {
