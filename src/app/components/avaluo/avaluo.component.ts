@@ -116,6 +116,7 @@ export class AvaluoComponent implements OnInit {
   }
 
   imprimir() {
+    this.loading = true;
     if (this.avaluoResponse.data.response.similares) {
       if (this.getMobileOperatingSystem() === 'iOS') {
         this.elementToPrint = document.getElementById('element-to-print-ios');

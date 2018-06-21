@@ -78,6 +78,7 @@
           <br>
 
           <p-button *ngIf="mostrarImprimir" (click)="imprimir()" label="Imprimir"></p-button>
+          <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
           <br>
           <p-button *ngIf="avaluoResponse" (click)="nvoAvaluo()" label="Realizar Otro Reporte"></p-button>
           <!-- <p-button *ngIf="avaluoResponse" (click)="imprimir()" label="Imprimir"></p-button> -->
