@@ -55,8 +55,8 @@
             </div>
             <button pButton type="button" id="scrollhere" *ngIf="!avaluoResponse&&isHidden" (click)="enviarCorreo()" label="Generar Reporte y factura"
               [disabled]="loading" class="animated" [disabled]="!step4"></button>
-            <button pButton type="button" id="scrollhere1" *ngIf="!avaluoResponse&&!isHidden" (click)="enviarCorreo()" label="Generar Reporte" [disabled]="loading"
-              class="animated" [disabled]="!step4"></button>
+            <button pButton type="button" id="scrollhere1" *ngIf="!avaluoResponse&&!isHidden" (click)="enviarCorreo()" label="Generar Reporte"
+              [disabled]="loading" class="animated" [disabled]="!step4"></button>
             <span class="margintop" *ngIf="loading">Generando reporte...</span>
             <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
             <!--  -->
@@ -89,6 +89,7 @@
 
       </mat-step>
     </mat-vertical-stepper>
+
     <div class="row" style="    display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -106,11 +107,24 @@
     </div>
   </div>
 </div>
+
 <div class="oculto">
-  <app-basic-report *ngIf="avaluoResponse&&avaluoResponse.data.response.error_log" [datos]="avaluoResponse"></app-basic-report>
-  <app-template-facturacion *ngIf="facturacion" [facturacion]="facturacion"></app-template-facturacion>
-  <app-template-report [cliente]="nomCliente" id="reportTemplate"></app-template-report>
-  <app-reporte-fake  id="element-to-print-ios" *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [datos]="avaluoResponse"></app-reporte-fake>
-  <app-reporte  id="element-to-print" *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [datos]="avaluoResponse"></app-reporte>
-  <app-basic-report-fake *ngIf="avaluoResponse" [datos]="avaluoResponse"></app-basic-report-fake>
+  <app-basic-report *ngIf="avaluoResponse&&avaluoResponse.data.response.error_log" [datos]="avaluoResponse">
+
+  </app-basic-report>
+  <app-template-facturacion *ngIf="facturacion" [facturacion]="facturacion">
+
+  </app-template-facturacion>
+  <app-template-report [cliente]="nomCliente" id="reportTemplate">
+
+  </app-template-report>
+  <app-reporte-fake id="element-to-print-ios" *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [datos]="avaluoResponse">
+
+  </app-reporte-fake>
+  <app-reporte id="element-to-print" *ngIf="avaluoResponse&&avaluoResponse.data.response.similares" [datos]="avaluoResponse">
+
+  </app-reporte>
+  <app-basic-report-fake *ngIf="avaluoResponse" [datos]="avaluoResponse">
+    
+  </app-basic-report-fake>
 </div>
