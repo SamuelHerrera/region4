@@ -76,7 +76,7 @@ export class PagoConTarjetaComponent implements OnInit {
       this.completed.emit(true);
     } else {
       this.loading = true;
-      this.pf.monto = '1'; //this.facturacion['total'];
+      this.pf.monto = this.facturacion['total'];
       this.pf.email = 'region4mid@gmail.com';
       this.pf.calleyNumero = 'Calzada General MAriano Escobedo 748';
       this.pf.colonia = 'Anzures';

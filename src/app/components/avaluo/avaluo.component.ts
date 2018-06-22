@@ -71,8 +71,9 @@ export class AvaluoComponent implements OnInit {
       if (!this.avaluoResponse.data.response.similares) {
         this.messageService.add({
           severity: 'error', summary: 'Datos Insuficientes',
-          detail: `No se han encontrado datos suficientes para realizar un reporte detallado, 
-          favor de ponerse en contacto con ventas@region4.com.mx para la devolución del efectivo`
+          detail: `No se han encontrado datos suficientes de la propiedad para realizar un reporte detallado, 
+          favor de ponerse en contacto con aclaraciones@valorinmuebles.com.mx
+          `
         });
       }
       this.index = 4;
