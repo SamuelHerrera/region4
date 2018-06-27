@@ -32,7 +32,7 @@ Ajax Contact Form
         // process the form
         $.ajax({
             type : 'POST',
-            url  : 'process.php',
+            url  : '/api/sendmail',
             data : formData,
             dataType : 'json',
             encode : true
@@ -60,7 +60,7 @@ Ajax Contact Form
                 }
             } else {
                 // display success message
-                $form.html('<div class="alert alert-success">' + data.message + '</div>');
+                $form.html('<div class="alert alert-success">Mensaje Enviado</div>');
             }
         }).fail(function (data) {
             // for debug
