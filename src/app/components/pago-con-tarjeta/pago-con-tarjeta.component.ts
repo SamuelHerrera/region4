@@ -74,7 +74,7 @@ export class PagoConTarjetaComponent implements OnInit {
   }
 
   pagarAvaluo() {
-    const bypass = true;
+    const bypass = false;
     if (bypass) {
       this.completed.emit(true);
     } else {
