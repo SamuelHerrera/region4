@@ -45,7 +45,7 @@
           <ng-template matStepLabel>Pagar Reporte
             <!-- <span *ngIf="!step4" class="alerta">Sin completar</span> -->
           </ng-template>
-          <app-pago-con-tarjeta *ngIf="!step4" (completed)="cambio($event)" [facturacion]="facturacion"></app-pago-con-tarjeta>
+          <app-pago-con-tarjeta *ngIf="!step4" (completed)="cambio($event)" [yalsdata]="avaluoResponse" [facturacion]="facturacion"></app-pago-con-tarjeta>
           <div *ngIf="step4" class="centered">
             <img class="images" src="../assets/images/pagoefectuado.png" alt="Smiley face" height="100" width="300">
             <div class="checkBoxContainer">

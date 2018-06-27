@@ -16,6 +16,7 @@ export class PagoConTarjetaComponent implements OnInit {
 
   @Output() completed = new EventEmitter<boolean>();
   @Input() facturacion: any = {};
+  @Input() yalsdata: any = {};
   loading = false;
   disabled = true;
   codigo = false;
@@ -78,7 +79,8 @@ export class PagoConTarjetaComponent implements OnInit {
       this.completed.emit(true);
     } else {
       this.loading = true;
-      this.pf.monto = this.facturacion['total'];
+      // this.pf.monto = this.facturacion['total'];
+      this.pf.monto = '1';
       this.pf.email = 'region4mid@gmail.com';
       this.pf.calleyNumero = 'Calzada General MAriano Escobedo 748';
       this.pf.colonia = 'Anzures';
@@ -88,7 +90,9 @@ export class PagoConTarjetaComponent implements OnInit {
       this.pagofacil.generatePago(this.pf).subscribe((response: any) => {
         if (response) {
           if (response.data.response.autorizado === 1) {
-            this.yals.
+            this.yals.pagarReporte(this.yalsdata._id, response.data._id).subscribe((responses) => {
+              console.log(responses);
+            });
             console.log(response);
             this.messageService.add({
               severity: 'success', summary: 'Procesamiento de pago',
