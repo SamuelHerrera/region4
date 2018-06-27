@@ -22,7 +22,7 @@ export class AdministracionComponent implements OnInit {
   datosImprimir: any;
 
   displayedColumns = ['position', 'name', 'phone', 'weight', 'symbol'];
-  displayedColumns2 = ['position', 'name', 'weight', 'symbol', 'symbol1', 'symbol2', 'actions'];
+  displayedColumns2 = ['position', 'name', 'weight', 'symbol', 'symbol1', 'symbol2', 'pagado', 'actions'];
 
   displayedColumnsCupones = ['campania', 'descuento', 'cupon', 'descripcion', 'estatus'];
 
