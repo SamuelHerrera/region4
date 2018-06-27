@@ -90,7 +90,7 @@ export class PagoConTarjetaComponent implements OnInit {
       this.pagofacil.generatePago(this.pf).subscribe((response: any) => {
         if (response) {
           if (response.data.response.autorizado == '1') {
-            this.yals.pagarReporte(this.yalsdata._id, response.data._id).subscribe((responses) => {
+            this.yals.pagarReporte(this.yalsdata.data._id, response.data._id).subscribe((responses) => {
               console.log(responses);
             });
             console.log(response);
