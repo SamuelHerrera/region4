@@ -26,6 +26,7 @@ router.delete('/client:id', ClientController.removeClient);
 var YalsController = require('../controllers/yals.controller');
 router.post('/yals', YalsController.createReport);
 router.get('/yals', YalsController.getReport);
+router.put('/yals', YalsController.recordReference);
 router.post('/yals/configuracion', YalsController.setSettings);
 router.get('/yals/configuracion', YalsController.getSettings);
 router.post('/yals/sendEmail', YalsController.sendReport);

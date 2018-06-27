@@ -83,6 +83,18 @@
   opacity: 0.3;
 }
 
+.loader {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #00000057;
+  z-index: 999;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .isHidden {
   display: none;
 }

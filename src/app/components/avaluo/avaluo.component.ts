@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectItem } from 'primeng/components/common/selectitem';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { YalsService } from '../../services/yals.service';
 import { YalsRequest } from '../../models/yals.model';
 import { Router } from '@angular/router';
-import * as jsPDF from 'jspdf';
 import * as html2pdf from '../../../assets/js/html2pdf';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { MailService } from '../../services/mail.service';
 import { ObservablesService } from '../../services/observables.service';
 import { Client } from '../../models/client.model';
-import * as FileSaver from 'file-saver';
 
 @Component({
   selector: 'app-avaluo',
@@ -22,6 +18,8 @@ import * as FileSaver from 'file-saver';
 })
 export class AvaluoComponent implements OnInit {
 
+  dataLoaded = false;
+
   mostrarImprimir = false;
 
   elementToPrint: any;
@@ -31,7 +29,7 @@ export class AvaluoComponent implements OnInit {
   index = 0;
   step1 = false;
   step2 = false;
-  step3 = true;
+  step3 = false;
   step4 = false;
   selectedAge: string[] = [];
   avaluoForm: any = {};
@@ -41,17 +39,22 @@ export class AvaluoComponent implements OnInit {
   otroCorreo: any;
   datosHTML: any;
   public user: Client = new Client();
-  constructor(private observableService: ObservablesService, private mail: MailService, private router: Router, private yals: YalsService, private messageService: MessageService) {
+  constructor(private observableService: ObservablesService, private mail: MailService,
+    private yals: YalsService, private messageService: MessageService) {
   }
 
   ngOnInit() {
     this.observableService.userObservable$.subscribe(user => {
       this.user = user ? user : new Client();
     });
-    console.log()
   }
 
-  enviarCorreo() {
+
+  preload() {
+    this.generarAvaluo();
+  }
+
+  generarAvaluo() {
     const yals_req: YalsRequest = this.avaluoForm;
     yals_req.id_tipo_propiedad = (+yals_req.id_tipo_propiedad);
     yals_req.recamaras = (+yals_req.recamaras);
@@ -61,42 +64,105 @@ export class AvaluoComponent implements OnInit {
     yals_req.area_construida = (+yals_req.area_construida);
     yals_req.superficie_terreno = (+yals_req.superficie_terreno);
     yals_req.edad = (+yals_req.edad);
+    if (!yals_req.amenities) {
+      yals_req['amenities'] = [];
+    }
+
+
+    this.dataLoaded = true;
+    this.yals.generateRequest(yals_req, null).subscribe(response => {
+      this.avaluoResponse = response;
+      if (!this.avaluoResponse.data.response.similares) {
+        this.step3 = true;
+        this.step4 = true;
+        this.messageService.add({
+          severity: 'warn', summary: 'Datos Insuficientes',
+          detail: `No se han encontrado datos suficientes de la propiedad para realizar un reporte detallado, sin embargo
+           podrás descargar un reporte gratuito de los datos encontrados sobre tu propiedad.
+          `
+        });
+        setTimeout(() => {
+          this.index = 4;
+        }, 2000);
+      } else {
+        this.step3 = true;
+        setTimeout(() => {
+          this.index = 3;
+        }, 2000);
+      }
+
+      this.mostrarImprimir = true;
+      this.dataLoaded = false;
+
+    }, () => {
+      // error
+      this.messageService.add({
+        severity: 'error', summary: 'Error de conexión',
+        detail: `En este momento no podemos establecer conexión con nuestros servidores, 
+        revise su conexión a internet, recargue la pagina e intente generar su reporte de nuevo.
+        `
+      });
+      // this.dataLoaded = false;
+      // setTimeout(() => {
+      //   this.index = 0;
+      //   setTimeout(() => {
+      //     this.step1 = false;
+      //     this.step2 = false;
+      //     this.step3 = false;
+      //     this.step4 = false;
+      //   }, 100);
+      // }, 2000);
+
+    });
+
+  }
+
+  enviarCorreo() {
+    // const yals_req: YalsRequest = this.avaluoForm;
+    // yals_req.id_tipo_propiedad = (+yals_req.id_tipo_propiedad);
+    // yals_req.recamaras = (+yals_req.recamaras);
+    // yals_req.banos = (+yals_req.banos);
+    // yals_req.medios_banos = (+yals_req.medios_banos);
+    // yals_req.estacionamientos = (+yals_req.estacionamientos);
+    // yals_req.area_construida = (+yals_req.area_construida);
+    // yals_req.superficie_terreno = (+yals_req.superficie_terreno);
+    // yals_req.edad = (+yals_req.edad);
 
 
 
     const HTMLFacturacion: any = document.getElementById("facturacion");
-    this.loading = true;
-    this.yals.generateRequest(yals_req, null).subscribe(response => {
-      this.avaluoResponse = response;
-      if (!this.avaluoResponse.data.response.similares) {
-        this.messageService.add({
-          severity: 'error', summary: 'Datos Insuficientes',
-          detail: `No se han encontrado datos suficientes de la propiedad para realizar un reporte detallado, 
-          favor de ponerse en contacto con aclaraciones@valorinmuebles.com.mx
-          `
-        });
-      }
-      this.index = 4;
+    // this.loading = true;
+    // this.yals.generateRequest(yals_req, null).subscribe(response => {
+    //   this.avaluoResponse = response;
+    //   if (!this.avaluoResponse.data.response.similares) {
+    //     this.messageService.add({
+    //       severity: 'error', summary: 'Datos Insuficientes',
+    //       detail: `No se han encontrado datos suficientes de la propiedad para realizar un reporte detallado, 
+    //       favor de ponerse en contacto con aclaraciones@valorinmuebles.com.mx
+    //       `
+    //     });
+    //   }
+    this.index = 4;
 
-      this.messageService.add({
-        severity: 'info', summary: 'Reporte',
-        detail: `Se ha generado satisfactoriamente su reporte.`
-      });
-      setTimeout(() => {
-        // this.imprimir();
-        this.mostrarImprimir = true,
-          setTimeout(() => {
-          }, 15000);
-      }, 2000);
+    //   this.messageService.add({
+    //     severity: 'info', summary: 'Reporte',
+    //     detail: `Se ha generado satisfactoriamente su reporte.`
+    //   });
+    //   setTimeout(() => {
+    //     // this.imprimir();
+    //     this.mostrarImprimir = true,
+    //       setTimeout(() => {
+    //       }, 15000);
+    //   }, 2000);
 
-    }, error => {
-      this.loading = false;
-      this.messageService.add({
-        severity: 'error', summary: 'Error procesando reporte',
-        detail: `Se ha producido un error procesando su reporte, verifique los datos proporcionados 
-        o su conexion a internet e intente nuevamente, en caso contrario porfavor contacte a soporte.`
-      });
-    });
+    // }, () => {
+    //   this.loading = false;
+    //   this.messageService.add({
+    //     severity: 'error', summary: 'Error procesando reporte',
+    //     detail: `Se ha producido un error procesando su reporte, verifique los datos proporcionados 
+    //     o su conexion a internet e intente nuevamente, en caso contrario porfavor contacte a soporte.`
+    //   });
+    // });
     if (this.isHidden) {
       // this.mail.sendMail({ to: "ventas@region4.mx", subject: "Facturacion", text: this.facturacion })
       //console.log(HTMLFacturacion.innerHTML);
@@ -107,7 +173,7 @@ export class AvaluoComponent implements OnInit {
         //html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
         html: HTMLFacturacion.innerHTML
       })
-        .subscribe(response => {
+        .subscribe(() => {
           this.messageService.add({
             severity: 'info', summary: 'Reporte',
             detail: `Se esta generando su factura, se la haremos llegar en un plazo maximo de 72horas.`

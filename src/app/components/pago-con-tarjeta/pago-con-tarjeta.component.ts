@@ -3,6 +3,7 @@ import { PagofacilService } from '../../services/pagofacil.service';
 import { Pagofacilrequest } from '../../models/pagofacil.model';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { CuponService } from '../../services/cupon.service';
+import { YalsService } from '../../services/yals.service';
 
 declare var window: Window;
 
@@ -28,7 +29,8 @@ export class PagoConTarjetaComponent implements OnInit {
     { label: 'Tarjeta Credito/Debito', value: 'tarjeta' },
     { label: 'PayPal', value: 'paypal' }
   ];
-  constructor(private pagofacil: PagofacilService, private messageService: MessageService, private cupones: CuponService) { }
+  constructor(private pagofacil: PagofacilService, private messageService: MessageService,
+    private yals: YalsService, private cupones: CuponService) { }
 
   ngOnInit() {
     setTimeout(() => {
@@ -71,7 +73,7 @@ export class PagoConTarjetaComponent implements OnInit {
   }
 
   pagarAvaluo() {
-    const bypass = false;
+    const bypass = true;
     if (bypass) {
       this.completed.emit(true);
     } else {
@@ -86,6 +88,7 @@ export class PagoConTarjetaComponent implements OnInit {
       this.pagofacil.generatePago(this.pf).subscribe((response: any) => {
         if (response) {
           if (response.data.response.autorizado === 1) {
+            this.yals.
             console.log(response);
             this.messageService.add({
               severity: 'success', summary: 'Procesamiento de pago',

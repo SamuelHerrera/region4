@@ -6,7 +6,7 @@ var model = require('../models/yals.model');
 _this = this;
 
 var config = {
-  url: 'https://yals.mx/api/v1/reporte/json', //'https://yals.mx/api/v1/reporte/json', 
+  url: 'https://yals.mx/api/v1/reporte/json/test', //'https://yals.mx/api/v1/reporte/json', 
   encoding: null,
   headers: {
     'Content-Type': 'application/json'
@@ -77,5 +77,27 @@ exports.createReport = async (function (clientid, yals_request, cuponid) {
     return savedYals;
   } catch (e) {
     throw Error("Error: " + e);
+  }
+});
+
+exports.recordReference = async (function (yalsid, pagofacilid) {
+  var oldyals = null;
+  try {
+    oldyals = await (model.findOne({
+      _id: yalsid
+    }));
+  } catch (e) {
+    throw Error("Error occured while Finding the Todo")
+  }
+
+  if (!oldyals) {
+    return false;
+  }
+  oldyals.state = 'Pagado ' + pagofacilid;
+  try {
+    var savedyals = await (oldyals.save());
+    return savedyals;
+  } catch (e) {
+    throw Error("And Error occured while updating the Todo");
   }
 });

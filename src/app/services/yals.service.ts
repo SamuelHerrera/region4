@@ -16,6 +16,10 @@ export class YalsService {
     return this._http.post('/api/yals/convert', { url: url });
   }
 
+  pagarReporte(yalsid, pagofacilid) {
+    return this._http.put('/api/yals', { yalsid: yalsid, pagofacilid: pagofacilid });
+  }
+
   generateRequest(yals: YalsRequest, cuponid: String) {
     const client = this.obsv.currentUser;
     console.log("yals request", yals);

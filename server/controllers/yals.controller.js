@@ -34,6 +34,35 @@ exports.getSettings = async (function (req, res, next) {
   }
 });
 
+exports.recordReference = async (function (req, res, next) {
+  if (!req.body) {
+    return res.status(400).json({
+      status: 400,
+      message: "Yals ID deberia existir"
+    });
+  }
+  try {
+    var data = await (Service.recordReference(req.body.yalsid, req.body.pagofacilid));
+    if (data) {
+      return res.status(200).json({
+        status: 200,
+        data: data,
+        message: "Succesfully added yals reference"
+      });
+    } else {
+      return res.status(400).json({
+        status: 400,
+        message: "Error procesando referencia de Yals"
+      });
+    }
+  } catch (e) {
+    return res.status(400).json({
+      status: 400,
+      message: e.message
+    });
+  }
+});
+
 exports.setSettings = async (function (req, res, next) {
   try {
     var data = await (Service.setSettings(req.body.url, req.body.mail, req.body.key));

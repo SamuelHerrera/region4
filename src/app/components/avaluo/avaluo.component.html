@@ -1,5 +1,8 @@
 <div class="container">
   <div class="scrollable">
+    <div class="loader" *ngIf="dataLoaded">
+      <img src="../assets/img/SkinnySeveralAsianlion.gif" style="width: 50px;">
+    </div>
     <!-- (selectionChange)="stepchanged($event)" -->
     <img style="     height: 70px;
     width: 250px;
@@ -33,7 +36,7 @@
           <div class="disable-whole-div__cover" [hidden]="!avaluoResponse"></div>
           <app-paso-3 [avaluoForm]="avaluoForm"></app-paso-3>
 
-          <button pButton matStepperNext type="button" label="Siguiente" class="derecha"></button>
+          <button pButton matStepperNext type="button" label="Siguiente" class="derecha" (click)="preload()"></button>
           <button class="derecha animated" pButton matStepperPrevious type="button" label="Regresar"></button>
         </form>
       </mat-step>
@@ -53,9 +56,9 @@
             <div class="facturacion" *ngIf="isHidden">
               <app-datosfacturacion *ngIf="facturacion" [facturacion]="facturacion"></app-datosfacturacion>
             </div>
-            <button pButton type="button" id="scrollhere" *ngIf="!avaluoResponse&&isHidden" (click)="enviarCorreo()" label="Generar Reporte y factura"
+            <button pButton type="button" id="scrollhere" *ngIf="isHidden" (click)="enviarCorreo()" label="Generar Reporte y factura"
               [disabled]="loading" class="animated" [disabled]="!step4"></button>
-            <button pButton type="button" id="scrollhere1" *ngIf="!avaluoResponse&&!isHidden" (click)="enviarCorreo()" label="Generar Reporte"
+            <button pButton type="button" id="scrollhere1" *ngIf="!isHidden" (click)="enviarCorreo()" label="Generar Reporte"
               [disabled]="loading" class="animated" [disabled]="!step4"></button>
             <span class="margintop" *ngIf="loading">Generando reporte...</span>
             <p-progressBar *ngIf="loading" class="progress" mode="indeterminate" [style]="{'height': '6px'}"></p-progressBar>
@@ -125,6 +128,6 @@
 
   </app-reporte>
   <app-basic-report-fake *ngIf="avaluoResponse" [datos]="avaluoResponse">
-    
+
   </app-basic-report-fake>
 </div>
