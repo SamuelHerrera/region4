@@ -26,7 +26,7 @@ Ajax Contact Form
       'name': $('input[name="name"]').val(),
       'email': $('input[name="email"]').val(),
       'message': $('textarea[name="message"]').val(),
-      'landing': true,
+      'landing': false,
       'subject':'Pregunta de cliente',
     //   'to':'ventas@region4.mx'
       'to':'samuelherrerafuente@gmail.com'
