@@ -15,14 +15,14 @@ exports.sendMail = async (function (req, res, next) {
     let msg = {}
     if (req.body.landing) {
       msg = {
-        from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com') + ">",
-        to: ["ventas@valorinmuebles.com"],
+        from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com.mx') + ">",
+        to: ["ventas@valorinmuebles.com.mx"],
         subject: req.body.subject || '',
         text: '<' + req.body.name + ', ' + req.body.email + '>' + req.body.message
       }
     } else {
       msg = {
-        from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com') + ">",
+        from: "Valor Inmuebles <" + (req.body.from || 'ventas@valorinmuebles.com.mx') + ">",
         to: [req.body.to],
         subject: req.body.subject || '',
         text: req.body.text || '',

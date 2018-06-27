@@ -26,7 +26,7 @@ Ajax Contact Form
       'name': $('input[name="name"]').val(),
       'email': $('input[name="email"]').val(),
       'message': $('textarea[name="message"]').val(),
-      'landing': false,
+      'landing': true,
       'subject':'Pregunta de cliente',
     //   'to':'ventas@region4.mx'
       'to':'samuelherrerafuente@gmail.com'
@@ -63,8 +63,9 @@ Ajax Contact Form
         }
       } else {
         // display success message
-        $form.html('<div class="alert alert-success">Mensaje Enviado</div>');
+        
       }
+      $form.html('<div class="alert alert-success">Mensaje Enviado</div>');
     }).fail(function (data) {
       // for debug
       console.log(data)
