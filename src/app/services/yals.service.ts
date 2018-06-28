@@ -16,14 +16,13 @@ export class YalsService {
     return this._http.post('/api/yals/convert', { url: url });
   }
 
-  pagarReporte(yalsid, pagofacilid) {
-    return this._http.put('/api/yals', { yalsid: yalsid, pagofacilid: pagofacilid });
+  pagarReporte(yalsid, pagofacilid, cupon) {
+    return this._http.put('/api/yals', { yalsid: yalsid, pagofacilid: pagofacilid, cupon: cupon });
   }
 
   generateRequest(yals: YalsRequest, cuponid: String) {
     const client = this.obsv.currentUser;
-    console.log("yals request", yals);
-    return this._http.post('/api/yals', { clientid: "5ab90b990bc461001497237e", yals_request: yals, cuponid: cuponid });
+    return this._http.post('/api/yals', { clientid: client, yals_request: yals, cuponid: cuponid });
     //return this._http.post('/api/yals', { clientid: client._id, yals_request: yals, cuponid: cuponid });
   }
 

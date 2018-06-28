@@ -80,7 +80,7 @@ exports.createReport = async (function (clientid, yals_request, cuponid) {
   }
 });
 
-exports.recordReference = async (function (yalsid, pagofacilid) {
+exports.recordReference = async (function (yalsid, pagofacilid, cupon) {
   var oldyals = null;
   try {
     oldyals = await (model.findOne({
@@ -94,6 +94,7 @@ exports.recordReference = async (function (yalsid, pagofacilid) {
     return false;
   }
   oldyals.state = 'Pagado ' + pagofacilid;
+  oldyals.cuponid = cupon ? cupon : '';
   try {
     var savedyals = await (oldyals.save());
     return savedyals;

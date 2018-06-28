@@ -21,6 +21,8 @@ export class PagoConTarjetaComponent implements OnInit {
   disabled = true;
   codigo = false;
   codigoName = '';
+
+  codigoUSado = "";
   pf: Pagofacilrequest = new Pagofacilrequest();
   public montoDescuento: any;
 
@@ -55,6 +57,7 @@ export class PagoConTarjetaComponent implements OnInit {
           this.montoDescuento = 'Descuento: ' + porcentajeDescuento + '% = ' + ((porcentajeDescuento * 1200) / 100);
           this.facturacion['subTotal'] = 1200 - ((porcentajeDescuento * 1200) / 100);
           this.facturacion['total'] = 1200 - ((porcentajeDescuento * 1200) / 100);
+          this.codigoUSado = this.codigoName;
         } else {
 
           this.messageService.add({
@@ -90,7 +93,7 @@ export class PagoConTarjetaComponent implements OnInit {
       this.pagofacil.generatePago(this.pf).subscribe((response: any) => {
         if (response) {
           if (response.data.response.autorizado == '1') {
-            this.yals.pagarReporte(this.yalsdata.data._id, response.data._id).subscribe((responses) => {
+            this.yals.pagarReporte(this.yalsdata.data._id, response.data._id, this.codigoUSado).subscribe((responses) => {
               console.log(responses);
             });
             console.log(response);

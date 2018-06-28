@@ -42,7 +42,7 @@ exports.recordReference = async (function (req, res, next) {
     });
   }
   try {
-    var data = await (Service.recordReference(req.body.yalsid, req.body.pagofacilid));
+    var data = await (Service.recordReference(req.body.yalsid, req.body.pagofacilid, req.body.cupon));
     if (data) {
       return res.status(200).json({
         status: 200,

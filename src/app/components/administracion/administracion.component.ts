@@ -121,9 +121,9 @@ export class AdministracionComponent implements OnInit {
       /*console.log("Elements", elemento);
       console.log("childs node", document.getElementById(id).childNodes);*/
       if (elemento.response.similares) {
-        this.datosImprimir = document.getElementById(id).childNodes[2];
+        this.datosImprimir = document.getElementById(id).childNodes[1];
       } else {
-        this.datosImprimir = document.getElementById(id).childNodes[4];
+        this.datosImprimir = document.getElementById(id).childNodes[2];
       }
 
       const datapdf = html2pdf(this.datosImprimir, {
