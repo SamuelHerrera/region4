@@ -77,7 +77,7 @@ export class PagoConTarjetaComponent implements OnInit {
   }
 
   pagarAvaluo() {
-    const bypass = true;
+    const bypass = false;
     if (bypass) {
       this.yals.pagarReporte(this.yalsdata.data._id, 'codigodepago', this.codigoUSado).subscribe((responses) => {
         console.log(responses);
