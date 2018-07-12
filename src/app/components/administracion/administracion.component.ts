@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatSort } from '@angular/material';
 import { ClientService } from '../../services/client.service';
 import { YalsService } from '../../services/yals.service';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -19,10 +19,14 @@ import { Router } from '@angular/router';
 })
 export class AdministracionComponent implements OnInit {
 
+  @ViewChild(MatSort) sort: MatSort;
+
+  dataLoaded = false;
+
   datosImprimir: any;
 
   displayedColumns = ['position', 'name', 'phone', 'weight', 'symbol'];
-  displayedColumns2 = ['position', 'name', 'weight', 'symbol', 'symbol1', 'symbol2', 'pagado', 'actions'];
+  displayedColumns2 = ['client', 'dateCreated', 'weight', 'symbol', 'symbol1', 'symbol2', 'pagado', 'actions'];
 
   displayedColumnsCupones = ['campania', 'descuento', 'cupon', 'descripcion', 'estatus'];
 
@@ -75,8 +79,8 @@ export class AdministracionComponent implements OnInit {
     });
   }
 
-  /** */
-  ngOnInit() {
+  reload() {
+    this.dataLoaded = true;
     this.clientService.getClients().subscribe((response: any) => {
       this.dataSource = new MatTableDataSource(response.data.docs);
     });
@@ -96,10 +100,43 @@ export class AdministracionComponent implements OnInit {
         });
       });
       try {
-        response.data.docs.sort((a: any, b: any) => {
-          return a.dateCreated.getTime() - b.dateCreated.getTime();
+        response.data.docs = response.data.docs.sort((a: any, b: any) => {
+          return new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime();
         });
-      } catch (e) { }
+      } catch (e) { console.log(e); }
+
+      this.dataSource2 = new MatTableDataSource(response.data.docs);
+      this.dataLoaded = false;
+    });
+  }
+
+  /** */
+  ngOnInit() {
+    this.dataSource2.sort = this.sort;
+    this.clientService.getClients().subscribe((response: any) => {
+      this.dataSource = new MatTableDataSource(response.data.docs);
+    });
+    this.yals.getConfigs().subscribe((response: any) => {
+      this.yalsconfig = response.data;
+    });
+    this.yals.getRequest().subscribe((response: any) => {
+      response.data.docs.forEach(element => {
+        element['hidden'] = false;
+
+        this.clientService.getClientById(element.clientid).subscribe((cli: any) => {
+          try {
+            element['client'] = cli.data.docs[0].name;
+            element['ramo'] = cli.data.docs[0].ramo;
+          } catch (e) { }
+
+        });
+      });
+      try {
+        response.data.docs = response.data.docs.sort((a: any, b: any) => {
+          return new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime();
+        });
+      } catch (e) { console.log(e); }
+
       this.dataSource2 = new MatTableDataSource(response.data.docs);
     });
     this.cuponService.getCupons().subscribe((response: any) => {
@@ -115,15 +152,19 @@ export class AdministracionComponent implements OnInit {
   }
 
   imprimir(id, elemento) {
-
+    this.dataLoaded = true;
     elemento['hidden'] = true;
     setTimeout(() => {
       /*console.log("Elements", elemento);
       console.log("childs node", document.getElementById(id).childNodes);*/
       if (elemento.response.similares) {
-        this.datosImprimir = document.getElementById(id).childNodes[1];
+        if (this.getMobileOperatingSystem() === 'iOS') {
+          this.datosImprimir = document.getElementById('element-to-print-ios-' + id);
+        } else {
+          this.datosImprimir = document.getElementById('element-to-print-' + id);
+        }
       } else {
-        this.datosImprimir = document.getElementById(id).childNodes[2];
+        this.datosImprimir = document.getElementById('basic-element-to-print-' + id);
       }
 
       const datapdf = html2pdf(this.datosImprimir, {
@@ -135,9 +176,30 @@ export class AdministracionComponent implements OnInit {
         action: 'save'
       });
       datapdf.then(data => {
+        this.dataLoaded = false;
       });
-    }, 1000);
+    }, 2500);
 
+  }
+
+  getMobileOperatingSystem() {
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+      return 'Windows Phone';
+    }
+
+    if (/android/i.test(userAgent)) {
+      return 'Android';
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window['MSStream']) {
+      return 'iOS';
+    }
+
+    return 'unknown';
   }
 
   changeStatus(id, status) {

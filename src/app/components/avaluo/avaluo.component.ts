@@ -18,12 +18,10 @@ import { Client } from '../../models/client.model';
 })
 export class AvaluoComponent implements OnInit {
 
+  isMobile = false;
   dataLoaded = false;
-
   mostrarImprimir = false;
-
   elementToPrint: any;
-
   isHidden = false;
   nomCliente: any = {};
   index = 0;
@@ -44,6 +42,24 @@ export class AvaluoComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    // Windows Phone must come first because its UA also contains "Android"
+    if (/windows phone/i.test(userAgent)) {
+      this.isMobile = true;
+    }
+
+    if (/android/i.test(userAgent)) {
+      this.isMobile = true;
+    }
+
+    // iOS detection from: http://stackoverflow.com/a/9039885/177710
+    if (/iPad|iPhone|iPod/.test(userAgent) && !window['MSStream']) {
+      this.isMobile = true;
+    }
+
+
     this.observableService.userObservable$.subscribe(user => {
       this.user = user ? user : new Client();
     });
@@ -98,7 +114,7 @@ export class AvaluoComponent implements OnInit {
       // error
       this.messageService.add({
         severity: 'error', summary: 'Error de conexión',
-        detail: `En este momento no podemos establecer conexión con nuestros servidores, 
+        detail: `En este momento no podemos establecer conexión con nuestros servidores,
         revise su conexión a internet, recargue la pagina e intente generar su reporte de nuevo.
         `
       });
@@ -130,14 +146,14 @@ export class AvaluoComponent implements OnInit {
 
 
 
-    const HTMLFacturacion: any = document.getElementById("facturacion");
+    const HTMLFacturacion: any = document.getElementById('facturacion');
     // this.loading = true;
     // this.yals.generateRequest(yals_req, null).subscribe(response => {
     //   this.avaluoResponse = response;
     //   if (!this.avaluoResponse.data.response.similares) {
     //     this.messageService.add({
     //       severity: 'error', summary: 'Datos Insuficientes',
-    //       detail: `No se han encontrado datos suficientes de la propiedad para realizar un reporte detallado, 
+    //       detail: `No se han encontrado datos suficientes de la propiedad para realizar un reporte detallado,
     //       favor de ponerse en contacto con aclaraciones@valorinmuebles.com.mx
     //       `
     //     });
@@ -159,18 +175,18 @@ export class AvaluoComponent implements OnInit {
     //   this.loading = false;
     //   this.messageService.add({
     //     severity: 'error', summary: 'Error procesando reporte',
-    //     detail: `Se ha producido un error procesando su reporte, verifique los datos proporcionados 
+    //     detail: `Se ha producido un error procesando su reporte, verifique los datos proporcionados
     //     o su conexion a internet e intente nuevamente, en caso contrario porfavor contacte a soporte.`
     //   });
     // });
     if (this.isHidden) {
       // this.mail.sendMail({ to: "ventas@region4.mx", subject: "Facturacion", text: this.facturacion })
-      //console.log(HTMLFacturacion.innerHTML);
+      // console.log(HTMLFacturacion.innerHTML);
       this.mail.sendMail({
         from: 'facturacion@valorinmuebles.mx',
-        //to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
+        // to: "samuelherrerafuente@gmail.com", subject: "Facturacion",
         to: 'ventas@region4.mx', subject: 'Facturacion',
-        //html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
+        // html: "<pre>" + JSON.stringify(this.facturacion, undefined, 2) + "</pre>"
         html: HTMLFacturacion.innerHTML
       })
         .subscribe(() => {
@@ -276,25 +292,25 @@ export class AvaluoComponent implements OnInit {
 
   b64toBlob(b64Data, contentType) {
     contentType = contentType || '';
-    let sliceSize = 512;
+    const sliceSize = 512;
 
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
+    const byteCharacters = atob(b64Data);
+    const byteArrays = [];
 
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-      var slice = byteCharacters.slice(offset, offset + sliceSize);
+    for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+      const slice = byteCharacters.slice(offset, offset + sliceSize);
 
-      var byteNumbers = new Array(slice.length);
-      for (var i = 0; i < slice.length; i++) {
+      const byteNumbers = new Array(slice.length);
+      for (let i = 0; i < slice.length; i++) {
         byteNumbers[i] = slice.charCodeAt(i);
       }
 
-      var byteArray = new Uint8Array(byteNumbers);
+      const byteArray = new Uint8Array(byteNumbers);
 
       byteArrays.push(byteArray);
     }
 
-    var blob = new Blob(byteArrays, { type: contentType });
+    const blob = new Blob(byteArrays, { type: contentType });
     return blob;
   }
 

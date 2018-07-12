@@ -1,3 +1,7 @@
+<img style="     height: 70px;
+width: 250px;
+align-self: center;     margin-left: calc(50% - 125px);" src="https://www.valorinmuebles.com.mx/assets/images/valorinmuebles_logo_final-02.png" alt="logo">
+
 <div class="login" *ngIf="login">
   <div class="containerLogin">
     <!--<form #f="ngForm" (ngSubmit)="onSubmit(f.value)">-->
@@ -10,7 +14,9 @@
     <p-button label="Iniciar Sesión" (onClick)="validarLogin()"></p-button>
   </div>
 </div>
-
+<div class="loader" *ngIf="dataLoaded">
+  <img src="../assets/img/SkinnySeveralAsianlion.gif" style="width: 50px;">
+</div>
 <p-tabView *ngIf="loginSuccess">
   <p-tabPanel header="Usuarios" leftIcon="fa-user">
     <div class="example-container mat-elevation-z8">
@@ -50,7 +56,7 @@
       </mat-table>
     </div>
   </p-tabPanel>
-  <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key">
+  <!-- <p-tabPanel header="Modificar Credenciales YALS" leftIcon="fa-key">
     <div class="isHidden">
       <mat-form-field class="example-full-width">
         <input matInput placeholder="URL" [(ngModel)]="yalsconfig['url']">
@@ -64,23 +70,24 @@
       <input matInput placeholder="API Key" [(ngModel)]="yalsconfig['key']">
     </mat-form-field>
     <p-button (onClick)="saveconfig()" label="Guardar" class="mle"></p-button>
-  </p-tabPanel>
+  </p-tabPanel> -->
   <p-tabPanel header="Reportes" leftIcon="fa-file">
     <div class="example-container mat-elevation-z8">
       <div class="example-header">
         <mat-form-field>
           <input matInput (keyup)="applyFilter2($event.target.value)" placeholder="Filter">
         </mat-form-field>
+        <p-button (onClick)="reload()" label="Actualizar" style="margin-left: 30px"></p-button>
       </div>
-      <mat-table #table [dataSource]="dataSource2">
+      <mat-table #table [dataSource]="dataSource2" matSort>
         <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <mat-header-cell *matHeaderCellDef> Usuario </mat-header-cell>
+        <ng-container matColumnDef="client">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Usuario </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.client}} </mat-cell>
         </ng-container>
         <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
+        <ng-container matColumnDef="dateCreated">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.dateCreated| date:'yyyy-MM-dd HH:mm a'}}
           </mat-cell>
         </ng-container>
@@ -106,7 +113,7 @@
           <mat-header-cell *matHeaderCellDef> Cupon </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.cupon}} </mat-cell>
         </ng-container>
-        
+
         <ng-container matColumnDef="pagado">
           <mat-header-cell *matHeaderCellDef> Pagado </mat-header-cell>
           <mat-cell *matCellDef="let element"> {{element.state}} </mat-cell>
@@ -119,15 +126,16 @@
             <!-- {{element._id}} -->
             ID: {{element.dateCreated | date:'yyyy-dms'}}
             <p-button (onClick)="imprimir(element._id, element)" label="Descargar PDF"></p-button>
-            <div id="{{element._id}}" class="oculto">
-              <app-reporte-fake id="element-to-print" [datos]="{data:element}" *ngIf="element['hidden']&&element.response.similares"></app-reporte-fake>
-              <app-basic-report-fake [datos]="{data:element}" *ngIf="element['hidden']"></app-basic-report-fake>
+            <div id="xxx" class="oculto">
+              <app-reporte-fake id="element-to-print-ios-{{element._id}}" *ngIf="element['hidden']&&element.response.similares" [datos]="{data:element}"></app-reporte-fake>
+              <app-reporte id="element-to-print-{{element._id}}" [datos]="{data:element}" *ngIf="element['hidden']&&element.response.similares"></app-reporte>
+              <app-basic-report-fake id="basic-element-to-print-{{element._id}}" [datos]="{data:element}" *ngIf="element['hidden']"></app-basic-report-fake>
             </div>
             <div class="mascarita"></div>
 
           </mat-cell>
         </ng-container>
-        
+
         <mat-header-row *matHeaderRowDef="displayedColumns2"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns2;"></mat-row>
       </mat-table>

@@ -41,31 +41,15 @@ Ajax Contact Form
       encode: true
     }).done(function (data) {
       // handle errors
-      if (!data.success) {
-        if (data.errors.name) {
+      if (!data.data) {
           $('#name-field').addClass('has-error');
           $('#name-field').find('.form-input').append('<span class="help-block">' + data.errors.name + '</span>');
-        }
-
-        if (data.errors.email) {
-          $('#email-field').addClass('has-error');
-          $('#email-field').find('.form-input').append('<span class="help-block">' + data.errors.email + '</span>');
-        }
-
-        if (data.errors.phone) {
-          $('#phone-field').addClass('has-error');
-          $('#phone-field').find('.form-input').append('<span class="help-block">' + data.errors.phone + '</span>');
-        }
-
-        if (data.errors.message) {
-          $('#message-field').addClass('has-error');
-          $('#message-field').find('.form-input').append('<span class="help-block">' + data.errors.message + '</span>');
-        }
+        
       } else {
         // display success message
-        
+        $form.html('<div class="alert alert-success">Mensaje Enviado</div>');
       }
-      $form.html('<div class="alert alert-success">Mensaje Enviado</div>');
+      
     }).fail(function (data) {
       // for debug
       console.log(data)

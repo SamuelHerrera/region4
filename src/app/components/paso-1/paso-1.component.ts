@@ -21,6 +21,12 @@ export class Paso1Component implements OnInit {
 
   constructor(private yals: YalsService) { }
 
+  dragEnd(event) {
+    console.log(event);
+    this.avaluoForm['latitud'] = event.coords.lat;
+    this.avaluoForm['longitud'] = event.coords.lng;
+  }
+
   ngOnInit() {
     this.avaluoForm['latitud'] = this.lat;
     this.avaluoForm['longitud'] = this.lng;

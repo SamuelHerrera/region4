@@ -90,6 +90,7 @@ import { PoliticaPrivacidadComponent } from './components/politica-privacidad/po
 import { AvisoCookiesComponent } from './components/aviso-cookies/aviso-cookies.component';
 
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSortModule } from '@angular/material/sort';
 import { DownloadComponent } from './components/download/download.component';
 @NgModule({
   declarations: [
@@ -143,6 +144,7 @@ import { DownloadComponent } from './components/download/download.component';
     MatCheckboxModule,
     ButtonModule,
     TabViewModule,
+    MatSortModule,
     MatSnackBarModule,
     SelectButtonModule,
     CheckboxModule,
@@ -178,6 +180,7 @@ import { DownloadComponent } from './components/download/download.component';
       }
     }
   ],
+  entryComponents: [DialogCuponesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

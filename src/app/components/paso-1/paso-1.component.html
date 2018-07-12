@@ -32,7 +32,7 @@
   </div>
   <div class="maps">
     <agm-map [latitude]="avaluoForm['latitud']" [longitude]="avaluoForm['longitud']" [zoom]="12" [scrollwheel]="false">
-      <agm-marker [latitude]="avaluoForm['latitud']" [longitude]="avaluoForm['longitud']" [markerDraggable]="true"></agm-marker>
+      <agm-marker (dragEnd)=dragEnd($event) [latitude]="avaluoForm['latitud']" [longitude]="avaluoForm['longitud']" [markerDraggable]="true"></agm-marker>
     </agm-map>
     <div class="nota">
       <b>Importante:</b> Es necesario que ubiques el marcador dentro o lo mas cercano a tu propiedad, es posible que la foto
