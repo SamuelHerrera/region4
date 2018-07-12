@@ -94,7 +94,7 @@ exports.recordReference = async (function (yalsid, pagofacilid, cupon) {
     return false;
   }
   oldyals.state = 'Pagado ' + pagofacilid;
-  oldyals.cuponid = cupon ? cupon : '';
+  oldyals.cupon = cupon ? cupon : '';
   try {
     var savedyals = await (oldyals.save());
     return savedyals;

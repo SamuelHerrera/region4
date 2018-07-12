@@ -79,6 +79,15 @@ export class PagoConTarjetaComponent implements OnInit {
   pagarAvaluo() {
     const bypass = true;
     if (bypass) {
+      this.yals.pagarReporte(this.yalsdata.data._id, 'codigodepago', this.codigoUSado).subscribe((responses) => {
+        console.log(responses);
+      });
+      this.messageService.add({
+        severity: 'success', summary: 'Procesamiento de pago',
+        detail: 'Su pago se ha procesado satisfactoriamente.'
+      });
+      this.facturacion['formapago'] = 'Tarjeta Debito/Credito';
+      this.facturacion['FechaTransaccion'] = new Date().toLocaleDateString();
       this.completed.emit(true);
     } else {
       this.loading = true;

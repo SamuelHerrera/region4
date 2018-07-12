@@ -8,6 +8,7 @@ var Schema = new mongoose.Schema({
   request: mongoose.Schema.Types.Mixed,
   response: mongoose.Schema.Types.Mixed,
   estado: String,
+  cupon: String,
   state: String,
   dateCreated: {
     type: Date,
