@@ -8,7 +8,7 @@ exports.getClients = async (function (query, page, limit) {
   var options = {
     page,
     limit
-  }
+  } 
 
   try {
     var clients = await (Client.paginate(query, options));

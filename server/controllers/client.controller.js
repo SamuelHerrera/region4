@@ -67,7 +67,7 @@ exports.createClient = async (function (req, res, next) {
         <a href="#" >
           <img class="logo" src="https://www.valorinmuebles.com.mx/assets/images/logoFinal.png"  
           style="    height: 100px;
-          width: 200px;">
+          width: 350px;">
         </a>
       </div>
     </div>

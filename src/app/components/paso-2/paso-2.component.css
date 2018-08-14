@@ -1,3 +1,11 @@
+
+@supports (-ms-ime-align: auto) {
+  .images {
+        margin-bottom: -40px;
+        position: relative;
+  }
+}
+
 .characteristics {
   width: 100%;
   display: flex;
