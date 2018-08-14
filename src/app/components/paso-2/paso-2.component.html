@@ -1,5 +1,7 @@
 <div class="characteristics">
 
+
+
   <div class="address">
     <div class="subAddress">
       <span>Dirección:</span>
@@ -27,6 +29,37 @@
       <!-- <h4>Casa</h4><br>
 
         <p-selectButton [options]="homeTypes" [(ngModel)]="selectedHomeType" [ngModelOptions]="{standalone: true}" name="estadoCasa"></p-selectButton><br> -->
+    </div>
+  </div>
+
+  <div class="description">
+
+    <div class="subDescription">
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Área Construída(m2)" type="number" (change)="onChange(1)" [(ngModel)]="avaluoForm['area_construida']"
+          required>
+        <mat-hint>Entre 30m2 a 1000m2</mat-hint>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Superficie del terreno(m2)" type="number" (change)="onChange(2)" [(ngModel)]="avaluoForm['superficie_terreno']"
+          required>
+        <mat-hint>Entre 0m2 a 1000m2</mat-hint>
+      </mat-form-field>
+
+
+      <div class="years">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Años de antigüedad" type="number" (change)="onChange(3)" [(ngModel)]="avaluoForm['edad']" [disabled]='isNew'
+            required>
+        </mat-form-field>
+
+        <div class="ui-g-12">
+          <!-- <p-toggleButton onLabel="Nuevo" offLabel="Nuevo" (onChange)="nuevo()"></p-toggleButton> -->
+          <p-checkbox name="nuevo" value="Nuevo" label="Nuevo" (onChange)="nuevo()" inputId="Nvo"></p-checkbox>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -66,34 +99,5 @@
 
   </div>
 
-  <div class="description">
 
-    <div class="subDescription">
-
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Área Construída(m2)" type="number" (change)="onChange(1)" [(ngModel)]="avaluoForm['area_construida']"
-          required>
-        <mat-hint>Entre 30m2 a 1000m2</mat-hint>
-      </mat-form-field>
-      <mat-form-field class="example-full-width">
-        <input matInput placeholder="Superficie del terreno(m2)" type="number" (change)="onChange(2)" [(ngModel)]="avaluoForm['superficie_terreno']"
-          required>
-        <mat-hint>Entre 0m2 a 1000m2</mat-hint>
-      </mat-form-field>
-
-
-      <div class="years">
-        <mat-form-field class="example-full-width">
-          <input matInput placeholder="Años de antigüedad" type="number" (change)="onChange(3)" [(ngModel)]="avaluoForm['edad']" [disabled]='isNew'
-            required>
-        </mat-form-field>
-
-        <div class="ui-g-12">
-          <!-- <p-toggleButton onLabel="Nuevo" offLabel="Nuevo" (onChange)="nuevo()"></p-toggleButton> -->
-          <p-checkbox name="nuevo" value="Nuevo" label="Nuevo" (onChange)="nuevo()" inputId="Nvo"></p-checkbox>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </div>

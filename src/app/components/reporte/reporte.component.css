@@ -456,7 +456,7 @@ html * {
   font-weight: 300;
   z-index: 155;
   line-height: 22px;
-  text-align: justify;
+  text-align: start;
   font-size: 14px;
 }
 
@@ -875,7 +875,7 @@ table td {
 
 .logo {
   /*filter: hue-rotate(0.35turn);*/
-  width: 190px;
+  width: 300px;
   height: 75px;
   /*margin: 10px;*/
 }
